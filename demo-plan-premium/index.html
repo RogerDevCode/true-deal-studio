@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="es-CL" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muebles Roble | Demo Plan Premium</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Demo oficial para el Plan Premium. Un e-commerce completo con base de datos simulada en memoria y un potente panel de administración.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Muebles Roble | Demo Plan Premium" />
+    <meta property="og:description" content="Experimenta el alcance del Plan Premium: tienda autogestionable, CRUD de productos, control de horarios y colas de pedidos." />
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪚</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        :root {
+            --bg-darkest: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #f97316; /* Neon Orange */
+            --primary-hover: #ea580c;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-headings: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-darkest);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-headings);
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Demo Info Bar */
+        .demo-bar {
+            background-color: #bd93f9;
+            color: #1e1f29;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 150;
+        }
+
+        .demo-bar a {
+            text-decoration: underline;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 36px;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-family: var(--font-headings);
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Store Closed Banner */
+        .closed-banner {
+            background-color: var(--danger);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-top: 106px;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 60px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(249, 115, 22, 0.08) 0%, transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Products Grid */
+        .store-section {
+            padding: 60px 0 80px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+
+        .product-img {
+            height: 200px;
+            width: 100%;
+            background-color: #334155;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-info {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        /* Cart Drawer */
+        .cart-drawer {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background-color: var(--bg-darkest);
+            border-left: 1px solid var(--border);
+            z-index: 200;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-card);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .cart-item-info h5 {
+            font-size: 0.9rem;
+        }
+
+        .cart-item-info p {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Modal Contact & Checkout Gateway */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 24px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-darkest);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--text-light);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-cancel {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* Tab buttons in Admin */
+        .admin-nav {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab-btn {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .admin-tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Tables style in Admin */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+
+        .admin-table th, .admin-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-table th {
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        /* Order status badges */
+        .badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-pending { background-color: rgba(249, 115, 22, 0.15); color: var(--primary); }
+        .badge-process { background-color: rgba(14, 165, 233, 0.15); color: #0ea5e9; }
+        .badge-delivered { background-color: rgba(16, 185, 129, 0.15); color: var(--success); }
+
+        /* Gateway checkout styling */
+        .gateway-card {
+            background-color: #ffffff;
+            color: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gateway-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .gateway-logo {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #d52b1e;
+        }
+
+        .card-input-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+
+        .gateway-control {
+            width: 100%;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #1e293b;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .gateway-control:focus {
+            border-color: #d52b1e;
+        }
+
+        .gateway-btn {
+            background-color: #d52b1e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Success alerts */
+        .alert-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body x-data="loadStore()">
+
+    <!-- Demo Banner Info -->
+    <div class="demo-bar">
+        <span>Esta es la DEMO del <strong>PLAN PREMIUM</strong> (E-commerce + Base de Datos + Panel Admin).</span>
+        <a href="../index.html">Regresar al Portafolio</a>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Roble<span>&Co</span></div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#tienda">Tienda</a>
+                <a @click="openAdminModal()">💻 Panel Administrador</a>
+                <button class="cta-btn" @click="isCartOpen = true">Carrito (<span x-text="cart.length"></span>)</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CLOSED STORE BANNER -->
+    <div x-show="isStoreClosed()" class="closed-banner" x-cloak>
+        🔒 La tienda está temporalmente cerrada. Puedes ver productos y armar tu carro, pero las compras están deshabilitadas hasta el horario de apertura.
+    </div>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Muebles de <span>Madera Nativa</span> Hechos a Mano</h1>
+            <p>Diseño escandinavo y maderas chilenas de origen sustentable. Creados para durar toda la vida.</p>
+            <a href="#tienda" class="cta-btn" style="padding: 15px 35px; font-size: 1rem;">Comprar Catálogo</a>
+        </div>
+    </section>
+
+    <!-- STOREFRONT -->
+    <section id="tienda" class="store-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Catálogo de Productos</h2>
+                <p style="color: var(--text-muted); margin-top: 8px;">Gestionado dinámicamente mediante Base de Datos local (CRUD de Administrador).</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <template x-for="p in products" :key="p.id">
+                    <div class="product-card" x-show="p.active">
+                        <div class="product-img" :style="'background-image: url(' + p.image + ')'">
+                            <span x-show="!p.image" style="font-size: 3rem;">🪵</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 x-text="p.name"></h3>
+                            <p x-text="p.description"></p>
+                            <div class="product-price-row">
+                                <span class="product-price" x-text="formatPrice(p.price)"></span>
+                                <button class="cta-btn" @click="addToCart(p)" :disabled="isStoreClosed()">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div x-show="isCartOpen" class="modal-overlay" x-cloak @click.self="isCartOpen = false">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <h3>Carro de Compras</h3>
+                <button @click="isCartOpen = false" style="background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+
+            <div class="cart-items">
+                <template x-if="cart.length === 0">
+                    <p style="text-align: center; color: var(--text-muted); margin-top: 50px;">Tu carro está vacío.</p>
+                </template>
+                <template x-for="item in cart" :key="item.id">
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h5 x-text="item.name"></h5>
+                            <p x-text="formatPrice(item.price)"></p>
+                        </div>
+                        <button class="remove-btn" @click="removeFromCart(item.id)">Quitar</button>
+                    </div>
+                </template>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total Compra:</span>
+                    <span x-text="formatPrice(getCartTotal())"></span>
+                </div>
+                <button class="cta-btn" style="width: 100%; padding: 15px; font-size: 1rem;" @click="openCheckout()" :disabled="cart.length === 0 || isStoreClosed()">
+                    Continuar al Pago
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT DETAILS FORM -->
+    <div x-show="isCheckoutOpen" class="modal-overlay" x-cloak @click.self="closeCheckout()">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 20px;">Datos de Envío y Contacto</h3>
+            
+            <form @submit.prevent="openGateway()">
+                <div class="form-group">
+                    <label for="bill-name">Nombre Completo</label>
+                    <input id="bill-name" type="text" x-model="checkoutName" required class="form-control" placeholder="Ej: Diego Valenzuela">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bill-phone">Teléfono / WhatsApp</label>
+                    <input id="bill-phone" type="tel" x-model="checkoutPhone" required class="form-control" placeholder="Ej: +56999998888">
+                </div>
+
+                <!-- Priority delivery option: "Presencial" listed and selected first -->
+                <div class="form-group">
+                    <label for="bill-method">Modalidad de Despacho</label>
+                    <select id="bill-method" x-model="checkoutMethod" class="form-control">
+                        <option value="presencial">Presencial (Retiro en taller sin costo)</option>
+                        <option value="despacho">Despacho a Domicilio (Starken / Chilexpress)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" x-show="checkoutMethod === 'despacho'">
+                    <label for="bill-address">Dirección de Despacho</label>
+                    <input id="bill-address" type="text" x-model="checkoutAddress" class="form-control" placeholder="Ej: Los Leones 250, Providencia">
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" @click="closeCheckout()">Cancelar</button>
+                    <button type="submit" class="cta-btn">Ir a Pagar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SIMULATED WEBPAY / FLOW GATEWAY MODAL -->
+    <div x-show="isGatewayOpen" class="modal-overlay" x-cloak>
+        <div class="modal-content" style="max-width: 480px; padding: 0; overflow: hidden; border: none;">
+            <div class="gateway-card">
+                <div class="gateway-header">
+                    <span class="gateway-logo">WebPay <span>Plus</span></span>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748b;">Simulación Segura</span>
+                </div>
+                
+                <div style="background-color: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-size: 0.85rem;">
+                    <p><strong>Comercio:</strong> Muebles Roble Premium</p>
+                    <p><strong>Monto:</strong> <span x-text="formatPrice(getCartTotal())" style="font-weight: 800; color: var(--primary);"></span></p>
+                </div>
+
+                <div x-show="!gatewayProcessing">
+                    <div class="form-group">
+                        <label style="color: #475569;">Número de Tarjeta</label>
+                        <input type="text" class="gateway-control" placeholder="4532 •••• •••• 1234" value="4532123456781234" disabled>
+                    </div>
+                    
+                    <div class="card-input-row">
+                        <div class="form-group">
+                            <label style="color: #475569;">Fecha Vencimiento</label>
+                            <input type="text" class="gateway-control" placeholder="MM/AA" value="12/29" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label style="color: #475569;">CVV</label>
+                            <input type="text" class="gateway-control" placeholder="123" value="123" disabled>
+                        </div>
+                    </div>
+                    
+                    <button class="gateway-btn" @click="processPayment()">Pagar con Simulación</button>
+                </div>
+
+                <div x-show="gatewayProcessing" style="text-align: center; padding: 30px 0;">
+                    <p style="font-weight: 700; margin-bottom: 15px; color: #475569;">Autorizando transacción bancaria...</p>
+                    <div style="width: 40px; height: 40px; border: 4px solid #cbd5e1; border-top-color: #d52b1e; border-radius: 50%; animation: spin 1s infinite linear; margin: 0 auto;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS PAYMENT MODAL -->
+    <div x-show="showSuccessModal" class="modal-overlay" x-cloak @click.self="showSuccessModal = false">
+        <div class="modal-content" style="text-align: center;">
+            <div style="width: 70px; height: 70px; border-radius: 50%; background-color: rgba(16, 185, 129, 0.1); color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 20px;">✓</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 10px;">¡Pago Exitoso!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Tu pedido ha sido recibido y registrado en el Panel de Administración de la tienda.</p>
+            <button class="cta-btn" @click="showSuccessModal = false">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL PANEL (Persisting via localStorage) -->
+    <div x-show="isAdminOpen" class="modal-overlay" x-cloak>
+        <div class="modal-content" style="max-width: 900px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
+                <h3>Panel de Administración (Base de Datos Local)</h3>
+                <button @click="isAdminOpen = false" style="background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+
+            <!-- Tab Nav -->
+            <div class="admin-nav">
+                <button class="admin-tab-btn" :class="adminTab === 'productos' ? 'active' : ''" @click="adminTab = 'productos'">📦 Productos (CRUD)</button>
+                <button class="admin-tab-btn" :class="adminTab === 'pedidos' ? 'active' : ''" @click="adminTab = 'pedidos'">📥 Cola de Pedidos (<span x-text="orders.length"></span>)</button>
+                <button class="admin-tab-btn" :class="adminTab === 'horarios' ? 'active' : ''" @click="adminTab = 'horarios'">🕒 Horarios de Atención</button>
+                <button class="admin-tab-btn" :class="adminTab === 'tutorial' ? 'active' : ''" @click="adminTab = 'tutorial'">📖 Manual de Entrega</button>
+            </div>
+
+            <!-- PRODUCTS CRUD TAB -->
+            <div x-show="adminTab === 'productos'">
+                <h4 style="margin-bottom: 15px;">Nuevo Producto</h4>
+                <!-- CRUD inputs -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; background-color: var(--bg-darkest); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Nombre</label>
+                        <input type="text" x-model="newProdName" class="form-control" placeholder="Ej: Mesa Comedor Haya">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Precio (CLP)</label>
+                        <input type="number" x-model="newProdPrice" class="form-control" placeholder="Ej: 180000">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Cargar Imagen Local (1 archivo)</label>
+                        <input type="file" @change="handleImageUpload($event)" class="form-control" style="font-size: 0.75rem;">
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Descripción</label>
+                        <input type="text" x-model="newProdDesc" class="form-control" placeholder="Mesa para 6 personas de madera pulida...">
+                    </div>
+                    <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+                        <button class="cta-btn" @click="addProduct()">Agregar Producto</button>
+                    </div>
+                </div>
+
+                <h4 style="margin-bottom: 10px;">Inventario</h4>
+                <div style="overflow-x: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="p in products" :key="p.id">
+                                <tr>
+                                    <td>
+                                        <div :style="'background-image: url(' + p.image + ')'" style="width: 40px; height: 40px; border-radius: 8px; background-size: cover; background-position: center; background-color: #334155; display: flex; align-items: center; justify-content: center;">
+                                            <span x-show="!p.image" style="font-size: 1.2rem;">🪵</span>
+                                        </div>
+                                    </td>
+                                    <td x-text="p.name"></td>
+                                    <td x-text="p.description" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></td>
+                                    <td x-text="formatPrice(p.price)"></td>
+                                    <td>
+                                        <button class="badge" :class="p.active ? 'badge-delivered' : 'badge-pending'" @click="toggleProductActive(p.id)" x-text="p.active ? 'Activo' : 'Inactivo'"></button>
+                                    </td>
+                                    <td>
+                                        <button @click="deleteProduct(p.id)" style="color: var(--danger); background: none; border: none; cursor: pointer; font-weight: 700;">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ORDER QUEUE TAB -->
+            <div x-show="adminTab === 'pedidos'">
+                <h4 style="margin-bottom: 10px;">Cola de Pedidos Recibidos</h4>
+                <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 15px;">Administra el estado de los pedidos que los clientes realizan en el e-commerce.</p>
+                <div style="overflow-x: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>WhatsApp</th>
+                                <th>Modo</th>
+                                <th>Detalle</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template x-for="o in orders" :key="o.id">
+                                <tr>
+                                    <td x-text="o.name" style="font-weight: 700;"></td>
+                                    <td x-text="o.phone"></td>
+                                    <td x-text="o.method === 'presencial' ? 'Retiro' : 'Despacho'"></td>
+                                    <td>
+                                        <template x-for="item in o.items">
+                                            <div style="font-size: 0.8rem; color: var(--text-muted);" x-text="item.name"></div>
+                                        </template>
+                                    </td>
+                                    <td x-text="formatPrice(o.total)" style="font-weight: 700; color: var(--primary);"></td>
+                                    <td>
+                                        <span class="badge" :class="o.status === 'pendiente' ? 'badge-pending' : (o.status === 'proceso' ? 'badge-process' : 'badge-delivered')" x-text="o.status"></span>
+                                    </td>
+                                    <td>
+                                        <div style="display: flex; gap: 8px;">
+                                            <button @click="updateOrderStatus(o.id, 'proceso')" x-show="o.status === 'pendiente'" style="background: none; border: 1px solid #0ea5e9; color: #0ea5e9; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;">Atender</button>
+                                            <button @click="updateOrderStatus(o.id, 'entregado')" x-show="o.status === 'proceso'" style="background: none; border: 1px solid var(--success); color: var(--success); padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;">Completar</button>
+                                            <button @click="deleteOrder(o.id)" style="color: var(--danger); background: none; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 700;">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- HOURS SETTINGS TAB -->
+            <div x-show="adminTab === 'horarios'">
+                <h4 style="margin-bottom: 10px;">Configuración de Apertura / Cierre de Tienda</h4>
+                <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px;">Controla si los clientes pueden hacer pedidos según la hora. Cambia el horario y ve cómo se actualiza la tienda.</p>
+                
+                <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 20px; max-width: 500px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 700;">Cierre Forzado (Manual)</span>
+                        <input type="checkbox" x-model="storeHours.forcedClosed" @change="saveHours()" style="width: 20px; height: 20px; cursor: pointer;">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Hora de Apertura</label>
+                            <input type="time" x-model="storeHours.open" @change="saveHours()" class="form-control">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Hora de Cierre</label>
+                            <input type="time" x-model="storeHours.close" @change="saveHours()" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OWNER'S MANUAL TAB (Built-in Support/Training simulation) -->
+            <div x-show="adminTab === 'tutorial'" style="display: flex; flex-direction: column; gap: 20px;">
+                <h4 style="margin-bottom: 10px;">Manual de Entrega & Capacitación del Propietario</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; leading-relaxed;">
+                    El Plan Premium incluye una sesión de capacitación de 1 hora y guías de video para autogestionar el sitio sin depender del programador.
+                </p>
+                
+                <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 16px; border: 1px solid var(--border);">
+                    <h5 style="margin-bottom: 15px; color: var(--primary);">📹 Video-Guía: Gestión de Inventario</h5>
+                    <div style="width: 100%; height: 280px; background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; color: var(--text-muted);">
+                        <span style="font-size: 4rem;">📺</span>
+                        <p style="font-size: 0.9rem; font-weight: 600;">[Reproductor de Capacitación del Cliente]</p>
+                        <button class="cta-btn" @click="alert('Simulación: Iniciando video de capacitación de 12 minutos...')" style="padding: 10px 24px;">Iniciar Video Tutorial</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-buttons" style="margin-top: 25px;">
+                <button type="button" class="btn-cancel" @click="isAdminOpen = false">Cerrar Panel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STYLE FOR TRANSITIONS & SPIN ANIMATION -->
+    <style>
+        [x-cloak] { display: none !important; }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script>
+        function loadStore() {
+            return {
+                isCartOpen: false,
+                isCheckoutOpen: false,
+                isGatewayOpen: false,
+                isAdminOpen: false,
+                adminTab: 'productos',
+                
+                // Checkout form fields
+                checkoutName: '',
+                checkoutPhone: '',
+                checkoutMethod: 'presencial', // Priority delivery: Presencial listed and selected first
+                checkoutAddress: '',
+                
+                // Gateway simulation fields
+                gatewayProcessing: false,
+                showSuccessModal: false,
+                
+                // Add Product inputs
+                newProdName: '',
+                newProdPrice: '',
+                newProdDesc: '',
+                newProdImage: '',
+
+                // Store hours settings
+                storeHours: {
+                    forcedClosed: false,
+                    open: '09:00',
+                    close: '20:00'
+                },
+
+                products: [],
+                orders: [],
+                cart: [],
+
+                init() {
+                    // Initialize products
+                    const savedProducts = localStorage.getItem('premium_products');
+                    if (savedProducts) {
+                        this.products = JSON.parse(savedProducts);
+                    } else {
+                        this.products = [
+                            { id: 1, name: 'Comedor Roble Escandinavo', price: 490000, description: 'Mesa de comedor tallada en roble sólido. Dimensiones: 200x90cm.', active: true, image: '' },
+                            { id: 2, name: 'Repisa Colgante Avellano', price: 89000, description: 'Repisa minimalista flotante de madera de avellano seleccionada.', active: true, image: '' },
+                            { id: 3, name: 'Silla Terrazas Ciprés', price: 120000, description: 'Silla ergonómica tratada contra la humedad. Ideal para exterior.', active: true, image: '' }
+                        ];
+                        this.saveProducts();
+                    }
+
+                    // Initialize hours
+                    const savedHours = localStorage.getItem('premium_hours');
+                    if (savedHours) {
+                        this.storeHours = JSON.parse(savedHours);
+                    }
+
+                    // Initialize orders queue (Preloaded with sample orders)
+                    const savedOrders = localStorage.getItem('premium_orders');
+                    if (savedOrders) {
+                        this.orders = JSON.parse(savedOrders);
+                    } else {
+                        this.orders = [
+                            {
+                                id: 1718023456000,
+                                date: new Date().toISOString(),
+                                name: "María Teresa Ruiz",
+                                phone: "+56 9 8811 2233",
+                                method: "presencial",
+                                address: "",
+                                items: [{ id: 1, name: "Comedor Roble Escandinavo", price: 490000 }],
+                                total: 490000,
+                                status: "pendiente"
+                            },
+                            {
+                                id: 1718023800000,
+                                date: new Date().toISOString(),
+                                name: "Francisco Rojas",
+                                phone: "+56 9 7755 6644",
+                                method: "despacho",
+                                address: "Calle Del Valle 430, Las Condes",
+                                items: [{ id: 2, name: "Repisa Colgante Avellano", price: 89000 }],
+                                total: 89000,
+                                status: "proceso"
+                            }
+                        ];
+                        this.saveOrders();
+                    }
+                },
+
+                saveProducts() {
+                    localStorage.setItem('premium_products', JSON.stringify(this.products));
+                },
+
+                saveHours() {
+                    localStorage.setItem('premium_hours', JSON.stringify(this.storeHours));
+                },
+
+                saveOrders() {
+                    localStorage.setItem('premium_orders', JSON.stringify(this.orders));
+                },
+
+                formatPrice(value) {
+                    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(value);
+                },
+
+                isStoreClosed() {
+                    if (this.storeHours.forcedClosed) return true;
+                    const now = new Date();
+                    const hours = now.getHours().toString().padStart(2, '0');
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const currentTime = `${hours}:${minutes}`;
+                    return currentTime < this.storeHours.open || currentTime > this.storeHours.close;
+                },
+
+                addToCart(product) {
+                    if (this.isStoreClosed()) return;
+                    this.cart.push(product);
+                    this.isCartOpen = true;
+                },
+
+                removeFromCart(id) {
+                    this.cart = this.cart.filter(item => item.id !== id);
+                },
+
+                getCartTotal() {
+                    return this.cart.reduce((sum, item) => sum + item.price, 0);
+                },
+
+                openCheckout() {
+                    this.isCartOpen = false;
+                    this.isCheckoutOpen = true;
+                },
+
+                closeCheckout() {
+                    this.isCheckoutOpen = false;
+                    this.resetCheckoutForm();
+                },
+
+                resetCheckoutForm() {
+                    this.checkoutName = '';
+                    this.checkoutPhone = '';
+                    this.checkoutMethod = 'presencial'; // Presencial listed first
+                    this.checkoutAddress = '';
+                },
+
+                openGateway() {
+                    this.isCheckoutOpen = false;
+                    this.isGatewayOpen = true;
+                },
+
+                processPayment() {
+                    this.gatewayProcessing = true;
+                    setTimeout(() => {
+                        this.gatewayProcessing = false;
+                        this.isGatewayOpen = false;
+                        
+                        // Register new order in database
+                        const newOrder = {
+                            id: Date.now(),
+                            date: new Date().toISOString(),
+                            name: this.checkoutName,
+                            phone: this.checkoutPhone,
+                            method: this.checkoutMethod,
+                            address: this.checkoutMethod === 'despacho' ? this.checkoutAddress : '',
+                            items: JSON.parse(JSON.stringify(this.cart)),
+                            total: this.getCartTotal(),
+                            status: 'pendiente'
+                        };
+                        this.orders.unshift(newOrder);
+                        this.saveOrders();
+
+                        // Reset shopping state
+                        this.cart = [];
+                        this.closeCheckout();
+                        this.showSuccessModal = true;
+                    }, 2000);
+                },
+
+                // CRUD Methods
+                handleImageUpload(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            this.newProdImage = e.target.result; // base64 string
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                },
+
+                addProduct() {
+                    if (!this.newProdName || !this.newProdPrice) {
+                        alert('Ingresa al menos el nombre y el precio.');
+                        return;
+                    }
+                    const newProduct = {
+                        id: Date.now(),
+                        name: this.newProdName,
+                        price: parseFloat(this.newProdPrice),
+                        description: this.newProdDesc || 'Mueble de madera noble.',
+                        image: this.newProdImage || '',
+                        active: true
+                    };
+                    this.products.push(newProduct);
+                    this.saveProducts();
+
+                    // Reset CRUD inputs
+                    this.newProdName = '';
+                    this.newProdPrice = '';
+                    this.newProdDesc = '';
+                    this.newProdImage = '';
+                },
+
+                toggleProductActive(id) {
+                    this.products = this.products.map(p => {
+                        if (p.id === id) p.active = !p.active;
+                        return p;
+                    });
+                    this.saveProducts();
+                },
+
+                deleteProduct(id) {
+                    if (confirm('¿Quieres eliminar este producto?')) {
+                        this.products = this.products.filter(p => p.id !== id);
+                        this.saveProducts();
+                    }
+                },
+
+                // Order management methods
+                updateOrderStatus(orderId, status) {
+                    this.orders = this.orders.map(o => {
+                        if (o.id === orderId) o.status = status;
+                        return o;
+                    });
+                    this.saveOrders();
+                },
+
+                deleteOrder(orderId) {
+                    if (confirm('¿Eliminar este pedido de la cola?')) {
+                        this.orders = this.orders.filter(o => o.id !== orderId);
+                        this.saveOrders();
+                    }
+                },
+
+                openAdminModal() {
+                    this.isAdminOpen = true;
+                }
+            };
+        }
+    </script>
+</body>
+</html>
