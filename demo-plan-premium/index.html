@@ -82,7 +82,7 @@
 
         /* Header */
         header {
-            background-color: rgba(15, 23, 42, 0.9);
+            background-color: var(--header-bg, rgba(15, 23, 42, 0.9));
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             position: fixed;
@@ -764,7 +764,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background-color: #0b0c10; padding: 60px 0 30px; border-top: 1px solid var(--border); font-size: 0.9rem;">
+    <footer style="background-color: var(--bg-darkest); padding: 60px 0 30px; border-top: 1px solid var(--border); font-size: 0.9rem;">
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
                 <div>
@@ -1085,6 +1085,7 @@
                 <button class="admin-tab-btn" :class="adminTab === 'pedidos' ? 'active' : ''" @click="adminTab = 'pedidos'">📥 Cola de Pedidos (<span x-text="orders.length"></span>)</button>
                 <button class="admin-tab-btn" :class="adminTab === 'horarios' ? 'active' : ''" @click="adminTab = 'horarios'">🕒 Horarios de Atención</button>
                 <button class="admin-tab-btn" :class="adminTab === 'tutorial' ? 'active' : ''" @click="adminTab = 'tutorial'">📖 Manual de Entrega</button>
+                <button class="admin-tab-btn" :class="adminTab === 'config' ? 'active' : ''" @click="adminTab = 'config'">🎨 Temas & Hosting</button>
             </div>
 
             <!-- PRODUCTS CRUD TAB -->
@@ -1267,6 +1268,84 @@
                 </div>
             </div>
 
+            <!-- THEME & HOSTING TAB (Dynamic customizations & server explanations) -->
+            <div x-show="adminTab === 'config'" style="display: flex; flex-direction: column; gap: 20px;" x-cloak>
+                <h4 style="margin-bottom: 10px;">Personalización de Tema & Información del Servidor</h4>
+                
+                <!-- Theme Switcher Card -->
+                <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 16px; border: 1px solid var(--border);">
+                    <h5 style="margin-bottom: 15px; color: var(--primary); font-family: var(--font-headings); font-size: 1.1rem;">🎨 Cambiar Tema Visual de la Tienda</h5>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">
+                        Cambia instantáneamente la paleta de colores de todo el sitio web (Página de venta, Simulador, Carro y este Panel) asegurando la legibilidad.
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button type="button" class="cta-btn" @click="currentTheme = 'dark'; applyTheme();" :style="currentTheme === 'dark' ? 'border: 2px solid var(--primary); font-weight: bold;' : ''" style="background-color: #0b0c10; color: #f8fafc; padding: 10px 20px; border-radius: 8px;">Dark Mode 🌙</button>
+                        <button type="button" class="cta-btn" @click="currentTheme = 'light'; applyTheme();" :style="currentTheme === 'light' ? 'border: 2px solid var(--primary); font-weight: bold;' : ''" style="background-color: #ffffff; color: #0f172a; padding: 10px 20px; border-radius: 8px; border: 1px solid #cbd5e1;">Light Mode ☀️</button>
+                        <button type="button" class="cta-btn" @click="currentTheme = 'ocean'; applyTheme();" :style="currentTheme === 'ocean' ? 'border: 2px solid var(--primary); font-weight: bold;' : ''" style="background-color: #021526; color: #f0f9ff; padding: 10px 20px; border-radius: 8px;">Ocean Blue 🌊</button>
+                        <button type="button" class="cta-btn" @click="currentTheme = 'wood'; applyTheme();" :style="currentTheme === 'wood' ? 'border: 2px solid var(--primary); font-weight: bold;' : ''" style="background-color: #1c130c; color: #fefce8; padding: 10px 20px; border-radius: 8px;">Wood Walnut 🪵</button>
+                    </div>
+                </div>
+
+                <!-- Server Info Card (Entendible por Emprendedores) -->
+                <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 16px; border: 1px solid var(--border);">
+                    <h5 style="margin-bottom: 15px; color: var(--primary); font-family: var(--font-headings); font-size: 1.1rem;">☁️ ¿Por qué mi web necesita un Servidor Dedicado? (Costo de Hosting)</h5>
+                    <p style="color: var(--text-light); font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
+                        Tanto el <strong>Plan Profesional</strong> como el <strong>Plan Premium</strong> no incluyen el precio del servidor (hosting) donde se alojará la página web.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
+                        <strong>En palabras sencillas:</strong> Una web básica (estática) es como un folleto digital que no cambia. Pero tu web profesional o premium es como una <strong>oficina o tienda interactiva activa 24/7</strong>: tiene un catálogo de productos modificable, un carro que calcula envíos, y un panel de control donde guardas datos de clientes. 
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px;">
+                        Para procesar todos estos datos al instante de forma segura, tu web requiere estar alojada en una "computadora especial en la nube" (un servidor de páginas dinámicas).
+                    </p>
+                    <div style="background-color: rgba(224, 140, 56, 0.08); border-left: 4px solid var(--primary); padding: 15px; border-radius: 4px; font-size: 0.85rem; color: var(--text-light); margin-top: 15px; line-height: 1.5;">
+                        📌 <strong>Costo Estimado Mensual:</strong> Entre <strong>20 USD y 50 USD</strong> (aproximadamente $19.000 a $47.000 CLP al mes), dependiendo de la cantidad de visitas y del volumen de ventas que procese tu negocio.
+                    </div>
+                </div>
+
+                <!-- Improvements over Professional Plan -->
+                <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 16px; border: 1px solid var(--border);">
+                    <h5 style="margin-bottom: 15px; color: var(--primary); font-family: var(--font-headings); font-size: 1.1rem;">🚀 Mejoras Exclusivas del Plan Premium vs. Plan Profesional</h5>
+                    
+                    <ul style="list-style-type: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: var(--text-muted); text-align: left;">
+                        <li style="display: flex; align-items: start; gap: 10px;">
+                            <span style="color: var(--primary); font-weight: bold;">✔</span>
+                            <div>
+                                <strong style="color: var(--text-light);">Autogestión Completa (CRUD)</strong>: Sube, edita o elimina productos e imágenes tú mismo sin pagar horas de programador para modificar el catálogo.
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: start; gap: 10px;">
+                            <span style="color: var(--primary); font-weight: bold;">✔</span>
+                            <div>
+                                <strong style="color: var(--text-light);">Panel Administrativo y Cola de Pedidos</strong>: Lleva el control de todas tus ventas registradas y gestiona los estados de envío de forma digital.
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: start; gap: 10px;">
+                            <span style="color: var(--primary); font-weight: bold;">✔</span>
+                            <div>
+                                <strong style="color: var(--text-light);">Checkout Inteligente con Boleta/Factura</strong>: Formulario que valida RUTs de empresas automáticamente para compras corporativas B2B con IVA.
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: start; gap: 10px;">
+                            <span style="color: var(--primary); font-weight: bold;">✔</span>
+                            <div>
+                                <strong style="color: var(--text-light);">Control de Horario de Atención</strong>: Tu tienda se cierra al público y bloquea compras de forma automatizada fuera del horario laboral.
+                            </div>
+                        </li>
+                        <li style="display: flex; align-items: start; gap: 10px;">
+                            <span style="color: var(--primary); font-weight: bold;">✔</span>
+                            <div>
+                                <strong style="color: var(--text-light);">Cálculo de Despachos Integrado</strong>: Integra costos de envío chilenos con couriers conocidos (Starken / Chilexpress) de forma automática.
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div style="background-color: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px dashed var(--border); margin-top: 20px; font-size: 0.8rem; line-height: 1.5; color: var(--text-muted);">
+                        💡 <strong>Nota sobre Escalabilidad:</strong> Recuerda que todas estas páginas web corresponden a <strong>demos base del negocio</strong>. Están diseñadas para ser funcionales desde el día uno, pero <strong>pueden escalar y personalizarse</strong> según el crecimiento y los requerimientos específicos de tu empresa en el tiempo.
+                    </div>
+                </div>
+            </div>
+
             <div class="modal-buttons" style="margin-top: 25px;">
                 <button type="button" class="btn-cancel" @click="isAdminOpen = false">Cerrar Panel</button>
             </div>
@@ -1328,6 +1407,7 @@
                 isGatewayOpen: false,
                 isAdminOpen: false,
                 adminTab: 'productos',
+                currentTheme: 'dark',
                 
                 // Checkout form fields
                 checkoutName: '',
@@ -1425,6 +1505,10 @@
                         ];
                         this.saveOrders();
                     }
+                    
+                    // Initialize theme
+                    this.currentTheme = localStorage.getItem('premium_theme') || 'dark';
+                    this.applyTheme();
                 },
 
                 saveProducts() {
@@ -1437,6 +1521,56 @@
 
                 saveOrders() {
                     localStorage.setItem('premium_orders', JSON.stringify(this.orders));
+                },
+
+                applyTheme() {
+                    localStorage.setItem('premium_theme', this.currentTheme);
+                    const themes = {
+                        dark: {
+                            '--bg-darkest': '#0b0c10',
+                            '--bg-card': '#14161f',
+                            '--primary': '#e08c38',
+                            '--primary-hover': '#f2a34e',
+                            '--text-light': '#f8fafc',
+                            '--text-muted': '#94a3b8',
+                            '--border': 'rgba(224, 140, 56, 0.15)',
+                            '--header-bg': 'rgba(15, 23, 42, 0.9)'
+                        },
+                        light: {
+                            '--bg-darkest': '#f8fafc',
+                            '--bg-card': '#ffffff',
+                            '--primary': '#b45309',
+                            '--primary-hover': '#d97706',
+                            '--text-light': '#0f172a',
+                            '--text-muted': '#334155',
+                            '--border': 'rgba(180, 83, 9, 0.15)',
+                            '--header-bg': 'rgba(248, 250, 252, 0.95)'
+                        },
+                        ocean: {
+                            '--bg-darkest': '#021526',
+                            '--bg-card': '#072e4a',
+                            '--primary': '#0ea5e9',
+                            '--primary-hover': '#38bdf8',
+                            '--text-light': '#f0f9ff',
+                            '--text-muted': '#7dd3fc',
+                            '--border': 'rgba(14, 165, 233, 0.15)',
+                            '--header-bg': 'rgba(2, 21, 38, 0.95)'
+                        },
+                        wood: {
+                            '--bg-darkest': '#1c130c',
+                            '--bg-card': '#2d1f14',
+                            '--primary': '#eab308',
+                            '--primary-hover': '#facc15',
+                            '--text-light': '#fefce8',
+                            '--text-muted': '#ca8a04',
+                            '--border': 'rgba(234, 179, 8, 0.15)',
+                            '--header-bg': 'rgba(28, 19, 12, 0.95)'
+                        }
+                    };
+                    const themeProps = themes[this.currentTheme] || themes.dark;
+                    for (const [key, value] of Object.entries(themeProps)) {
+                        document.documentElement.style.setProperty(key, value);
+                    }
                 },
 
                 formatPrice(value) {
