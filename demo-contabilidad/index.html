@@ -1590,8 +1590,8 @@
                         </div>
                         <div x-show="rutData && !rutValidating" 
                              style="background: rgba(0,180,216,0.08); border: 1px solid rgba(0,180,216,0.25); border-radius: 8px; padding: 10px 14px; margin-top: 8px; display: none;">
-                            <p style="font-size: 0.78rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 2px;" x-text="'✓ ' + (rutData ? rutData.razonSocial : '')"></p>
-                            <p style="font-size: 0.72rem; color: var(--text-muted);" x-text="rutData ? 'Giro: ' + rutData.giro : ''"></p>
+                            <p class="text-responsive-detail" style="font-weight: 600; color: var(--accent-cyan); margin-bottom: 2px;" x-text="'✓ ' + (rutData ? rutData.razonSocial : '')"></p>
+                            <p class="text-responsive-caption" style="color: var(--text-muted);" x-text="rutData ? 'Giro: ' + rutData.giro : ''"></p>
                         </div>
                     </div>
 

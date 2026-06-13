@@ -1532,8 +1532,8 @@
                         <input type="text" x-model="formAddress" :required="formSector === 'envio'" class="form-input" placeholder="Calle, Número, Comuna, Ciudad" autocomplete="off" x-ref="communeInput">
                     </div>
                     <div class="form-group" x-show="formSector === 'envio'" style="margin-top: 8px;">
-                        <button type="button" @click="detectLocation()" 
-                                style="background: none; border: 1px dashed var(--primary-forest); color: var(--primary-forest); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-body);">
+                        <button type="button" @click="detectLocation()" class="text-responsive-detail" 
+                                style="background: none; border: 1px dashed var(--primary-forest); color: var(--primary-forest); padding: 6px 14px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font-body);">
                             <span x-show="!geoLoading">📍 Detectar mi ubicación automáticamente</span>
                             <span x-show="geoLoading" style="display: none;">⏳ Detectando...</span>
                         </button>
