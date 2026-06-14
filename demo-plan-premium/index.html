@@ -150,7 +150,7 @@
             color: #64748b;
             box-shadow: none;
             cursor: not-allowed;
-            transform: none !important;
+            transform: none;
         }
 
         /* Store Closed Banner */
@@ -568,10 +568,17 @@
             font-size: 0.9rem;
         }
 
+        .grid-configurator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
         @media (max-width: 768px) {
             .grid-configurator {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             .hero h1 {
                 font-size: 2.2rem;
@@ -580,14 +587,14 @@
                 font-size: 1rem;
             }
             header {
-                position: relative !important;
-                top: 0 !important;
+                position: relative;
+                top: 0;
             }
             .demo-bar {
-                position: relative !important;
+                position: relative;
             }
             .hero {
-                padding-top: 60px !important;
+                padding-top: 60px;
             }
             .header-content {
                 flex-direction: column;
@@ -1026,7 +1033,7 @@
     <section id="configurador" style="padding: 80px 0; background-color: var(--bg-darkest); border-bottom: 1px solid var(--border);" x-data="configuratorData()">
         <div class="container">
             <div style="background: linear-gradient(135deg, var(--bg-card) 0%, rgba(20, 22, 31, 0.8) 100%); border: 1px solid var(--border); border-radius: 30px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;" class="grid-configurator">
+                <div class="grid-configurator">
                     <div>
                         <span class="text-responsive-caption" style="color: var(--primary); font-weight: 700;  uppercase tracking-widest;">Simulador Premium</span>
                         <h2 style="font-size: 2.2rem; margin: 10px 0 20px; font-family: var(--font-headings);">Cotiza tu Mueble a Medida</h2>
