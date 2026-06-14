@@ -315,7 +315,7 @@
               <span class="text-3xl">👨‍👩‍👦</span>
               <h3 class="font-bold text-lg text-forest-900 leading-tight">Asesoría de Crianza</h3>
               <p class="text-sm text-forest-600 leading-relaxed">
-                Espacio consultivo exclusivo para padres. Te guiamos sobre cómo enriquecer la rutina diaria de tu hijo en casa con estrategias que facilitan su adquisición de palabras.
+                Espacio de orientación exclusivo para apoderados y familias. Te guiamos sobre cómo enriquecer la rutina diaria de tu hijo en casa con estrategias que facilitan su adquisición de palabras.
               </p>
             </div>
             <button @click="bookingModal = true; selectedService = 'asesoria'" class="text-sm text-coral-600 hover:text-coral-500 font-bold mt-4 flex items-center gap-1 group">
@@ -400,7 +400,7 @@
               <span class="text-lg transition-transform" :class="active === 2 ? 'rotate-45' : ''">+</span>
             </button>
             <div x-show="active === 2" x-collapse class="px-6 pb-5 text-sm text-forest-600 leading-relaxed border-t border-cream-50 pt-4" x-cloak>
-              Cuando un niño es trasladado a una consulta clínica fría y con bata blanca, entra en un estado de alerta que restringe su comunicación natural. En su casa, con sus juguetes y sus padres al lado, el nivel de ansiedad baja a cero, lo que nos permite observar su lenguaje real y avanzar mucho más rápido en cada sesión.
+              Cuando un niño es trasladado a una consulta clínica fría y con bata blanca, entra en un estado de alerta que restringe su comunicación natural. En su casa, con sus juguetes y su familia al lado, el nivel de ansiedad baja a cero, lo que nos permite observar su lenguaje real y avanzar mucho más rápido en cada sesión.
             </div>
           </div>
 
@@ -487,9 +487,9 @@
 
       <form @submit.prevent="submitBooking(clientName, clientPhone, apptDate, apptSlot, apptDetails)" class="space-y-4">
         
-        <!-- Nombre Madre/Padre -->
+        <!-- Nombre Apoderado -->
         <div>
-          <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-name">Nombre Completo del Padre/Madre *</label>
+          <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-name">Nombre Completo del Apoderado/a *</label>
           <input id="modal-name" type="text" x-model="clientName" required placeholder="Ej. Alejandra Valenzuela" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
         </div>
 
@@ -507,7 +507,7 @@
             <option value="retraso">Acompañamiento en Retraso del Lenguaje</option>
             <option value="sonidos">Terapia en Sonidos del Habla (TSH)</option>
             <option value="comunicacion">Habilidades de Comunicación Social</option>
-            <option value="asesoria">Asesoría de Crianza para Padres</option>
+            <option value="asesoria">Asesoría de Crianza para Apoderados</option>
           </select>
         </div>
 
@@ -559,7 +559,7 @@
         'retraso': 'Retraso del Lenguaje',
         'sonidos': 'Sonidos del Habla (TSH)',
         'comunicacion': 'Comunicación Social y Juego',
-        'asesoria': 'Asesoría de Crianza'
+        'asesoria': 'Asesoría de Crianza para Apoderados'
       };
 
       const selectedServiceName = serviceNames[document.getElementById('modal-service').value] || 'Fonoaudiología';
