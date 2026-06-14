@@ -1655,73 +1655,73 @@
         </div>
 
         <div class="space-y-3" x-data="{ openFaq: null }">
-          <!-- FAQ 1 -->
+          <!-- FAQ 1 (Costo mensual) -->
           <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20">
             <button @click="openFaq = openFaq === 1 ? null : 1" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">¿Es muy caro tener una página web?</span>
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Tengo que pagar algo mensual?</span>
               <svg :class="openFaq === 1 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div x-show="openFaq === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
-              <p class="text-sm leading-relaxed text-drac-comment">Para nada. Piénsalo así: una publicidad en Instagram puede costarte $50.000 o más al mes y dura unos días. Tu página web la pagas una sola vez y trabaja para ti las 24 horas, los 365 días del año. Además, el hosting es gratuito, así que no tienes costo mensual. Con un solo cliente nuevo que te llegue por la página, ya la pagaste.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 2 -->
-          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .04s">
-            <button @click="openFaq = openFaq === 2 ? null : 2" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">Yo no sé nada de tecnología, ¿puedo tener una página igual?</span>
-              <svg :class="openFaq === 2 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div x-show="openFaq === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
-              <p class="text-sm leading-relaxed text-drac-comment">¡Por supuesto! Yo me encargo de absolutamente todo lo técnico. Tú solo me cuentas sobre tu negocio y yo hago el resto. No necesitas saber nada de computación, programación ni nada por el estilo. Te explico todo en palabras simples, sin tecnicismos.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 3 -->
-          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .08s">
-            <button @click="openFaq = openFaq === 3 ? null : 3" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">Pero si ya tengo Instagram, ¿para qué necesito página web?</span>
-              <svg :class="openFaq === 3 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div x-show="openFaq === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
-              <p class="text-sm leading-relaxed text-drac-comment">Instagram es una vitrina, pero no es tuya. El algoritmo decide quién te ve y cuándo. Si Facebook o Instagram cambian las reglas (y lo hacen seguido), puedes perder alcance de un día para otro. Tu página web es tu espacio propio: apareces en Google, explicas tu servicio completo, y tus clientes te contactan directo sin depender de ninguna red social.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 4 -->
-          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .12s">
-            <button @click="openFaq = openFaq === 4 ? null : 4" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">¿Cuánto tiempo toma tener mi página lista?</span>
-              <svg :class="openFaq === 4 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div x-show="openFaq === 4" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
-              <p class="text-sm leading-relaxed text-drac-comment">Depende del plan, pero en general tu página puede estar lista y publicada en 5 a 10 días hábiles desde que empezamos. El proceso es bien rápido porque trabajo de forma enfocada y organizada.</p>
-            </div>
-          </div>
-
-          <!-- FAQ 5 -->
-          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .16s">
-            <button @click="openFaq = openFaq === 5 ? null : 5" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">¿Tengo que pagar algo mensual?</span>
-              <svg :class="openFaq === 5 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div x-show="openFaq === 5" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
               <p class="text-sm leading-relaxed text-drac-comment">No. El hosting (donde vive tu página en internet) es completamente gratuito. Lo único opcional es si quieres un dominio propio (como tunegocio.cl), que cuesta alrededor de $10.000 al año. Pero incluso sin dominio propio, tu página queda publicada y funcionando perfecto.</p>
             </div>
           </div>
 
-          <!-- FAQ 6 -->
-          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .20s">
-            <button @click="openFaq = openFaq === 6 ? null : 6" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo agregar cosas después?</span>
-              <svg :class="openFaq === 6 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <!-- FAQ 2 (Webpay, Flow, Mercado Pago) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .04s">
+            <button @click="openFaq = openFaq === 2 ? null : 2" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo recibir pagos con tarjeta de débito y crédito (Webpay, Flow, Mercado Pago)?</span>
+              <svg :class="openFaq === 2 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div x-show="openFaq === 6" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
-              <p class="text-sm leading-relaxed text-drac-comment">Sí, totalmente. Tu página se construye con una base sólida que permite agregar secciones, funcionalidades o integrar herramientas nuevas en el futuro. Empiezas con lo que necesitas hoy y creces cuando tu negocio lo pida.</p>
+            <div x-show="openFaq === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">Sí, totalmente. Dejamos tu página conectada con la pasarela de pago que prefieras (como Flow, Mercado Pago o Transbank directamente). Queremos ser muy transparentes: para activar esto necesitarás una cuenta registrada en la pasarela correspondiente. Además, ten en cuenta que todas estas plataformas cobran una pequeña comisión por cada transacción (por lo general, entre un 2% y un 3,5% + IVA). Nosotros nos encargamos de toda la integración técnica, pero el contrato del dinero es directo entre tú y la pasarela por seguridad.</p>
             </div>
           </div>
 
-          <!-- FAQ 7 -->
+          <!-- FAQ 3 (Boleta electrónica y SII) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .08s">
+            <button @click="openFaq = openFaq === 3 ? null : 3" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿La página emite boletas electrónicas automáticamente con el SII?</span>
+              <svg :class="openFaq === 3 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">De forma nativa en los planes base, no. Emitir boletas oficiales requiere obligatoriamente que tu negocio tenga Inicio de Actividades en Primera Categoría ante el SII, contar con una Firma Digital propia (cuesta unos $15.000 anuales) y contratar un sistema de facturación certificado de mercado (como Facto, OpenFactura o similares). Nosotros podemos conectar técnicamente tu e-commerce con la API de estos facturadores para automatizar el proceso de emisión, pero la habilitación legal ante el SII y el costo del facturador son responsabilidad del cliente.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 (¿Es muy caro?) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .12s">
+            <button @click="openFaq = openFaq === 4 ? null : 4" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Es muy caro tener una página web?</span>
+              <svg :class="openFaq === 4 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 4" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">Para nada. Piénsalo así: una publicidad en Instagram puede costarte $50.000 o más al mes y dura unos días. Tu página web la pagas una sola vez y trabaja para ti las 24 horas, los 365 días del año. Además, el hosting es gratuito, así que no tienes costo mensual. Con un solo cliente nuevo que te llegue por la página, ya la pagaste.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 (Reserva de horas / Agendamiento) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .16s">
+            <button @click="openFaq = openFaq === 5 ? null : 5" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Cómo funciona el sistema de reserva de horas o agendamiento online?</span>
+              <svg :class="openFaq === 5 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 5" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">Podemos integrar agendas interactivas directamente en tu web. Tienes dos caminos: usar herramientas externas de mercado como Calendly o AgendaPro (que sincronizan de forma inteligente tus citas y horarios, pero que según sus planes pueden requerir que pagues su respectiva suscripción mensual) o implementar un formulario personalizado que envíe de forma gratuita los datos de reservas por WhatsApp o los guarde en tu base de datos local (como mostramos en la demo de Agenda). Nosotros adaptamos la mejor opción según tu presupuesto y rubro.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 (Dominio .cl / NIC Chile) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .20s">
+            <button @click="openFaq = openFaq === 6 ? null : 6" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Quién compra el dominio .cl y a nombre de quién queda?</span>
+              <svg :class="openFaq === 6 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 6" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">El dominio .cl se registra en NIC Chile. Por total seguridad y ética profesional, el dominio debe quedar siempre registrado a tu nombre (o de tu empresa) con tu respectivo RUT. Nosotros te guiaremos paso a paso en su compra (el costo de NIC Chile es de aproximadamente $10.900 al año) y configuraremos los servidores para que tu web funcione perfectamente. Así, tú eres el dueño legal absoluto de tu marca en internet y nadie más puede quitártela.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 7 (Chatbots e IA) -->
           <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .24s">
             <button @click="openFaq = openFaq === 7 ? null : 7" class="flex w-full items-center justify-between p-6 text-left">
               <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo tener un chatbot para atención al cliente 24/7?</span>
@@ -1732,24 +1732,68 @@
             </div>
           </div>
 
-          <!-- FAQ 8 -->
+          <!-- FAQ 8 (Vitrina Instagram) -->
           <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .28s">
             <button @click="openFaq = openFaq === 8 ? null : 8" class="flex w-full items-center justify-between p-6 text-left">
-              <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo asociar en mi página web personal a LinkedIn?</span>
+              <span class="text-sm font-bold text-drac-fg pr-4">Pero si ya tengo Instagram, ¿para qué necesito página web?</span>
               <svg :class="openFaq === 8 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div x-show="openFaq === 8" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">Instagram es una vitrina, pero no es tuya. El algoritmo decide quién te ve y cuándo. Si Facebook o Instagram cambian las reglas (y lo hacen seguido), puedes perder alcance de un día para otro. Tu página web es tu espacio propio: apareces en Google, explicas tu servicio completo, y tus clientes te contactan directo sin depender de ninguna red social.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 9 (No sé de tecnología) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .32s">
+            <button @click="openFaq = openFaq === 9 ? null : 9" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">Yo no sé nada de tecnología, ¿puedo tener una página igual?</span>
+              <svg :class="openFaq === 9 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 9" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">¡Por supuesto! Yo me encargo de absolutamente todo lo técnico. Tú solo me cuentas sobre tu negocio y yo hago el resto. No necesitas saber nada de computación, programación ni nada por el estilo. Te explico todo en palabras simples, sin tecnicismos.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 10 (Tiempo de desarrollo) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .36s">
+            <button @click="openFaq = openFaq === 10 ? null : 10" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Cuánto tiempo toma tener mi página lista?</span>
+              <svg :class="openFaq === 10 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 10" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">Depende del plan, pero en general tu página puede estar lista y publicada en 5 a 10 días hábiles desde que empezamos. El proceso es bien rápido porque trabajo de forma enfocada y organizada.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 11 (Agregar cosas a futuro) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .40s">
+            <button @click="openFaq = openFaq === 11 ? null : 11" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo agregar cosas después?</span>
+              <svg :class="openFaq === 11 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 11" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-drac-comment">Sí, totalmente. Tu página se construye con una base sólida que permite agregar secciones, funcionalidades o integrar herramientas nuevas en el futuro. Empiezas con lo que necesitas hoy y creces cuando tu negocio lo pida.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 12 (Vincular LinkedIn) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .44s">
+            <button @click="openFaq = openFaq === 12 ? null : 12" class="flex w-full items-center justify-between p-6 text-left">
+              <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo asociar en mi página web personal a LinkedIn?</span>
+              <svg :class="openFaq === 12 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="openFaq === 12" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
               <p class="text-sm leading-relaxed text-drac-comment">Absolutamente. Si ofreces servicios profesionales, consultorías o asesorías B2B, es clave enlazar tu perfil de LinkedIn. Podemos integrar botones directos a tu perfil profesional, mostrar tus últimas publicaciones, e incluso agregar una tarjeta interactiva de presentación de LinkedIn para que tus visitas puedan conectar contigo y validar tu trayectoria profesional con un solo clic desde tu propia web.</p>
             </div>
           </div>
 
-          <!-- FAQ 9 -->
-          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .32s">
-            <button @click="openFaq = openFaq === 9 ? null : 9" class="flex w-full items-center justify-between p-6 text-left">
+          <!-- FAQ 13 (Publicar C.V.) -->
+          <div class="reveal rounded-2xl border border-drac-current/40 bg-drac-bg/60 overflow-hidden transition-colors hover:border-drac-cyan/20" style="transition-delay: .48s">
+            <button @click="openFaq = openFaq === 13 ? null : 13" class="flex w-full items-center justify-between p-6 text-left">
               <span class="text-sm font-bold text-drac-fg pr-4">¿Puedo publicar mi Resumen Profesional (C.V.)?</span>
-              <svg :class="openFaq === 9 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              <svg :class="openFaq === 13 ? 'rotate-180' : ''" class="h-5 w-5 text-drac-comment flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div x-show="openFaq === 9" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
+            <div x-show="openFaq === 13" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-cloak class="px-6 pb-6">
               <p class="text-sm leading-relaxed text-drac-comment">Sí, y es sumamente recomendable si estás potenciando tu marca personal en el mercado chileno. Podemos integrar una sección completa con tu experiencia y estudios de forma interactiva y legible en móviles, e incluso añadir un botón de descarga directa para tu currículum en formato PDF de alta calidad. Así, reclutadores o potenciales clientes B2B tendrán acceso a tu perfil profesional de manera inmediata.</p>
             </div>
           </div>
