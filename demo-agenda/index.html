@@ -196,6 +196,9 @@
               <button @click="filterSource = 'all'" :class="filterSource === 'all' ? 'bg-brand-accent text-slate-950 font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'" class="px-3 py-1.5 rounded-xl text-sm transition-all duration-200">
                 Todos
               </button>
+              <button @click="filterSource = 'Fonoaudiología'" :class="filterSource === 'Fonoaudiología' ? 'bg-emerald-600 text-white font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'" class="px-3 py-1.5 rounded-xl text-sm transition-all duration-200">
+                Fonoaudiología
+              </button>
               <button @click="filterSource = 'Propiedades'" :class="filterSource === 'Propiedades' ? 'bg-amber-600 text-white font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'" class="px-3 py-1.5 rounded-xl text-sm transition-all duration-200">
                 Propiedades
               </button>
@@ -338,6 +341,7 @@
             <div>
               <label class="block text-xs uppercase tracking-wider text-slate-400 font-bold mb-1" for="form-source">Rubro / Demo</label>
               <select id="form-source" x-model="formSource" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-brand-accent">
+                <option value="Fonoaudiología">Fonoaudiología (Nahovy Gallegos)</option>
                 <option value="Propiedades">Propiedades (Cobre & Co.)</option>
                 <option value="Psicóloga">Psicóloga (Clara Altieri)</option>
                 <option value="Peluquería">Peluquería (Studio Chic)</option>
@@ -520,6 +524,19 @@
             details: 'Propiedad: "Casa Condominio Lo Barnechea" (24.500 UF) en Lo Barnechea',
             status: 'cancelada',
             dateAdded: new Date(Date.now() - 86400000 * 3).toISOString()
+          },
+          {
+            id: 'B-6',
+            source: 'Fonoaudiología',
+            clientName: 'Alejandra Valenzuela',
+            clientPhone: '+56 9 6491 0042',
+            clientEmail: 'alejandra.v@outlook.cl',
+            date: new Date(Date.now() + 86400000).toISOString().split('T')[0], // Tomorrow
+            time: '09:00 - 13:00',
+            type: 'presencial',
+            details: 'Servicio: "Evaluación Lúdica Inicial". Comentario: Niño de 3 años, dificultad para pronunciar la R. Atención a domicilio en Santiago.',
+            status: 'pendiente',
+            dateAdded: new Date().toISOString()
           }
         ],
 
@@ -579,6 +596,9 @@
             } else if (b.source === 'Psicóloga') {
               // Precio de sesión promedio
               return sum + 45000;
+            } else if (b.source === 'Fonoaudiología') {
+              // Sesión a domicilio promedio
+              return sum + 50000;
             } else if (b.source === 'Peluquería') {
               // Extraer valor del detalle si existe o asignar promedio
               const match = b.details.match(/\$(\d+(\.\d+)*)/);
@@ -724,7 +744,8 @@
             'Propiedades': 'border-l-4 border-l-amber-500',
             'Psicóloga': 'border-l-4 border-l-lime-500',
             'Peluquería': 'border-l-4 border-l-pink-500',
-            'Contabilidad': 'border-l-4 border-l-blue-500'
+            'Contabilidad': 'border-l-4 border-l-blue-500',
+            'Fonoaudiología': 'border-l-4 border-l-emerald-500'
           };
           return classes[source] || 'border-l-4 border-l-slate-500';
         },
@@ -734,7 +755,8 @@
             'Propiedades': 'bg-amber-600/20 text-amber-400 border border-amber-500/20',
             'Psicóloga': 'bg-lime-600/20 text-lime-400 border border-lime-500/20',
             'Peluquería': 'bg-pink-600/20 text-pink-400 border border-pink-500/20',
-            'Contabilidad': 'bg-blue-600/20 text-blue-400 border border-blue-500/20'
+            'Contabilidad': 'bg-blue-600/20 text-blue-400 border border-blue-500/20',
+            'Fonoaudiología': 'bg-emerald-600/20 text-emerald-400 border border-emerald-500/20'
           };
           return classes[source] || 'bg-slate-700/20 text-slate-400';
         },

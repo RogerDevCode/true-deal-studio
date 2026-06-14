@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="es-CL" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nahovy Gallegos | Fonoaudiología Infantil a Domicilio en Santiago</title>
+  <meta name="description" content="Acompañamiento respetuoso y fonoaudiología a domicilio para niños en Santiago de Chile. Un espacio de juego y conexión para descubrir su voz sin presiones." />
+  <meta name="theme-color" content="#FAF8F5" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nahovy Gallegos | Fonoaudiología Infantil a Domicilio" />
+  <meta property="og:description" content="Terapia de lenguaje respetuosa basada en el juego. En el lugar más seguro para tu hijo: su propio hogar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./hero.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Nahovy Alejandra Gallegos Ugas - Fonoaudiología Infantil",
+    "image": "hero.jpg",
+    "telephone": "+56 9 6491 0042",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    },
+    "description": "Fonoaudiología infantil a domicilio en Santiago de Chile. Enfoque centrado en el juego y respeto al ritmo del niño.",
+    "priceRange": "$$"
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js Collapse Plugin -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50: '#F4F7F5',
+              100: '#E8EDE9',
+              600: '#4A6B5D',
+              700: '#3D584C',
+              900: '#23332C',
+            },
+            coral: {
+              50: '#FDF7F4',
+              100: '#FCECE6',
+              500: '#E8A382',
+              600: '#D58661',
+            },
+            cream: {
+              50: '#FAF8F5',
+              100: '#F4EFEB',
+              200: '#EADFD7',
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [x-cloak] { display: none !important; }
+    
+    body {
+      background-color: #FAF8F5;
+      color: #23332C;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(232, 237, 233, 0.6);
+    }
+
+    /* Accessibility requirements: no text below 14px on mobile */
+    @media (max-width: 768px) {
+      .text-xs, .text-sm, select, input, textarea, button, a {
+        font-size: 14px !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans" x-data="{ bookingModal: false, selectedService: 'evaluacion' }">
+
+  <!-- Top Demo Bar (Offline compatible navigation) -->
+  <div class="bg-forest-900 py-2.5 px-4 text-center text-forest-100 border-b border-forest-800 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span class="font-medium">✨ Esta es la DEMO de <strong>Fonoaudiología Infantil</strong> a domicilio (Santiago).</span>
+      <a href="../index.html" class="underline hover:text-white transition-colors font-bold">Volver al Portafolio de Demos</a>
+    </div>
+  </div>
+
+  <!-- Header Nav -->
+  <header class="bg-cream-50/80 backdrop-blur-md sticky top-0 z-30 border-b border-cream-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-forest-600 flex items-center justify-center text-white font-serif italic text-lg shadow-sm">
+          NG
+        </div>
+        <div>
+          <span class="block font-serif text-lg font-bold text-forest-900 leading-tight">Nahovy Gallegos</span>
+          <span class="block text-[11px] uppercase tracking-widest text-forest-600 font-semibold">Fonoaudiología Respetuosa</span>
+        </div>
+      </a>
+
+      <!-- Desktop Contact Button -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="#enfoque" class="text-sm font-medium text-forest-700 hover:text-forest-900 transition-colors">Nuestro Enfoque</a>
+        <a href="#areas" class="text-sm font-medium text-forest-700 hover:text-forest-900 transition-colors">Áreas de Apoyo</a>
+        <a href="#como-funciona" class="text-sm font-medium text-forest-700 hover:text-forest-900 transition-colors">Cómo Funciona</a>
+        <button @click="bookingModal = true" class="bg-forest-600 hover:bg-forest-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm">
+          Agendar Sesión
+        </button>
+      </div>
+
+      <!-- Mobile Button -->
+      <button @click="bookingModal = true" class="md:hidden bg-forest-600 hover:bg-forest-700 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all">
+        Agendar
+      </button>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- Hero Section (Empathetic & Caring) -->
+    <section class="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-cream-50 to-cream-100">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          
+          <div class="inline-flex items-center gap-2 rounded-full bg-forest-100 px-3 py-1 text-sm font-semibold text-forest-700 border border-forest-600/10">
+            <span>🏡 Atención a Domicilio en Santiago</span>
+          </div>
+
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-forest-900 leading-tight">
+            Descubriendo su voz, respetando su <span class="italic text-coral-600">propio ritmo</span>.
+          </h1>
+
+          <p class="text-base sm:text-lg text-forest-700 max-w-2xl leading-relaxed">
+            Sabemos que como madre o padre llevas una gran carga sobre tus hombros. La culpa no te pertenece. Cada niño florece en tiempos distintos y tu amor es el estímulo más grande. Nosotros te entregamos las herramientas y el acompañamiento lúdico necesario para guiar su comunicación a través del juego, en la comodidad de su hogar.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <button @click="bookingModal = true; selectedService = 'evaluacion'" class="bg-forest-600 hover:bg-forest-700 text-white text-center font-bold px-8 py-4 rounded-full transition-all shadow-md hover:-translate-y-0.5">
+              Agendar Evaluación Lúdica
+            </button>
+            <a href="https://wa.me/56964910042?text=Hola%20Nahovy%2C%20quisiera%20consultar%20por%20una%20evaluaci%C3%B3n%20para%20mi%20hijo%2Fhija." 
+               target="_blank" 
+               class="border border-forest-600/20 hover:border-forest-600 text-forest-700 hover:text-forest-900 font-bold px-8 py-4 rounded-full transition-all text-center flex items-center justify-center gap-2">
+               <span>📱 Consultar por WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Small reassuring tag -->
+          <p class="text-xs text-forest-600/70 font-medium">
+            * Sin evaluaciones frías ni dinámicas estresantes. Terapia respetuosa centrada en el niño.
+          </p>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md">
+            <div class="absolute inset-0 bg-coral-100 rounded-3xl -rotate-3 scale-102"></div>
+            <img src="./hero.jpg" alt="Acompañamiento Fonoaudiológico Infantil" class="relative rounded-3xl shadow-lg w-full object-cover aspect-square" />
+            
+            <!-- Floating absolute card -->
+            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-md border border-cream-100 flex items-center space-x-3 max-w-[240px]">
+              <span class="text-2xl">🧸</span>
+              <div>
+                <span class="block text-sm font-bold text-forest-900">Enfoque Lúdico</span>
+                <span class="block text-xs text-forest-600">Aprendizaje sin presiones</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Resurrance section / Filosofía (No culpabilización) -->
+    <section class="py-16 bg-white" id="enfoque">
+      <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-forest-900">
+          Nuestra Filosofía: Empoderar en lugar de presionar
+        </h2>
+        
+        <p class="text-base sm:text-lg text-forest-700 leading-relaxed italic">
+          "El lenguaje no es una carrera. No comparamos a tu hijo con tablas rígidas ni buscamos diagnosticar etiquetas apresuradas. Buscamos entender cómo se comunica hoy para tender puentes amorosos hacia el mañana."
+        </p>
+
+        <!-- Bento elements of reassurance -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left pt-6">
+          
+          <!-- Card 1 -->
+          <div class="glass-card rounded-2xl p-6 space-y-3">
+            <div class="w-10 h-10 rounded-full bg-forest-100 flex items-center justify-center text-lg">❤️</div>
+            <h3 class="font-bold text-lg text-forest-900">Cero Culpa</h3>
+            <p class="text-sm text-forest-600 leading-relaxed">
+              El desarrollo del habla depende de múltiples factores neurológicos y del entorno. Haces un gran trabajo y estamos aquí para cooperar, no para juzgar.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card rounded-2xl p-6 space-y-3">
+            <div class="w-10 h-10 rounded-full bg-forest-100 flex items-center justify-center text-lg">🏡</div>
+            <h3 class="font-bold text-lg text-forest-900">El Hogar es su Refugio</h3>
+            <p class="text-sm text-forest-600 leading-relaxed">
+              El niño se comunica mejor donde se siente más seguro. La terapia a domicilio elimina el estrés del traslado y el ambiente hostil de una consulta médica.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card rounded-2xl p-6 space-y-3">
+            <div class="w-10 h-10 rounded-full bg-forest-100 flex items-center justify-center text-lg">🧩</div>
+            <h3 class="font-bold text-lg text-forest-900">A Través del Juego</h3>
+            <p class="text-sm text-forest-600 leading-relaxed">
+              Para un niño, jugar es cosa seria. En cada sesión usamos sus juguetes favoritos y dinámicas lúdicas para estimular fonemas y fluidez sin que se sienta evaluado.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Áreas de Apoyo (Tabs/Grid) -->
+    <section class="py-16 bg-cream-50" id="areas">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        
+        <div class="max-w-2xl mx-auto space-y-4 mb-12">
+          <span class="text-xs uppercase tracking-widest text-coral-600 font-bold block">Especialidades</span>
+          <h2 class="font-serif text-3xl font-bold text-forest-900">¿Cómo podemos apoyar el camino de tu hijo?</h2>
+          <p class="text-sm sm:text-base text-forest-600 leading-relaxed">
+            Abordamos las dificultades comunicativas desde una mirada integral y afectiva, ajustándonos a la etapa del ciclo vital de tu hijo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          
+          <!-- Area 1 -->
+          <div class="bg-white rounded-2xl p-6 border border-cream-100 shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">🗣️</span>
+              <h3 class="font-bold text-lg text-forest-900 leading-tight">Retraso del Lenguaje</h3>
+              <p class="text-sm text-forest-600 leading-relaxed">
+                Para niños que tardan más en comenzar a hablar o usan menos palabras de lo habitual para su edad. Estimulamos la intención y comprensión en un ambiente seguro.
+              </p>
+            </div>
+            <button @click="bookingModal = true; selectedService = 'retraso'" class="text-sm text-coral-600 hover:text-coral-500 font-bold mt-4 flex items-center gap-1 group">
+              <span>Consultar área</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
+          </div>
+
+          <!-- Area 2 -->
+          <div class="bg-white rounded-2xl p-6 border border-cream-100 shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">✨</span>
+              <h3 class="font-bold text-lg text-forest-900 leading-tight">Sonidos del Habla (TSH)</h3>
+              <p class="text-sm text-forest-600 leading-relaxed">
+                Apoyo especializado para pronunciar fonemas difíciles (como la 'R', 'D', 'L'). Trabajamos la motricidad orofacial a través de juegos interactivos no aburridos.
+              </p>
+            </div>
+            <button @click="bookingModal = true; selectedService = 'sonidos'" class="text-sm text-coral-600 hover:text-coral-500 font-bold mt-4 flex items-center gap-1 group">
+              <span>Consultar área</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
+          </div>
+
+          <!-- Area 3 -->
+          <div class="bg-white rounded-2xl p-6 border border-cream-100 shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">🤝</span>
+              <h3 class="font-bold text-lg text-forest-900 leading-tight">Comunicación Social</h3>
+              <p class="text-sm text-forest-600 leading-relaxed">
+                Desarrollo del contacto visual, inicio de conversaciones y juego compartido. Ideal para niños que necesitan guías empáticas en la interacción con sus pares.
+              </p>
+            </div>
+            <button @click="bookingModal = true; selectedService = 'comunicacion'" class="text-sm text-coral-600 hover:text-coral-500 font-bold mt-4 flex items-center gap-1 group">
+              <span>Consultar área</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
+          </div>
+
+          <!-- Area 4 -->
+          <div class="bg-white rounded-2xl p-6 border border-cream-100 shadow-sm flex flex-col justify-between">
+            <div class="space-y-3">
+              <span class="text-3xl">👨‍👩‍👦</span>
+              <h3 class="font-bold text-lg text-forest-900 leading-tight">Asesoría de Crianza</h3>
+              <p class="text-sm text-forest-600 leading-relaxed">
+                Espacio consultivo exclusivo para padres. Te guiamos sobre cómo enriquecer la rutina diaria de tu hijo en casa con estrategias que facilitan su adquisición de palabras.
+              </p>
+            </div>
+            <button @click="bookingModal = true; selectedService = 'asesoria'" class="text-sm text-coral-600 hover:text-coral-500 font-bold mt-4 flex items-center gap-1 group">
+              <span>Consultar área</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo Funciona (Terapia a Domicilio) -->
+    <section class="py-16 bg-white" id="como-funciona">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        
+        <div class="max-w-2xl mx-auto space-y-4 mb-12">
+          <span class="text-xs uppercase tracking-widest text-coral-600 font-bold block">El Proceso</span>
+          <h2 class="font-serif text-3xl font-bold text-forest-900">Un camino claro, simple y sin estrés</h2>
+          <p class="text-sm sm:text-base text-forest-600">
+            Diseñamos el servicio pensando en la comodidad de la familia y en la estabilidad emocional del niño.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-5xl mx-auto relative">
+          
+          <!-- Step 1 -->
+          <div class="space-y-3 relative z-10">
+            <div class="w-12 h-12 rounded-full bg-forest-600 text-white font-bold flex items-center justify-center text-lg">1</div>
+            <h3 class="font-bold text-lg text-forest-900">Contacto y Pre-Diagnóstico</h3>
+            <p class="text-sm text-forest-600 leading-relaxed">
+              Conversamos brevemente por teléfono o WhatsApp acerca de tu hijo. Nos cuentas sus desafíos y coordinamos la primera visita en tu hogar en Santiago.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="space-y-3 relative z-10">
+            <div class="w-12 h-12 rounded-full bg-forest-600 text-white font-bold flex items-center justify-center text-lg">2</div>
+            <h3 class="font-bold text-lg text-forest-900">Evaluación a través del juego</h3>
+            <p class="text-sm text-forest-600 leading-relaxed">
+              Visitamos tu casa y realizamos una sesión de juego dinámico. Evaluamos su habla mientras interactúa con juguetes. Sin formalidades intimidantes.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="space-y-3 relative z-10">
+            <div class="w-12 h-12 rounded-full bg-forest-600 text-white font-bold flex items-center justify-center text-lg">3</div>
+            <h3 class="font-bold text-lg text-forest-900">Acompañamiento a Medida</h3>
+            <p class="text-sm text-forest-600 leading-relaxed">
+              Establecemos un plan lúdico y te entregamos pautas simples para el día a día. Haremos revisiones continuas para celebrar juntos cada logro comunicativo.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Empathetic FAQ / Answers to Guilt -->
+    <section class="py-16 bg-cream-50">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-forest-900 text-center mb-10">
+          Preguntas Frecuentes y Contención
+        </h2>
+
+        <div class="space-y-4" x-data="{ active: null }">
+          
+          <!-- FAQ 1 -->
+          <div class="bg-white rounded-2xl border border-cream-100 overflow-hidden transition-all duration-300">
+            <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 py-5 text-left font-bold text-forest-900 flex justify-between items-center hover:bg-cream-50/50 transition-colors">
+              <span>¿Es mi culpa que mi hijo tenga problemas para hablar?</span>
+              <span class="text-lg transition-transform" :class="active === 1 ? 'rotate-45' : ''">+</span>
+            </button>
+            <div x-show="active === 1" x-collapse class="px-6 pb-5 text-sm text-forest-600 leading-relaxed border-t border-cream-50 pt-4" x-cloak>
+              <strong>No, bajo ninguna circunstancia.</strong> El ritmo de adquisición del lenguaje depende de complejos procesos de maduración neurológica y orofacial, y es totalmente independiente del cariño de los padres. Sentirse culpable es natural por el instinto de protección, pero te aseguramos que estás haciendo lo mejor al buscar orientación profesional respetuosa.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="bg-white rounded-2xl border border-cream-100 overflow-hidden transition-all duration-300">
+            <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 py-5 text-left font-bold text-forest-900 flex justify-between items-center hover:bg-cream-50/50 transition-colors">
+              <span>¿Por qué la atención a domicilio es más efectiva?</span>
+              <span class="text-lg transition-transform" :class="active === 2 ? 'rotate-45' : ''">+</span>
+            </button>
+            <div x-show="active === 2" x-collapse class="px-6 pb-5 text-sm text-forest-600 leading-relaxed border-t border-cream-50 pt-4" x-cloak>
+              Cuando un niño es trasladado a una consulta clínica fría y con bata blanca, entra en un estado de alerta que restringe su comunicación natural. En su casa, con sus juguetes y sus padres al lado, el nivel de ansiedad baja a cero, lo que nos permite observar su lenguaje real y avanzar mucho más rápido en cada sesión.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="bg-white rounded-2xl border border-cream-100 overflow-hidden transition-all duration-300">
+            <button @click="active = (active === 3 ? null : 3)" class="w-full px-6 py-5 text-left font-bold text-forest-900 flex justify-between items-center hover:bg-cream-50/50 transition-colors">
+              <span>¿Cómo sé si realmente necesita un fonoaudiólogo?</span>
+              <span class="text-lg transition-transform" :class="active === 3 ? 'rotate-45' : ''">+</span>
+            </button>
+            <div x-show="active === 3" x-collapse class="px-6 pb-5 text-sm text-forest-600 leading-relaxed border-t border-cream-50 pt-4" x-cloak>
+              Si tu hijo tiene 2 años y aún no forma frases simples de dos palabras, si a los 3 años le cuesta ser entendido por personas fuera del núcleo familiar, o si le cuesta pronunciar fonemas específicos a partir de los 4 años, una evaluación lúdica inicial es una excelente idea para descartar dudas y darle un empujón de confianza.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-forest-900 text-forest-100 py-12 border-t border-forest-800">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Brand Info -->
+      <div class="space-y-4">
+        <h4 class="font-serif text-lg font-bold text-white">Nahovy Gallegos</h4>
+        <p class="text-sm text-forest-300">
+          Fonoaudióloga infantil dedicada a la estimulación temprana y terapia del lenguaje respetuosa en Santiago de Chile.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="space-y-2">
+        <h4 class="font-bold text-white">Navegación</h4>
+        <ul class="text-sm text-forest-300 space-y-1">
+          <li><a href="#enfoque" class="hover:text-white transition-colors">Nuestro Enfoque</a></li>
+          <li><a href="#areas" class="hover:text-white transition-colors">Áreas de Apoyo</a></li>
+          <li><a href="../index.html" class="hover:text-white transition-colors underline">Volver al Portafolio</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="space-y-2">
+        <h4 class="font-bold text-white">Contacto Directo</h4>
+        <ul class="text-sm text-forest-300 space-y-1">
+          <li>📍 Santiago, Chile (A domicilio)</li>
+          <li>📞 <a href="tel:+56964910042" class="hover:text-white transition-colors">+56 9 6491 0042</a></li>
+          <li>📱 <a href="https://wa.me/56964910042" class="hover:text-white transition-colors">WhatsApp Directo</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto px-6 pt-8 mt-8 border-t border-forest-800 text-center text-xs text-forest-400">
+      <p>&copy; 2026 Nahovy Gallegos. Todos los derechos reservados. Licenciada en Fonoaudiología.</p>
+      <div class="mt-4 text-[11px] leading-relaxed max-w-3xl mx-auto opacity-60">
+        * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. Asimismo, aclaramos amablemente que la facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) no está incluida en los planes base; corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOOKING VISIT MODAL -->
+  <div x-show="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4" x-cloak>
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-forest-900/60 backdrop-blur-sm" @click="bookingModal = false"></div>
+
+    <!-- Modal Box -->
+    <div class="relative bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-cream-100 flex flex-col justify-between max-h-[90vh] overflow-y-auto"
+         x-data="{ clientName: '', clientPhone: '', apptDate: '', apptSlot: 'mañana', apptDetails: '' }"
+         x-effect="if (!bookingModal) { clientName = ''; clientPhone = ''; apptDate = ''; apptSlot = 'mañana'; apptDetails = ''; }">
+      
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-serif text-xl sm:text-2xl font-bold text-forest-900">Agendar Evaluación Lúdica</h3>
+        <button @click="bookingModal = false" class="text-forest-600 hover:text-forest-900 text-2xl font-semibold">&times;</button>
+      </div>
+
+      <!-- Empathetic intro -->
+      <p class="text-xs sm:text-sm text-forest-600 mb-4 bg-forest-50 p-3 rounded-xl border border-forest-100 leading-relaxed">
+        Agenda sin compromisos rígidos. Te visitaremos para realizar una evaluación entretenida y respetuosa con tu hijo.
+      </p>
+
+      <form @submit.prevent="submitBooking(clientName, clientPhone, apptDate, apptSlot, apptDetails)" class="space-y-4">
+        
+        <!-- Nombre Madre/Padre -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-name">Nombre Completo del Padre/Madre *</label>
+          <input id="modal-name" type="text" x-model="clientName" required placeholder="Ej. Alejandra Valenzuela" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
+        </div>
+
+        <!-- Teléfono de contacto -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-phone">WhatsApp / Celular *</label>
+          <input id="modal-phone" type="tel" x-model="clientPhone" required placeholder="Ej. +56 9 1234 5678" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
+        </div>
+
+        <!-- Área de Interés / Servicio -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-service">Área de Apoyo Solicitada</label>
+          <select id="modal-service" x-model="selectedService" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
+            <option value="evaluacion">Evaluación Lúdica Inicial (General)</option>
+            <option value="retraso">Acompañamiento en Retraso del Lenguaje</option>
+            <option value="sonidos">Terapia en Sonidos del Habla (TSH)</option>
+            <option value="comunicacion">Habilidades de Comunicación Social</option>
+            <option value="asesoria">Asesoría de Crianza para Padres</option>
+          </select>
+        </div>
+
+        <!-- Fecha y Bloque -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-date">Fecha Solicitada *</label>
+            <input id="modal-date" type="date" x-model="apptDate" required class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-slot">Bloque Horario</label>
+            <select id="modal-slot" x-model="apptSlot" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
+              <option value="mañana">Mañana (09:00 - 13:00)</option>
+              <option value="tarde">Tarde (14:00 - 18:00)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Comentarios sobre el niño -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-details">¿Qué te gustaría comentarnos sobre tu hijo/a? (Opcional)</label>
+          <textarea id="modal-details" x-model="apptDetails" placeholder="Ej. Tiene 3 años, le cuesta pronunciar la R y queremos que la sesión sea muy entretenida." rows="2" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600"></textarea>
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="flex gap-3 pt-3">
+          <button type="button" @click="bookingModal = false" class="flex-1 border border-cream-200 hover:border-cream-300 text-forest-700 py-3 rounded-full font-bold transition-all text-center text-sm">
+            Cancelar
+          </button>
+          <button type="submit" class="flex-1 bg-forest-600 hover:bg-forest-700 text-white py-3 rounded-full font-bold transition-all text-center text-sm shadow-md shadow-forest-600/10">
+            Confirmar Solicitud
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Booking submission script -->
+  <script>
+    function submitBooking(name, phone, date, slot, details) {
+      if (!name || !phone || !date) {
+        alert('Por favor completa todos los campos requeridos (*).');
+        return;
+      }
+
+      const serviceNames = {
+        'evaluacion': 'Evaluación Lúdica Inicial',
+        'retraso': 'Retraso del Lenguaje',
+        'sonidos': 'Sonidos del Habla (TSH)',
+        'comunicacion': 'Comunicación Social y Juego',
+        'asesoria': 'Asesoría de Crianza'
+      };
+
+      const selectedServiceName = serviceNames[document.getElementById('modal-service').value] || 'Fonoaudiología';
+
+      // Sincronizar con base de datos local compartida (CRM Express)
+      try {
+        const bookings = JSON.parse(localStorage.getItem('tuwebpro_bookings') || '[]');
+        bookings.push({
+          id: 'B-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+          source: 'Fonoaudiología',
+          clientName: name,
+          clientPhone: phone,
+          clientEmail: '',
+          date: date,
+          time: slot === 'mañana' ? '09:00 - 13:00' : '14:00 - 18:00',
+          type: 'presencial',
+          details: `Servicio: "${selectedServiceName}". Comentarios: ${details || 'Ninguno'}. Atención a domicilio en Santiago.`,
+          status: 'pendiente',
+          dateAdded: new Date().toISOString()
+        });
+        localStorage.setItem('tuwebpro_bookings', JSON.stringify(bookings));
+      } catch (e) {
+        console.error('Error al registrar reserva en el CRM local:', e);
+      }
+
+      // Enviar a WhatsApp
+      const text = `¡Hola Nahovy Gallegos Fonoaudiología! Solicito agendar una evaluación respetuosa para mi hijo/a:\n\n` +
+                   `- Servicio consultado: ${selectedServiceName}\n` +
+                   `- Fecha solicitada: ${date}\n` +
+                   `- Bloque de preferencia: ${slot === 'mañana' ? 'Mañana (09:00 - 13:00)' : 'Tarde (14:00 - 18:00)'}\n` +
+                   `- Comentarios del niño/a: ${details || 'Ninguno'}\n\n` +
+                   `Mis datos de contacto:\n` +
+                   `- Nombre: ${name}\n` +
+                   `- WhatsApp: ${phone}`;
+
+      const whatsappUrl = `https://wa.me/56964910042?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      this.bookingModal = false;
+    }
+  </script>
+
+</body>
+</html>
