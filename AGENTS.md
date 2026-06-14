@@ -74,6 +74,10 @@ Para mantener la integridad del sistema, cualquier cambio posterior debe respeta
 ### D. Mapas de Google Integrados
 *   **Regla**: Las URLs de los mapas de Google en formato iframe deben usar exclusivamente el delimitador de exclamación `!` para separar parámetros en la cadena `pb` (ej. `!1i1024!2i768` en lugar de la barra `|` que arroja errores de rechazo en Google Maps Platform).
 
+### E. Uso de Clases CSS Específicas
+*   **Regla**: En vez de usar `!important`, usa clases CSS específicas para cada caso específico.
+*   **Razón**: Mantiene la predictibilidad de la cascada CSS y facilita el mantenimiento y escalabilidad del diseño sin generar colisiones de especificidad. Se exceptúan únicamente los casos estructurales de librerías como Alpine.js (`[x-cloak] { display: none !important; }`) o resets de accesibilidad (`prefers-reduced-motion`).
+
 ---
 
 ## 4. Estrategia de SEO & Accesibilidad
