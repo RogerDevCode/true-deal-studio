@@ -5,6 +5,11 @@
     planTimes: { esencial: 0, local: 0, profesional: 0, premium: 0 }, 
     activePlan: null, 
     hoverStart: null,
+    darkMode: localStorage.getItem('theme') !== 'light',
+    toggleTheme() {
+        this.darkMode = !this.darkMode;
+        localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+    },
     startPlanHover(plan) {
         this.activePlan = plan;
         this.hoverStart = Date.now();
@@ -27,7 +32,7 @@
         }
         return mostViewed;
     }
-}" class="scroll-smooth">
+}" :class="darkMode ? 'scroll-smooth' : 'scroll-smooth light-theme'">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,20 +78,20 @@
       theme: {
         extend: {
           colors: {
-            // Dracula base
+            // Dracula base mapped to CSS variables
             drac: {
-              bg: '#282A36',
-              darker: '#1E1F29',
-              current: '#44475A',
-              fg: '#F8F8F2',
-              comment: '#6272A4',
-              cyan: '#8BE9FD',
-              green: '#50FA7B',
-              orange: '#FFB86C',
-              pink: '#FF79C6',
-              purple: '#BD93F9',
-              red: '#FF5555',
-              yellow: '#F1FA8C',
+              bg: 'rgba(var(--drac-bg), <alpha-value>)',
+              darker: 'rgba(var(--drac-darker), <alpha-value>)',
+              current: 'rgba(var(--drac-current), <alpha-value>)',
+              fg: 'rgba(var(--drac-fg), <alpha-value>)',
+              comment: 'rgba(var(--drac-comment), <alpha-value>)',
+              cyan: 'rgba(var(--drac-cyan), <alpha-value>)',
+              green: 'rgba(var(--drac-green), <alpha-value>)',
+              orange: 'rgba(var(--drac-orange), <alpha-value>)',
+              pink: 'rgba(var(--drac-pink), <alpha-value>)',
+              purple: 'rgba(var(--drac-purple), <alpha-value>)',
+              red: 'rgba(var(--drac-red), <alpha-value>)',
+              yellow: 'rgba(var(--drac-yellow), <alpha-value>)',
             },
             // Chilean flag
             chile: {
@@ -166,7 +171,46 @@
   </script>
 
   <style>
-    :root { color-scheme: dark; }
+    [x-cloak] { display: none !important; }
+
+    :root {
+      color-scheme: dark;
+      --drac-bg: 40, 42, 54;
+      --drac-darker: 30, 31, 41;
+      --drac-current: 68, 71, 90;
+      --drac-fg: 248, 248, 242;
+      --drac-comment: 98, 114, 164;
+      --drac-cyan: 139, 233, 253;
+      --drac-green: 80, 250, 123;
+      --drac-orange: 255, 184, 108;
+      --drac-pink: 255, 121, 198;
+      --drac-purple: 189, 147, 249;
+      --drac-red: 255, 85, 85;
+      --drac-yellow: 241, 250, 140;
+    }
+
+    html.light-theme {
+      color-scheme: light;
+      --drac-bg: 253, 252, 250;      /* Alabaster premium off-white */
+      --drac-darker: 245, 244, 240;  /* Soft warm gray / stone */
+      --drac-current: 226, 223, 217; /* Crisp gray borders */
+      --drac-fg: 30, 32, 34;         /* Rich dark charcoal black */
+      --drac-comment: 90, 93, 100;   /* Muted slate gray */
+      --drac-cyan: 31, 58, 96;       /* Deep navy blue */
+      --drac-green: 45, 90, 39;      /* Forest/sage green */
+      --drac-orange: 163, 93, 34;    /* Fine bronze/copper */
+      --drac-pink: 138, 28, 52;      /* Deep burgundy */
+      --drac-purple: 76, 58, 117;    /* Elegant dark indigo */
+      --drac-red: 201, 42, 42;       /* Solemn crimson */
+      --drac-yellow: 184, 134, 11;   /* Antique gold */
+    }
+
+    /* Smooth transition for theme switch, excluding transforms to preserve fast interactions */
+    html, body, header, section, footer, nav, div, a, p, span, h1, h2, h3, h4, h5, h6, svg, button {
+      transition-property: background-color, border-color, color, fill, stroke, text-decoration-color;
+      transition-duration: 300ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -202,16 +246,16 @@
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: #1E1F29;
-      color: #F8F8F2;
+      background: rgba(var(--drac-darker), 1);
+      color: rgba(var(--drac-fg), 1);
       overflow-x: hidden;
     }
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #1E1F29; }
-    ::-webkit-scrollbar-thumb { background: #44475A; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #6272A4; }
+    ::-webkit-scrollbar-track { background: rgba(var(--drac-darker), 1); }
+    ::-webkit-scrollbar-thumb { background: rgba(var(--drac-current), 1); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(var(--drac-comment), 1); }
 
     /* Reveal animations */
     .reveal {
@@ -253,16 +297,16 @@
 
     /* Glassmorphism */
     .glass {
-      background: rgba(40, 42, 54, 0.7);
+      background: rgba(var(--drac-bg), 0.7);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(248,248,242,0.08);
+      border: 1px solid rgba(var(--drac-fg), 0.08);
     }
     .glass-light {
-      background: rgba(248,248,242,0.05);
+      background: rgba(var(--drac-fg), 0.05);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(248,248,242,0.06);
+      border: 1px solid rgba(var(--drac-fg), 0.06);
     }
 
     /* Gradient text */
@@ -341,14 +385,14 @@
 
     /* Dot grid pattern */
     .dot-pattern {
-      background-image: radial-gradient(rgba(248,248,242,0.06) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(var(--drac-fg), 0.06) 1px, transparent 1px);
       background-size: 24px 24px;
     }
 
     /* Custom selection */
     ::selection {
-      background: rgba(0,57,166,0.4);
-      color: #F8F8F2;
+      background: rgba(0, 57, 166, 0.4);
+      color: rgba(var(--drac-fg), 1);
     }
 
     /* Smooth link underline */
@@ -430,17 +474,46 @@
         <a href="#demos" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Demos</a>
         <a href="#precios" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Inversión</a>
         <a href="#faq" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Preguntas</a>
+        
+        <!-- Theme Toggle (Desktop) -->
+        <button @click="toggleTheme()" class="ml-2 relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-drac-current/50 text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus:outline-none" aria-label="Cambiar tema">
+          <!-- Sun icon (visible in dark mode) -->
+          <svg x-show="darkMode" x-cloak class="h-5 w-5 text-drac-yellow transition-transform duration-500 hover:rotate-90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon icon (visible in light mode) -->
+          <svg x-show="!darkMode" x-cloak class="h-5 w-5 text-drac-cyan transition-transform duration-500 hover:-rotate-12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
         <a href="#contacto" class="ml-3 btn-glow inline-flex items-center rounded-full bg-gradient-to-r from-chile-red to-chile-redDark px-5 py-2.5 text-sm font-bold text-white shadow-glow-red transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
           <svg class="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.278 0-4.381-.762-6.065-2.046l-.424-.328-2.643.886.886-2.643-.328-.424A9.72 9.72 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z"/></svg>
           Cotizar Gratis
         </a>
       </nav>
 
-      <!-- Mobile menu button -->
-      <button @click="mobileMenu = !mobileMenu" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-drac-current/50 text-drac-fg md:hidden transition-colors hover:bg-drac-current/30" :aria-expanded="mobileMenu.toString()" aria-label="Menú">
-        <svg x-show="!mobileMenu" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        <svg x-show="mobileMenu" x-cloak viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
+      <!-- Right side for Mobile (Theme Toggle + Menu Button) -->
+      <div class="flex items-center gap-2 md:hidden">
+        <!-- Theme Toggle (Mobile) -->
+        <button @click="toggleTheme()" class="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-drac-current/50 text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus:outline-none" aria-label="Cambiar tema">
+          <!-- Sun icon (visible in dark mode) -->
+          <svg x-show="darkMode" x-cloak class="h-5 w-5 text-drac-yellow transition-transform duration-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon icon (visible in light mode) -->
+          <svg x-show="!darkMode" x-cloak class="h-5 w-5 text-drac-cyan transition-transform duration-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button @click="mobileMenu = !mobileMenu" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-drac-current/50 text-drac-fg transition-colors hover:bg-drac-current/30" :aria-expanded="mobileMenu.toString()" aria-label="Menú">
+          <svg x-show="!mobileMenu" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg x-show="mobileMenu" x-cloak viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
     </div>
 
     <!-- Mobile menu -->
@@ -1899,6 +1972,12 @@
                       Enviar y Cotizar por WhatsApp
                     </button>
                     <p class="mt-3 text-center text-xs text-drac-comment">Al enviar, se abrirá una conversación de WhatsApp con tu mensaje listo.</p>
+                    <p class="mt-2 text-center text-xs font-semibold text-drac-comment flex items-center justify-center gap-1.5">
+                      <svg class="h-4 w-4 text-drac-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Horario de atención: Lunes a Sábado, de 09.00 hasta las 17.00
+                    </p>
                   </div>
 
                   <!-- Success state -->
@@ -1925,6 +2004,12 @@
             <svg class="mr-3 h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
             Hablar por WhatsApp Ahora
           </a>
+          <p class="mt-4 text-sm font-semibold text-drac-comment flex items-center justify-center gap-1.5">
+            <svg class="h-4.5 w-4.5 text-drac-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Horario de atención: Lunes a Sábado, de 09.00 hasta las 17.00
+          </p>
         </div>
       </div>
     </section>
