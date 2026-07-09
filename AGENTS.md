@@ -117,3 +117,17 @@ node check_consoles.js
 
 > [!IMPORTANT]
 > Antes de realizar un despliegue a producción, es obligatorio ejecutar `node check_consoles.js` y confirmar que no existan errores de scripts o warnings de dependencias de Alpine.js (como el requerimiento del plugin `collapse` para animaciones `x-collapse`).
+
+---
+
+## 6. Calidad del Código
+* **Regla**: Cada 10 commits, ejecutar la skill `thermo-nuclear-code-quality-review` a los fines de revisar la calidad del código.
+
+## 7. Estructura de Documentación y Scripts
+* **Estructura de Documentos y Scripts (Crear directorios si no existen)**:
+  - **Documentación general**: Crear en `docs/` (formato `.md` y gráficos Mermaid `mmd` embebidos).
+  - **Planes y propuestas**: Crear en `docs/plans/` (formato `.md` y gráficos `mmd` embebidos).
+  - **Registros y bitácoras**: Crear en `doc/logs/`.
+  - **Scripts auxiliares/helpers** (`.py`, `.sh`, `.js`, `.ts`): Crear en `scripts/` de la raíz. Eliminar tras su uso si son de una sola ejecución.
+
+
