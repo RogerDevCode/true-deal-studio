@@ -697,6 +697,22 @@
                 line-height: 1.45;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            .services-grid,
+            .catalog-grid,
+            .footer-grid,
+            .summary-grid,
+            .grid-configurator {
+                grid-template-columns: 1fr !important;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
     </style>
 </head>
 <body x-data="loadStore()">
@@ -739,7 +755,7 @@
                         <span class="text-responsive-caption" style="background-color: rgba(251, 191, 36, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 12px;  font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 15px;">Diferencia de Valor</span>
                         <h3 style="font-size: 1.8rem; font-family: var(--font-headings); margin-bottom: 15px; line-height: 1.3;">¿Por qué elegir el Plan Profesional en vez de Esencial?</h3>
                         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-                            A diferencia del <strong>Plan Esencial</strong> (que es una landing page de una sola página y estructura básica), el <strong>Plan Profesional</strong> incluye herramientas interactivas que aumentan drásticamente la tasa de conversión y permiten estructurar tu negocio formalmente en la web.
+                            El <strong>Plan Profesional</strong> suma herramientas interactivas que ayudan a recibir mejores consultas y presentar tu negocio con una estructura formal en la web.
                         </p>
                     </div>
                     <div>
@@ -844,8 +860,8 @@
                 </template>
                 <div x-show="getFilteredItems().length === 0" style="grid-column: 1 / -1; background-color: var(--bg-card); border: 1px solid var(--border); padding: 50px 30px; border-radius: 20px; text-align: center; color: var(--text-muted); width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.25);" x-cloak>
                     <div style="font-size: 3.5rem; margin-bottom: 20px;">📋</div>
-                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-family: var(--font-headings); font-size: 1.5rem;">No hay servicios disponibles</h3>
-                    <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Actualmente no hay servicios disponibles para esta categoría en nuestro catálogo interactivo.</p>
+                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-family: var(--font-headings); font-size: 1.5rem;">Servicios disponibles próximamente</h3>
+                    <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Pronto podrás ver servicios para esta categoría en nuestro catálogo interactivo.</p>
                 </div>
             </div>
         </div>
@@ -880,7 +896,7 @@
                     <div class="form-group">
                         <label for="sim-installments-type" class="text-responsive-detail" style="display: block; margin-bottom: 8px;  font-weight: 600;">Tipo de Cuotas</label>
                         <select id="sim-installments-type" x-model="simInstallmentsType" class="form-control" style="width: 100%;">
-                            <option value="sin-interes">3 cuotas sin interés (Precio Contado)</option>
+                            <option value="sin-interes">3 cuotas precio contado</option>
                             <option value="con-interes-6">6 cuotas con interés bancario</option>
                             <option value="con-interes-12">12 cuotas con interés bancario</option>
                         </select>
@@ -969,7 +985,7 @@
             <p style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 Remodelaciones Altiplano. Demo Oficial Plan Profesional.</p>
             <a href="../index.html#precios" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" class="cta-btn" style="background-color: transparent; border: 1px solid var(--primary); color: var(--primary);">Regresar al Catálogo</a>
             <div class="text-responsive-caption" style="width: 100%; border-top: 1px solid var(--border); padding-top: 15px; margin-top: 10px; text-align: center;  color: var(--text-muted); line-height: 1.5;">
-                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. Asimismo, aclaramos amablemente que la facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) no está incluida en los planes base; corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
             </div>
         </div>
     </footer>

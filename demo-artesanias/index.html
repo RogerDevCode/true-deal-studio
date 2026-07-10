@@ -1019,6 +1019,34 @@
                 line-height: 1.45;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3.5rem 0;
+            }
+            .hero-grid,
+            .shop-layout,
+            .story-grid,
+            .testimonial-grid,
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .hero-content h1 {
+                font-size: 2.35rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-collage {
+                height: 300px;
+            }
+            .product-footer,
+            .menu-actions,
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body x-data="artesaniasApp()">
@@ -1179,8 +1207,8 @@
                         
                         <div x-show="filteredProducts.length === 0" style="grid-column: 1 / -1; background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 50px 30px; border-radius: 20px; text-align: center; color: var(--text-muted); width: 100%;" x-cloak>
                             <div style="font-size: 3rem; margin-bottom: 20px;">🏺</div>
-                            <h3 style="color: var(--text-light); margin-bottom: 12px; font-size: 1.3rem;">No se encontraron piezas artesanales</h3>
-                            <p style="font-size: 0.9rem; max-width: 400px; margin: 0 auto; line-height: 1.6;">No tenemos piezas disponibles que coincidan con tu búsqueda o categoría seleccionada.</p>
+                            <h3 style="color: var(--text-light); margin-bottom: 12px; font-size: 1.3rem;">Piezas disponibles con otros filtros</h3>
+                            <p style="font-size: 0.9rem; max-width: 400px; margin: 0 auto; line-height: 1.6;">Prueba otra búsqueda o categoría para descubrir más piezas artesanales.</p>
                         </div>
                     </div>
                 </main>
@@ -1198,8 +1226,8 @@
             
             <div class="story-content">
                 <h2>El Legado de los Talleres</h2>
-                <p>Nuestra iniciativa nace para conectar directamente a las familias artesanas del sur de Chile con personas que aprecian el valor de las obras no industriales.</p>
-                <p>Trabajamos sin intermediarios abusivos. Aseguramos que más del 80% del valor de venta vaya directamente al artesano tejedor, al tallador de lenga o al alfarero de Pomaire, preservando las técnicas ancestrales de manufactura de nuestro país.</p>
+                <p>Nuestra iniciativa nace para conectar directamente a las familias artesanas del sur de Chile con personas que aprecian el valor de las obras hechas a mano.</p>
+                <p>Trabajamos con trato directo y justo. Más del 80% del valor de venta va directamente al artesano tejedor, al tallador de lenga o al alfarero de Pomaire, preservando las técnicas ancestrales de manufactura de nuestro país.</p>
                 <a href="#tienda" class="btn-organic btn-outline-forest" style="margin-top: 1.5rem;">Comprar en el Catálogo</a>
             </div>
         </div>

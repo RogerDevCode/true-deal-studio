@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impacto Comercial Vivo | Propuesta STAX</title>
+  <meta name="description" content="Propuesta de landing comercial con presencia visual, simulador de valor y componentes comerciales para pymes chilenas.">
+  <meta name="theme-color" content="#10100f">
+  <meta property="og:title" content="Impacto Comercial Vivo | Propuesta STAX">
+  <meta property="og:description" content="Una dirección fuerte, visual e interactiva para vender páginas web como herramienta comercial.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>I</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #f8f4ec;
+      --bg: #10100f;
+      --panel: #1b1a17;
+      --acid: #d7ff4f;
+      --red: #f04d3d;
+      --cyan: #6fe7ff;
+      --muted: #b7ad9f;
+      --line: rgba(248,244,236,.16);
+      --shadow: 0 30px 90px rgba(0,0,0,.42);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      background: var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .shell { width: min(1240px, calc(100% - 32px)); margin: 0 auto; }
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px clamp(18px, 4vw, 44px);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      mix-blend-mode: difference;
+    }
+    .hero {
+      position: relative;
+      min-height: 94svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background: #080808;
+    }
+    .hero-bg img { opacity: .72; filter: grayscale(.1) contrast(1.15); }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,.9), rgba(8,8,8,.42), rgba(8,8,8,.72)),
+        linear-gradient(0deg, rgba(8,8,8,.96), transparent 56%);
+    }
+    .hero-inner {
+      width: min(1240px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 118px 0 36px;
+    }
+    .tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      color: #111;
+      background: var(--acid);
+      font-size: .76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Archivo Black", Impact, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 1120px;
+      margin-top: 18px;
+      font-size: clamp(3rem, 8.2vw, 7.2rem);
+      line-height: .84;
+    }
+    .accent { color: var(--acid); }
+    .lead {
+      max-width: 680px;
+      margin-top: 22px;
+      color: rgba(248,244,236,.78);
+      font-size: clamp(1.02rem, 1.6vw, 1.24rem);
+      line-height: 1.62;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .btn {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      background: rgba(255,255,255,.07);
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .btn.primary {
+      border-color: transparent;
+      color: #111;
+      background: var(--acid);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .signal-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      margin-top: 44px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+    .metric {
+      padding: 18px;
+      background: rgba(15,15,14,.72);
+      backdrop-filter: blur(16px);
+    }
+    .metric strong {
+      display: block;
+      color: var(--acid);
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: .9;
+    }
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(248,244,236,.7);
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .section {
+      padding: 86px 0;
+    }
+    .section.alt { background: #f3eee5; color: #111; }
+    .section-head {
+      display: grid;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      font-size: clamp(2.4rem, 5.2vw, 5.1rem);
+      line-height: .84;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    .alt .section-head p { color: #5d564d; }
+    .commerce-grid {
+      display: grid;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .roi-tool {
+      padding: 24px;
+      color: #111;
+      background: var(--acid);
+      min-height: 460px;
+      display: grid;
+      align-content: space-between;
+    }
+    .roi-tool label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .roi-tool input {
+      width: 100%;
+      margin: 24px 0;
+      accent-color: #111;
+    }
+    .roi-number {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      line-height: .78;
+    }
+    .roi-tool p {
+      max-width: 420px;
+      margin: 14px 0 0;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .mockup {
+      position: relative;
+      overflow: hidden;
+      min-height: 460px;
+      background: #1a1917;
+      box-shadow: var(--shadow);
+    }
+    .mockup img { opacity: .72; }
+    .mockup-ui {
+      position: absolute;
+      inset: auto 22px 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      background: rgba(10,10,9,.76);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .mockup-ui h3 {
+      font-size: clamp(1.45rem, 2.3vw, 2.3rem);
+      line-height: .9;
+    }
+    .mockup-ui p {
+      margin: 8px 0 0;
+      color: rgba(248,244,236,.72);
+      line-height: 1.45;
+    }
+    .pipeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .pipe-card {
+      min-height: 300px;
+      padding: 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .pipe-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--acid);
+    }
+    .pipe-card small {
+      color: var(--acid);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .pipe-card h3 {
+      margin-top: 16px;
+      font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+      line-height: .9;
+    }
+    .pipe-card p {
+      margin: 16px 0 0;
+      color: rgba(248,244,236,.72);
+      line-height: 1.62;
+    }
+    .final {
+      display: grid;
+      gap: 28px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+    }
+    .final h2 {
+      max-width: 820px;
+      font-size: clamp(2.4rem, 5.4vw, 5.2rem);
+      line-height: .84;
+    }
+    .final p {
+      max-width: 620px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+    @media (min-width: 700px) {
+      .signal-strip { grid-template-columns: repeat(2, 1fr); }
+      .pipeline { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 920px) {
+      .signal-strip { grid-template-columns: repeat(4, 1fr); }
+      .section-head { grid-template-columns: .9fr 1fr; }
+      .commerce-grid { grid-template-columns: .9fr 1.1fr; }
+      .pipeline { grid-template-columns: repeat(3, 1fr); }
+      .final { grid-template-columns: 1fr auto; }
+    }
+    @media (max-width: 920px) {
+      .nav { position: absolute; mix-blend-mode: normal; }
+      .mockup-ui { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="../index.html">STAX</a>
+    <a href="../index.html#propuestas-premium">Volver a propuestas</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg">
+        <img src="../demo-ecommerce-tech/hero.png" alt="Tienda online moderna como referencia comercial">
+      </div>
+      <div class="hero-inner">
+        <span class="tag">Propuesta 02 · Impacto comercial vivo</span>
+        <h1>Una web que se siente como <span class="accent">máquina de venta.</span></h1>
+        <p class="lead">Esta dirección entra con presencia, ritmo y claridad. Está hecha para que una pyme entienda en tres segundos que la página puede ser vitrina, seguimiento y dinero mejor presentado.</p>
+        <div class="actions">
+          <a class="btn primary" href="#simulador">Ver simulador comercial</a>
+          <a class="btn" href="../index.html#contacto">Me interesa esta dirección</a>
+        </div>
+        <div class="signal-strip">
+          <div class="metric"><strong>24/7</strong><span>Consultas fuera de horario</span></div>
+          <div class="metric"><strong>1 clic</strong><span>WhatsApp con intención</span></div>
+          <div class="metric"><strong>+orden</strong><span>Consultas con contexto</span></div>
+          <div class="metric"><strong>+valor</strong><span>Mejor percepción de precio</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulador" class="section alt">
+      <div class="shell">
+        <div class="section-head">
+          <h2>El diseño tiene que mostrar retorno.</h2>
+          <p>Una pyme compra claridad, presencia y herramientas que ayuden a recibir mejores contactos, mejores clientes y más seguridad para cerrar.</p>
+        </div>
+        <div class="commerce-grid">
+          <div class="roi-tool">
+            <div>
+              <label for="clients">Clientes nuevos esperados al mes</label>
+              <input id="clients" type="range" min="1" max="12" value="4">
+              <div class="roi-number"><span id="clientCount">4</span>x</div>
+              <p>Con solo unos pocos clientes nuevos, la web deja de verse como gasto y empieza a sentirse como herramienta comercial.</p>
+            </div>
+            <strong>Componente interactivo · pensado para vender valor en vivo</strong>
+          </div>
+          <div class="mockup">
+            <img src="../demo-artesanias/studio.png" alt="Negocio local presentado como experiencia comercial">
+            <div class="mockup-ui">
+              <div>
+                <h3>Catálogo, WhatsApp y prueba visual.</h3>
+                <p>La página muestra productos, filtra intención y entrega al dueño una consulta más preparada.</p>
+              </div>
+              <a class="btn primary" href="../demo-artesanias/index.html">Ver demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Más energía. Menos folleto.</h2>
+          <p>Esta propuesta usa contraste, métricas visibles y componentes de acción para que el usuario sienta movimiento comercial desde el primer vistazo.</p>
+        </div>
+        <div class="pipeline">
+          <article class="pipe-card">
+            <small>Atención</small>
+            <h3>Primero golpe visual.</h3>
+            <p>La página debe detener el scroll. Imagen fuerte, titular directo y beneficios comerciales visibles antes de leer.</p>
+          </article>
+          <article class="pipe-card">
+            <small>Deseo</small>
+            <h3>Después se muestra el sistema.</h3>
+            <p>Mockups, flujos y componentes hacen tangible la promesa. El cliente ve su negocio funcionando mejor.</p>
+          </article>
+          <article class="pipe-card">
+            <small>Acción</small>
+            <h3>Finalmente contacto claro.</h3>
+            <p>El botón aparece después de instalar retorno, orden y valor percibido.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell final">
+        <div>
+          <h2>Esta es la opción más vendedora.</h2>
+          <p>Funciona si quieres que el cliente entienda rápido que una web puede ayudar a atraer, ordenar y cerrar. Es la propuesta con más pulso comercial.</p>
+        </div>
+        <a class="btn primary" href="../index.html#contacto">Elegir esta dirección</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const range = document.querySelector('#clients');
+    const count = document.querySelector('#clientCount');
+    if (range && count) {
+      range.addEventListener('input', () => {
+        count.textContent = range.value;
+      });
+    }
+  </script>
+</body>
+</html>

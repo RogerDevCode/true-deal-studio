@@ -924,6 +924,22 @@
                 line-height: 1.45;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            .grid-configurator,
+            .product-grid,
+            .materials-grid,
+            .gallery-grid,
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
     </style>
 </head>
 <body x-data="loadStore()">
@@ -1022,8 +1038,8 @@
                 </template>
                 <div x-show="products.filter(p => p.active).length === 0" style="grid-column: 1 / -1; background-color: var(--bg-card); border: 1px solid var(--border); padding: 50px 30px; border-radius: 20px; text-align: center; color: var(--text-muted); width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.25);" x-cloak>
                     <div style="font-size: 3.5rem; margin-bottom: 20px;">📦</div>
-                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-family: var(--font-headings); font-size: 1.5rem;">No hay productos disponibles</h3>
-                    <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Actualmente no tenemos productos activos en exhibición. Puedes añadir tus propios productos en el Panel Administrador o volver más tarde.</p>
+                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-family: var(--font-headings); font-size: 1.5rem;">Productos disponibles próximamente</h3>
+                    <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Puedes añadir tus propios productos en el Panel Administrador o volver más tarde.</p>
                 </div>
             </div>
         </div>
@@ -1156,7 +1172,7 @@
                     <a href="../index.html#precios" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" style="color: var(--text-muted); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Ver otros Planes</a>
                 </div>
                 <div class="text-responsive-disclaimer" style="width: 100%; border-top: 1px solid var(--border); padding-top: 15px; margin-top: 10px; text-align: center; color: var(--text-muted); line-height: 1.5;">
-                    * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. Asimismo, aclaramos amablemente que la facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) no está incluida en los planes base; corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                    * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
                 </div>
             </div>
         </div>
@@ -1217,7 +1233,7 @@
                 <div class="form-group">
                     <label for="bill-method">Modalidad de Despacho</label>
                     <select id="bill-method" x-model="checkoutMethod" class="form-control">
-                        <option value="presencial">Presencial (Retiro en taller sin costo)</option>
+                        <option value="presencial">Presencial (Retiro en taller incluido)</option>
                         <option value="despacho">Despacho a Domicilio (Starken / Chilexpress)</option>
                     </select>
                 </div>
@@ -1612,7 +1628,7 @@
             <div x-show="adminTab === 'tutorial'" style="display: flex; flex-direction: column; gap: 20px;">
                 <h4 style="margin-bottom: 10px;">Manual de Entrega & Capacitación del Propietario</h4>
                 <p class="text-responsive-caption" style="color: var(--text-muted);  leading-relaxed;">
-                    El Plan Premium incluye una sesión de capacitación de 1 hora y guías de video para autogestionar el sitio sin depender del programador.
+                    El Plan Premium incluye una sesión de capacitación de 1 hora y guías de video para autogestionar el sitio con autonomía.
                 </p>
                 
                 <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 16px; border: 1px solid var(--border);">
@@ -1647,10 +1663,10 @@
                 <div style="background-color: var(--bg-darkest); padding: 25px; border-radius: 16px; border: 1px solid var(--border);">
                     <h5 style="margin-bottom: 15px; color: var(--primary); font-family: var(--font-headings); font-size: 1.1rem;">☁️ ¿Por qué mi web necesita un Servidor Dedicado? (Costo de Hosting)</h5>
                     <p class="text-responsive-caption" style="color: var(--text-light);  line-height: 1.6; margin-bottom: 12px;">
-                        Tanto el <strong>Plan Profesional</strong> como el <strong>Plan Premium</strong> no incluyen el precio del servidor (hosting) donde se alojará la página web.
+                        Tanto el <strong>Plan Profesional</strong> como el <strong>Plan Premium</strong> consideran el servidor (hosting) como un servicio externo cotizado aparte.
                     </p>
                     <p class="text-responsive-caption" style="color: var(--text-muted);  line-height: 1.6; margin-bottom: 12px;">
-                        <strong>En palabras sencillas:</strong> Una web básica (estática) es como un folleto digital que no cambia. Pero tu web profesional o premium es como una <strong>oficina o tienda interactiva activa 24/7</strong>: tiene un catálogo de productos modificable, un carro que calcula envíos, y un panel de control donde guardas datos de clientes. 
+                        <strong>En palabras sencillas:</strong> Una web básica (estática) es como un folleto digital estable. Tu web profesional o premium es como una <strong>oficina o tienda interactiva activa 24/7</strong>: tiene un catálogo de productos modificable, un carro que calcula envíos, y un panel de control donde guardas datos de clientes.
                     </p>
                     <p class="text-responsive-caption" style="color: var(--text-muted);  line-height: 1.6; margin-bottom: 12px;">
                         Para procesar todos estos datos al instante de forma segura, tu web requiere estar alojada en una "computadora especial en la nube" (un servidor de páginas dinámicas).
@@ -1668,7 +1684,7 @@
                         <li style="display: flex; align-items: start; gap: 10px;">
                             <span style="color: var(--primary); font-weight: bold;">✔</span>
                             <div>
-                                <strong style="color: var(--text-light);">Autogestión Completa (CRUD)</strong>: Sube, edita o elimina productos e imágenes tú mismo sin pagar horas de programador para modificar el catálogo.
+                                <strong style="color: var(--text-light);">Autogestión Completa (CRUD)</strong>: Sube, edita o elimina productos e imágenes tú mismo desde el panel del catálogo.
                             </div>
                         </li>
                         <li style="display: flex; align-items: start; gap: 10px;">

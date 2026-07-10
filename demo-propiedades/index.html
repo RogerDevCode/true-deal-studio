@@ -680,6 +680,19 @@
             .listings-grid {
                 grid-template-columns: 1fr;
             }
+            .filters-grid,
+            .similar-properties-grid,
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .filters-card {
+                padding: 1.25rem;
+            }
         }
     </style>
 </head>
@@ -833,7 +846,7 @@
                 <!-- No Results Placeholder -->
                 <div x-show="filteredProperties.length === 0" class="no-results" x-cloak>
                     <div class="no-results-icon">🔍</div>
-                    <h3>No encontramos propiedades</h3>
+                    <h3>Propiedades disponibles con otros filtros</h3>
                     <p style="margin-top: 0.5rem;">Prueba modificando los filtros de búsqueda o aumentando el rango de precio.</p>
                 </div>
             </div>

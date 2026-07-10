@@ -6,7 +6,7 @@
     <title>Apex Tech | Tienda Online & Panel de Administración Demo</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Demo de E-commerce de alta conversión para Chile. Incluye carro de compras, avisos de urgencia y panel de administración interactivo para gestionar productos y pedidos.">
+    <meta name="description" content="Demo de E-commerce para Chile. Incluye carro de compras, avisos de urgencia y panel de administración interactivo para gestionar productos y pedidos.">
     <meta name="keywords" content="ecommerce, tienda online, panel de administracion, chile, pyme, desarrollo web, carro de compras">
     <meta property="og:title" content="Apex Tech | Tienda Online & Panel de Administración Demo" />
     <meta property="og:description" content="Mira cómo puedes escalar tu negocio de una landing page a un e-commerce completo con panel de administración." />
@@ -1122,6 +1122,27 @@
                 line-height: 1.45;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            .hero-grid,
+            .shop-layout,
+            .feature-grid,
+            .contact-grid,
+            .footer-grid,
+            .grid-configurator {
+                grid-template-columns: 1fr !important;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            .admin-modal {
+                width: 100%;
+                max-height: 90vh;
+            }
+        }
     </style>
 </head>
 <body x-data="storeApp()" x-init="init()">
@@ -1232,8 +1253,8 @@
                 </template>
                 <div x-show="getFilteredProducts().filter(p => p.active).length === 0" style="grid-column: 1 / -1; background-color: var(--bg-dark); border: 1px solid var(--bg-light); padding: 50px 30px; border-radius: 20px; text-align: center; color: var(--text-muted); width: 100%;" x-cloak>
                     <div style="font-size: 3.5rem; margin-bottom: 20px;">📦</div>
-                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-size: 1.5rem;">No hay productos disponibles</h3>
-                    <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Actualmente no tenemos productos disponibles en esta categoría. Agrega nuevos productos desde el panel de control o vuelve a consultar más tarde.</p>
+                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-size: 1.5rem;">Productos disponibles próximamente</h3>
+                    <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.6;">Agrega nuevos productos desde el panel de control o vuelve a consultar más tarde.</p>
                 </div>
             </div>
         </div>
@@ -1504,7 +1525,7 @@
                         <template x-if="orders.length === 0">
                             <div style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
                                 <svg class="icon-inline" style="width: 3.5rem; height: 3.5rem; margin-bottom: 1rem;" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                                <p>No hay pedidos pendientes en la cola.</p>
+                                <p>La cola de pedidos está al día.</p>
                             </div>
                         </template>
                         
@@ -1579,7 +1600,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 1.5rem;">
                                 <div>
                                     <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Forzar Cierre de la Tienda</h4>
-                                    <p class="text-responsive-detail" style="color: var(--text-muted); ">Cierra temporalmente la recepción de pedidos sin importar la hora.</p>
+                                    <p class="text-responsive-detail" style="color: var(--text-muted); ">Pausa temporalmente la recepción de pedidos en cualquier horario.</p>
                                 </div>
                                 <label class="switch">
                                     <input type="checkbox" x-model="storeHours.forcedClosed" @change="saveHours()">
@@ -1684,7 +1705,7 @@
                 <p>Desarrollado con fines demostrativos para el mercado de PYMEs en Chile.</p>
             </div>
             <div class="text-responsive-disclaimer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; margin-top: 15px; text-align: center;  color: var(--text-muted); line-height: 1.5;">
-                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. Asimismo, aclaramos amablemente que la facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) no está incluida en los planes base; corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
             </div>
         </div>
     </footer>

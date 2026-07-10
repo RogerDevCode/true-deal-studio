@@ -1247,6 +1247,38 @@
                 line-height: 1.45;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+            .hero-content,
+            .hero-description {
+                max-width: none;
+            }
+            .menu-items-grid,
+            .gallery-grid,
+            .location-grid,
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .order-preview-bar {
+                bottom: 1rem;
+                width: calc(100% - 1.5rem);
+                padding: 1rem 1.25rem;
+                border-radius: 24px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .menu-item-card,
+            .menu-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body x-data="cafeApp()" x-init="init()">
@@ -1865,7 +1897,7 @@
                 <p>Diseño web optimizado para el usuario chileno.</p>
             </div>
             <div class="text-responsive-caption" style="border-top: 1px solid rgba(250, 243, 232, 0.1); padding-top: 15px; margin-top: 15px; text-align: center;  color: rgba(250, 243, 232, 0.5); line-height: 1.5;">
-                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. Asimismo, aclaramos amablemente que la facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) no está incluida en los planes base; corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
             </div>
         </div>
     </footer>

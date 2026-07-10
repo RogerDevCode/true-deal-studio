@@ -1061,6 +1061,29 @@
                 line-height: 1.45;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            .hero-grid,
+            .stats-grid,
+            .calc-grid,
+            .services-grid,
+            .workflow-grid,
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .hero-content h1 {
+                font-size: 2.25rem;
+            }
+            .calculator-section {
+                padding: 1.5rem;
+            }
+            .stat-item h3 {
+                font-size: 2.1rem;
+            }
+        }
     </style>
 </head>
 <body x-data="contabilidadApp()" x-init="init()">
@@ -1335,7 +1358,7 @@
 
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-quote">"Excelente soporte contable. Tuvimos una auditoría preventiva de renta del SII y el equipo de ContaDigital nos defendió de manera brillante, resolviendo todo sin pagar multas."</p>
+                    <p class="testimonial-quote">"Excelente soporte contable. Tuvimos una auditoría preventiva de renta del SII y el equipo de ContaDigital nos acompañó de manera brillante, dejando todo resuelto y en regla."</p>
                     <div class="testimonial-client">
                         <div class="testimonial-client-avatar">CS</div>
                         <div class="testimonial-client-info">
@@ -1347,7 +1370,7 @@
 
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-quote">"Cálculo de Previred y liquidaciones de sueldos sin dolores de cabeza todos los fines de mes. Un servicio automatizado pero con un trato humano de primer nivel."</p>
+                    <p class="testimonial-quote">"Cálculo de Previred y liquidaciones de sueldos con orden todos los fines de mes. Un servicio automatizado con un trato humano de primer nivel."</p>
                     <div class="testimonial-client">
                         <div class="testimonial-client-avatar">RP</div>
                         <div class="testimonial-client-info">
@@ -1392,7 +1415,7 @@
                 <p>Respaldado por contadores auditores colegiados de Chile.</p>
             </div>
             <div class="text-responsive-caption" style="border-top: 1px solid rgba(244, 247, 246, 0.1); padding-top: 15px; margin-top: 15px; text-align: center;  color: rgba(244, 247, 246, 0.5); line-height: 1.5;">
-                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. Asimismo, aclaramos amablemente que la facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) no está incluida en los planes base; corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
             </div>
         </div>
     </footer>
