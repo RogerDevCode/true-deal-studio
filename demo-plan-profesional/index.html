@@ -10,16 +10,15 @@
     <meta name="robots" content="noindex, nofollow">
     <meta property="og:title" content="Remodelaciones Altiplano | Demo Plan Profesional" />
     <meta property="og:description" content="Descubre el alcance del Plan Profesional: hasta 7 secciones, catálogo interactivo y cotizador por WhatsApp." />
+    <meta property="og:image" content="../demo-contabilidad/office.png" />
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="../assets/fonts/fonts.css">
     
     <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="../assets/vendor/alpinejs.min.js"></script>
 
     <style>
         :root {
@@ -1299,7 +1298,16 @@
                                     `*Total Estimado:* ${totalText}`;
 
                     const waUrl = `https://wa.me/56999040515?text=${message}`;
-                    window.open(waUrl, '_blank');
+                    const popup = window.open(waUrl, '_blank', 'noopener');
+                    if (!popup) {
+                        window.location.href = waUrl;
+                        return;
+                    }
+                    try {
+                        popup.focus();
+                    } catch (error) {
+                        // Ignore focus issues from strict browsers.
+                    }
                     
                     // Reset cart and checkout
                     this.cart = [];

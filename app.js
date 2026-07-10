@@ -1,3 +1,19 @@
+window.openWhatsAppWithFallback = function openWhatsAppWithFallback(url) {
+  const popup = window.open(url, '_blank', 'noopener');
+
+  if (popup) {
+    try {
+      popup.focus();
+    } catch (error) {
+      // Ignore focus issues from strict browsers.
+    }
+    return true;
+  }
+
+  window.location.href = url;
+  return false;
+};
+
 window.landingApp = function landingApp() {
   return {
     mobileMenu: false,
@@ -5,7 +21,7 @@ window.landingApp = function landingApp() {
     planTimes: { esencial: 0, local: 0, profesional: 0, premium: 0 },
     activePlan: null,
     hoverStart: null,
-    darkMode: localStorage.getItem('theme') !== 'light',
+    darkMode: localStorage.getItem('theme') === 'dark',
 
     toggleTheme() {
       this.darkMode = !this.darkMode;

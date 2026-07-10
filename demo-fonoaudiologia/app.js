@@ -23,7 +23,17 @@ window.fonoaudiologiaApp = function fonoaudiologiaApp() {
   }
 
   function openWhatsApp(phone, message) {
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    const popup = window.open(url, '_blank', 'noopener');
+    if (!popup) {
+      window.location.href = url;
+      return;
+    }
+    try {
+      popup.focus();
+    } catch (error) {
+      // Ignore focus issues from strict browsers.
+    }
   }
 
   return {

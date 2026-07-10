@@ -7,35 +7,21 @@
   <meta name="description" content="Gestiona tus citas de corretaje, consultas, peluquería y contabilidad en tiempo real. Un panel integrado, intuitivo y adaptado para PYMEs chilenas." />
   <meta name="theme-color" content="#0F172A" />
   <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="CRM Express | Panel de Agenda Demo" />
+  <meta property="og:description" content="Panel de control demo para gestionar citas, clientes y seguimientos desde una sola vista." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../demo-contabilidad/office.png" />
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Local Fonts -->
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
 
-  <script>
-    window.__twOriginalWarn = console.warn.bind(console);
-    console.warn = function (...args) {
-      if (
-        typeof args[0] === 'string' &&
-        args[0].includes('cdn.tailwindcss.com should not be used in production')
-      ) {
-        return;
-      }
-      window.__twOriginalWarn(...args);
-    };
-  </script>
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    console.warn = window.__twOriginalWarn;
-    delete window.__twOriginalWarn;
-  </script>
+  <script src="../assets/vendor/tailwindcss-play.js"></script>
 
   <!-- Alpine.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="../assets/vendor/alpinejs.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -732,7 +718,16 @@
           }
 
           const whatsappUrl = `https://wa.me/${phoneClean}?text=${encodeURIComponent(text)}`;
-          window.open(whatsappUrl, '_blank');
+          const popup = window.open(whatsappUrl, '_blank', 'noopener');
+          if (!popup) {
+            window.location.href = whatsappUrl;
+            return;
+          }
+          try {
+            popup.focus();
+          } catch (error) {
+            // Ignore focus issues from strict browsers.
+          }
         },
 
         resetToDefaultData() {
