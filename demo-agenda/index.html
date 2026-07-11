@@ -241,19 +241,21 @@
           </div>
 
           <!-- Status Tabs -->
-          <div class="flex border-b border-slate-800 mt-4">
-            <button @click="filterStatus = 'all'" :class="filterStatus === 'all' ? 'border-brand-accent text-brand-accent' : 'border-transparent text-slate-400 hover:text-slate-200'" class="pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
-              Todas ({#bookings.length})
-            </button>
-            <button @click="filterStatus = 'pendiente'" :class="filterStatus === 'pendiente' ? 'border-brand-warning text-brand-warning' : 'border-transparent text-slate-400 hover:text-slate-200'" class="pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
-              Pendientes
-            </button>
-            <button @click="filterStatus = 'confirmada'" :class="filterStatus === 'confirmada' ? 'border-brand-success text-brand-success' : 'border-transparent text-slate-400 hover:text-slate-200'" class="pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
-              Confirmadas
-            </button>
-            <button @click="filterStatus = 'cancelada'" :class="filterStatus === 'cancelada' ? 'border-brand-danger text-brand-danger' : 'border-transparent text-slate-400 hover:text-slate-200'" class="pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
-              Canceladas
-            </button>
+          <div class="mt-4 overflow-x-auto">
+            <div class="flex min-w-max border-b border-slate-800">
+              <button @click="filterStatus = 'all'" :class="filterStatus === 'all' ? 'border-brand-accent text-brand-accent' : 'border-transparent text-slate-400 hover:text-slate-200'" class="whitespace-nowrap pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
+                Todas ({#bookings.length})
+              </button>
+              <button @click="filterStatus = 'pendiente'" :class="filterStatus === 'pendiente' ? 'border-brand-warning text-brand-warning' : 'border-transparent text-slate-400 hover:text-slate-200'" class="whitespace-nowrap pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
+                Pendientes
+              </button>
+              <button @click="filterStatus = 'confirmada'" :class="filterStatus === 'confirmada' ? 'border-brand-success text-brand-success' : 'border-transparent text-slate-400 hover:text-slate-200'" class="whitespace-nowrap pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
+                Confirmadas
+              </button>
+              <button @click="filterStatus = 'cancelada'" :class="filterStatus === 'cancelada' ? 'border-brand-danger text-brand-danger' : 'border-transparent text-slate-400 hover:text-slate-200'" class="whitespace-nowrap pb-2 px-4 border-b-2 font-medium text-sm transition-colors">
+                Canceladas
+              </button>
+            </div>
           </div>
         </div>
 
