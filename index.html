@@ -933,46 +933,88 @@
               </div>
             </div>
           </a>
+        </div> <!-- /Showcase grid -->
 
-        <div class="reveal mt-6 rounded-[1.5rem] border border-drac-current/25 bg-drac-bg/45 p-4 sm:p-5">
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div class="max-w-2xl">
-              <p class="text-xs font-black uppercase tracking-[0.18em] text-drac-green">Más rubros, misma claridad</p>
-              <p class="mt-2 text-sm leading-relaxed text-drac-comment">Si quieres revisar más estilos, abre el resto del portafolio aquí mismo, sin cortar la lectura ni salir del flujo.</p>
-            </div>
-            <button @click="showAllDemos = !showAllDemos" class="inline-flex items-center justify-center rounded-full border border-drac-green/25 bg-drac-green/10 px-5 py-3 text-sm font-bold text-drac-green transition-all duration-300 hover:border-drac-green/40 hover:bg-drac-green/15">
-              <span x-text="showAllDemos ? 'Mostrar menos demos' : 'Ver más demos'"></span>
-            </button>
-          </div>
+        <!-- Toggle button centered below grid -->
+        <div class="reveal mt-12 flex justify-center" style="transition-delay: .1s">
+          <button @click="showAllDemos = !showAllDemos" class="inline-flex items-center justify-center rounded-full border border-drac-current/40 bg-drac-bg/80 px-8 py-3.5 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-green hover:bg-drac-green/10 hover:text-drac-green shadow-card hover:shadow-glow">
+            <span x-text="showAllDemos ? 'Mostrar menos demostraciones' : 'Ver las 9 demostraciones en vivo'"></span>
+            <svg class="ml-2.5 h-4 w-4 transition-transform duration-300" :class="showAllDemos ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
         </div>
 
-        <!-- Call to Action Card -->
-        <div class="reveal mt-8 group relative flex flex-col items-center justify-between gap-8 overflow-hidden rounded-3xl border border-dashed border-drac-purple/50 bg-gradient-to-r from-drac-bg/90 via-drac-purple/10 to-drac-bg/90 p-8 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-drac-purple hover:shadow-mega md:flex-row md:p-10" style="transition-delay: .42s">
-            <div class="flex-grow text-left max-w-2xl">
-              <div class="inline-flex items-center gap-2 rounded-full bg-drac-purple/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-purple mb-4">
-                <span>Tu rubro también puede verse así</span>
-                <span class="animate-pulse">✨</span>
+        <!-- Redesigned full-width CTA Panel outside the grid -->
+        <div id="demos-cta-panel" class="reveal mt-16 group relative w-full overflow-hidden rounded-[2.5rem] border border-drac-current/30 bg-drac-bg/60 backdrop-blur-md p-8 shadow-mega transition-all duration-500 hover:border-drac-purple/40 hover:shadow-card-hover md:p-12 lg:p-16" style="transition-delay: .2s">
+          <div class="relative z-[1]">
+            <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+              
+              <!-- Left Column: Copywriting and benefits -->
+              <div class="text-left lg:col-span-7">
+                <span class="inline-flex items-center rounded-full bg-drac-green/10 border border-drac-green/25 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-drac-green">
+                  Tu rubro en internet 🚀
+                </span>
+                <h3 class="mt-4 font-display text-3xl font-black leading-tight text-drac-fg sm:text-4xl lg:text-5xl">
+                  Mismo criterio visual.
+                  <span class="bg-gradient-to-r from-drac-purple via-drac-pink to-drac-red bg-clip-text text-transparent">Cualquier rubro.</span>
+                </h3>
+                <p class="mt-6 text-base text-drac-comment leading-relaxed">
+                  ¿No encuentras tu sector entre los ejemplos? No te preocupes. Diseñamos páginas 100% a medida adaptando el diseño, los textos y los flujos de atención (como reservas, catálogos o cotizadores) a lo que tu negocio chileno necesita para generar confianza y vender más.
+                </p>
+                
+                <div class="mt-8 grid gap-4 sm:grid-cols-3">
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-drac-cyan/10 text-drac-cyan flex-shrink-0">
+                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </div>
+                    <span class="text-sm font-bold text-drac-fg">Estructura a medida</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-drac-purple/10 text-drac-purple flex-shrink-0">
+                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </div>
+                    <span class="text-sm font-bold text-drac-fg">WhatsApp integrado</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-drac-green/10 text-drac-green flex-shrink-0">
+                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    </div>
+                    <span class="text-sm font-bold text-drac-fg">Carga ultra rápida</span>
+                  </div>
+                </div>
               </div>
-              <h3 class="text-2xl md:text-3xl font-black text-drac-fg">Puedo adaptar esta calidad visual a tu negocio</h3>
-              <p class="mt-3 text-sm md:text-base text-drac-comment leading-relaxed">
-                Trabajo con floristerías, botillerías, consultas, servicios técnicos, arriendos, comercios y más. Me cuentas qué vendes y te propongo una web clara, profesional y preparada para recibir mejores consultas.
-              </p>
+
+              <!-- Right Column: Focused Conversion Box -->
+              <div class="lg:col-span-5">
+                <div class="relative rounded-3xl border border-drac-current/30 bg-drac-darker/60 p-6 md:p-8 flex flex-col justify-between shadow-lg overflow-hidden">
+                  <!-- Ambient internal glow -->
+                  <div class="absolute -right-8 -bottom-8 h-28 w-28 rounded-full bg-drac-green/10 blur-2xl pointer-events-none"></div>
+                  
+                  <div class="relative z-10">
+                    <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-comment">Siguiente paso</p>
+                    <h4 class="mt-2 text-xl font-bold text-drac-fg">Hablemos de tu proyecto</h4>
+                    <p class="mt-3 text-sm leading-relaxed text-drac-comment">Te asesoro de forma directa para definir la mejor estructura y diseño para tu negocio.</p>
+                  </div>
+                  
+                  <div class="mt-8 flex flex-col gap-3 relative z-10">
+                    <a href="https://wa.me/56999040515?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" class="inline-flex w-full items-center justify-center rounded-2xl border border-drac-green/35 bg-drac-green/10 px-6 py-4 text-base font-bold text-drac-green transition-all duration-300 hover:bg-drac-green/20 hover:border-drac-green shadow-sm">
+                      <svg class="mr-2.5 h-5.5 w-5.5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.9 9.9 0 00-6.98-2.779c-5.443 0-9.874 4.372-9.879 9.802-.002 1.741.454 3.442 1.324 4.952l-.993 3.627 3.749-.988zm11.233-6.938c-.3-.15-1.771-.875-2.04-.972-.27-.099-.467-.148-.662.15-.195.297-.757.97-.927 1.168-.17.199-.34.223-.64.073-.3-.15-1.268-.467-2.414-1.49-1.002-.894-1.502-1.996-1.699-2.33-.2-.332-.02-.511.147-.677.15-.15.3-.35.45-.526.15-.175.2-.299.3-.5.1-.202.05-.377-.025-.526-.075-.15-.662-1.597-.907-2.185-.238-.574-.48-.496-.662-.505-.17-.008-.367-.01-.563-.01-.197 0-.517.074-.788.374-.27.3-.1.574-.1.574s-.123.238-.123.57c0 .87.616 1.713.712 1.838.096.126 1.293 2.127 3.25 2.87.568.216 1.01.345 1.353.453.57.18 1.088.156 1.498.094.46-.07 1.77-.723 2.022-1.422.253-.7.253-1.3.177-1.423-.075-.12-.275-.196-.575-.346z"/></svg>
+                      Escribir por WhatsApp
+                    </a>
+                    <a href="#contacto" class="btn-glow inline-flex w-full items-center justify-center rounded-2xl bg-drac-green px-6 py-4 text-base font-bold text-drac-darker shadow-lg shadow-drac-green/20 transition-all duration-300 hover:scale-[1.02]">
+                      Pedir propuesta
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto shrink-0 justify-center">
-              <a href="#contacto" class="btn-glow w-full sm:w-auto text-center inline-flex items-center justify-center rounded-2xl bg-drac-green px-8 py-4 text-base font-bold text-drac-darker transition-all duration-300 hover:scale-105 shadow-lg shadow-drac-green/20">
-                Pedir propuesta
-              </a>
-              <a href="https://wa.me/56999040515?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" class="w-full sm:w-auto text-center inline-flex items-center justify-center rounded-2xl border border-drac-comment/30 bg-drac-bg px-8 py-4 text-base font-bold text-drac-fg transition-all duration-300 hover:border-drac-green hover:text-drac-green hover:bg-drac-bg/80">
-                <svg class="h-5 w-5 mr-2 text-drac-green" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.9 9.9 0 00-6.98-2.779c-5.443 0-9.874 4.372-9.879 9.802-.002 1.741.454 3.442 1.324 4.952l-.993 3.627 3.749-.988zm11.233-6.938c-.3-.15-1.771-.875-2.04-.972-.27-.099-.467-.148-.662.15-.195.297-.757.97-.927 1.168-.17.199-.34.223-.64.073-.3-.15-1.268-.467-2.414-1.49-1.002-.894-1.502-1.996-1.699-2.33-.2-.332-.02-.511.147-.677.15-.15.3-.35.45-.526.15-.175.2-.299.3-.5.1-.202.05-.377-.025-.526-.075-.15-.662-1.597-.907-2.185-.238-.574-.48-.496-.662-.505-.17-.008-.367-.01-.563-.01-.197 0-.517.074-.788.374-.27.3-.1.574-.1.574s-.123.238-.123.57c0 .87.616 1.713.712 1.838.096.126 1.293 2.127 3.25 2.87.568.216 1.01.345 1.353.453.57.18 1.088.156 1.498.094.46-.07 1.77-.723 2.022-1.422.253-.7.253-1.3.177-1.423-.075-.12-.275-.196-.575-.346z"/></svg>
-                Escribir por WhatsApp
-              </a>
-            </div>
-            
-            <!-- Animated decorative elements in background -->
-            <div class="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-drac-green/5 blur-xl pointer-events-none group-hover:bg-drac-green/10 transition-colors duration-500"></div>
-            <div class="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-drac-purple/5 blur-xl pointer-events-none group-hover:bg-drac-purple/10 transition-colors duration-500"></div>
           </div>
+
+          <!-- Ambient backgrounds glows -->
+          <div class="absolute -right-10 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-drac-purple/5 blur-3xl pointer-events-none transition-colors duration-500 group-hover:bg-drac-purple/10"></div>
+          <div class="absolute -left-12 bottom-0 h-48 w-48 rounded-full bg-drac-green/5 blur-3xl pointer-events-none transition-colors duration-500 group-hover:bg-drac-green/10"></div>
         </div>
       </div>
     </section>

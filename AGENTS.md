@@ -6,7 +6,7 @@ Este archivo documenta la estructura, las características técnicas, las decisi
 
 ## 1. Resumen y Objetivos del Proyecto
 
-El objetivo de este proyecto es promocionar servicios de desarrollo de software y diseño web para PYMEs en Chile. Para lograrlo, el sitio principal funciona como una **Landing Page de Conversión** que incluye un catálogo interactivo de **5 sitios web de demostración** altamente optimizados y adaptados a sectores típicos del comercio local chileno.
+El objetivo de este proyecto es promocionar servicios de desarrollo de software y diseño web para PYMEs en Chile. Para lograrlo, el sitio principal funciona como una **Landing Page de Conversión** que incluye un catálogo interactivo de **8 sitios web de demostración** altamente optimizados y adaptados a sectores típicos del comercio local chileno.
 
 Cada uno de los sitios de demostración fue construido bajo estándares premium de diseño, con micro-animaciones fluidas (usando CSS Vainilla y transiciones aceleradas por hardware), interactividad dinámica con Alpine.js y optimización básica para SEO y accesibilidad.
 
@@ -20,6 +20,7 @@ Cada uno de los sitios de demostración fue construido bajo estándares premium 
 ├── index.html                         # Landing page principal (Dracula Dark Theme)
 ├── investigacion_diseños_populares.md # Estudio de patrones de diseño preferidos en Chile
 ├── research_sitios_web_chile.md       # Análisis de mercado y competidores locales
+├── voiceshop-pro.zip                  # Demo futura de chatbot por voz; conservar como referencia externa, no integrada aún al showcase
 │
 ├── demo-psicologa/                    # Demo 1: Psicóloga Clínica (Clara Altieri)
 │   ├── index.html                     # Estructura limpia y minimalista (Sage/Sand)
@@ -53,6 +54,9 @@ Cada uno de los sitios de demostración fue construido bajo estándares premium 
 └── demo-agenda/                       # Demo 8: CRM Express (Gestor de Citas y Clientes)
     └── index.html                     # Tablero centralizado de reservas de los demos
 ```
+
+> [!NOTE]
+> `voiceshop-pro.zip` es un artefacto de exploración para un futuro demo de chatbot manejado por voz. No forma parte del flujo principal actual, no debe enlazarse desde `index.html` ni modificarse salvo instrucción explícita del usuario.
 
 ---
 
@@ -129,5 +133,4 @@ node check_consoles.js
   - **Planes y propuestas**: Crear en `docs/plans/` (formato `.md` y gráficos `mmd` embebidos).
   - **Registros y bitácoras**: Crear en `doc/logs/`.
   - **Scripts auxiliares/helpers** (`.py`, `.sh`, `.js`, `.ts`): Crear en `scripts/` de la raíz. Eliminar tras su uso si son de una sola ejecución.
-
 
