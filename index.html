@@ -208,6 +208,20 @@
       color: #C4C8DB;
     }
 
+    /* Inside dark sections (.band-dark, .band-navy), force luminous text contrast in ALL themes */
+    .band-dark .text-drac-green, .band-navy .text-drac-green {
+      color: #4ADE80 !important; /* Crisp emerald/lime WCAG AA on dark */
+    }
+    .band-dark .text-drac-orange, .band-navy .text-drac-orange {
+      color: #FFB86C !important;
+    }
+    .band-dark .text-drac-cyan, .band-navy .text-drac-cyan {
+      color: #7DD3FC !important;
+    }
+    .band-dark .text-chile-blueLight, .band-navy .text-chile-blueLight {
+      color: #68A2FF !important;
+    }
+
     /* Light band sections get dark text in light theme */
     html.light-theme .band-white,
     html.light-theme .band-lino {
