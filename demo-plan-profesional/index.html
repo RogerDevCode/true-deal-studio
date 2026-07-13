@@ -884,10 +884,10 @@
                             <h4 x-text="item.name"></h4>
                             <p class="product-info-description" x-text="item.description"></p>
                             <div class="product-price">
-                                <span style="font-size: 70%; font-weight: normal; color: var(--text-muted); margin-right: 4px; vertical-align: middle;">Desde</span>
+                                <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-right: 4px; vertical-align: middle;">Desde</span>
                                 <span x-text="formatPrice(item.price)"></span>
-                                <span style="font-size: 70%; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">CLP</span>
-                                <span class="text-responsive-caption" style="font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">neto + IVA</span>
+                                <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">CLP</span>
+                                <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">neto + IVA</span>
                             </div>
                             <button class="cta-btn" style="width: 100%;" @click="addToCart(item)">Añadir a la Lista</button>
                         </div>
@@ -924,7 +924,7 @@
                             <span style="position: absolute; left: 12px; color: var(--text-muted); font-weight: bold;">$</span>
                         </div>
                         <button type="button" @click="simAmount = getCartTotal() > 0 ? getCartTotal() : 249990" style="background: none; border: none; color: var(--primary); font-size: 0.8rem; cursor: pointer; text-decoration: underline; margin-top: 8px; display: block;" x-show="getCartTotal() > 0">
-                            Usar total de la lista de cotización (<span x-text="formatPrice(getCartTotal())"></span> <span style="font-size: 85%; font-weight: normal; opacity: 0.8;">CLP neto</span>)
+                            Usar total de la lista de cotización (<span x-text="formatPrice(getCartTotal())"></span> <span style="font-size: 14px; font-weight: normal; opacity: 0.8;">CLP neto</span>)
                         </button>
                     </div>
                     
@@ -1043,8 +1043,8 @@
                             <h5 x-text="item.name"></h5>
                             <p>
                                 <span x-text="formatPrice(item.price)"></span>
-                                <span style="font-size: 75%; font-weight: normal; color: var(--text-muted); margin-left: 4px;">CLP</span>
-                                <span style="font-size: 67%; font-weight: normal; color: var(--text-muted); margin-left: 4px;">neto</span>
+                                <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px;">CLP</span>
+                                <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px;">neto</span>
                             </p>
                         </div>
                         <button class="remove-btn" @click="removeFromCart(item.id)">Eliminar</button>
@@ -1057,8 +1057,8 @@
                     <span>Estimación Total:</span>
                     <span>
                         <span x-text="formatPrice(getCartTotal())"></span>
-                        <span style="font-size: 75%; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">CLP</span>
-                        <span style="font-size: 67%; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">neto + IVA</span>
+                        <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">CLP</span>
+                        <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">neto + IVA</span>
                     </span>
                 </div>
                 <button class="cta-btn" style="width: 100%; padding: 15px; font-size: 1rem;" @click="openCheckout()">
@@ -1144,8 +1144,8 @@
                         <span>Total de Cotización:</span>
                         <span>
                             <span x-text="formatPrice(getCartTotal() + (checkoutMethod === 'presencial' ? checkoutCommuneSurcharge() : 0))"></span>
-                            <span style="font-size: 75%; font-weight: normal; color: var(--primary); margin-left: 2px; vertical-align: middle;">CLP</span>
-                            <span style="font-size: 67%; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">neto + IVA</span>
+                            <span style="font-size: 14px; font-weight: normal; color: var(--primary); margin-left: 2px; vertical-align: middle;">CLP</span>
+                            <span style="font-size: 14px; font-weight: normal; color: var(--text-muted); margin-left: 4px; vertical-align: middle;">neto + IVA</span>
                         </span>
                     </div>
                 </div>
