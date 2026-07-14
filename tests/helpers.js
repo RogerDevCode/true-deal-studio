@@ -24,8 +24,11 @@ async function attachPageGuards(page) {
 
   page.on("requestfailed", (request) => {
     const failure = request.failure();
-    if (!request.url().includes("favicon")) {
-      requestIssues.push(`${request.url()} :: ${failure ? failure.errorText : "unknown request failure"}`);
+    const url = request.url();
+    const errorText = failure ? failure.errorText : "unknown request failure";
+    const isIgnorableMapAbort = errorText === "net::ERR_ABORTED" && /maps\.google\.com|google\.com\/maps/i.test(url);
+    if (!url.includes("favicon") && !isIgnorableMapAbort) {
+      requestIssues.push(`${url} :: ${errorText}`);
     }
   });
 

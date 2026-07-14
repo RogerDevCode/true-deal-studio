@@ -403,6 +403,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .modal-content {
@@ -415,6 +416,20 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            scrollbar-width: auto;
+            scrollbar-color: rgba(228, 180, 95, 0.88) rgba(255, 255, 255, 0.06);
+        }
+        .modal-content::-webkit-scrollbar {
+            width: 12px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 999px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(228, 180, 95, 0.88);
+            border: 2px solid var(--bg-card);
+            border-radius: 999px;
         }
 
         .form-group {

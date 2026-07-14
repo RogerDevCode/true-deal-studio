@@ -9,9 +9,9 @@ const viewports = [
   { name: "desktop-standard", width: 1440, height: 900 },
 ];
 
-for (const viewport of viewports) {
-  test(`Plan Profesional checkout modal stays scrollable on ${viewport.name}`, async ({ page }) => {
-    const guards = await attachPageGuards(page);
+test("Plan Profesional checkout modal stays scrollable across viewport sizes", async ({ page }) => {
+  const guards = await attachPageGuards(page);
+  for (const viewport of viewports) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.goto("/demo-plan-profesional/index.html#catalogo");
     await waitForAlpine(page);
@@ -40,8 +40,8 @@ for (const viewport of viewports) {
     });
 
     expect(["auto", "scroll"]).toContain(metrics.overflowY);
-    expect(metrics.top).toBeGreaterThanOrEqual(0);
-    expect(metrics.bottom).toBeLessThanOrEqual(metrics.viewportHeight);
+    expect(metrics.top, viewport.name).toBeGreaterThanOrEqual(0);
+    expect(metrics.bottom, viewport.name).toBeLessThanOrEqual(metrics.viewportHeight);
 
     if (metrics.scrollHeight > metrics.clientHeight) {
       await modal.evaluate((node) => {
@@ -53,5 +53,5 @@ for (const viewport of viewports) {
     await expect(page.getByRole("button", { name: "Cancelar" })).toBeVisible();
 
     await guards.assertHealthyContext();
-  });
-}
+  }
+});

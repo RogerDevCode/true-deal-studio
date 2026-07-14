@@ -501,7 +501,34 @@
             overflow-y: auto;
             overscroll-behavior: contain;
             scrollbar-gutter: stable;
+            scrollbar-width: auto;
+            scrollbar-color: rgba(251, 191, 36, 0.85) rgba(255, 255, 255, 0.08);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+        }
+
+        .modal-content::before,
+        .modal-content::after {
+            content: "";
+            position: sticky;
+            left: 0;
+            display: block;
+            width: calc(100% + 4px);
+            height: 16px;
+            margin-left: -2px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .modal-content::before {
+            top: -2px;
+            margin-bottom: -16px;
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.98) 0%, rgba(30, 41, 59, 0) 100%);
+        }
+
+        .modal-content::after {
+            bottom: -2px;
+            margin-top: -16px;
+            background: linear-gradient(0deg, rgba(30, 41, 59, 0.98) 0%, rgba(30, 41, 59, 0) 100%);
         }
 
         .modal-content::-webkit-scrollbar {

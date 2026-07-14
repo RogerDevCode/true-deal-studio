@@ -839,6 +839,7 @@
             align-items: center;
             justify-content: center;
             padding: 1rem;
+            overflow-y: auto;
         }
 
         .modal-card {
@@ -850,6 +851,9 @@
             overflow: hidden;
             border: 1px solid var(--glass-border);
             position: relative;
+            max-height: calc(100dvh - 2rem);
+            display: flex;
+            flex-direction: column;
         }
 
         .modal-header {
@@ -885,8 +889,23 @@
 
         .modal-body {
             padding: 2rem;
-            max-height: 80vh;
+            flex: 1 1 auto;
+            max-height: calc(100dvh - 10rem);
             overflow-y: auto;
+            scrollbar-width: auto;
+            scrollbar-color: var(--primary) var(--bg-cream-dark);
+        }
+        .modal-body::-webkit-scrollbar {
+            width: 12px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background: var(--bg-cream-dark);
+            border-radius: 999px;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border: 2px solid var(--bg-cream);
+            border-radius: 999px;
         }
 
         /* Form Controls */

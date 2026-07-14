@@ -769,6 +769,7 @@
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
+            overflow-y: auto;
         }
 
         .modal-card {
@@ -780,6 +781,9 @@
             box-shadow: var(--shadow-md);
             overflow: hidden;
             position: relative;
+            max-height: calc(100dvh - 3rem);
+            display: flex;
+            flex-direction: column;
         }
 
         .modal-header {
@@ -817,8 +821,23 @@
 
         .modal-body {
             padding: 2rem;
-            max-height: 75vh;
+            flex: 1 1 auto;
+            max-height: calc(100dvh - 10rem);
             overflow-y: auto;
+            scrollbar-width: auto;
+            scrollbar-color: var(--accent-cyan) rgba(10, 25, 47, 0.08);
+        }
+        .modal-body::-webkit-scrollbar {
+            width: 12px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background: rgba(10, 25, 47, 0.08);
+            border-radius: 999px;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(0, 119, 182, 0.85);
+            border: 2px solid #ffffff;
+            border-radius: 999px;
         }
 
         .form-group-grid {
