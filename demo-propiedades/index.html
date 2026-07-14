@@ -546,6 +546,7 @@
             flex-direction: column;
             gap: 1.25rem;
             flex: 1 1 auto;
+            min-height: 0;
             overflow-y: auto;
             scrollbar-width: auto;
             scrollbar-color: var(--primary-copper) var(--bg-warm);
@@ -721,6 +722,9 @@
             }
             .filters-card {
                 padding: 1.25rem;
+            }
+            .modal-card {
+                max-height: min(calc(100vh - 2.5rem), calc(100dvh - 2.5rem));
             }
         }
     </style>
