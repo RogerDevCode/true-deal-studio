@@ -36,3 +36,10 @@ env/
 .DS_Store
 Thumbs.db
 .kilo/
+
+# Node / QA artifacts
+node_modules/
+playwright-report/
+test-results/
+.lighthouseci/
+npm-debug.log*

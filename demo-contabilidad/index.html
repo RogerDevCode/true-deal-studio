@@ -37,8 +37,10 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
 
     <!-- Google Fonts: Outfit (modern corporate headings) & Inter (finance/body font) -->
-    <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../assets/css/tailwind.css">
+    <link rel="preload" href="../assets/fonts/b2b-fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../assets/fonts/b2b-fonts.css"></noscript>
+  <link rel="preload" href="../assets/css/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/tailwind.css"></noscript>
     
     <script defer src="./app.js"></script>
     <!-- Alpine.js -->
@@ -621,13 +623,13 @@
         .shield-badge-icon {
             width: 5.5rem;
             height: 5.5rem;
-            background-color: var(--secondary-navy);
-            border: 2px solid var(--accent-cyan);
+            background-color: #123252;
+            border: 2px solid #7DD3FC;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-cyan);
+            color: #7DD3FC;
             z-index: 5;
             box-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
         }
@@ -737,7 +739,7 @@
             height: 2.8rem;
             border-radius: 50%;
             background-color: var(--secondary-navy);
-            color: var(--accent-cyan);
+            color: #FFFFFF;
             font-family: var(--font-headings);
             font-weight: 700;
             display: flex;
@@ -1181,7 +1183,7 @@
             </div>
             
             <div class="hero-image-wrapper">
-                <img src="office.png" alt="Oficina ContaDigital en Santiago">
+                <img src="../assets/optimized/contabilidad-hero.webp" alt="Oficina ContaDigital en Santiago" decoding="async" fetchpriority="high">
             </div>
         </div>
     </section>
@@ -1265,7 +1267,7 @@
                                 <span class="calc-label">Facturas Emitidas / Recibidas</span>
                                 <span class="calc-badge" x-text="facturasMes + ' documentos'"></span>
                             </div>
-                            <input type="range" min="1" max="150" x-model="facturasMes" class="calc-slider">
+                            <input type="range" min="1" max="150" x-model="facturasMes" aria-label="Cantidad mensual de facturas emitidas o recibidas" class="calc-slider">
                         </div>
 
                         <!-- Control 2 -->
@@ -1274,7 +1276,7 @@
                                 <span class="calc-label">Número de Trabajadores contratados</span>
                                 <span class="calc-badge" x-text="trabajadores + (trabajadores == 1 ? ' empleado' : ' empleados')"></span>
                             </div>
-                            <input type="range" min="0" max="30" x-model="trabajadores" class="calc-slider">
+                            <input type="range" min="0" max="30" x-model="trabajadores" aria-label="Cantidad de trabajadores contratados" class="calc-slider">
                         </div>
                         
                         <div class="text-responsive-detail" style="margin-top: 1.5rem; padding: 1.5rem; background-color: var(--bg-light); border-radius: 12px; border: 1px solid var(--border-color);  color: var(--text-muted);">

@@ -1,0 +1,26 @@
+{
+  "name": "web-promotion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-grade QA and release tooling for the STAX web promotion showcase.",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "serve": "node scripts/static_server.js --port 4173",
+    "qa:gate": "node scripts/preproduction_gate.js",
+    "qa:e2e": "node scripts/run_clean_env.js playwright test",
+    "qa:lighthouse": "node scripts/qa_quality.js",
+    "qa:prod-smoke": "node scripts/production_smoke.js",
+    "qa:ci": "npm run qa:gate && npm run qa:e2e && npm run qa:lighthouse && npm run qa:prod-smoke",
+    "test_root": "node scripts/run_clean_env.js playwright test tests/root.spec.js",
+    "test_cafe": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Cafe\"",
+    "test_salon": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Salon\"",
+    "test_artesanias": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Artesanias\"",
+    "test_contabilidad": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Contabilidad\"",
+    "check_consoles": "node scripts/run_clean_env.js playwright test tests/console.spec.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}

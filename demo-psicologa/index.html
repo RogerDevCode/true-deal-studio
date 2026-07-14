@@ -30,8 +30,10 @@
     </script>
 
     <!-- Local Fonts -->
-    <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../assets/css/tailwind.css">
+    <link rel="preload" href="../assets/fonts/psych-fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../assets/fonts/psych-fonts.css"></noscript>
+    <link rel="preload" href="../assets/css/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../assets/css/tailwind.css"></noscript>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
     
@@ -662,6 +664,7 @@
 
         <!-- Main WhatsApp button (always visible) -->
         <button @click="chatOpen = !chatOpen" 
+                aria-label="Abrir o cerrar acceso rapido a WhatsApp"
                 class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105 focus:outline-none relative">
             <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" x-show="!chatOpen"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.62.962 3.21 1.6 5.413 1.61 5.437.003 9.856-4.405 9.86-9.84a9.81 9.81 0 0 0-2.873-6.957 9.82 9.82 0 0 0-6.973-2.885c-5.438 0-9.86 4.407-9.864 9.843-.001 2.272.593 4.491 1.72 6.438l-.991 3.613 3.708-.972zm11.724-6.892c-.328-.164-1.94-.959-2.241-1.069-.301-.11-.52-.164-.739.164-.219.328-.847 1.069-1.039 1.288-.192.219-.384.246-.712.083-.328-.164-1.385-.511-2.637-1.628-.974-.869-1.632-1.943-1.823-2.271-.192-.328-.021-.506.143-.669.148-.146.328-.383.493-.574.164-.192.219-.328.328-.547.11-.219.055-.411-.027-.575-.082-.164-.739-1.777-1.012-2.434-.267-.64-.539-.553-.739-.563-.19-.01-.41-.012-.629-.012-.219 0-.575.082-.876.411-.301.328-1.15 1.121-1.15 2.735 0 1.614 1.177 3.172 1.34 3.391.164.219 2.316 3.537 5.611 4.961.783.339 1.396.541 1.873.692.787.25 1.503.215 2.069.13.632-.094 1.94-.793 2.214-1.56.274-.766.274-1.422.192-1.56-.082-.138-.301-.219-.629-.383z"/></svg>
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" x-show="chatOpen" x-cloak><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -698,7 +701,7 @@
                               class="inline-block mt-1.5 bg-white/20 backdrop-blur-sm border border-white/30 text-white text-responsive-disclaimer font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
                               x-text="urlBadge"></span>
                     </div>
-                    <button @click="bookingModal = false" class="text-white hover:opacity-85 focus:outline-none p-1">
+                    <button @click="bookingModal = false" aria-label="Cerrar modal" class="text-white hover:opacity-85 focus:outline-none p-1">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
                 </div>

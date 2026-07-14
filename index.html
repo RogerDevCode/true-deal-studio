@@ -15,6 +15,7 @@
   <meta name="twitter:title" content="Páginas Web Profesionales para tu Negocio en Chile" />
   <meta name="twitter:description" content="Tu negocio merece verse profesional en internet. Páginas web claras, modernas y listas para recibir clientes." />
   <meta name="twitter:image" content="./demo-psicologa/preview.png" />
+  <link rel="preload" as="image" href="./assets/optimized/santiago-hero.webp" fetchpriority="high" />
 
   <script>
     document.documentElement.classList.remove('no-js');
@@ -38,10 +39,12 @@
   </script>
 
   <!-- Local Fonts -->
-  <link rel="stylesheet" href="./assets/fonts/fonts.css">
+  <link rel="preload" href="./assets/fonts/root-fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/fonts/root-fonts.css"></noscript>
 
   <!-- Tailwind CSS Static Build (Ultra fast & 100% offline file:// compatible) -->
-  <link rel="stylesheet" href="./assets/css/tailwind.css">
+  <link rel="preload" href="./assets/css/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/css/tailwind.css"></noscript>
 
   <!-- Alpine.js -->
   <script defer src="./assets/vendor/alpinejs.min.js"></script>
@@ -371,6 +374,94 @@
     }
 
     /* =============================================
+       BRAND & GRADIENT UTILITY PRE-COMPILED FALLBACKS
+       Guarantees full rendering of all custom utility classes
+       without requiring runtime Tailwind JIT compilation.
+       ============================================= */
+    :root {
+      --chile-blue-rgb: 10, 49, 97;
+      --chile-blue-light-rgb: 42, 104, 200;
+      --chile-blue-dark-rgb: 6, 26, 56;
+      --chile-red-rgb: 213, 43, 30;
+      --chile-red-dark-rgb: 161, 29, 19;
+    }
+
+    /* Solid & Utility Text Colors */
+    .text-chile-blue { color: rgb(var(--chile-blue-rgb)) !important; }
+    .text-chile-blueLight { color: #2A68C8 !important; }
+    :root:not(.light-theme) .text-chile-blueLight { color: #68A2FF !important; }
+    .text-chile-red { color: rgb(var(--chile-red-rgb)) !important; }
+
+    /* Solid & Opacity Background Colors */
+    .bg-chile-blue { background-color: rgb(var(--chile-blue-rgb)) !important; }
+    .bg-chile-blue\/5 { background-color: rgba(var(--chile-blue-rgb), 0.05) !important; }
+    .bg-chile-blue\/10 { background-color: rgba(var(--chile-blue-rgb), 0.1) !important; }
+    .bg-chile-blue\/18 { background-color: rgba(var(--chile-blue-rgb), 0.18) !important; }
+    .bg-chile-blue\/20 { background-color: rgba(var(--chile-blue-rgb), 0.2) !important; }
+    .bg-chile-blueLight\/10 { background-color: rgba(var(--chile-blue-light-rgb), 0.1) !important; }
+    .bg-chile-blueLight\/12 { background-color: rgba(var(--chile-blue-light-rgb), 0.12) !important; }
+    .bg-chile-blueLight\/15 { background-color: rgba(var(--chile-blue-light-rgb), 0.15) !important; }
+    .bg-chile-red\/5 { background-color: rgba(var(--chile-red-rgb), 0.05) !important; }
+    .bg-chile-red\/8 { background-color: rgba(var(--chile-red-rgb), 0.08) !important; }
+    .bg-chile-red\/10 { background-color: rgba(var(--chile-red-rgb), 0.1) !important; }
+    .bg-chile-red\/20 { background-color: rgba(var(--chile-red-rgb), 0.2) !important; }
+    .bg-chile-red\/80 { background-color: rgba(var(--chile-red-rgb), 0.8) !important; }
+
+    /* Border Colors */
+    .border-chile-blue { border-color: rgb(var(--chile-blue-rgb)) !important; }
+    .border-chile-blue\/10 { border-color: rgba(var(--chile-blue-rgb), 0.1) !important; }
+    .border-chile-blue\/20 { border-color: rgba(var(--chile-blue-rgb), 0.2) !important; }
+    .border-chile-blue\/30 { border-color: rgba(var(--chile-blue-rgb), 0.3) !important; }
+    .border-chile-blueLight\/20 { border-color: rgba(var(--chile-blue-light-rgb), 0.2) !important; }
+    .border-chile-blueLight\/25 { border-color: rgba(var(--chile-blue-light-rgb), 0.25) !important; }
+    .border-chile-blueLight\/30 { border-color: rgba(var(--chile-blue-light-rgb), 0.3) !important; }
+    .border-chile-blueLight\/35 { border-color: rgba(var(--chile-blue-light-rgb), 0.35) !important; }
+    .border-chile-red\/10 { border-color: rgba(var(--chile-red-rgb), 0.1) !important; }
+
+    /* Gradients */
+    .from-chile-blue.to-chile-blueLight {
+      background: linear-gradient(135deg, rgb(var(--chile-blue-rgb)) 0%, rgb(var(--chile-blue-light-rgb)) 100%) !important;
+    }
+    .from-chile-blue.to-chile-blueDark {
+      background: linear-gradient(135deg, rgb(var(--chile-blue-rgb)) 0%, rgb(var(--chile-blue-dark-rgb)) 100%) !important;
+    }
+    .from-chile-blue.via-chile-blueLight.to-chile-blueDark {
+      background: linear-gradient(135deg, rgb(var(--chile-blue-rgb)) 0%, rgb(var(--chile-blue-light-rgb)) 50%, rgb(var(--chile-blue-dark-rgb)) 100%) !important;
+    }
+    .from-chile-blue.to-drac-purple {
+      background: linear-gradient(135deg, rgb(var(--chile-blue-rgb)) 0%, #BD93F9 100%) !important;
+    }
+    .from-chile-red.to-chile-redDark {
+      background: linear-gradient(135deg, rgb(var(--chile-red-rgb)) 0%, rgb(var(--chile-red-dark-rgb)) 100%) !important;
+    }
+    .from-chile-red.to-drac-orange {
+      background: linear-gradient(135deg, rgb(var(--chile-red-rgb)) 0%, #FFB86C 100%) !important;
+    }
+    .from-slate-950.via-slate-900.to-sky-950 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #082f49 100%) !important;
+    }
+    .from-\[\#25D366\].to-\[\#128C7E\] {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    }
+    .from-drac-green.to-\[\#3DD668\] {
+      background: linear-gradient(135deg, #50FA7B 0%, #3DD668 100%) !important;
+    }
+
+    /* Custom Shadow Fallbacks */
+    .shadow-glow {
+      box-shadow: 0 0 28px rgba(10, 49, 97, 0.42), 0 0 48px rgba(42, 104, 200, 0.22) !important;
+    }
+    .shadow-glow-red {
+      box-shadow: 0 0 28px rgba(213, 43, 30, 0.42), 0 0 48px rgba(255, 85, 85, 0.22) !important;
+    }
+    .shadow-card {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+    }
+    .shadow-card-hover {
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22), 0 0 24px rgba(42, 104, 200, 0.15) !important;
+    }
+
+    /* =============================================
        HERO: Real photo background + strong overlay
        ============================================= */
     .hero-photo-bg {
@@ -379,7 +470,7 @@
           rgba(0,20,70,0.88) 0%,
           rgba(0,40,130,0.75) 40%,
           rgba(120,15,10,0.65) 100%),
-        url('./santiago_hero.jpg');
+        url('./assets/optimized/santiago-hero.webp');
       background-size: cover;
       background-position: center 30%;
       background-repeat: no-repeat;
@@ -722,7 +813,7 @@
                 <!-- Mock website content -->
                 <div class="p-5 space-y-4">
                   <!-- Mini hero -->
-                  <div class="rounded-2xl bg-gradient-to-br from-chile-blue via-chile-blueLight to-chile-blueDark p-6 text-white">
+                  <div class="rounded-2xl p-6 text-white" style="background: linear-gradient(135deg, #0A1E3F 0%, #112A56 55%, #193B77 100%); border: 1px solid rgba(255, 255, 255, 0.15);">
                     <p class="text-responsive-caption font-bold uppercase tracking-[0.2em] text-white/90">Tu marca aquí</p>
                     <h2 class="mt-2 font-display text-xl font-bold leading-tight">Servicio claro, atención simple</h2>
                     <p class="mt-2 text-xs text-white/85 leading-relaxed">Todo lo importante listo para que te escriban.</p>
@@ -791,7 +882,7 @@
             <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-chile-blueLight/15 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
             <div class="relative flex flex-grow flex-col">
               <div class="mb-5 h-40 overflow-hidden rounded-3xl border border-white/10 md:mb-6 md:h-44">
-                <img src="./demo-salon-belleza/hero.png" alt="Vista editorial boutique" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src="./assets/optimized/salon-card.webp" alt="Vista editorial boutique" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
               <span class="inline-flex w-fit rounded-full bg-chile-blueLight/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-chile-blueLight">Propuesta 01 · Editorial boutique viva</span>
               <h3 class="mt-4 font-display text-xl font-black leading-tight text-drac-fg sm:text-2xl">Una vitrina que eleva tu imagen</h3>
@@ -810,7 +901,7 @@
             <div class="absolute -right-10 bottom-8 h-40 w-40 rounded-full bg-chile-blueLight/15 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
             <div class="relative flex flex-grow flex-col">
               <div class="mb-5 h-40 overflow-hidden rounded-3xl border border-white/10 md:mb-6 md:h-44">
-                <img src="./demo-ecommerce-tech/hero.png" alt="Vista de impacto comercial" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src="./assets/optimized/ecommerce-card.webp" alt="Vista de impacto comercial" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
               <span class="inline-flex w-fit rounded-full bg-chile-blueLight/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-chile-blueLight">Propuesta 02 · Impacto comercial vivo</span>
               <h3 class="mt-4 font-display text-xl font-black leading-tight text-drac-fg sm:text-2xl">Una página que invita a consultar y comprar</h3>
@@ -829,7 +920,7 @@
             <div class="absolute -left-14 top-20 h-40 w-40 rounded-full bg-chile-blueLight/12 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
             <div class="relative flex flex-grow flex-col">
               <div class="mb-5 h-40 overflow-hidden rounded-3xl border border-white/10 md:mb-6 md:h-44">
-                <img src="./demo-contabilidad/office.png" alt="Vista de sistema vivo" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src="./assets/optimized/contabilidad-card.webp" alt="Vista de sistema vivo" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
               <span class="inline-flex w-fit rounded-full bg-chile-blueLight/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-chile-blueLight">Propuesta 03 · Sistema vivo</span>
               <h3 class="mt-4 font-display text-xl font-black leading-tight text-drac-fg sm:text-2xl">Una página que ordena la atención</h3>
@@ -881,7 +972,7 @@
           <!-- Demo 1: Fonoaudiología -->
           <a href="./demo-fonoaudiologia/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-fonoaudiologia/hero.jpg" alt="Demo Nahovy Gallegos Fonoaudiología" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/fonoaudiologia-card.webp" alt="Demo Nahovy Gallegos Fonoaudiología" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-green/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Salud Infantil 🧸</div>
             </div>
@@ -898,7 +989,7 @@
           <!-- Demo 2: Psicóloga -->
           <a x-show="showAllDemos" x-cloak href="./demo-psicologa/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .06s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-psicologa/preview.png" alt="Demo Clara Altieri Psicóloga" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/psicologa-card.webp" alt="Demo Clara Altieri Psicóloga" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-purple/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">Salud & Bienestar</div>
             </div>
@@ -915,7 +1006,7 @@
           <!-- Demo 3: Café La Ruta -->
           <a x-show="showAllDemos" x-cloak href="./demo-cafe-valparaiso/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .12s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-cafe-valparaiso/hero.png" alt="Demo Café La Ruta Valparaíso" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/cafe-card.webp" alt="Demo Café La Ruta Valparaíso" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-orange/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">Gastronomía</div>
             </div>
@@ -932,7 +1023,7 @@
           <!-- Demo 4: Studio Chic -->
           <a href="./demo-salon-belleza/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .18s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-salon-belleza/hero.png" alt="Demo Studio Chic Peluquería" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/salon-card.webp" alt="Demo Studio Chic Peluquería" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-yellow/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Estética & Belleza</div>
             </div>
@@ -949,7 +1040,7 @@
           <!-- Demo 5: Artesanías del Sur -->
           <a x-show="showAllDemos" x-cloak href="./demo-artesanias/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .24s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-artesanias/studio.png" alt="Demo Artesanías del Sur E-commerce" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/artesanias-card.webp" alt="Demo Artesanías del Sur E-commerce" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-pink/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">Tienda & Retail</div>
             </div>
@@ -966,7 +1057,7 @@
           <!-- Demo 6: ContaDigital -->
           <a x-show="showAllDemos" x-cloak href="./demo-contabilidad/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .30s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-contabilidad/office.png" alt="Demo ContaDigital Contabilidad" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/contabilidad-card.webp" alt="Demo ContaDigital Contabilidad" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Servicios B2B</div>
             </div>
@@ -983,7 +1074,7 @@
           <!-- Demo 7: Corredora de Propiedades (Cobre & Co.) -->
           <a x-show="showAllDemos" x-cloak href="./demo-propiedades/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .36s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-propiedades/hero.png" alt="Demo Cobre & Co. Propiedades" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/propiedades-card.webp" alt="Demo Cobre & Co. Propiedades" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Corretaje Premium</div>
             </div>
@@ -1000,7 +1091,7 @@
           <!-- Demo 8: E-commerce & Admin (El Siguiente Paso) -->
           <a href="./demo-ecommerce-tech/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-purple/60 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-purple/60 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .42s">
             <div class="relative h-48 w-full overflow-hidden">
-              <img src="./demo-ecommerce-tech/hero.png" alt="Demo E-commerce con Panel de Control" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/optimized/ecommerce-card.webp" alt="Demo E-commerce con Panel de Control" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
               <div class="absolute top-4 left-4 rounded-full bg-drac-purple/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">El Siguiente Paso 🚀</div>
             </div>
@@ -1170,13 +1261,13 @@
           </div>
         </div>
 
-        <div class="reveal mt-8 rounded-[1.75rem] bg-gradient-to-r from-chile-blue to-chile-blueDark p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow">
+        <div class="reveal mt-8 rounded-[1.75rem] p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow" style="background: linear-gradient(135deg, #0A1E3F 0%, #112A56 55%, #193B77 100%); border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 14px 34px rgba(10, 30, 63, 0.22);">
           <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div class="max-w-2xl">
-              <h3 class="text-lg font-bold text-white">Se ve profesional. Inspira confianza.</h3>
-              <p class="mt-2 text-sm leading-relaxed text-white/82">Menos ruido, más claridad y una presencia digital que acompaña mejor cada consulta.</p>
+              <h3 class="font-bold text-white" style="font-size: 19px;">Se ve profesional. Inspira confianza.</h3>
+              <p class="mt-2 leading-relaxed" style="font-size: 15px; color: #E8EEF8;">Menos ruido, más claridad y una presencia digital que acompaña mejor cada consulta.</p>
             </div>
-            <a href="#precios" class="premium-quiet-cta inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-bold text-white transition-all duration-300">
+            <a href="#precios" class="premium-quiet-cta inline-flex items-center justify-center rounded-full border border-white/35 bg-white/12 hover:bg-white hover:text-[#0A1E3F] px-6 py-3 text-sm font-bold text-white transition-all duration-300 shadow-sm">
               Ver planes y precios →
             </a>
           </div>
@@ -1578,7 +1669,7 @@
             <div class="p-8 flex-grow">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-chile-blueLight">Presencia Propia</p>
               <p class="mt-4 font-display text-4xl font-black text-drac-fg"><span class="text-lg font-medium text-drac-comment">Desde </span>$149.990<span class="text-base font-medium text-drac-comment"> CLP</span><span class="text-sm font-semibold text-drac-comment ml-1 align-middle"> neto + IVA</span></p>
-              <p class="mt-2 text-sm text-drac-green font-bold">Paga en 2 cuotas precio contado de $74.995 CLP <span class="text-responsive-detail font-semibold text-drac-comment">neto + IVA</span></p>
+              <p class="mt-2 text-sm text-drac-green font-bold">Pago escalonado en 2 hitos de avance: $74.995 CLP <span class="text-responsive-detail font-semibold text-drac-comment">neto + IVA c/u</span></p>
               <p class="mt-1 text-sm text-drac-comment">Pago único • Para verse serio y facilitar el primer contacto</p>
               <div class="mt-6 h-px bg-drac-current/30"></div>
               <ul class="mt-6 space-y-3">
@@ -1705,7 +1796,7 @@
             <div class="p-8 flex-grow">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-chile-blueLight">Atención Clara</p>
               <p class="mt-4 font-display text-4xl font-black text-drac-fg"><span class="text-lg font-medium text-drac-comment">Desde </span>$249.990<span class="text-base font-medium text-drac-comment"> CLP</span><span class="text-sm font-semibold text-drac-comment ml-1 align-middle"> neto + IVA</span></p>
-              <p class="mt-2 text-sm text-drac-green font-bold">Paga en 3 cuotas precio contado de $83.330 CLP <span class="text-responsive-detail font-semibold text-drac-comment">neto + IVA</span></p>
+              <p class="mt-2 text-sm text-drac-green font-bold">Pago escalonado en 3 hitos de avance: $83.330 CLP <span class="text-responsive-detail font-semibold text-drac-comment">neto + IVA c/u</span></p>
               <p class="mt-1 text-sm text-drac-comment">Pago único • Recomendado para la mayoría de las pymes y servicios</p>
               <ul class="mt-6 space-y-3">
                 <li class="flex items-start gap-3 text-sm text-drac-fg font-medium relative cursor-help" x-data="{ tooltip: false }" @mouseenter="tooltip = true" @mouseleave="tooltip = false">
@@ -1848,7 +1939,7 @@
             <div class="p-8 flex-grow">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-drac-purple">Venta Activa</p>
               <p class="mt-4 font-display text-4xl font-black text-drac-fg"><span class="text-lg font-medium text-drac-comment">Desde </span>$449.990<span class="text-base font-medium text-drac-comment"> CLP</span><span class="text-sm font-semibold text-drac-comment ml-1 align-middle"> neto + IVA</span></p>
-              <p class="mt-2 text-sm text-drac-green font-bold">Paga en 3 cuotas precio contado de $149.997 CLP <span class="text-responsive-detail font-semibold text-drac-comment">neto + IVA</span></p>
+              <p class="mt-2 text-sm text-drac-green font-bold">Pago escalonado en 3 hitos de avance: $149.997 CLP <span class="text-responsive-detail font-semibold text-drac-comment">neto + IVA c/u</span></p>
               <p class="mt-1 text-sm text-drac-comment">Pago único • Para vender online con autonomía y control simple</p>
               <div class="mt-6 h-px bg-drac-current/30"></div>
               <ul class="mt-6 space-y-3">

@@ -103,9 +103,12 @@ Cada página implementa las mejores prácticas básicas de SEO sin alterar la es
 
 ## 5. Entorno de Pruebas (Automatización)
 
-Para validar el funcionamiento del sistema, se cuenta con scripts de prueba basados en **Puppeteer** localizados en el directorio temporal o de scratch de la aplicación. Estos scripts pueden ser ejecutados de la siguiente forma:
+Para validar el funcionamiento del sistema, se cuenta con scripts de prueba basados en **Playwright/Chromium** localizados en el repositorio. Estos scripts pueden ser ejecutados de la siguiente forma:
 
 ```bash
+# Gate unificado de preproducción: checks estáticos + suite Node + navegación real file://
+node scripts/preproduction_gate.js
+
 # Validar la página de inicio y sus enlaces
 node test_root.js
 
@@ -119,8 +122,16 @@ node test_contabilidad.js
 node check_consoles.js
 ```
 
+El script `scripts/preproduction_gate.js` actúa como puerta técnica de salida a producción y consolida tres capas de validación:
+1. **Checks estáticos del repositorio**: SEO base, presencia de `lang="es-CL"`, un solo `<h1>`, metadatos Open Graph/Twitter, `JSON-LD`, referencias locales válidas, compatibilidad de links con `file://` y ausencia de referencias prohibidas a `voiceshop-pro.zip`.
+2. **Ejecución de la suite Node existente**: intenta correr `test_root.js`, `test_cafe.js`, `test_salon.js`, `test_artesanias.js`, `test_contabilidad.js` y `check_consoles.js`, marcando fallo si alguno no existe o termina con error.
+3. **Navegación real offline**: abre `index.html` con Chrome Headless sobre `file://`, recorre los links de demos desde la landing, verifica carga, `<h1>`, link de retorno, errores de consola, excepciones JavaScript y fallos de carga.
+
 > [!IMPORTANT]
 > Antes de realizar un despliegue a producción, es obligatorio ejecutar `node check_consoles.js` y confirmar que no existan errores de scripts o warnings de dependencias de Alpine.js (como el requerimiento del plugin `collapse` para animaciones `x-collapse`).
+
+> [!IMPORTANT]
+> Para dar visto bueno técnico de producción, ejecutar además `node scripts/preproduction_gate.js`. Si el resumen final entrega `FAIL`, el sitio no debe considerarse aprobado para despliegue.
 
 ---
 
@@ -133,4 +144,3 @@ node check_consoles.js
   - **Planes y propuestas**: Crear en `docs/plans/` (formato `.md` y gráficos `mmd` embebidos).
   - **Registros y bitácoras**: Crear en `doc/logs/`.
   - **Scripts auxiliares/helpers** (`.py`, `.sh`, `.js`, `.ts`): Crear en `scripts/` de la raíz. Eliminar tras su uso si son de una sola ejecución.
-
