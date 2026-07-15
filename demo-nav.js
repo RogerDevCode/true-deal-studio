@@ -26,10 +26,16 @@
 
   const style = document.createElement("style");
   style.textContent = `
+    html {
+      scroll-padding-top: 80px;
+    }
+    button, a, input, select, textarea, [id], section, div[role="button"], .cta-btn, .btn {
+      scroll-margin-top: 80px;
+    }
     .stax-demo-nav {
       position: sticky;
       top: 0;
-      z-index: 9999;
+      z-index: 100;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
