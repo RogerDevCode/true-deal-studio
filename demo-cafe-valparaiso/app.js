@@ -15,8 +15,18 @@ window.cafeApp = function cafeApp() {
     }
   }
 
-  function openMailto(email, subject, bodyText) {
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+  function openWhatsApp(phone, bodyText) {
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(bodyText)}`;
+    const popup = window.open(waUrl, '_blank', 'noopener');
+    if (!popup) {
+      window.location.href = waUrl;
+      return;
+    }
+    try {
+      popup.focus();
+    } catch (error) {
+      // Ignore focus issues in strict browsers.
+    }
   }
 
   return {
@@ -128,7 +138,7 @@ window.cafeApp = function cafeApp() {
         `Sector Preferido: ${this.formSector === 'presencial' ? 'Terraza (Presencial)' : 'Salón Interior (Online/Privado)'}\n` +
         `Comentarios: ${this.formComment || 'Ninguno'}`;
 
-      openMailto('reservas@cafelaruta.cl', 'Nueva Solicitud de Reserva - Café La Ruta', bodyText);
+      openWhatsApp('56999040515', bodyText);
 
       this.bookingModal = false;
       this.resetBookingForm();

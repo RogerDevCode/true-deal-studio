@@ -15,8 +15,18 @@ window.salonApp = function salonApp() {
     }
   }
 
-  function openMailto(email, subject, bodyText) {
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+  function openWhatsApp(phone, bodyText) {
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(bodyText)}`;
+    const popup = window.open(waUrl, '_blank', 'noopener');
+    if (!popup) {
+      window.location.href = waUrl;
+      return;
+    }
+    try {
+      popup.focus();
+    } catch (error) {
+      // Ignore focus issues in strict browsers.
+    }
   }
 
   return {
@@ -154,7 +164,7 @@ window.salonApp = function salonApp() {
         `Sector de Atención: ${this.formSector === 'presencial' ? 'Presencial (Tocador Central)' : 'Online / Diagnóstico a Distancia'}\n` +
         `Detalles Adicionales: ${this.formComment || 'Ninguno'}`;
 
-      openMailto('citas@studiochic.cl', 'Nueva Reserva de Estilo - Studio Chic', bodyText);
+      openWhatsApp('56999040515', bodyText);
 
       this.bookingModal = false;
       this.resetBookingForm();

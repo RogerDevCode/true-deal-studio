@@ -21,8 +21,18 @@ window.psicologaApp = function psicologaApp() {
     }
   }
 
-  function openMailto(email, subject, bodyText) {
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+  function openWhatsApp(phone, bodyText) {
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(bodyText)}`;
+    const popup = window.open(waUrl, '_blank', 'noopener');
+    if (!popup) {
+      window.location.href = waUrl;
+      return;
+    }
+    try {
+      popup.focus();
+    } catch (error) {
+      // Ignore focus issues in strict browsers.
+    }
   }
 
   return {
@@ -129,9 +139,14 @@ window.psicologaApp = function psicologaApp() {
       });
 
       const slotLine = this.selectedSlot ? `\nHora solicitada: ${this.selectedSlot}` : '';
-      const bodyText = `Nombre: ${this.name}\nTeléfono: ${this.phone}\nEmail: ${this.email}\nModalidad: ${this.modalidad}${slotLine}\nMotivo: ${this.motivo}`;
+      const bodyText = `Hola Psicóloga Clara, quisiera solicitar una sesión.\n\n` +
+        `Nombre: ${this.name}\n` +
+        `Teléfono: ${this.phone}\n` +
+        `Email: ${this.email}\n` +
+        `Modalidad: ${this.modalidad === 'presencial' ? 'Presencial' : 'Online'}${slotLine}\n` +
+        `Motivo: ${this.motivo || 'Sesión Clínica'}`;
 
-      openMailto('contacto@psclaraaltieri.com', 'Solicitud de Horas - Ps. Clara Altieri', bodyText);
+      openWhatsApp('56999040515', bodyText);
       this.bookingModal = false;
     },
 
