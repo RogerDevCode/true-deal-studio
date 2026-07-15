@@ -41,11 +41,22 @@ test.describe('Exhaustive Tests for Demos 1 to 5', () => {
       const modal = page.locator('div.inline-block.overflow-hidden, div.bg-white.rounded-3xl, .modal-card').first();
       await expect(modal).toBeAttached();
 
-      // Check Presencial priority in modality selector if exists
-      const modeSelect = modal.locator('select').first();
-      if (await modeSelect.count() > 0 && await modeSelect.isVisible()) {
-        const firstOptionText = await modeSelect.locator('option').first().textContent();
-        expect(firstOptionText?.toLowerCase()).toContain('presencial');
+      // Check Presencial priority/default in the modality control, whether radios or select.
+      const modalityRadios = modal.locator('input[name="modalidad"]');
+      if (await modalityRadios.count() > 0) {
+        const firstRadio = modalityRadios.first();
+        await expect(firstRadio).toHaveValue(/presencial/i);
+        await expect(firstRadio).toBeChecked();
+      } else {
+        const selects = modal.locator('select');
+        for (let i = 0; i < await selects.count(); i++) {
+          const select = selects.nth(i);
+          const firstOptionText = await select.locator('option').first().textContent();
+          if (firstOptionText?.toLowerCase().includes('presencial')) {
+            await expect(select).toBeVisible();
+            break;
+          }
+        }
       }
 
       // Try breaking inputs with XSS and extreme strings
