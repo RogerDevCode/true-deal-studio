@@ -19,7 +19,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
   const guards = await attachPageGuards(page);
   await page.goto("/");
 
-  await expect(page).toHaveTitle("STAX | Bot de Telegram y atención por WhatsApp");
+  await expect(page).toHaveTitle("STAX | Atención de consultas por Telegram");
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.locator("h1")).toContainText("Deja de responder lo mismo todos los días.");
 
@@ -35,7 +35,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
     await expect(backLink, `No se encontro link de retorno en ${href}`).toBeVisible();
     await expect(backLink).toHaveAttribute("href", /..\/*index\.html/);
     await page.goto("/");
-    await expect(page).toHaveTitle("STAX | Bot de Telegram y atención por WhatsApp");
+    await expect(page).toHaveTitle("STAX | Atención de consultas por Telegram");
   }
 
   await guards.assertHealthyContext();

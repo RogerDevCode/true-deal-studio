@@ -9,7 +9,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
   test('Hero section elements, typography, and primary CTA responsiveness', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    await expect(page).toHaveTitle(/Bot de Telegram y atención por WhatsApp/i);
+    await expect(page).toHaveTitle(/Atención de consultas por Telegram/i);
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('h1')).toContainText('Deja de responder lo mismo todos los días.');
     
@@ -94,7 +94,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const offerSection = page.locator('#oferta');
     await expect(offerSection).toBeVisible();
     await expect(offerSection).toContainText('Plan básico');
-    await expect(offerSection).toContainText('Bot de Telegram');
+    await expect(offerSection).toContainText('Consultas frecuentes por Telegram');
 
     const whatsappLinks = page.locator('a[href*="wa.me"], a[href*="whatsapp"]');
     const telegramLinks = page.locator('a[href^="tg://user?id=5391760292"]');
