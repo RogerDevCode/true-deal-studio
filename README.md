@@ -46,6 +46,18 @@ npm run serve
 
 El servidor se inicia en `http://localhost:4173` de forma predeterminada.
 
+## Despliegue automático en Vercel
+
+El proyecto ya incluye `vercel.json` y `.vercelignore` para servir el sitio estático desde la raíz. La conexión con Vercel se realiza una sola vez desde la cuenta propietaria:
+
+1. En [Vercel](https://vercel.com/new), selecciona **Add New → Project** e importa `RogerDevCode/true-deal-studio` desde GitHub.
+2. Confirma **Framework Preset: Other**, **Root Directory: `./`**, **Build Command: vacío** y **Output Directory: vacío**.
+3. Verifica que **Production Branch** sea `main` y selecciona **Deploy**.
+
+Desde ese momento, un push a `main` publica producción automáticamente. Cada pull request o rama distinta de `main` recibe una **Preview URL** para revisión; el enlace aparece en GitHub y en el Dashboard de Vercel.
+
+No agregues tokens, `VERCEL_ORG_ID` ni `VERCEL_PROJECT_ID` al repositorio: la integración GitHub–Vercel gestiona esa autorización fuera del código.
+
 ## Calidad y pruebas
 
 El proyecto usa Playwright para validar formularios, navegación, consola y comportamiento de la landing.
