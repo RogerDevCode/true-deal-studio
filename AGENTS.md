@@ -84,6 +84,7 @@ Cada página pública mantiene:
 ### Copy y propuesta comercial
 
 - Usar español directo, afirmativo y orientado a acciones observables: mostrar, explicar, orientar, preparar, ordenar, revisar y avanzar.
+- Cuando un titular presente dos ideas completas, disponer cada idea en su propia línea mediante un bloque explícito; evitar que el ajuste automático las una o corte una idea a la mitad.
 - Tratar la IA como herramienta de apoyo; explicar el aporte humano en criterio, adaptación, publicación e integración con la atención del negocio.
 - Presentar las demos como evidencia de criterio: qué ordenan y qué puede revisar el dueño.
 - Mostrar alcance, valor, plazos, accesos, dominio, contenidos y propiedad de forma clara.
