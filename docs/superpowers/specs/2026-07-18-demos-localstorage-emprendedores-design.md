@@ -24,7 +24,7 @@ La reutilización se limita a una utilidad local mínima por demo: clonación de
 
 Las cuatro experiencias deben evitar la secuencia repetida hero + tarjetas + catálogo + formulario. Cada una expresa la decisión principal del cliente mediante una composición propia:
 
-- **Servicios domiciliarios:** tablero de atención. Hero compacto, selector de urgencia visible, cobertura y franja horaria como información operativa y solicitudes apiladas por prioridad.
+- **Servicios domiciliarios:** orden de visita profesional. Hero dividido 60/40, con propuesta de valor sobria a la izquierda y cobertura/horarios en una orden de visita a la derecha; las solicitudes se leen como un panel operativo de alta densidad.
 - **Mascotas:** agenda de cuidado. Fichas de mascota, preparación antes de la visita y una agenda con estados legibles; la confianza se construye desde el perfil y la rutina.
 - **Floristería:** composición editorial guiada. La página avanza por ocasión, estilo y entrega; el resumen vivo acompaña la elección y la dedicatoria ocupa un espacio central.
 - **Banquetería/pastelería:** mapa de celebración. Formato, asistentes, presupuesto y restricciones se presentan como partes de una propuesta de evento, no como un catálogo ni un formulario lineal.
@@ -38,7 +38,7 @@ Una experiencia de coordinación para gasfitería, electricidad y mantención.
 - El cliente indica comuna, tipo de problema, nivel de urgencia, franja horaria y una descripción breve.
 - La página muestra cobertura, proceso de atención, precios desde y qué información debe preparar.
 - La vista de dueño ordena solicitudes por prioridad y estado, con el contexto suficiente para responder por WhatsApp.
-- El diseño usa una interfaz de diagnóstico clara: decisiones breves, iconografía funcional y señales de urgencia sin alarmismo, resuelta como tablero de atención.
+- El diseño usa una interfaz de coordinación profesional: azul petróleo como base, superficies marfil y cobre reservado para prioridades; verde solo para confirmaciones. Evita grillas decorativas, emojis, sombras duras, círculos lúdicos y una paleta multicolor. La urgencia se comunica con texto y estado, además de color.
 
 ### Mascotas
 
