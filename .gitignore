@@ -31,11 +31,37 @@ env/
 # IDEs
 .vscode/
 .idea/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
 
 # OS
 .DS_Store
 Thumbs.db
 .kilo/
+Desktop.ini
+$RECYCLE.BIN/
+.Spotlight-V100
+.Trashes
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
 
 # Node / QA artifacts
 node_modules/
@@ -43,6 +69,31 @@ playwright-report/
 test-results/
 .lighthouseci/
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+coverage/
+.nyc_output/
+blob-report/
+playwright/.cache/
+test-results-*/
+screenshots/
+videos/
+traces/
+*.tsbuildinfo
+
+# Build and tool caches
+.cache/
+.parcel-cache/
+.vite/
+dist/
+build/
 
 # External reference artifacts
 voiceshop-pro.zip
