@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- Titular exacto: **“Que te vean. Que te crean.”**
+- Titular visual exacto en dos líneas: **“Que te vean”** y **“Que te crean”**.
 - Texto de apoyo exacto: **“Una página clara para que tus clientes conozcan lo que ofreces antes de escribirte por WhatsApp.”**
 - Mantener STAX como marca pública actual.
 - Mantener un solo `<h1>`, `lang="es-CL"`, SEO existente y compatibilidad `file://`.
@@ -41,7 +41,7 @@
 
 - [ ] **Step 1: Actualizar título y metadatos**
 
-Usar las siguientes cadenas en `index.html`:
+Usar las siguientes cadenas en `index.html`; la puntuación se mantiene en metadatos para una lectura natural fuera del hero:
 
 ```html
 <title>STAX | Que te vean. Que te crean.</title>
@@ -51,11 +51,11 @@ Usar las siguientes cadenas en `index.html`:
 
 - [ ] **Step 2: Actualizar titular y texto de apoyo**
 
-Conservar el `<span>` de estilo para la segunda frase y reemplazar su contenido:
+Forzar un bloque para la segunda frase, eliminando los puntos visuales:
 
 ```html
-Que te vean.
-<span class="bg-gradient-to-r from-orange-300 via-yellow-200 to-white bg-clip-text text-transparent">Que te crean.</span>
+Que te vean
+<span class="block bg-gradient-to-r from-orange-300 via-yellow-200 to-white bg-clip-text text-transparent">Que te crean</span>
 ```
 
 Reemplazar el párrafo siguiente por:
@@ -113,7 +113,8 @@ En `tests/landing-exhaustive.spec.js`, usar:
 
 ```js
 await expect(page).toHaveTitle(/Que te vean\. Que te crean\./);
-await expect(page.locator('h1')).toContainText('Que te vean. Que te crean.');
+await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
+await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
 await expect(page.locator('h1')).not.toContainText('Muestra lo que haces.');
 ```
 

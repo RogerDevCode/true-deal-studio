@@ -10,7 +10,8 @@ Reemplazar la promesa actual del hero por una idea más memorable y centrada en 
 
 ### Titular
 
-> **Que te vean. Que te crean.**
+> **Que te vean**
+> **Que te crean**
 
 ### Texto de apoyo
 
@@ -18,13 +19,13 @@ Reemplazar la promesa actual del hero por una idea más memorable y centrada en 
 
 ## Razonamiento
 
-El titular usa repetición y rima asonante para fijar una secuencia comercial reconocible: primero presencia, luego confianza. Evita promesas de ventas y mantiene el foco en una consecuencia razonable del servicio.
+El titular usa repetición y rima asonante para fijar una secuencia comercial reconocible: primero presencia, luego confianza. Cada idea ocupa una línea independiente en el hero; así se lee como dos afirmaciones completas y conserva su ritmo. Evita promesas de ventas y mantiene el foco en una consecuencia razonable del servicio.
 
 El texto de apoyo explica, en lenguaje directo, el rol concreto de la página y el paso siguiente por WhatsApp.
 
 ## Alcance
 
-- Actualizar el `<title>`, las etiquetas sociales y el `<h1>` de `index.html`.
+- Mantener el `<title>` y las etiquetas sociales con puntuación convencional; mostrar el `<h1>` en dos líneas explícitas y sin puntos visuales.
 - Actualizar el texto de apoyo inmediato del hero.
 - Ajustar las pruebas que verifican el título y el titular de la landing.
 - Actualizar las referencias activas de README y AGENTS.md que aún contengan el titular anterior.

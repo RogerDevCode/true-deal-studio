@@ -11,7 +11,8 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const guards = await attachPageGuards(page);
     await expect(page).toHaveTitle(/Que te vean\. Que te crean\./);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('h1')).toContainText('Que te vean. Que te crean.');
+    await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
+    await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
     await expect(page.locator('h1')).not.toContainText('Muestra lo que haces.');
     
     // Check navigation anchor links
