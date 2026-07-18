@@ -1,4 +1,4 @@
-# Plan de implementación: oferta clara antes de WhatsApp
+# Plan de implementación: muestra lo que haces
 
 **Especificación fuente:** `docs/superpowers/specs/2026-07-18-propuesta-whatsapp-clara-design.md`  
 **Alcance:** actualización estratégica de la landing principal, con reutilización de sus componentes, estilos y demos actuales.
@@ -31,7 +31,7 @@ La implementación conserva el catálogo de 14 demostraciones, compatibilidad `f
 
 **Archivo:** `index.html` (sección `#inicio`)
 
-1. Reemplazar el titular y bajada por la promesa aprobada: “Tu oferta clara antes del WhatsApp.”
+1. Reemplazar el titular y bajada por la promesa aprobada: “Muestra lo que haces. Atiende mejor por WhatsApp.”
 2. Explicar el escenario de local, delivery o conversación, con productos o servicios, valores desde, horarios y forma de pedir antes de escribir.
 3. Ajustar CTA principal hacia “Revisar mi atención por WhatsApp” y enlazarlo a la conversación/formulario existente mediante el mecanismo ya usado por la landing.
 4. Añadir el apoyo “Partimos por lo que hoy explicas cada día.”

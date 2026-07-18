@@ -12,7 +12,7 @@ El documento sustituye la referencia obsoleta a `web-negocios-chile-pro.html` y 
 
 Estructura propuesta:
 
-1. Título y resumen: landing para PYMEs y emprendimientos chilenos, centrada en “Tu oferta clara antes del WhatsApp”.
+1. Título y resumen: landing para PYMEs y emprendimientos chilenos, centrada en “Muestra lo que haces. Atiende mejor por WhatsApp.”.
 2. Qué entrega: presentación de oferta, valores, horarios, atención, catálogo, reservas y escalamiento hacia e-commerce.
 3. Catálogo de demos: resumen agrupado de las 14 demostraciones, con enlace al índice o rutas relevantes.
 4. Tecnologías: HTML, CSS, Alpine.js, Node.js y Playwright.

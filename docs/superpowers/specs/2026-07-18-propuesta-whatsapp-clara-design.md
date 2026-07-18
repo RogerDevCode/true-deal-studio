@@ -1,4 +1,4 @@
-# Propuesta: oferta clara antes de WhatsApp
+# Propuesta: muestra lo que haces
 
 **Estado:** diseño aprobado para revisión antes de planificación e implementación.
 
@@ -25,7 +25,7 @@ El proyecto evita testimonios o resultados atribuidos a clientes, porque el cat�
 
 ### Promesa central
 
-> **Tu oferta clara antes del WhatsApp.**
+> **Muestra lo que haces. Atiende mejor por WhatsApp.**
 
 Una página pensada para negocios que venden en su local, por delivery o por conversación. Sus clientes ven qué ofrece el negocio, valores desde, horarios y forma de pedir antes de escribir.
 
@@ -50,7 +50,7 @@ La IA puede aportar ideas, textos y velocidad de trabajo. El servicio aporta la 
 
 | Sección | Propósito | Mensaje o elemento principal |
 | --- | --- | --- |
-| Hero | Nombrar la mejora principal | “Tu oferta clara antes del WhatsApp.” CTA: “Revisar mi atención por WhatsApp”. |
+| Hero | Nombrar la mejora principal | “Muestra lo que haces. Atiende mejor por WhatsApp.” CTA: “Quiero ordenar mi negocio”. |
 | Escena cotidiana | Generar reconocimiento | Una recomendación abre la puerta; la página ayuda a que la persona conozca la oferta y avance con contexto. |
 | Qué recibe el negocio | Volver tangible el servicio | Servicios o productos, valores desde, horarios, ubicación, cobertura, delivery o reserva y WhatsApp preparado. |
 | Alcance honesto | Construir confianza | Cada herramienta cumple un trabajo concreto: la página presenta; el negocio atiende y entrega la experiencia. |
@@ -63,10 +63,10 @@ La IA puede aportar ideas, textos y velocidad de trabajo. El servicio aporta la 
 
 ### Hero
 
-> **Tu oferta clara antes del WhatsApp.**  
-> Una página pensada para negocios que venden en su local, por delivery o por conversación. Tus clientes ven qué ofreces, valores desde, horarios y forma de pedir antes de escribirte.
+> **Muestra lo que haces. Atiende mejor por WhatsApp.**
+> Tus clientes ven servicios, valores, horarios y forma de pedir antes de conversar contigo.
 
-CTA: **Revisar mi atención por WhatsApp**  
+CTA: **Quiero ordenar mi negocio**
 Apoyo: **Partimos por lo que hoy explicas cada día.**
 
 ### Beneficio operativo

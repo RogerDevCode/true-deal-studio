@@ -8,7 +8,7 @@ Reemplazar la guía extensa y parcialmente desactualizada por un manual operativ
 
 ## Estructura
 
-1. Contexto: nombre True Deal Studio, público chileno y propuesta “Tu oferta clara antes del WhatsApp”.
+1. Contexto: nombre True Deal Studio, público chileno y propuesta “Muestra lo que haces. Atiende mejor por WhatsApp.”.
 2. Stack: HTML, CSS/Tailwind compilado, Alpine.js, Node.js 22, Playwright y Chrome Headless.
 3. Mapa de repositorio: landing, assets, demos, pruebas, scripts, documentos, `README.md` y `package.json`.
 4. Reglas obligatorias: enlaces `file://`, formularios, atención presencial, mapas, CSS, SEO, accesibilidad y copy afirmativo.

@@ -4,7 +4,7 @@
 
 Este repositorio contiene una landing de servicios web para PYMEs, MIPYMEs y emprendimientos chilenos, junto con 14 demostraciones interactivas.
 
-La propuesta comercial vigente es: **“Tu oferta clara antes del WhatsApp.”** La página presenta productos o servicios, valores desde, horarios, cobertura, delivery, reservas y el siguiente paso para que las consultas lleguen con contexto.
+La propuesta comercial vigente es: **“Muestra lo que haces. Atiende mejor por WhatsApp.”** La página presenta productos o servicios, valores desde, horarios, cobertura, delivery, reservas y el siguiente paso para que las consultas lleguen con contexto.
 
 El público principal vende de forma presencial, por delivery o mediante WhatsApp; suele tener presencia digital limitada y busca claridad, control y alcance visible.
 

@@ -9,9 +9,9 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
   test('Hero section elements, typography, and primary CTA responsiveness', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    await expect(page).toHaveTitle(/Tu oferta clara antes del WhatsApp/);
+    await expect(page).toHaveTitle(/Muestra lo que haces\. Atiende mejor por WhatsApp\./);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('h1')).toContainText('Tu oferta clara antes del WhatsApp.');
+    await expect(page.locator('h1')).toContainText('Muestra lo que haces. Atiende mejor por WhatsApp.');
     
     // Check navigation anchor links
     const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#propuestas-premium'];
