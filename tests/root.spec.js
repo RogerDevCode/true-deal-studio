@@ -19,7 +19,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
   const guards = await attachPageGuards(page);
   await page.goto("/");
 
-  await expect(page).toHaveTitle("STAX | Se ve bien. Se vende mejor.");
+  await expect(page).toHaveTitle("STAX | Tu oferta clara antes del WhatsApp");
   await expect(page.locator("h1")).toHaveCount(1);
   await page.getByRole("button", { name: /Ver las 9 demostraciones en vivo|Mostrar menos demostraciones/i }).click();
 
@@ -35,7 +35,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
     await expect(backLink, `No se encontro link de retorno en ${href}`).toBeVisible();
     await expect(backLink).toHaveAttribute("href", /..\/*index\.html/);
     await page.goto("/");
-    await expect(page).toHaveTitle("STAX | Se ve bien. Se vende mejor.");
+    await expect(page).toHaveTitle("STAX | Tu oferta clara antes del WhatsApp");
   }
 
   await guards.assertHealthyContext();
