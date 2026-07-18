@@ -97,3 +97,6 @@ build/
 
 # External reference artifacts
 voiceshop-pro.zip
+
+# Local visual companion artifacts
+.superpowers/

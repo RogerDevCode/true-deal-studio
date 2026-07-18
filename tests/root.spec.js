@@ -21,6 +21,8 @@ test("Landing and demos stay production-ready", async ({ page }) => {
 
   await expect(page).toHaveTitle("STAX | Muestra lo que haces. Atiende mejor por WhatsApp.");
   await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.getByText("Atención en todo Chile", { exact: true })).toHaveCount(2);
+  await expect(page.locator("body")).not.toContainText(/Santiago|Concepción/i);
   await page.getByRole("button", { name: /Ver las 9 demostraciones en vivo|Mostrar menos demostraciones/i }).click();
 
   for (const href of demoPaths) {
