@@ -9,9 +9,10 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
   test('Hero section elements, typography, and primary CTA responsiveness', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    await expect(page).toHaveTitle(/Muestra lo que haces\. Atiende mejor por WhatsApp\./);
+    await expect(page).toHaveTitle(/Que te vean\. Que te crean\./);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('h1')).toContainText('Muestra lo que haces. Atiende mejor por WhatsApp.');
+    await expect(page.locator('h1')).toContainText('Que te vean. Que te crean.');
+    await expect(page.locator('h1')).not.toContainText('Muestra lo que haces.');
     
     // Check navigation anchor links
     const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#propuestas-premium'];

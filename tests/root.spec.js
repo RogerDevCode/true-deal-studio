@@ -19,7 +19,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
   const guards = await attachPageGuards(page);
   await page.goto("/");
 
-  await expect(page).toHaveTitle("STAX | Muestra lo que haces. Atiende mejor por WhatsApp.");
+  await expect(page).toHaveTitle("STAX | Que te vean. Que te crean.");
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.getByText("Atención en todo Chile", { exact: true })).toHaveCount(2);
   await expect(page.locator("body")).not.toContainText(/Santiago|Concepción/i);
@@ -37,7 +37,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
     await expect(backLink, `No se encontro link de retorno en ${href}`).toBeVisible();
     await expect(backLink).toHaveAttribute("href", /..\/*index\.html/);
     await page.goto("/");
-    await expect(page).toHaveTitle("STAX | Muestra lo que haces. Atiende mejor por WhatsApp.");
+    await expect(page).toHaveTitle("STAX | Que te vean. Que te crean.");
   }
 
   await guards.assertHealthyContext();

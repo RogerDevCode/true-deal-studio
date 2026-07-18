@@ -1,6 +1,6 @@
 # True Deal Studio
 
-Landing de servicios web para PYMEs, MIPYMEs y emprendimientos chilenos. Su propuesta es simple: **muestra lo que haces. Atiende mejor por WhatsApp.**
+Landing de servicios web para PYMEs, MIPYMEs y emprendimientos chilenos. Su propuesta es simple: **que te vean. Que te crean.**
 
 El sitio presenta páginas web como una herramienta comercial concreta: explica productos o servicios, valores desde, horarios, cobertura, delivery, reservas y el siguiente paso antes de iniciar una conversación. El foco está en recibir consultas con contexto y dar al dueño mayor claridad sobre su atención digital.
 
