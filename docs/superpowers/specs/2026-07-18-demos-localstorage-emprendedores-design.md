@@ -20,6 +20,17 @@ La reutilización se limita a una utilidad local mínima por demo: clonación de
 
 ## Demos
 
+## Dirección de diagramación
+
+Las cuatro experiencias deben evitar la secuencia repetida hero + tarjetas + catálogo + formulario. Cada una expresa la decisión principal del cliente mediante una composición propia:
+
+- **Servicios domiciliarios:** tablero de atención. Hero compacto, selector de urgencia visible, cobertura y franja horaria como información operativa y solicitudes apiladas por prioridad.
+- **Mascotas:** agenda de cuidado. Fichas de mascota, preparación antes de la visita y una agenda con estados legibles; la confianza se construye desde el perfil y la rutina.
+- **Floristería:** composición editorial guiada. La página avanza por ocasión, estilo y entrega; el resumen vivo acompaña la elección y la dedicatoria ocupa un espacio central.
+- **Banquetería/pastelería:** mapa de celebración. Formato, asistentes, presupuesto y restricciones se presentan como partes de una propuesta de evento, no como un catálogo ni un formulario lineal.
+
+No se reutiliza la misma jerarquía de secciones, grilla, navegación secundaria o patrón de tarjetas entre las cuatro demos. La reutilización técnica de estado local no autoriza la repetición visual.
+
 ### Servicios domiciliarios
 
 Una experiencia de coordinación para gasfitería, electricidad y mantención.
@@ -27,7 +38,7 @@ Una experiencia de coordinación para gasfitería, electricidad y mantención.
 - El cliente indica comuna, tipo de problema, nivel de urgencia, franja horaria y una descripción breve.
 - La página muestra cobertura, proceso de atención, precios desde y qué información debe preparar.
 - La vista de dueño ordena solicitudes por prioridad y estado, con el contexto suficiente para responder por WhatsApp.
-- El diseño usa una interfaz de diagnóstico clara: decisiones breves, iconografía funcional y señales de urgencia sin alarmismo.
+- El diseño usa una interfaz de diagnóstico clara: decisiones breves, iconografía funcional y señales de urgencia sin alarmismo, resuelta como tablero de atención.
 
 ### Mascotas
 
@@ -36,7 +47,7 @@ Una agenda para peluquería canina y atención móvil.
 - El cliente registra nombre, especie, tamaño, servicio, dirección, fecha preferida y observaciones de cuidado.
 - La página explica zonas de atención, preparación previa y valores desde.
 - La vista de dueño muestra fichas de mascota, próximas visitas y estado de confirmación.
-- El diseño transmite cuidado y cercanía sin infantilizar: fotografía/ilustración local, colores cálidos y jerarquía simple.
+- El diseño transmite cuidado y cercanía sin infantilizar: fichas de mascota, agenda de cuidado, colores cálidos y jerarquía simple.
 
 ### Floristería
 
@@ -45,7 +56,7 @@ Un flujo de pedido de arreglos con despacho urbano.
 - El cliente selecciona ocasión, estilo, presupuesto, fecha, comuna, bloque de entrega y dedicatoria.
 - La página muestra catálogo acotado, condiciones de despacho y alternativas de retiro.
 - La vista de dueño ordena pedidos por fecha de entrega y permite revisar el texto de cada tarjeta.
-- El diseño convierte la elección en una composición guiada: ocasión primero, arreglo después, detalles de entrega al cierre.
+- El diseño convierte la elección en una composición editorial guiada: ocasión primero, arreglo después, detalles de entrega al cierre y dedicatoria central.
 
 ### Banquetería y pastelería
 
@@ -54,7 +65,7 @@ Un cotizador orientativo para celebraciones.
 - El cliente indica tipo de evento, fecha, asistentes, formato, presupuesto, comuna y restricciones alimentarias.
 - La página aclara que la propuesta final se confirma por conversación y depende de agenda y logística.
 - La vista de dueño organiza solicitudes por fecha y tamaño de evento, con notas de restricciones.
-- El diseño presenta el menú como una decisión por formato de celebración, no como un catálogo largo de productos.
+- El diseño presenta un mapa de celebración: formato, asistentes, presupuesto y restricciones antes del menú; no usa un catálogo largo de productos.
 
 ## Requisitos transversales
 
@@ -85,4 +96,3 @@ Un cotizador orientativo para celebraciones.
 - Cada demo tiene un flujo comercial distinto y una señal visible de criterio técnico.
 - La persistencia local está aislada por clave, es reversible y no requiere configuración externa.
 - El alcance evita construir software operativo; las demos son evidencia interactiva de una página bien pensada.
-
