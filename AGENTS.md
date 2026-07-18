@@ -1,164 +1,150 @@
-# Guía de Proyecto: Showcase de Sitios Web para el Mercado Chileno
+# True Deal Studio — Manual Operativo
 
-Este archivo documenta la estructura, las características técnicas, las decisiones de diseño y el entorno de pruebas de este proyecto para facilitar el mantenimiento y la evolución por parte de futuros desarrolladores o agentes de IA.
+## 1. Contexto
 
----
+Este repositorio contiene una landing de servicios web para PYMEs, MIPYMEs y emprendimientos chilenos, junto con 14 demostraciones interactivas.
 
-## 1. Resumen y Objetivos del Proyecto
+La propuesta comercial vigente es: **“Tu oferta clara antes del WhatsApp.”** La página presenta productos o servicios, valores desde, horarios, cobertura, delivery, reservas y el siguiente paso para que las consultas lleguen con contexto.
 
-El objetivo de este proyecto es promocionar servicios de desarrollo de software y diseño web para PYMEs en Chile. Para lograrlo, el sitio principal funciona como una **Landing Page de Conversión** que incluye un catálogo interactivo de **14 sitios web de demostración** altamente optimizados y adaptados a sectores típicos del comercio local chileno.
+El público principal vende de forma presencial, por delivery o mediante WhatsApp; suele tener presencia digital limitada y busca claridad, control y alcance visible.
 
-Cada uno de los sitios de demostración fue construido bajo estándares premium de diseño, con micro-animaciones fluidas (usando CSS Vainilla y transiciones aceleradas por hardware), interactividad dinámica con Alpine.js y optimización básica para SEO y accesibilidad.
+La marca visible actual de la landing es **STAX**. **True Deal Studio** identifica el repositorio y su evolución estratégica. Un rebranding público requiere una tarea coordinada que incluya identidad, textos, SEO, metadatos y material relacionado.
 
----
+## 2. Stack
 
-## 2. Estructura del Repositorio
+- HTML estático y CSS local.
+- Tailwind CSS compilado en `assets/css/tailwind.css`.
+- Alpine.js local en `assets/vendor/` para interactividad.
+- Node.js `>=22 <23`.
+- Playwright para pruebas E2E.
+- Chrome Headless para validación real bajo `file://`.
 
-```bash
-/web_promotion
-├── AGENTS.md                          # Esta guía de arquitectura y desarrollo
-├── index.html                         # Landing page principal (Dracula Dark Theme)
-├── investigacion_diseños_populares.md # Estudio de patrones de diseño preferidos en Chile
-├── research_sitios_web_chile.md       # Análisis de mercado y competidores locales
-├── voiceshop-pro.zip                  # Demo futura de chatbot por voz; conservar como referencia externa, no integrada aún al showcase
-│
-├── demo-psicologa/                    # Demo 1: Psicóloga Clínica (Clara Altieri)
-│   ├── index.html                     # Estructura limpia y minimalista (Sage/Sand)
-│   └── preview.png                    # Captura de pantalla de previsualización
-│
-├── demo-cafe-valparaiso/              # Demo 2: Café de Especialidad (Café La Ruta)
-│   ├── index.html                     # Bento grid, carta interactiva y simulador
-│   ├── hero.png, coffee.png, etc.     # Recursos e imágenes locales
-│   └── cazuela.png, exterior.png
-│
-├── demo-salon-belleza/                # Demo 3: Alta Peluquería (Studio Chic)
-│   ├── index.html                     # Split-screen, deslizador antes/después, Valentina Moretti
-│   └── hero.png, before.png, etc.     # Recursos e imágenes locales
-│
-├── demo-artesanias/                   # Demo 4: Retail & E-commerce (Artesanías del Sur)
-│   ├── index.html                     # Carrito asincrónico y checkout a WhatsApp
-│   └── studio.png, greda.png, etc.    # Recursos e imágenes locales
-│
-├── demo-contabilidad/                 # Demo 5: Portal de Servicios B2B (ContaDigital)
-│   ├── index.html                     # Calculadora dinámica de planes SII
-│   └── office.png, portrait.png       # Recursos e imágenes locales
-│
-├── demo-propiedades/                  # Demo 6: Corredora de Propiedades (Cobre & Co.)
-│   ├── index.html                     # Filtros en UF/CLP y Agenda de Visitas
-│   └── depto1.png, hero.png, etc.     # Recursos e imágenes locales
-│
-├── demo-ecommerce-tech/               # Demo 7: Tienda Auto-Administrable (Apex Tech)
-│   ├── index.html                     # E-commerce interactivo con panel de pedidos
-│   └── hero.png, product_*.png        # Recursos e imágenes locales
-│
-├── demo-agenda/                       # Demo 8: CRM Express (Gestor de Citas y Clientes)
-│   └── index.html                     # Tablero centralizado de reservas de los demos
-│
-├── demo-fonoaudiologia/               # Demo 9: Clínica de Especialidades Médicas & Fonoaudiología
-│   └── index.html                     # Reserva clínica interactiva y servicios de salud
-│
-├── demo-plan-profesional/             # Demo 10: Plan Profesional (Simulador de Pagos & Catálogo)
-│   └── index.html                     # Catálogo filtrable, simulador financiero y modales
-│
-├── demo-plan-premium/                 # Demo 11: Plan Premium (Portal E-commerce Interactivo)
-│   └── index.html                     # Configuración de producto en vivo y checkout asincrónico
-│
-├── demo-propuesta-empezar-simple/     # Demo 12: Propuesta Comercial - Empezar Simple
-│   └── index.html                     # Landing ejecutiva enfocada en presencia digital inicial
-│
-├── demo-propuesta-atencion-ordenada/  # Demo 13: Propuesta Comercial - Atención Ordenada
-│   └── index.html                     # Propuesta enfocada en automatización de reservas y agenda
-│
-└── demo-propuesta-impacto-comercial/  # Demo 14: Propuesta Comercial - Impacto Comercial
-    └── index.html                     # Propuesta enfocada en conversión e-commerce integral
+El proyecto prioriza recursos locales y funcionamiento offline.
+
+## 3. Mapa del repositorio
+
+```text
+index.html                         Landing principal
+privacidad.html                    Aviso de privacidad
+assets/                            CSS, fuentes, imágenes y librerías locales
+demo-*/                            14 demostraciones interactivas
+tests/                             Pruebas Playwright
+scripts/                           Gate, servidor estático y helpers
+docs/                              Documentación y planes
+docs/plans/                        Planes de implementación
+docs/superpowers/specs/            Especificaciones aprobadas
+README.md                          Guía para GitHub
+package.json                       Scripts Node.js y dependencias
+playwright.config.js               Configuración de Playwright
 ```
 
-> [!NOTE]
-> `voiceshop-pro.zip` es un artefacto de exploración para un futuro demo de chatbot manejado por voz. No forma parte del flujo principal actual, no debe enlazarse desde `index.html` ni modificarse salvo instrucción explícita del usuario.
+### Demos
 
----
+- `demo-fonoaudiologia`, `demo-psicologa`: salud y reservas.
+- `demo-cafe-valparaiso`, `demo-salon-belleza`: atención local y agenda.
+- `demo-artesanias`, `demo-ecommerce-tech`: catálogo, pedidos y e-commerce.
+- `demo-contabilidad`, `demo-agenda`, `demo-propiedades`: servicios, gestión y visitas.
+- `demo-plan-profesional`, `demo-plan-premium`: propuestas de plan y checkout.
+- `demo-propuesta-empezar-simple`, `demo-propuesta-atencion-ordenada`, `demo-propuesta-impacto-comercial`: rutas comerciales de referencia.
 
-## 3. Directrices y Reglas Técnicas Críticas
+## 4. Reglas obligatorias
 
-Para mantener la integridad del sistema, cualquier cambio posterior debe respetar las siguientes especificaciones técnicas:
+### Navegación offline
 
-### A. Compatibilidad Sin Conexión (Protocolo `file://`)
-*   **Regla**: Los enlaces de navegación entre carpetas deben apuntar explícitamente al archivo de destino (`./demo-nombre/index.html`) en lugar de depender de la resolución automática del directorio (`./demo-nombre/`).
-*   **Razón**: Permite que el usuario final previsualice y navegue por las demos haciendo doble clic en el archivo local `index.html` directamente desde su explorador de archivos, sin necesidad de levantar un servidor HTTP.
+- Mantener compatibilidad con `file://`.
+- Usar rutas explícitas al archivo destino: `./demo-nombre/index.html` y `../index.html`.
+- Mantener recursos locales; comprobar enlaces después de cambiar rutas, demos o assets.
 
-### B. Comportamiento y Limpieza de Formularios (Alpine.js)
-*   **Regla**: Todos los modales de contacto/reserva (en Demos 1, 2, 3, 5 y Carro en Demo 4) deben resetear su estado al 100% al cancelarse, enviarse o cerrarse. No se permite mantener datos anteriores en caché o memoria.
-*   **Implementación**: Se utiliza una función de reset (`resetForm()`) gatillada mediante eventos y reactividad con `x-effect` para limpiar todas las variables reactivas a su estado original (`''` o `null`).
+### Formularios y atención
 
-### C. Prioridad de Canales de Atención
-*   **Regla**: En todos los selectores de modalidad de atención, reserva de horas o despacho, la opción **"Presencial"** debe ser listada en primer lugar y estar seleccionada por defecto en el estado del componente.
+- Los modales de reserva/contacto de las demos deben restablecer el estado al cancelar, enviar o cerrar.
+- En selectores de modalidad, reserva o despacho, **Presencial** aparece primero y queda seleccionada por defecto.
+- Conservar validaciones, accesibilidad, mensaje prellenado y fallback de WhatsApp al modificar formularios.
 
-### D. Mapas de Google Integrados
-*   **Regla**: Las URLs de los mapas de Google en formato iframe deben usar exclusivamente el delimitador de exclamación `!` para separar parámetros en la cadena `pb` (ej. `!1i1024!2i768` en lugar de la barra `|` que arroja errores de rechazo en Google Maps Platform).
+### CSS e interactividad
 
-### E. Uso de Clases CSS Específicas
-*   **Regla**: En vez de usar `!important`, usa clases CSS específicas para cada caso específico.
-*   **Razón**: Mantiene la predictibilidad de la cascada CSS y facilita el mantenimiento y escalabilidad del diseño sin generar colisiones de especificidad. Se exceptúan únicamente los casos estructurales de librerías como Alpine.js (`[x-cloak] { display: none !important; }`) o resets de accesibilidad (`prefers-reduced-motion`).
+- Usar clases CSS específicas; reservar `!important` para `[x-cloak]` y `prefers-reduced-motion`.
+- Conservar Alpine.js local y plugins requeridos, como `alpine-collapse.min.js` cuando exista `x-collapse`.
+- Respetar `prefers-reduced-motion`, contraste, foco visible y comportamiento responsive.
 
----
+### Google Maps
 
-## 4. Estrategia de SEO & Accesibilidad
+- En URLs iframe de Google Maps, separar parámetros de `pb` con `!`.
 
-Cada página implementa las mejores prácticas básicas de SEO sin alterar la estética visual de las plantillas:
-1.  **Idioma Localizado**: Etiqueta `<html>` configurada en `lang="es-CL"` en todas las páginas.
-2.  **Encabezados Jerárquicos**: Exactamente una etiqueta `<h1>` por página, seguida de una estructura lógica de `<h2>` y `<h3>`.
-3.  **Metadatos de Compartición (Open Graph & Twitter)**: Etiquetas `og:title`, `og:description`, `og:image`, `og:type` y `twitter:card` con formato `summary_large_image` integradas en los `<head>`.
-4.  **Datos Estructurados (JSON-LD)**: Schema markup adaptado al tipo de negocio para facilitar la indexación local:
-    *   *Principal*: `WebSite`
-    *   *Psicóloga*: `MedicalBusiness`
-    *   *Café*: `CafeOrCoffeeShop`
-    *   *Salón*: `BeautySalon`
-    *   *Artesanías*: `Store`
-    *   *Contabilidad*: `AccountingService`
-5.  **Favicons Livianos**: Favicons dinámicos basados en vectores SVG con emojis (🌸, ☕, ✨, 🏺, 💼, 🚀), lo que evita peticiones fallidas 404 al servidor y agiliza la carga offline.
+### SEO y accesibilidad
 
----
+Cada página pública mantiene:
 
-## 5. Entorno de Pruebas (Automatización)
+- `lang="es-CL"`.
+- Un único `<h1>` y jerarquía lógica de encabezados.
+- `og:title`, `og:description`, `og:image`, `og:type` y `twitter:card="summary_large_image"`.
+- JSON-LD acorde al negocio o `WebSite` para la landing.
+- Texto alternativo útil y controles con etiquetas accesibles.
 
-Para validar el funcionamiento del sistema, se cuenta con scripts de prueba basados en **Playwright/Chromium** localizados en el repositorio. Estos scripts pueden ser ejecutados de la siguiente forma:
+### Copy y propuesta comercial
+
+- Usar español directo, afirmativo y orientado a acciones observables: mostrar, explicar, orientar, preparar, ordenar, revisar y avanzar.
+- Tratar la IA como herramienta de apoyo; explicar el aporte humano en criterio, adaptación, publicación e integración con la atención del negocio.
+- Presentar las demos como evidencia de criterio: qué ordenan y qué puede revisar el dueño.
+- Mostrar alcance, valor, plazos, accesos, dominio, contenidos y propiedad de forma clara.
+
+## 5. Prohibiciones
+
+- Atribuir testimonios, ventas, conversiones o resultados a clientes inexistentes.
+- Prometer ventas garantizadas o presentar la página como sustituto de una operación comercial.
+- Enlazar, integrar o modificar `voiceshop-pro.zip` sin instrucción explícita del usuario.
+- Agregar CDN, fuentes remotas o dependencias que afecten compatibilidad `file://`.
+- Alterar rutas relativas de demos sin actualizar y validar sus enlaces.
+- Usar `!important` como solución general de estilo.
+- Ejecutar comandos destructivos de Git o eliminar assets/documentos fuera del alcance pedido.
+- Cambiar configuraciones, credenciales, dominios o servicios externos sin autorización explícita.
+
+## 6. Flujo de trabajo
+
+1. Revisar `git status --short`, `AGENTS.md`, archivos relacionados y pruebas existentes.
+2. Para cambios de producto o copy, revisar primero la especificación y el plan aplicables en `docs/`.
+3. Reutilizar patrones, estilos y componentes existentes antes de añadir código o dependencias.
+4. Mantener cambios focalizados; agregar o ajustar pruebas cuando cambie el comportamiento.
+5. Ejecutar la validación proporcional al cambio.
+
+## 7. Instalación y QA
 
 ```bash
-# Gate unificado de preproducción: checks estáticos + suite Node + navegación real file://
-node scripts/preproduction_gate.js
+# Dependencias reproducibles
+npm ci
 
-# Validar la página de inicio y sus enlaces
-node test_root.js
+# Servidor local opcional
+npm run serve
 
-# Validar interactividad, cálculo de tarifas y reset de modales en las demos
-node test_cafe.js
-node test_salon.js
-node test_artesanias.js
-node test_contabilidad.js
+# Puerta de preproducción: static checks, Playwright y navegación file://
+npm run qa:gate
 
-# Auditar errores o warnings de consola y peticiones fallidas de red
-node check_consoles.js
+# Pruebas focalizadas
+npm run test_root
+npm run test_cafe
+npm run test_salon
+npm run test_artesanias
+npm run test_contabilidad
+npm run check_consoles
+
+# Suite Playwright completa
+npm run qa:e2e
 ```
 
-El script `scripts/preproduction_gate.js` actúa como puerta técnica de salida a producción y consolida tres capas de validación:
-1. **Checks estáticos del repositorio**: SEO base, presencia de `lang="es-CL"`, un solo `<h1>`, metadatos Open Graph/Twitter, `JSON-LD`, referencias locales válidas, compatibilidad de links con `file://` y ausencia de referencias prohibidas a `voiceshop-pro.zip`.
-2. **Ejecución de la suite Node existente**: intenta correr `test_root.js`, `test_cafe.js`, `test_salon.js`, `test_artesanias.js`, `test_contabilidad.js` y `check_consoles.js`, marcando fallo si alguno no existe o termina con error.
-3. **Navegación real offline**: abre `index.html` con Chrome Headless sobre `file://`, recorre los links de demos desde la landing, verifica carga, `<h1>`, link de retorno, errores de consola, excepciones JavaScript y fallos de carga.
+Antes de aprobar despliegue, `npm run qa:gate` debe finalizar en `PASS`. El gate valida SEO, recursos locales, enlaces `file://`, formularios, consola, red y navegación de demos.
 
-> [!IMPORTANT]
-> Antes de realizar un despliegue a producción, es obligatorio ejecutar `node check_consoles.js` y confirmar que no existan errores de scripts o warnings de dependencias de Alpine.js (como el requerimiento del plugin `collapse` para animaciones `x-collapse`).
+## 8. Documentación y Git
 
-> [!IMPORTANT]
-> Para dar visto bueno técnico de producción, ejecutar además `node scripts/preproduction_gate.js`. Si el resumen final entrega `FAIL`, el sitio no debe considerarse aprobado para despliegue.
+- Documentación general: `docs/`.
+- Planes: `docs/plans/`.
+- Especificaciones: `docs/superpowers/specs/`.
+- Bitácoras: `doc/logs/`.
+- Helpers reutilizables: `scripts/`; borrar helpers de una sola ejecución al finalizar.
 
----
+Antes de editar, preservar cambios ajenos presentes en el worktree. Usar commits focalizados y descriptivos. Publicar al remoto solo cuando la tarea o el usuario lo autorice.
 
-## 6. Calidad del Código
-* **Regla**: Cada 10 commits, ejecutar la skill `thermo-nuclear-code-quality-review` a los fines de revisar la calidad del código.
+## 9. Referencias actuales
 
-## 7. Estructura de Documentación y Scripts
-* **Estructura de Documentos y Scripts (Crear directorios si no existen)**:
-  - **Documentación general**: Crear en `docs/` (formato `.md` y gráficos Mermaid `mmd` embebidos).
-  - **Planes y propuestas**: Crear en `docs/plans/` (formato `.md` y gráficos `mmd` embebidos).
-  - **Registros y bitácoras**: Crear en `doc/logs/`.
-  - **Scripts auxiliares/helpers** (`.py`, `.sh`, `.js`, `.ts`): Crear en `scripts/` de la raíz. Eliminar tras su uso si son de una sola ejecución.
+- [README.md](README.md)
+- [Propuesta WhatsApp-first](docs/superpowers/specs/2026-07-18-propuesta-whatsapp-clara-design.md)
+- [Plan de implementación](docs/plans/2026-07-18-implementacion-oferta-clara-whatsapp.md)
