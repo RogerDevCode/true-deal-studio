@@ -80,9 +80,14 @@ npm run check_consoles
 
 # Suite Playwright completa
 npm run qa:e2e
+
+# Smoke contra el despliegue vigente en Vercel
+npm run qa:prod-smoke
 ```
 
 `scripts/preproduction_gate.js` valida idioma `es-CL`, jerarquía de encabezados, Open Graph, Twitter Cards, JSON-LD, recursos locales, enlaces `file://`, consola y navegación de las demostraciones.
+
+El smoke comprueba la landing, privacidad y las 14 demostraciones contra `https://true-deal-studio.vercel.app/`.
 
 ## Estructura
 
