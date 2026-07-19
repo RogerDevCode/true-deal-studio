@@ -149,6 +149,7 @@ function isIgnorableReference(reference) {
     reference.startsWith("https://") ||
     reference.startsWith("mailto:") ||
     reference.startsWith("tel:") ||
+    reference.startsWith("tg:") ||
     reference.startsWith("javascript:") ||
     reference.startsWith("data:")
   );
