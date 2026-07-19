@@ -41,10 +41,15 @@ test.describe('Exhaustive Tests for Demos 1 to 5', () => {
       const modal = page.locator('div.inline-block.overflow-hidden, div.bg-white.rounded-3xl, .modal-card').first();
       await expect(modal).toBeAttached();
 
-      // Check Presencial priority in modality selector if exists
-      const modeSelect = modal.locator('select');
-      if (await modeSelect.count() > 0 && await modeSelect.isVisible()) {
-        const firstOptionText = await modeSelect.first().locator('option').first().textContent();
+      // Check the modality control specifically. Other selects (for example,
+      // service or professional) must not be mistaken for attendance mode.
+      const presencialRadio = modal.getByRole('radio', { name: /presencial/i }).first();
+      const modalitySelect = modal.locator('select[name="modalidad"], select[x-model="modalidad"]').first();
+      if (await presencialRadio.count() > 0) {
+        await expect(presencialRadio).toBeChecked();
+      } else if (await modalitySelect.count() > 0) {
+        await expect(modalitySelect).toBeVisible();
+        const firstOptionText = await modalitySelect.locator('option').first().textContent();
         expect(firstOptionText?.toLowerCase()).toContain('presencial');
       }
 
