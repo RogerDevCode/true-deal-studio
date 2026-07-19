@@ -19,6 +19,9 @@
     .service { background: linear-gradient(135deg, #2a4058, #13243a); }
     .service img { object-fit: contain; opacity: 1; padding: 12px; }
     .service::after { background: linear-gradient(0deg, #102137e8, #10213722 54%, transparent); }
+    .mosaic { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+    .mosaic img, .mosaic img:nth-child(2) { height: 340px; margin-top: 0; object-fit: cover; }
+    @media (max-width: 750px) { .mosaic img, .mosaic img:nth-child(2) { height: 260px; } }
   </style>
 </head>
 <body x-data="nidoAnimalApp()">
