@@ -21,6 +21,11 @@
     .service::after { background: linear-gradient(0deg, #102137e8, #10213722 54%, transparent); }
     .mosaic { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
     .mosaic img, .mosaic img:nth-child(2) { height: 340px; margin-top: 0; object-fit: cover; }
+    .service { min-width: 0; }
+    .services .service-bath { grid-column: span 7; }
+    .services .service-groom { grid-column: span 5; }
+    .services .service-walk { grid-column: span 4; }
+    .services .service-daycare { grid-column: span 8; }
     @media (max-width: 750px) { .mosaic img, .mosaic img:nth-child(2) { height: 260px; } }
   </style>
 </head>
