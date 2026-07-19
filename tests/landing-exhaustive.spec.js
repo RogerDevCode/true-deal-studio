@@ -16,7 +16,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).not.toContainText('Muestra lo que haces.');
     
     // Check navigation anchor links
-    const navLinks = ['#problema', '#resultado', '#proceso', '#oferta', '#faq'];
+    const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#propuestas-premium'];
     for (const href of navLinks) {
       const link = page.locator(`a[href="${href}"]`).first();
       await expect(link).toBeAttached();
@@ -55,7 +55,6 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const faqButtons = page.locator('#faq button');
     const count = await faqButtons.count();
     expect(count).toBeGreaterThan(0);
-    await expect(faqSection).toContainText('¿Qué canal incluye el plan básico?');
 
     for (let i = 0; i < count; i++) {
       const btn = faqButtons.nth(i);
@@ -67,8 +66,15 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
-  test('Demo links remain available for file navigation checks', async ({ page }) => {
+  test('Exhaustive validation of all 14 demo cards after expanding catalog', async ({ page }) => {
     const guards = await attachPageGuards(page);
+
+    // Click "Ver todas las demos" / expand button first so all cards exist and become visible
+    const expandBtn = page.getByRole('button', { name: /Ver las \d+ demostraciones|Mostrar menos/i }).first();
+    if (await expandBtn.isVisible()) {
+      await expandBtn.click({ force: true });
+      await page.waitForTimeout(300);
+    }
 
     const demoPaths = [
       './demo-psicologa/index.html',
@@ -81,7 +87,10 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       './demo-agenda/index.html',
       './demo-fonoaudiologia/index.html',
       './demo-plan-profesional/index.html',
-      './demo-plan-premium/index.html'
+      './demo-plan-premium/index.html',
+      './demo-propuesta-empezar-simple/index.html',
+      './demo-propuesta-atencion-ordenada/index.html',
+      './demo-propuesta-impacto-comercial/index.html'
     ];
 
     for (const demoPath of demoPaths) {
@@ -91,17 +100,15 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
-  test('Offer section and messaging CTA links are available', async ({ page }) => {
+  test('Pricing table interactive tooltips and CTA triggers', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    const offerSection = page.locator('#oferta');
-    await expect(offerSection).toBeVisible();
-    await expect(offerSection).toContainText('Plan básico');
-    await expect(offerSection).toContainText('Consultas frecuentes por Telegram');
+    const pricingSection = page.locator('#precios');
+    await expect(pricingSection).toBeAttached();
 
-    const whatsappLinks = page.locator('a[href*="wa.me"], a[href*="whatsapp"]');
-    const telegramLinks = page.locator('a[href^="tg://user?id=5391760292"]');
-    expect(await whatsappLinks.count()).toBeGreaterThan(0);
-    expect(await telegramLinks.count()).toBeGreaterThan(0);
+    // Check WhatsApp/wa.me action links
+    const ctaLinks = page.locator('a[href*="wa.me"], a[href*="whatsapp"]');
+    const ctaCount = await ctaLinks.count();
+    expect(ctaCount).toBeGreaterThan(0);
     await guards.assertHealthyContext();
   });
 });

@@ -27,7 +27,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
 
   for (const href of demoPaths) {
     const link = page.locator(`a[href="${href}"]`).first();
-    await expect(link, `No existe link hacia ${href}`).toBeAttached();
+    await expect(link, `No existe link hacia ${href}`).toBeVisible();
   }
 
   for (const href of demoPaths) {
