@@ -1,5 +1,18 @@
 const NIDO_STORAGE_KEY = "stax-demo-nido-animal";
 
+document.addEventListener("DOMContentLoaded", () => {
+  const methodPhotos = [
+    ["./recepcion.png", "Cuidadora recibiendo a una mascota al llegar al estudio"],
+    ["./bano-consciente.png", "Cuidadora realizando una rutina de baño tranquila"],
+    ["./entrega.png", "Cuidadora entregando una mascota a su familia con contexto"],
+  ];
+  document.querySelectorAll(".mosaic img").forEach((image, index) => {
+    const [src, alt] = methodPhotos[index];
+    image.src = src;
+    image.alt = alt;
+  });
+});
+
 const NIDO_SERVICES = [
   {
     name: "Baño consciente",
@@ -23,8 +36,8 @@ const NIDO_SERVICES = [
     name: "Paseo individual",
     duration: "50 min",
     price: "$18.000 desde",
-    image: "./hero-cuidado.png",
-    alt: "Perro acompañado por una cuidadora en un espacio luminoso",
+    image: "./paseo-individual.png",
+    alt: "Cuidadora paseando individualmente a un perro por un sendero verde",
     className: "service-walk",
     description: "Un recorrido individual para caminar con atención y sin apuro.",
   },
@@ -32,8 +45,8 @@ const NIDO_SERVICES = [
     name: "Hotel de día",
     duration: "Jornada completa",
     price: "$28.000 desde",
-    image: "./hero-cuidado.png",
-    alt: "Perro acompañado durante una jornada de cuidado en un espacio luminoso",
+    image: "./hotel-dia.png",
+    alt: "Perros descansando en una sala luminosa de hotel de día",
     className: "service-daycare",
     description: "Descanso, acompañamiento y actualizaciones durante su día.",
   },
