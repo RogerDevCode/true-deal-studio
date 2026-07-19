@@ -53,7 +53,7 @@ function walk(dir) {
 
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
-    if (entry.name === ".git" || entry.name === "node_modules" || entry.name === ".lighthouseci" || entry.name === "playwright-report" || entry.name === "test-results") {
+    if (entry.name === ".git" || entry.name === ".superpowers" || entry.name === "node_modules" || entry.name === ".lighthouseci" || entry.name === "playwright-report" || entry.name === "test-results") {
       continue;
     }
     if (entry.isDirectory()) {
