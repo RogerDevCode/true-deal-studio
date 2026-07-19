@@ -26,6 +26,10 @@
     .services .service-groom { grid-column: span 5; }
     .services .service-walk { grid-column: span 4; }
     .services .service-daycare { grid-column: span 8; }
+    #espacios h2 { font-size: 42px; line-height: 1; letter-spacing: -.04em; white-space: nowrap; }
+    #espacios h2 br { display: inline; }
+    #espacios h2 br::after { content: " "; white-space: pre; }
+    @media (max-width: 750px) { #espacios h2 { font-size: 28px; } }
     @media (max-width: 750px) { .mosaic img, .mosaic img:nth-child(2) { height: 260px; } }
   </style>
 </head>

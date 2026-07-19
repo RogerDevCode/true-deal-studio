@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="es-CL" class="scroll-smooth">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ruta Casa | Servicios Domiciliarios en Santiago</title>
   <meta name="description" content="Demo de atención para servicios domiciliarios: cobertura, urgencia, visita y solicitudes ordenadas antes de WhatsApp." />
-  <meta name="theme-color" content="#102a43" />
+  <meta name="theme-color" content="#1a1a18" />
   <meta property="og:title" content="Ruta Casa | Servicios Domiciliarios" />
   <meta property="og:description" content="Una demo para ordenar solicitudes de mantención, gasfitería y electricidad." />
   <meta property="og:image" content="../assets/optimized/contabilidad-card.webp" />
@@ -17,30 +17,995 @@
   <script defer src="./app.js"></script>
   <script defer src="../assets/vendor/alpinejs.min.js"></script>
   <style>
+    /* ── CLOAK ── */
     [x-cloak] { display: none !important; }
-    :root { --navy:#102a43; --navy-2:#173f5f; --paper:#f5f1e8; --white:#fffdf8; --copper:#c86542; --green:#267a62; --line:#cfd7da; --muted:#5e7180; }
-    * { box-sizing:border-box; } body { margin:0; background:var(--paper); color:var(--navy); font-family:Arial, sans-serif; } button,input,select,textarea { font:inherit; } .wrap { width:min(1180px,calc(100% - 40px)); margin:auto; }
-    .focus:focus-visible { outline:3px solid #c86542; outline-offset:3px; } .top { background:var(--navy); color:#dce9ef; font-size:13px; } .top .wrap { display:flex; justify-content:space-between; gap:16px; padding:11px 0; } .top a { color:white; }
-    header { background:var(--white); border-bottom:1px solid var(--line); } .brand { display:flex; align-items:center; justify-content:space-between; padding:25px 0; } .mark { display:flex; align-items:center; gap:13px; text-decoration:none; color:var(--navy); } .mark b { display:grid; place-items:center; width:42px; height:42px; border:1px solid var(--navy); font-family:Georgia,serif; font-size:25px; } .mark strong { display:block; letter-spacing:.08em; font-size:17px; } .mark span { display:block; margin-top:3px; font-size:12px; color:var(--muted); font-weight:bold; }
-    .reset { border:1px solid var(--line); background:white; color:var(--navy); padding:11px 15px; border-radius:5px; font-size:13px; font-weight:bold; cursor:pointer; }
-    .hero { padding:70px 0 62px; background:linear-gradient(115deg,var(--paper) 0%,var(--paper) 58%,#e7eceb 58%,#e7eceb 100%); } .hero-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:70px; align-items:center; } .eyebrow { color:var(--copper); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; } h1 { margin:16px 0 20px; font-family:Georgia,serif; font-size:clamp(46px,6vw,78px); line-height:.96; letter-spacing:-.055em; } h1 em { color:var(--copper); font-style:normal; } .lead { max-width:590px; font-size:18px; line-height:1.6; color:#36526a; } .actions { display:flex; flex-wrap:wrap; gap:13px; margin-top:31px; } .primary,.secondary { border-radius:4px; padding:15px 20px; font-weight:bold; cursor:pointer; text-decoration:none; } .primary { border:1px solid var(--copper); background:var(--copper); color:white; } .secondary { border:1px solid var(--navy); color:var(--navy); background:transparent; }
-    .visit-order { background:var(--white); border-top:4px solid var(--copper); padding:28px; box-shadow:0 18px 35px rgba(16,42,67,.12); } .visit-order h2 { margin:5px 0 20px; font-size:27px; letter-spacing:-.03em; } .order-line { display:grid; grid-template-columns:28px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--line); } .order-line b { color:var(--copper); font-family:Georgia,serif; font-size:20px; } .order-line strong { display:block; font-size:14px; } .order-line span { display:block; margin-top:3px; color:var(--muted); font-size:13px; line-height:1.4; }
-    .signals { background:var(--navy); color:white; } .signals .wrap { display:grid; grid-template-columns:repeat(3,1fr); } .signal { padding:26px 28px; border-right:1px solid rgba(255,255,255,.2); } .signal:last-child { border:0; } .signal small { color:#a9c0cd; font-weight:bold; text-transform:uppercase; letter-spacing:.12em; } .signal strong { display:block; margin-top:7px; font-size:18px; line-height:1.25; } .signal.copper { background:var(--copper); } .signal.green { background:var(--green); }
-    .board { padding:75px 0; } .board-head { display:flex; align-items:end; justify-content:space-between; gap:25px; margin-bottom:28px; } .board h2 { margin:7px 0 0; font-family:Georgia,serif; font-size:42px; letter-spacing:-.04em; } .board-head p { max-width:370px; color:var(--muted); font-size:14px; line-height:1.5; } .requests { border-top:2px solid var(--navy); } .request { display:grid; grid-template-columns:130px 1fr auto; gap:22px; align-items:start; padding:24px 0; border-bottom:1px solid var(--line); } .urgency { color:var(--copper); font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; } .request h3 { margin:5px 0 7px; font-size:21px; letter-spacing:-.025em; } .request p { margin:0; max-width:640px; color:var(--muted); font-size:14px; line-height:1.5; } .request-foot { display:flex; gap:14px; margin-top:13px; font-size:13px; font-weight:bold; } .request-foot a { color:var(--navy); } .status { white-space:nowrap; border-radius:20px; padding:7px 11px; font-size:12px; font-weight:bold; } .status-coral { background:#f8e1d9; color:#923c28; } .status-sun { background:#f6eed0; color:#70590b; } .status-mint { background:#dbeee7; color:#1a654f; } .status-ink { background:#e1eaf0; color:var(--navy); }
-    .notice { margin-top:18px; padding:13px 15px; background:#dbeee7; color:#1a654f; font-weight:bold; font-size:14px; }
-    .overlay { position:fixed; inset:0; z-index:10; display:grid; place-items:center; padding:20px; background:rgba(16,42,67,.72); } .modal { width:min(650px,100%); max-height:92vh; overflow:auto; background:var(--white); padding:32px; border-top:5px solid var(--copper); box-shadow:0 24px 60px rgba(0,0,0,.3); } .modal-top { display:flex; justify-content:space-between; gap:20px; } .modal h2 { margin:5px 0 0; font-family:Georgia,serif; font-size:34px; } .close { border:0; background:transparent; font-size:29px; cursor:pointer; } .fields { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:25px; } label { font-size:13px; font-weight:bold; } input,select,textarea { width:100%; margin-top:6px; padding:12px; border:1px solid #9aaab4; background:white; border-radius:3px; } textarea { resize:vertical; } .modal-note { color:var(--muted); font-size:13px; line-height:1.5; } .modal-actions { display:flex; justify-content:end; gap:12px; margin-top:22px; } .cancel { border:0; background:transparent; padding:12px; font-weight:bold; cursor:pointer; }
-    @media (max-width:760px) { .wrap { width:min(100% - 28px,1180px); } .top .wrap,.brand,.board-head { align-items:flex-start; flex-direction:column; } .hero { padding:45px 0; background:var(--paper); } .hero-grid { grid-template-columns:1fr; gap:36px; } h1 { font-size:51px; } .signals .wrap,.fields { grid-template-columns:1fr; } .signal { border-bottom:1px solid rgba(255,255,255,.2); border-right:0; } .request { grid-template-columns:1fr; gap:7px; } .status { width:max-content; } .board { padding:52px 0; } .board h2 { font-size:36px; } .modal { padding:23px; } }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+
+    /* ── TOKENS ── */
+    :root {
+      --base: #1a1a18;
+      --base-soft: #262623;
+      --base-mid: #3a3935;
+      --ivory: #f4f0e8;
+      --ivory-warm: #ede8dd;
+      --cream: #faf8f3;
+      --copper: #b8613a;
+      --copper-light: #d4845e;
+      --copper-glow: rgba(184, 97, 58, .12);
+      --sage: #5a7a64;
+      --sage-bg: #e8efe9;
+      --muted: #8a8880;
+      --muted-light: #a8a49c;
+      --line: rgba(26, 26, 24, .1);
+      --line-light: rgba(244, 240, 232, .12);
+      --font-display: "Instrument Serif", Georgia, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "Space Grotesk", monospace;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    body {
+      background: var(--ivory);
+      color: var(--base);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select, textarea { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILITIES ── */
+    .wrap {
+      width: min(1120px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+    .focus-ring:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--base);
+      color: var(--muted-light);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .topbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      gap: 12px;
+    }
+    .topbar a {
+      color: var(--ivory);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .topbar a:hover { color: var(--copper-light); }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--ivory);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--base);
+    }
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--base);
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .08em;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+      letter-spacing: .02em;
+    }
+    .btn-reset {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--base);
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-reset:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--base);
+      color: var(--ivory);
+      padding: 80px 0 0;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: end;
+    }
+    .hero-text {
+      padding-bottom: 80px;
+    }
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: .92;
+      letter-spacing: -.04em;
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--copper-light);
+    }
+    .hero-desc {
+      max-width: 520px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted-light);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--copper);
+      color: white;
+      border: 1px solid var(--copper);
+      padding: 14px 26px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .02em;
+      cursor: pointer;
+      transition: background .25s, transform .15s;
+    }
+    .btn-primary:hover {
+      background: var(--copper-light);
+    }
+    .btn-primary:active {
+      transform: scale(.98);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ivory);
+      border: 1px solid var(--line-light);
+      padding: 14px 26px;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: .02em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color .25s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--ivory);
+    }
+
+    /* hero — sidebar con orden de visita */
+    .hero-aside {
+      background: var(--base-soft);
+      border-left: 3px solid var(--copper);
+      padding: 36px 32px;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-aside-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--copper-light);
+      margin-bottom: 16px;
+    }
+    .hero-aside h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 28px;
+      color: var(--ivory);
+    }
+    .step-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: visit-step;
+    }
+    .step-item {
+      counter-increment: visit-step;
+      padding: 16px 0;
+      border-top: 1px solid var(--line-light);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+    }
+    .step-item::before {
+      content: counter(visit-step, decimal-leading-zero);
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: var(--copper-light);
+      line-height: 1.3;
+    }
+    .step-title {
+      display: block;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--ivory);
+      letter-spacing: .01em;
+    }
+    .step-detail {
+      display: block;
+      margin-top: 3px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    /* ── CONFIRMATION ── */
+    .confirmation-msg {
+      margin-top: 20px;
+      padding: 12px 16px;
+      background: var(--sage-bg);
+      color: var(--sage);
+      font-weight: 600;
+      font-size: 14px;
+      border-left: 3px solid var(--sage);
+    }
+
+    /* ── DATA STRIP ── */
+    .data-strip {
+      background: var(--ivory-warm);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .data-strip .wrap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .data-cell {
+      padding: 28px 24px;
+      border-right: 1px solid var(--line);
+    }
+    .data-cell:last-child { border-right: 0; }
+    .data-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .data-value {
+      font-family: var(--font-display);
+      font-size: 19px;
+      line-height: 1.25;
+      color: var(--base);
+    }
+    .data-value.accent { color: var(--copper); }
+
+    /* ── PROCESS SECTION ── */
+    .process-section {
+      padding: 80px 0 60px;
+    }
+    .process-header {
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 14px;
+    }
+    .process-header h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 4.5vw, 48px);
+      line-height: 1;
+      letter-spacing: -.035em;
+      margin-bottom: 16px;
+    }
+    .process-header p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 2px solid var(--base);
+    }
+    .process-step {
+      padding: 28px 28px 28px 0;
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+    .process-step:last-child { border-right: 0; }
+    .process-step::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: var(--copper);
+      border-radius: 50%;
+    }
+    .process-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--copper);
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .process-name {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .01em;
+      margin-bottom: 6px;
+    }
+    .process-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── BITÁCORA (REQUESTS) ── */
+    .bitacora-section {
+      padding: 80px 0;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+    }
+    .bitacora-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    .bitacora-head h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+    .bitacora-head p {
+      max-width: 380px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      text-align: right;
+    }
+    .bitacora-list {
+      border-top: 2px solid var(--base);
+    }
+    .bitacora-entry {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 24px;
+      align-items: start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .entry-meta {
+      padding-top: 2px;
+    }
+    .entry-urgency {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 6px;
+    }
+    .entry-schedule {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .entry-body h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -.02em;
+      margin-bottom: 6px;
+      line-height: 1.15;
+    }
+    .entry-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 560px;
+    }
+    .entry-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--base);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .entry-wa:hover {
+      color: var(--copper);
+      border-color: var(--copper);
+    }
+    .entry-status {
+      white-space: nowrap;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border: 1px solid;
+      margin-top: 2px;
+    }
+    .status-coral {
+      color: #9e4228;
+      border-color: #d4a494;
+      background: #f5e6e0;
+    }
+    .status-sun {
+      color: #7a611a;
+      border-color: #d4c47a;
+      background: #f5f0d9;
+    }
+    .status-mint {
+      color: #2d6e50;
+      border-color: #8cc4a6;
+      background: #e5f2eb;
+    }
+    .status-ink {
+      color: var(--base-mid);
+      border-color: var(--line);
+      background: var(--ivory-warm);
+    }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(26, 26, 24, .78);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    /* ── MODAL ── */
+    .modal-form {
+      width: min(620px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: var(--cream);
+      border-top: 4px solid var(--copper);
+    }
+    .modal-body {
+      padding: 36px;
+    }
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .modal-top-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 8px;
+    }
+    .modal-top h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 30px;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+    }
+    .close-btn {
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 4px;
+      transition: color .2s;
+    }
+    .close-btn:hover { color: var(--base); }
+
+    /* form fields */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .field-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: var(--ivory);
+      color: var(--base);
+      font-size: 14px;
+      transition: border-color .2s;
+    }
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: var(--copper);
+      outline: none;
+    }
+    .field-group textarea {
+      resize: vertical;
+    }
+    .field-full {
+      margin-bottom: 20px;
+    }
+
+    .modal-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-top: 4px;
+    }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .btn-cancel {
+      border: 0;
+      background: transparent;
+      padding: 12px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .btn-cancel:hover { color: var(--base); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--base);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 28px 0;
+    }
+    .site-footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .site-footer a {
+      color: var(--ivory);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .wrap { width: min(100% - 32px, 1120px); }
+
+      .hero { padding: 56px 0 0; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hero-text { padding-bottom: 56px; }
+      .hero h1 { font-size: clamp(40px, 10vw, 56px); }
+      .hero-aside {
+        border-left: 0;
+        border-top: 3px solid var(--copper);
+        padding: 32px 24px;
+      }
+
+      .data-strip .wrap {
+        grid-template-columns: 1fr 1fr;
+      }
+      .data-cell {
+        border-bottom: 1px solid var(--line);
+      }
+      .data-cell:nth-child(2n) { border-right: 0; }
+      .data-cell:nth-last-child(-n+2) { border-bottom: 0; }
+
+      .process-timeline {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .process-step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 24px 0;
+      }
+      .process-step:last-child { border-bottom: 0; }
+
+      .bitacora-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .bitacora-head p { text-align: left; }
+      .bitacora-entry {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .entry-status { width: max-content; }
+
+      .field-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .modal-body { padding: 28px 20px; }
+
+      .site-footer .wrap {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 38px; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+      .topbar .wrap { flex-direction: column; gap: 4px; text-align: center; }
+      .site-header .wrap { flex-direction: column; gap: 12px; }
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body x-data="serviciosDomiciliariosApp()">
-  <div class="top"><div class="wrap"><span>DEMO · Coordinación de servicios a domicilio</span><a class="focus" href="../index.html">Volver al portafolio</a></div></div>
-  <header><div class="wrap brand"><a class="mark focus" href="#inicio"><b>R</b><span><strong>RUTA CASA</strong><span>Santiago · visitas coordinadas</span></span></a><button class="reset focus" type="button" @click="resetDemo">Restablecer demo</button></div></header>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="wrap">
+      <span>DEMO · Coordinación de servicios a domicilio</span>
+      <a class="focus-ring" href="../index.html">Volver al portafolio</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand-link focus-ring" href="#inicio">
+        <span class="brand-icon">R</span>
+        <span class="brand-text">
+          <span class="brand-name">RUTA CASA</span>
+          <span class="brand-sub">Santiago · visitas coordinadas</span>
+        </span>
+      </a>
+      <button class="btn-reset focus-ring" type="button" @click="resetDemo">Restablecer demo</button>
+    </div>
+  </header>
+
   <main id="inicio">
-    <section class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">Servicios que llegan preparados</p><h1>Resuelve lo urgente.<br><em>Ordena lo importante.</em></h1><p class="lead">Una página clara para que una consulta por gasfitería, electricidad o mantención llegue con comuna, urgencia y horario antes de abrir WhatsApp.</p><div class="actions"><button class="primary focus" type="button" @click="modalOpen=true">Solicitar visita</button><a class="secondary focus" href="#solicitudes">Ver solicitudes ordenadas</a></div><p x-cloak x-show="confirmation" x-text="confirmation" class="notice"></p></div><aside class="visit-order"><p class="eyebrow">Orden de visita</p><h2>Lo que revisas antes de responder.</h2><div class="order-line"><b>01</b><p><strong>Comuna y cobertura</strong><span>Para confirmar que la visita se puede coordinar.</span></p></div><div class="order-line"><b>02</b><p><strong>Urgencia y franja</strong><span>Para ordenar la ruta sin adivinar horarios.</span></p></div><div class="order-line"><b>03</b><p><strong>Detalle del problema</strong><span>Para preparar una respuesta y llegar con contexto.</span></p></div></aside></div></section>
-    <section class="signals"><div class="wrap"><div class="signal copper"><small>Prioridad</small><strong>La urgencia se ve antes de la conversación.</strong></div><div class="signal"><small>Cobertura</small><strong>Ñuñoa, Macul, La Florida y Providencia.</strong></div><div class="signal green"><small>Valor desde</small><strong>Visita de evaluación: $25.000.</strong></div></div></section>
-    <section id="solicitudes" class="board"><div class="wrap"><div class="board-head"><div><p class="eyebrow">Vista del dueño</p><h2>Solicitudes con contexto.</h2></div><p>Esta lista es simulada. Muestra qué puede revisar el dueño antes de contestar por WhatsApp, sin reemplazar su criterio ni confirmar disponibilidad automática.</p></div><div class="requests"><template x-for="request in requests" :key="request.id"><article class="request"><div><p class="urgency" x-text="request.urgency"></p><p class="request-foot" x-text="'Franja: '+request.schedule"></p></div><div><h3 x-text="request.commune+' · '+request.service"></h3><p x-text="request.detail"></p><div class="request-foot"><a class="focus" :href="whatsappHref(request)" target="_blank" rel="noopener">Preparar WhatsApp ↗</a></div></div><span class="status" :class="statusClass(request.status)" x-text="request.status"></span></article></template></div></div></section>
+
+    <!-- ════ HERO ════ -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+
+        <div class="hero-text">
+          <p class="hero-label">Gasfitería · Electricidad · Mantención</p>
+          <h1>Resuelve lo urgente.<br><em>Ordena lo importante.</em></h1>
+          <p class="hero-desc">
+            Una página para que la consulta llegue con comuna, urgencia y horario
+            antes de abrir WhatsApp. Sin adivinar, sin repetir datos.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary focus-ring" type="button" @click="modalOpen=true">Solicitar visita</button>
+            <a class="btn-ghost focus-ring" href="#bitacora">Ver solicitudes ordenadas</a>
+          </div>
+          <p x-cloak x-show="confirmation" x-text="confirmation" class="confirmation-msg"></p>
+        </div>
+
+        <aside class="hero-aside">
+          <p class="hero-aside-label">Orden de visita</p>
+          <h2>Lo que revisas antes de responder</h2>
+          <ol class="step-list">
+            <li class="step-item">
+              <div>
+                <span class="step-title">Comuna y cobertura</span>
+                <span class="step-detail">Para confirmar que la visita se puede coordinar.</span>
+              </div>
+            </li>
+            <li class="step-item">
+              <div>
+                <span class="step-title">Urgencia y franja</span>
+                <span class="step-detail">Para ordenar la ruta sin adivinar horarios.</span>
+              </div>
+            </li>
+            <li class="step-item">
+              <div>
+                <span class="step-title">Detalle del problema</span>
+                <span class="step-detail">Para preparar una respuesta y llegar con contexto.</span>
+              </div>
+            </li>
+          </ol>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ════ DATA STRIP ════ -->
+    <section class="data-strip" aria-label="Datos operativos">
+      <div class="wrap">
+        <div class="data-cell">
+          <p class="data-label">Cobertura</p>
+          <p class="data-value">Ñuñoa · Macul · La Florida · Providencia</p>
+        </div>
+        <div class="data-cell">
+          <p class="data-label">Franja horaria</p>
+          <p class="data-value">Lunes a sábado, 09:00 – 18:00</p>
+        </div>
+        <div class="data-cell">
+          <p class="data-label">Valor desde</p>
+          <p class="data-value accent">Evaluación: $25.000</p>
+        </div>
+        <div class="data-cell">
+          <p class="data-label">Prioridad</p>
+          <p class="data-value">La urgencia se ve antes de la conversación</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ PROCESO ════ -->
+    <section class="process-section">
+      <div class="wrap">
+        <div class="process-header">
+          <p class="section-label">Cómo funciona</p>
+          <h2>Del problema a la visita coordinada</h2>
+          <p>La solicitud llega con contexto para que el técnico responda informado, sin repetir preguntas básicas.</p>
+        </div>
+        <div class="process-timeline">
+          <div class="process-step">
+            <p class="process-num">01</p>
+            <p class="process-name">Describe el problema</p>
+            <p class="process-desc">Selecciona el tipo de servicio, la urgencia y lo que necesitas resolver.</p>
+          </div>
+          <div class="process-step">
+            <p class="process-num">02</p>
+            <p class="process-name">Indica zona y horario</p>
+            <p class="process-desc">Elige tu comuna y la franja que te acomoda para recibir la visita.</p>
+          </div>
+          <div class="process-step">
+            <p class="process-num">03</p>
+            <p class="process-name">Solicitud preparada</p>
+            <p class="process-desc">La consulta queda lista con todo el contexto para que te respondan por WhatsApp.</p>
+          </div>
+          <div class="process-step">
+            <p class="process-num">04</p>
+            <p class="process-name">Coordinación humana</p>
+            <p class="process-desc">El técnico revisa, confirma disponibilidad y coordina la visita directamente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ BITÁCORA ════ -->
+    <section id="bitacora" class="bitacora-section">
+      <div class="wrap">
+        <div class="bitacora-head">
+          <div>
+            <p class="section-label">Vista del dueño</p>
+            <h2>Bitácora de solicitudes</h2>
+          </div>
+          <p>Lista simulada. Muestra qué puede revisar el dueño antes de contestar por WhatsApp, sin reemplazar su criterio ni confirmar disponibilidad automática.</p>
+        </div>
+
+        <div class="bitacora-list">
+          <template x-for="request in requests" :key="request.id">
+            <article class="bitacora-entry">
+              <div class="entry-meta">
+                <p class="entry-urgency" x-text="request.urgency"></p>
+                <p class="entry-schedule" x-text="'Franja: ' + request.schedule"></p>
+              </div>
+              <div class="entry-body">
+                <h3 x-text="request.commune + ' · ' + request.service"></h3>
+                <p x-text="request.detail"></p>
+                <a class="entry-wa focus-ring"
+                   :href="whatsappHref(request)"
+                   target="_blank"
+                   rel="noopener">Preparar WhatsApp ↗</a>
+              </div>
+              <span class="entry-status"
+                    :class="statusClass(request.status)"
+                    x-text="request.status"></span>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <div x-cloak x-show="modalOpen" @keydown.escape.window="closeModal()" class="overlay" role="dialog" aria-modal="true" aria-labelledby="request-title"><form @submit.prevent="saveRequest" class="modal"><div class="modal-top"><div><p class="eyebrow">Solicitud con contexto</p><h2 id="request-title">Coordinar una visita</h2></div><button class="close focus" type="button" @click="closeModal()" aria-label="Cerrar solicitud">×</button></div><div class="fields"><label>Comuna<select x-model="draft.commune" required class="focus"><option value="" disabled>Elige una comuna</option><option>Ñuñoa</option><option>Macul</option><option>La Florida</option><option>Providencia</option></select></label><label>Servicio<select x-model="draft.service" class="focus"><option>Gasfitería</option><option>Electricidad</option><option>Mantención</option></select></label><label>Urgencia<select x-model="draft.urgency" class="focus"><option>Hoy</option><option>Esta semana</option><option>Planificada</option></select></label><label>Franja horaria<select x-model="draft.schedule" class="focus"><option>09:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option></select></label></div><label style="display:block;margin-top:16px">Cuéntanos qué ocurre<textarea x-model="draft.detail" required rows="4" class="focus" placeholder="Ej.: revisar automático que se baja al encender el horno."></textarea></label><p class="modal-note">La solicitud queda preparada para revisar y continuar la conversación. No confirma disponibilidad automática.</p><div class="modal-actions"><button class="cancel focus" type="button" @click="closeModal()">Cancelar</button><button class="primary focus" type="submit">Guardar solicitud</button></div></form></div>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Ruta Casa · Demo de coordinación</span>
+      <a class="focus-ring" href="../index.html">← Volver al portafolio</a>
+    </div>
+  </footer>
+
+  <!-- ════ MODAL ════ -->
+  <div x-cloak
+       x-show="modalOpen"
+       @keydown.escape.window="closeModal()"
+       class="modal-overlay"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="request-title">
+    <form @submit.prevent="saveRequest" class="modal-form">
+      <div class="modal-body">
+
+        <div class="modal-top">
+          <div>
+            <p class="modal-top-label">Solicitud con contexto</p>
+            <h2 id="request-title">Coordinar una visita</h2>
+          </div>
+          <button class="close-btn focus-ring" type="button" @click="closeModal()" aria-label="Cerrar solicitud">×</button>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="field-commune">Comuna</label>
+            <select id="field-commune" x-model="draft.commune" required class="focus-ring">
+              <option value="" disabled>Elige una comuna</option>
+              <option>Ñuñoa</option>
+              <option>Macul</option>
+              <option>La Florida</option>
+              <option>Providencia</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="field-service">Servicio</label>
+            <select id="field-service" x-model="draft.service" class="focus-ring">
+              <option>Gasfitería</option>
+              <option>Electricidad</option>
+              <option>Mantención</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label for="field-urgency">Urgencia</label>
+            <select id="field-urgency" x-model="draft.urgency" class="focus-ring">
+              <option>Hoy</option>
+              <option>Esta semana</option>
+              <option>Planificada</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="field-schedule">Franja horaria</label>
+            <select id="field-schedule" x-model="draft.schedule" class="focus-ring">
+              <option>09:00–12:00</option>
+              <option>12:00–15:00</option>
+              <option>15:00–18:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-group field-full">
+          <label for="field-detail">Cuéntanos qué ocurre</label>
+          <textarea id="field-detail"
+                    x-model="draft.detail"
+                    required
+                    rows="4"
+                    class="focus-ring"
+                    placeholder="Ej.: revisar automático que se baja al encender el horno."></textarea>
+        </div>
+
+        <p class="modal-note">La solicitud queda preparada para revisar y continuar la conversación. No confirma disponibilidad automática.</p>
+
+        <div class="modal-footer">
+          <button class="btn-cancel focus-ring" type="button" @click="closeModal()">Cancelar</button>
+          <button class="btn-primary focus-ring" type="submit">Guardar solicitud</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
 </body>
 </html>
