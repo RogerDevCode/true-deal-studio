@@ -3,7 +3,7 @@ const NIDO_STORAGE_KEY = "stax-demo-nido-animal";
 document.addEventListener("DOMContentLoaded", () => {
   const methodPhotos = [
     ["./recepcion.png", "Cuidadora recibiendo a una mascota al llegar al estudio"],
-    ["./bano-consciente.png", "Cuidadora realizando una rutina de baño tranquila"],
+    ["./cuidado-individual.png", "Cuidadora cepillando tranquilamente a un perro durante su rutina"],
     ["./entrega.png", "Cuidadora entregando una mascota a su familia con contexto"],
   ];
   document.querySelectorAll(".mosaic img").forEach((image, index) => {
