@@ -25,7 +25,7 @@ La reutilización se limita a una utilidad local mínima por demo: clonación de
 Las cuatro experiencias deben evitar la secuencia repetida hero + tarjetas + catálogo + formulario. Cada una expresa la decisión principal del cliente mediante una composición propia:
 
 - **Servicios domiciliarios:** orden de visita profesional. Hero dividido 60/40, con propuesta de valor sobria a la izquierda y cobertura/horarios en una orden de visita a la derecha; las solicitudes se leen como un panel operativo de alta densidad.
-- **Mascotas:** agenda de cuidado. Fichas de mascota, preparación antes de la visita y una agenda con estados legibles; la confianza se construye desde el perfil y la rutina.
+- **Mascotas:** carta de cuidado colorida. Una banda lateral de agenda reúne fecha, zona y ruta; la ficha de mascota se integra como una pieza editorial amplia junto a notas de cuidado y preparación. La confianza se construye desde el perfil y la rutina.
 - **Floristería:** composición editorial guiada. La página avanza por ocasión, estilo y entrega; el resumen vivo acompaña la elección y la dedicatoria ocupa un espacio central.
 - **Banquetería/pastelería:** mapa de celebración. Formato, asistentes, presupuesto y restricciones se presentan como partes de una propuesta de evento, no como un catálogo ni un formulario lineal.
 
@@ -47,7 +47,7 @@ Una agenda para peluquería canina y atención móvil.
 - El cliente registra nombre, especie, tamaño, servicio, dirección, fecha preferida y observaciones de cuidado.
 - La página explica zonas de atención, preparación previa y valores desde.
 - La vista de dueño muestra fichas de mascota, próximas visitas y estado de confirmación.
-- El diseño transmite cuidado y cercanía sin infantilizar: fichas de mascota, agenda de cuidado, colores cálidos y jerarquía simple.
+- El diseño transmite cuidado y cercanía sin infantilizar: verde profundo como ancla, lavanda grisácea para agenda, arcilla suave para cuidado, amarillo mantequilla para preparación y azul para ruta. Los colores separan información y construyen ritmo, sin arcoíris arbitrario, huellas decorativas ni estética de jardín infantil.
 
 ### Floristería
 
