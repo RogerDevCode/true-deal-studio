@@ -18,9 +18,15 @@
     "test_salon": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Salon\"",
     "test_artesanias": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Artesanias\"",
     "test_contabilidad": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Contabilidad\"",
-    "check_consoles": "node scripts/run_clean_env.js playwright test tests/console.spec.js"
+    "check_consoles": "node scripts/run_clean_env.js playwright test tests/console.spec.js",
+    "build:demo-hogar": "node scripts/build_demo_hogar.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2"
+  },
+  "dependencies": {
+    "esbuild": "^0.28.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
