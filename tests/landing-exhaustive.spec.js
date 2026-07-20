@@ -24,6 +24,28 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Hero clarity tunnel explains the service path without layout overflow', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    const tunnel = page.locator('.clarity-tunnel');
+
+    await expect(tunnel).toBeVisible();
+    await expect(tunnel.locator('[data-clarity-step]')).toHaveCount(4);
+    await expect(tunnel).toContainText('Consulta suelta');
+    await expect(tunnel).toContainText('WhatsApp con contexto');
+    await expect(tunnel).toHaveClass(/is-visible/);
+    await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.reload();
+    await expect(page.locator('.clarity-tunnel')).toHaveClass(/is-visible/);
+    await expect(page.locator('.clarity-tunnel [data-clarity-step]')).toHaveCount(4);
+
+    await guards.assertHealthyContext();
+  });
+
   test('Theme switcher combinatorial testing: toggling, classes, and storage persistence', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const themeToggle = page.getByRole('button', { name: 'Cambiar tema' }).first();

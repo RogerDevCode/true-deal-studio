@@ -523,6 +523,130 @@
       background-repeat: no-repeat;
     }
 
+    /* Hero: a quiet visual journey from a vague question to prepared attention. */
+    .clarity-tunnel {
+      position: relative;
+      isolation: isolate;
+      min-height: 30rem;
+      margin: 0;
+      padding: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 2rem;
+      background: linear-gradient(145deg, rgba(5, 20, 53, 0.92), rgba(13, 43, 90, 0.8));
+      box-shadow: 0 28px 70px rgba(0, 10, 35, 0.36);
+      backdrop-filter: blur(16px);
+    }
+    .clarity-tunnel::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 8%;
+      bottom: 6%;
+      left: 49%;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.38) 12%, rgba(80, 250, 123, 0.82) 88%, transparent);
+      transform: rotate(24deg);
+      transform-origin: center;
+    }
+    .clarity-tunnel::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 12% -30% auto;
+      height: 13rem;
+      background: radial-gradient(circle, rgba(80, 250, 123, 0.18), transparent 63%);
+      filter: blur(20px);
+    }
+    .clarity-tunnel__caption {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.15rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .clarity-tunnel__caption::before {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #D52B1E;
+      box-shadow: 0 0 0 5px rgba(213, 43, 30, 0.16);
+      content: '';
+    }
+    .clarity-tunnel__step {
+      position: relative;
+      display: grid;
+      gap: 0.22rem;
+      width: min(88%, 22rem);
+      margin-bottom: 0.6rem;
+      padding: 0.78rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 1rem;
+      background: rgba(8, 22, 53, 0.66);
+      box-shadow: 0 12px 28px rgba(0, 10, 35, 0.2);
+      opacity: 0;
+      transform: translate3d(-1rem, 0.8rem, 0) scale(0.96);
+    }
+    .clarity-tunnel__step::before {
+      position: absolute;
+      top: 50%;
+      right: -1.7rem;
+      width: 1.55rem;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.32);
+      content: '';
+    }
+    .clarity-tunnel__step--query { margin-left: 1%; }
+    .clarity-tunnel__step--details { margin-left: 11%; }
+    .clarity-tunnel__step--page { margin-left: 20%; }
+    .clarity-tunnel__step--whatsapp {
+      margin-left: 8%;
+      border-color: rgba(80, 250, 123, 0.54);
+      background: linear-gradient(135deg, rgba(17, 67, 67, 0.92), rgba(12, 45, 58, 0.92));
+    }
+    .clarity-tunnel__step--whatsapp::before { background: rgba(80, 250, 123, 0.75); }
+    .clarity-tunnel__eyebrow {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .clarity-tunnel__step h2, .clarity-tunnel__step p { margin: 0; }
+    .clarity-tunnel__step h2 { color: #fff; font-size: 0.96rem; font-weight: 800; line-height: 1.2; }
+    .clarity-tunnel__step p { color: rgba(255, 255, 255, 0.76); font-size: 0.78rem; line-height: 1.38; }
+    .clarity-tunnel__chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.25rem; }
+    .clarity-tunnel__chips span, .clarity-tunnel__ready {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 0.2rem 0.45rem;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.63rem;
+      font-weight: 700;
+    }
+    .clarity-tunnel__ready { margin-top: 0.28rem; background: rgba(80, 250, 123, 0.18); color: #B9FFD0; }
+    .clarity-tunnel.is-visible .clarity-tunnel__step { animation: clarity-arrive 680ms cubic-bezier(.2,.8,.2,1) forwards; }
+    .clarity-tunnel.is-visible .clarity-tunnel__step--details { animation-delay: 320ms; }
+    .clarity-tunnel.is-visible .clarity-tunnel__step--page { animation-delay: 640ms; }
+    .clarity-tunnel.is-visible .clarity-tunnel__step--whatsapp { animation-delay: 960ms; }
+    @keyframes clarity-arrive { to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
+    @media (max-width: 1023px) {
+      .clarity-tunnel { min-height: auto; max-width: 34rem; margin-inline: auto; }
+    }
+    @media (max-width: 540px) {
+      .clarity-tunnel { padding: 1rem; border-radius: 1.4rem; }
+      .clarity-tunnel::before { left: 1.6rem; top: 14%; bottom: 8%; transform: none; }
+      .clarity-tunnel__step { width: auto; margin-left: 1.35rem; padding: 0.7rem 0.75rem; }
+      .clarity-tunnel__step::before { top: 50%; right: auto; left: -1.35rem; width: 1.2rem; }
+      .clarity-tunnel__step h2 { font-size: 0.9rem; }
+    }
+
     /* Noise texture on hero only */
     .noise::after {
       content: '';
@@ -651,6 +775,11 @@
         scroll-behavior: auto !important;
       }
       .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1;
+        transform: none;
+      }
+      .clarity-tunnel__step {
+        animation: none;
         opacity: 1;
         transform: none;
       }
@@ -835,7 +964,31 @@
 
           <!-- Right: Browser mockup -->
           <div class="reveal-right overflow-x-clip" style="transition-delay: .15s">
-            <div class="relative animate-float-slow">
+            <figure class="clarity-tunnel" aria-label="Ruta de claridad: consulta suelta, información ordenada, página que orienta y WhatsApp con contexto">
+              <figcaption class="clarity-tunnel__caption">Ruta de claridad</figcaption>
+              <article class="clarity-tunnel__step clarity-tunnel__step--query" data-clarity-step>
+                <span class="clarity-tunnel__eyebrow">01 · Antes</span>
+                <h2>Consulta suelta</h2>
+                <p>“¿Cuánto sale y cómo te hablo?”</p>
+              </article>
+              <article class="clarity-tunnel__step clarity-tunnel__step--details" data-clarity-step>
+                <span class="clarity-tunnel__eyebrow">02 · Orden</span>
+                <h2>Información que orienta</h2>
+                <div class="clarity-tunnel__chips"><span>Servicio</span><span>Horarios</span><span>Cobertura</span></div>
+              </article>
+              <article class="clarity-tunnel__step clarity-tunnel__step--page" data-clarity-step>
+                <span class="clarity-tunnel__eyebrow">03 · Presencia</span>
+                <h2>Página que explica</h2>
+                <p>Tu oferta, tus valores y el siguiente paso sin vueltas.</p>
+              </article>
+              <article class="clarity-tunnel__step clarity-tunnel__step--whatsapp" data-clarity-step>
+                <span class="clarity-tunnel__eyebrow">04 · Atención</span>
+                <h2>WhatsApp con contexto</h2>
+                <p>La persona llega sabiendo qué necesita revisar contigo.</p>
+                <span class="clarity-tunnel__ready">● Listo para atender</span>
+              </article>
+            </figure>
+            <div class="relative animate-float-slow hidden" aria-hidden="true">
               <!-- Glow behind -->
               <div class="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-chile-blue/20 via-transparent to-chile-red/15 blur-2xl sm:-inset-4"></div>
 
@@ -2600,6 +2753,20 @@
       revealTargets.forEach((el) => {
         el.classList.add('is-visible');
       });
+    }
+
+    // The hero route animates once when it becomes useful, never as a loop.
+    const clarityTunnel = document.querySelector('.clarity-tunnel');
+    const reduceClarityMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (clarityTunnel && !reduceClarityMotion && 'IntersectionObserver' in window) {
+      const clarityObserver = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        clarityTunnel.classList.add('is-visible');
+        clarityObserver.disconnect();
+      }, { threshold: 0.18 });
+      clarityObserver.observe(clarityTunnel);
+    } else if (clarityTunnel) {
+      clarityTunnel.classList.add('is-visible');
     }
 
     // Smooth scroll for anchor links
