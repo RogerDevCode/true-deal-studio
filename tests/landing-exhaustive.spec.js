@@ -67,7 +67,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(ia.getByText('Ordenamos tu información', { exact: true })).toBeVisible();
     await expect(ia.getByText('Revisamos que funcione de verdad', { exact: true })).toBeVisible();
     await expect(ia.getByText('Te entregamos control', { exact: true })).toBeVisible();
-    await expect(page.locator('.business-notebook-pattern')).toHaveCount(1);
+    await expect(page.locator('.business-notebook-pattern')).toHaveCount(4);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
