@@ -19,6 +19,17 @@ test("Casa de los Colores selecciona un paquete, prepara WhatsApp y reinicia", a
 
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.locator("main > section")).toHaveCount(4);
+  await expect(page.getByRole("heading", {
+    level: 1,
+    name: "Su día para jugar. Tu tranquilidad para disfrutarlo.",
+  })).toBeVisible();
+  await expect(page.getByText("4 a 10 años", { exact: true })).toBeVisible();
+  await expect(page.getByText("Grupos acotados", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Consultar una fecha" })).toHaveAttribute("href", "#reserva");
+  await expect(page.locator('link[href*="fonts.googleapis.com"]')).toHaveCount(0);
+  await expect(page.locator('link[href*="fonts.gstatic.com"]')).toHaveCount(0);
+  await expect(page.locator(".celebration-scene")).toHaveCount(1);
+  await expect(page.getByText("Colación conversada", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Elegir Explora" }).click();
   await expect(page.getByText("Explora elegido para tu celebración")).toBeVisible();
   await page.getByLabel("Nombre de quien reserva").fill("Familia QA");
