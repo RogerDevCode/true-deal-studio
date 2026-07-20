@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Casa de los Colores | Celebraciones infantiles</title>
   <meta name="description" content="Demo de celebraciones infantiles con paquetes claros y una reserva preparada por WhatsApp.">
-  <meta name="theme-color" content="#F8F4EA">
+  <meta name="theme-color" content="#F8F4E8">
   <meta property="og:title" content="La Casa de los Colores | Celebraciones infantiles">
   <meta property="og:description" content="Paquetes, información esencial y reserva preparada por WhatsApp.">
   <meta property="og:image" content="../demo-psicologa/preview.png">
@@ -17,20 +17,993 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"EntertainmentBusiness","name":"La Casa de los Colores","description":"Demo de centro de celebraciones infantiles con reserva preparada.","areaServed":"Chile"}</script>
   <script defer src="./app.js"></script>
   <script defer src="../assets/vendor/alpinejs.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
-    [x-cloak]{display:none!important}
-    :root{--paper:#f8f4ea;--white:#fffefa;--ink:#141414;--blue:#1456a0;--red:#db302d;--yellow:#f5c328;--line:3px solid var(--ink)}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif;line-height:1.45} button,input{font:inherit}.wrap{width:min(1140px,calc(100% - 36px));margin:auto}.focus:focus-visible{outline:4px solid var(--yellow);outline-offset:4px}.top{border-bottom:var(--line);background:var(--white);position:sticky;top:0;z-index:5}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:11px}.brand-mark{width:31px;height:31px;border:var(--line);background:var(--red);display:block}.nav-links{display:flex;gap:22px}.nav-links a{color:var(--ink);font-size:13px;font-weight:800;text-decoration:none}.reset{border:var(--line);background:var(--white);padding:9px 13px;font-size:12px;font-weight:800;cursor:pointer}.hero{min-height:620px;display:grid;grid-template-columns:1.05fr .95fr;border-bottom:var(--line)}.hero-copy{padding:clamp(55px,8vw,120px) 7vw 65px max(18px,calc((100vw - 1140px)/2));background:var(--white)}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(54px,8vw,102px);line-height:.85;letter-spacing:-.075em;margin:21px 0 25px;max-width:680px}.red{color:var(--red)}.lead{max-width:520px;font-size:18px;color:#424242}.cta{display:inline-flex;align-items:center;justify-content:center;border:var(--line);background:var(--blue);color:white;text-decoration:none;padding:15px 22px;font-weight:900;cursor:pointer;box-shadow:6px 6px 0 var(--ink)}.cta:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink)}.hero-art{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:1fr .7fr .8fr;border-left:var(--line);background:var(--white)}.block{border-right:var(--line);border-bottom:var(--line)}.block.red{background:var(--red)}.block.blue{background:var(--blue)}.block.yellow{background:var(--yellow)}.block.ink{background:var(--ink)}.block.white{background:var(--white)}.block.tall{grid-row:span 2}.block.wide{grid-column:span 2}.hero-note{align-self:end;justify-self:start;margin:0 0 28px 28px;position:relative;background:var(--white);border:var(--line);padding:13px 17px;font-size:14px;font-weight:800;box-shadow:5px 5px 0 var(--ink)}.section{padding:95px 0;border-bottom:var(--line)}.heading{display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:end;margin-bottom:40px}.heading h2{font-size:clamp(42px,6vw,72px);letter-spacing:-.065em;line-height:.9}.heading p{font-size:17px;max-width:410px;color:#414141}.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:var(--line);background:var(--ink)}.package{min-height:405px;background:var(--white);padding:28px;display:flex;flex-direction:column;border-right:var(--line)}.package:last-child{border-right:0}.package:nth-child(2){background:var(--yellow)}.package:nth-child(3){background:var(--blue);color:white}.package-tag{font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.package h3{font-size:47px;letter-spacing:-.065em;margin:30px 0 14px}.package dl{margin:0;display:grid;gap:8px;font-size:14px}.package dt{font-weight:900;display:inline}.package dd{display:inline;margin:0}.package button{margin-top:auto;border:var(--line);padding:12px;background:var(--white);color:var(--ink);font-weight:900;cursor:pointer}.include{background:var(--ink);color:var(--white)}.include .heading p{color:#e4e4e4}.include .eyebrow{color:var(--yellow)}.include-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--line);border-left:var(--line)}.include-card{min-height:230px;border-right:var(--line);border-bottom:var(--line);padding:23px;background:var(--white);color:var(--ink)}.include-card:nth-child(2){background:var(--red);color:white}.include-card:nth-child(3){background:var(--yellow)}.include-card:nth-child(4){background:var(--blue);color:white}.include-card b{font-size:45px;display:block;margin-bottom:26px}.include-card h3{font-size:24px;letter-spacing:-.04em;margin-bottom:8px}.reservation{background:var(--white)}.reserve-grid{display:grid;grid-template-columns:.8fr 1.2fr;border:var(--line)}.reserve-summary{padding:35px;background:var(--yellow);border-right:var(--line)}.reserve-summary h3{font-size:37px;letter-spacing:-.06em;line-height:.95;margin:17px 0}.reserve-summary p{font-size:15px}.form{padding:35px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field{display:block;font-size:12px;font-weight:900;letter-spacing:.04em}.field input{width:100%;margin-top:7px;border:var(--line);padding:12px;background:var(--white);border-radius:0}.full{grid-column:1/-1}.form .cta{margin-top:26px}.success{margin-top:18px;padding:13px;background:#dff1e3;border:var(--line);font-weight:800}.footer{padding:34px 0;font-size:13px;font-weight:800}.footer a{color:var(--ink)}@media(max-width:760px){.nav-links{display:none}.hero{grid-template-columns:1fr}.hero-copy{padding:60px 18px}.hero-art{min-height:360px;border-left:0;border-top:var(--line)}.heading{grid-template-columns:1fr}.package-grid,.include-grid,.reserve-grid{grid-template-columns:1fr}.package,.include-card{border-right:0;border-bottom:var(--line)}.reserve-summary{border-right:0;border-bottom:var(--line)}.fields{grid-template-columns:1fr}.full{grid-column:auto}.section{padding:62px 0}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+    /* ============================================================
+       TOKENS — Mondrian / Neo-Brutalism
+    ============================================================ */
+    :root {
+      --paper:   #F8F4E8;
+      --white:   #FFFDFA;
+      --ink:     #0D0D0D;
+      --red:     #D62828;
+      --blue:    #1755B0;
+      --yellow:  #F2C12E;
+      --border:  3px solid var(--ink);
+      --shadow-s: 4px 4px 0 var(--ink);
+      --shadow-m: 6px 6px 0 var(--ink);
+      --shadow-l: 8px 8px 0 var(--ink);
+      --radius:  0px;
+      --ff:      'Space Grotesk', system-ui, sans-serif;
+      --t-fast:  150ms linear;
+      --t-med:   250ms cubic-bezier(.2,0,.3,1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    [x-cloak] { display: none !important }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth; font-size: 16px }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--ff);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100% }
+    button, input { font: inherit }
+
+    /* ============================================================
+       FOCUS VISIBLE
+    ============================================================ */
+    :focus-visible {
+      outline: 4px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .wrap { width: min(1200px, calc(100% - 32px)); margin-inline: auto }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ============================================================
+       ANIMATED ENTRY
+    ============================================================ */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px) }
+      to   { opacity: 1; transform: translateY(0) }
+    }
+    @keyframes press {
+      0%   { transform: translate(0,0); box-shadow: var(--shadow-m) }
+      50%  { transform: translate(5px,5px); box-shadow: 1px 1px 0 var(--ink) }
+      100% { transform: translate(0,0); box-shadow: var(--shadow-m) }
+    }
+    @keyframes floatCard {
+      0%,100% { transform: rotate(-1.5deg) translateY(0) }
+      50%      { transform: rotate(-1.5deg) translateY(-6px) }
+    }
+    @keyframes pulseBlock {
+      0%,100% { opacity: 1 }
+      50%      { opacity: 0.82 }
+    }
+    .anim-up { animation: slideUp .55s cubic-bezier(.2,0,.3,1) both }
+    .anim-up:nth-child(2) { animation-delay: .08s }
+    .anim-up:nth-child(3) { animation-delay: .16s }
+    .anim-up:nth-child(4) { animation-delay: .24s }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ============================================================
+       HEADER / NAV
+    ============================================================ */
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--white);
+      border-bottom: var(--border);
+      transition: box-shadow var(--t-fast);
+    }
+    .top.scrolled { box-shadow: 0 4px 0 var(--ink) }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -.01em;
+    }
+    /* Mini Mondrian mark */
+    .brand-mark {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 38px;
+      height: 38px;
+      border: var(--border);
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .brand-mark span:nth-child(1) { background: var(--red) }
+    .brand-mark span:nth-child(2) { background: var(--yellow); border-left: var(--border) }
+    .brand-mark span:nth-child(3) { background: var(--white); border-top: var(--border) }
+    .brand-mark span:nth-child(4) { background: var(--blue); border-top: var(--border); border-left: var(--border) }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border: 2px solid transparent;
+      transition: border-color var(--t-fast), background var(--t-fast);
+    }
+    .nav-links a:hover {
+      border-color: var(--ink);
+      background: var(--yellow);
+    }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-reset {
+      background: var(--white);
+      border: var(--border);
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--t-fast);
+    }
+    .btn-reset:hover { background: var(--paper) }
+
+    /* ============================================================
+       PRIMARY BUTTON
+    ============================================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: var(--border);
+      background: var(--ink);
+      color: var(--white);
+      text-decoration: none;
+      padding: 16px 28px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: var(--shadow-m);
+      transition: transform var(--t-fast), box-shadow var(--t-fast);
+    }
+    .btn-primary:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .btn-primary:active {
+      transform: translate(6px, 6px);
+      box-shadow: none;
+    }
+    .btn-red   { background: var(--red) }
+    .btn-blue  { background: var(--blue) }
+    .btn-yellow { background: var(--yellow); color: var(--ink) }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: calc(100svh - 72px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: var(--border);
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 64px);
+      background: var(--white);
+      border-right: var(--border);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 3px;
+      background: var(--blue);
+    }
+    h1 {
+      font-size: clamp(56px, 8vw, 108px);
+      line-height: .88;
+      letter-spacing: -.06em;
+      font-weight: 800;
+      max-width: 16ch;
+      margin-bottom: 28px;
+    }
+    h1 .accent-red   { color: var(--red) }
+    h1 .accent-blue  { color: var(--blue) }
+    .hero-lead {
+      font-size: clamp(16px, 1.6vw, 19px);
+      color: #3a3a3a;
+      max-width: 42ch;
+      margin-bottom: 36px;
+      line-height: 1.55;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .trust-chip {
+      border: var(--border);
+      background: var(--paper);
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       MONDRIAN HERO ART  — Inspired by "Composition with Red, Yellow and Blue" (1921)
+    ============================================================ */
+    .mondrian-art {
+      position: relative;
+      display: grid;
+      /*
+        Mondrian proportional grid: thick black lines divide the canvas
+        Cols: wide | narrow | medium
+        Rows: tall | small | medium | small
+      */
+      grid-template-columns: 2fr 1fr 1.5fr;
+      grid-template-rows: 1.8fr 0.6fr 1fr 0.8fr;
+      background: var(--ink); /* black lines are the grid background */
+      gap: 4px;
+      padding: 4px;
+      min-height: 480px;
+    }
+    /* Each cell */
+    .mc { transition: opacity var(--t-med) }
+    .mc-red    { background: var(--red);    grid-column: 1; grid-row: 1 }
+    .mc-white1 { background: var(--white);  grid-column: 2; grid-row: 1 }
+    .mc-blue   { background: var(--blue);   grid-column: 3; grid-row: 1 / 3; animation: pulseBlock 4s ease-in-out infinite }
+    .mc-yellow { background: var(--yellow); grid-column: 1; grid-row: 2 }
+    .mc-white2 { background: var(--white);  grid-column: 2; grid-row: 2 }
+    .mc-white3 { background: var(--white);  grid-column: 1; grid-row: 3 }
+    .mc-red2   { background: var(--red);    grid-column: 2; grid-row: 3 / 5; animation: pulseBlock 4s 1s ease-in-out infinite }
+    .mc-white4 { background: var(--white);  grid-column: 3; grid-row: 3 }
+    .mc-yellow2 { background: var(--yellow);grid-column: 1; grid-row: 4 }
+    .mc-blue2  { background: var(--blue);   grid-column: 3; grid-row: 4 }
+
+    /* Floating annotation card */
+    .art-note {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      background: var(--white);
+      border: var(--border);
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: var(--shadow-l);
+      animation: floatCard 3.5s ease-in-out infinite;
+      max-width: 200px;
+      z-index: 2;
+    }
+    .art-note strong {
+      display: block;
+      font-size: 19px;
+      letter-spacing: -.03em;
+    }
+
+    /* ============================================================
+       SECTION BASE
+    ============================================================ */
+    .section {
+      border-bottom: var(--border);
+      padding: clamp(64px, 9vw, 120px) 0;
+    }
+    .section-header {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 52px;
+    }
+    h2 {
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: .88;
+      letter-spacing: -.06em;
+      font-weight: 800;
+    }
+    .section-desc {
+      font-size: 17px;
+      color: #444;
+      max-width: 38ch;
+      line-height: 1.55;
+    }
+
+    /* ============================================================
+       PACKAGES
+    ============================================================ */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: var(--border);
+      background: var(--ink);
+      gap: 4px;
+    }
+    .pkg {
+      background: var(--white);
+      padding: clamp(24px, 3vw, 36px);
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+      transition: transform var(--t-med), box-shadow var(--t-med);
+      position: relative;
+    }
+    .pkg:nth-child(2) { background: var(--yellow) }
+    .pkg:nth-child(3) { background: var(--blue); color: var(--white) }
+    .pkg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid transparent;
+      transition: border-color var(--t-med);
+    }
+    .pkg:hover { transform: translateY(-4px); box-shadow: 0 8px 0 var(--ink) }
+
+    .pkg-age {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      opacity: .7;
+    }
+    .pkg-name {
+      font-size: clamp(52px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -.07em;
+      line-height: .85;
+      margin-bottom: 24px;
+    }
+    .pkg-details {
+      display: grid;
+      gap: 12px;
+      font-size: 14px;
+      flex: 1;
+    }
+    .pkg-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid currentColor;
+      padding-bottom: 10px;
+      opacity: .85;
+    }
+    .pkg-detail-row:last-child { border-bottom: none; padding-bottom: 0 }
+    .pkg-detail-label { font-weight: 700 }
+    .pkg-price {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin: 20px 0 18px;
+    }
+    .pkg button {
+      margin-top: auto;
+      border: var(--border);
+      background: var(--ink);
+      color: var(--white);
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-s);
+      transition: transform var(--t-fast), box-shadow var(--t-fast);
+    }
+    .pkg button:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    .pkg:nth-child(2) button { background: var(--ink); color: var(--white) }
+    .pkg:nth-child(3) button { background: var(--white); color: var(--ink) }
+
+    /* ============================================================
+       INCLUDES STRIP — Dark section
+    ============================================================ */
+    .includes {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .includes .section-desc { color: #bbb }
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: var(--border);
+      border-left: var(--border);
+    }
+    .inc-card {
+      border-right: var(--border);
+      border-bottom: var(--border);
+      padding: 28px;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+      transition: background var(--t-med);
+    }
+    .inc-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 4px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--t-med);
+    }
+    .inc-card:hover::after { transform: scaleX(1) }
+    .inc-card:nth-child(1) .inc-num { color: var(--yellow) }
+    .inc-card:nth-child(2) .inc-num { color: var(--red) }
+    .inc-card:nth-child(3) .inc-num { color: var(--blue) }
+    .inc-card:nth-child(4) .inc-num { color: #7be0a8 }
+    .inc-num {
+      font-size: 58px;
+      font-weight: 800;
+      letter-spacing: -.07em;
+      line-height: 1;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .inc-card h3 {
+      font-size: 22px;
+      letter-spacing: -.04em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .inc-card p { font-size: 14px; color: #ccc; line-height: 1.55 }
+
+    /* ============================================================
+       RESERVATION FORM
+    ============================================================ */
+    .reservation { background: var(--white) }
+    .reserve-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      border: var(--border);
+    }
+    .reserve-aside {
+      padding: clamp(28px, 4vw, 48px);
+      background: var(--yellow);
+      border-right: var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .reserve-aside .eyebrow { color: var(--ink) }
+    .reserve-aside h3 {
+      font-size: clamp(32px, 4vw, 50px);
+      letter-spacing: -.06em;
+      line-height: .9;
+      font-weight: 800;
+    }
+    .selected-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: var(--border);
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: var(--shadow-s);
+      margin-top: 8px;
+    }
+    .selected-badge .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+    .reserve-form { padding: clamp(28px, 4vw, 48px) }
+    .fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .field input {
+      border: var(--border);
+      background: var(--paper);
+      padding: 13px 14px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: box-shadow var(--t-fast), background var(--t-fast);
+      color: var(--ink);
+    }
+    .field input:focus {
+      outline: none;
+      background: var(--white);
+      box-shadow: var(--shadow-s);
+    }
+    .field.full { grid-column: 1 / -1 }
+    .form-actions { margin-top: 28px }
+    .success-msg {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #d4f7e3;
+      border: var(--border);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .success-msg svg { flex-shrink: 0 }
+    .form-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      border-top: var(--border);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .footer-mark {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 26px; height: 26px;
+      border: 2px solid var(--white);
+      gap: 0;
+    }
+    .footer-mark span:nth-child(1) { background: var(--red) }
+    .footer-mark span:nth-child(2) { background: var(--yellow); border-left: 2px solid var(--white) }
+    .footer-mark span:nth-child(3) { background: var(--white); border-top: 2px solid var(--white) }
+    .footer-mark span:nth-child(4) { background: var(--blue); border-top: 2px solid var(--white); border-left: 2px solid var(--white) }
+    .footer a {
+      color: var(--yellow);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      border-bottom: 2px solid transparent;
+      transition: border-color var(--t-fast);
+    }
+    .footer a:hover { border-color: var(--yellow) }
+
+    /* ============================================================
+       DISABLED BUTTON STATE
+    ============================================================ */
+    .btn-primary:disabled {
+      opacity: .38;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: var(--shadow-m);
+    }
+
+    /* ============================================================
+       RESPONSIVE — 760px
+    ============================================================ */
+    @media (max-width: 760px) {
+      h1 { font-size: clamp(44px, 13vw, 64px) }
+      h2 { font-size: clamp(38px, 11vw, 56px) }
+      .hero { grid-template-columns: 1fr }
+      .hero-copy { border-right: none; border-bottom: var(--border) }
+      .mondrian-art { min-height: 320px }
+      .section-header { grid-template-columns: 1fr; gap: 16px }
+      .packages-grid { grid-template-columns: 1fr }
+      .pkg { min-height: auto }
+      .includes-grid { grid-template-columns: 1fr 1fr }
+      .inc-card { min-height: 200px }
+      .reserve-grid { grid-template-columns: 1fr }
+      .reserve-aside { border-right: none; border-bottom: var(--border) }
+      .fields { grid-template-columns: 1fr }
+      .field.full { grid-column: auto }
+      .nav-links { display: none }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center }
+    }
+    @media (max-width: 480px) {
+      .includes-grid { grid-template-columns: 1fr }
+    }
   </style>
 </head>
 <body x-data="casaColoresApp()">
-  <header class="top"><nav class="nav wrap" aria-label="Navegación principal"><a class="brand focus" href="#inicio"><span class="brand-mark" aria-hidden="true"></span>La Casa de los Colores</a><div class="nav-links"><a href="#paquetes">Paquetes</a><a href="#incluye">Qué incluye</a><a href="#reserva">Reserva</a></div><button class="reset focus" type="button" @click="resetDemo">Restablecer demo</button></nav></header>
-  <main>
-    <section id="inicio" class="hero"><div class="hero-copy"><p class="eyebrow">Celebraciones infantiles</p><h1>Un cumpleaños <span class="red">para jugar</span>, crear y recordar.</h1><p class="lead">Paquetes claros para niños y adolescentes: espacio, juegos, actividad creativa y una celebración que se organiza antes de escribirnos.</p><a class="cta focus" href="#paquetes">Ver paquetes</a></div><div class="hero-art" aria-label="Composición geométrica de colores primarios"><div class="block white tall"></div><div class="block red"></div><div class="block yellow"></div><div class="block blue wide"></div><div class="hero-note">Todo claro antes de reservar.</div></div></section>
-    <section id="paquetes" class="section wrap"><div class="heading"><div><p class="eyebrow">Elige una forma de celebrar</p><h2>Paquetes simples.<br><span class="red">Momentos grandes.</span></h2></div><p>Edad sugerida, duración, capacidad y valor desde. Elige uno para preparar la consulta con tu familia.</p></div><div class="package-grid"><template x-for="plan in packages" :key="plan.name"><article class="package"><p class="package-tag" x-text="plan.age"></p><h3 x-text="plan.name"></h3><dl><div><dt>Duración:</dt> <dd x-text="plan.duration"></dd></div><div><dt>Grupo:</dt> <dd x-text="plan.guests"></dd></div><div><dt>Valor desde:</dt> <dd x-text="plan.price"></dd></div></dl><button class="focus" type="button" :aria-label="`Elegir ${plan.name}`" @click="choosePackage(plan)" x-text="`Elegir ${plan.name}`"></button></article></template></div></section>
-    <section id="incluye" class="section include"><div class="wrap"><div class="heading"><div><p class="eyebrow">Para que todos disfruten</p><h2>Lo esencial<br>está <span style="color:var(--yellow)">incluido.</span></h2></div><p>La familia sabe qué encontrará y qué conviene confirmar antes de elegir fecha.</p></div><div class="include-grid"><article class="include-card"><b>01</b><h3>Juegos con ritmo</h3><p>Dinámicas acordes a la edad para empezar juntos.</p></article><article class="include-card"><b>02</b><h3>Crear y llevar</h3><p>Una actividad para inventar, pintar o construir.</p></article><article class="include-card"><b>03</b><h3>Colación organizada</h3><p>Revisamos opciones y restricciones antes de confirmar.</p></article><article class="include-card"><b>04</b><h3>Acompañamiento</h3><p>Equipo presente durante cada momento de la celebración.</p></article></div></div></section>
-    <section id="reserva" class="section reservation"><div class="wrap"><div class="heading"><div><p class="eyebrow">Reserva preparada</p><h2>Cuéntanos<br><span class="red">lo importante.</span></h2></div><p>Deja listo el paquete, edad, asistentes y fecha preferida. La disponibilidad se confirma por WhatsApp.</p></div><div class="reserve-grid"><aside class="reserve-summary"><p class="eyebrow">Tu celebración</p><template x-if="selectedPackage"><div><h3 x-text="`${selectedPackage.name} elegido para tu celebración`"></h3><p x-text="`${selectedPackage.duration} · ${selectedPackage.guests} · ${selectedPackage.price}`"></p></div></template><template x-if="!selectedPackage"><div><h3>Elige un paquete para comenzar.</h3><p>Después completa cuatro datos y el mensaje queda listo.</p></div></template></aside><form class="form" @submit.prevent="submitReservation"><div class="fields"><label class="field" for="reserva-nombre">Nombre de quien reserva<input id="reserva-nombre" required x-model="draft.name" placeholder="Ej: Camila Rojas"></label><label class="field" for="reserva-edad">Edad que celebra<input id="reserva-edad" required min="1" max="18" type="number" x-model="draft.age" placeholder="Ej: 8"></label><label class="field" for="reserva-asistentes">Cantidad de asistentes<input id="reserva-asistentes" required min="1" type="number" x-model="draft.guests" placeholder="Ej: 12"></label><label class="field" for="reserva-fecha">Fecha preferida<input id="reserva-fecha" required type="date" x-model="draft.date"></label></div><button class="cta focus" type="submit" :disabled="!selectedPackage">Preparar mensaje por WhatsApp</button><p x-cloak x-show="sent" class="success">Tu mensaje quedó preparado. Puedes enviarlo por WhatsApp para confirmar disponibilidad.</p></form></div></div></section>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="top" id="top-header">
+    <nav class="nav wrap" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="La Casa de los Colores — inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        La Casa de los Colores
+      </a>
+      <div class="nav-links" role="list">
+        <a href="#paquetes" role="listitem">Paquetes</a>
+        <a href="#incluye" role="listitem">Qué incluye</a>
+        <a href="#reserva" role="listitem">Reserva</a>
+      </div>
+      <div class="nav-cta">
+        <button class="btn-reset" type="button" @click="resetDemo" aria-label="Restablecer demostración">
+          Restablecer demo
+        </button>
+        <a href="#reserva" class="btn-primary btn-red" style="padding:10px 18px;font-size:13px">
+          Reservar ahora
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow anim-up">Celebraciones infantiles · Demo Vitrina Express</p>
+        <h1 id="hero-title" class="anim-up">
+          Un cumple<br>para <span class="accent-red">jugar</span>,<br>crear y<br><span class="accent-blue">recordar.</span>
+        </h1>
+        <p class="hero-lead anim-up">
+          Paquetes claros para niños y adolescentes: espacio, juegos, actividad creativa y una celebración que se organiza antes de escribirnos.
+        </p>
+        <div class="anim-up" style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#paquetes" class="btn-primary">
+            <!-- Arrow right icon -->
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Ver paquetes
+          </a>
+          <a href="#reserva" class="btn-primary btn-yellow">Reservar</a>
+        </div>
+        <div class="hero-trust anim-up">
+          <span class="trust-chip">3 paquetes distintos</span>
+          <span class="trust-chip">5 a 15 años</span>
+          <span class="trust-chip">Reserva por WhatsApp</span>
+        </div>
+      </div>
+
+      <!-- Mondrian Art Grid -->
+      <div class="mondrian-art" aria-label="Composición geométrica de colores primarios inspirada en Mondrian" role="img">
+        <div class="mc mc-red"></div>
+        <div class="mc mc-white1"></div>
+        <div class="mc mc-blue"></div>
+        <div class="mc mc-yellow"></div>
+        <div class="mc mc-white2"></div>
+        <div class="mc mc-white3"></div>
+        <div class="mc mc-red2"></div>
+        <div class="mc mc-white4"></div>
+        <div class="mc mc-yellow2"></div>
+        <div class="mc mc-blue2"></div>
+
+        <div class="art-note" aria-hidden="true">
+          <strong>Todo claro</strong>
+          antes de reservar.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PACKAGES
+    ============================================================ -->
+    <section id="paquetes" class="section" aria-labelledby="paquetes-title">
+      <div class="wrap">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Elige una forma de celebrar</p>
+            <h2 id="paquetes-title">
+              Paquetes<br>simples. <span style="color:var(--red)">Momentos</span><br>grandes.
+            </h2>
+          </div>
+          <p class="section-desc">
+            Edad sugerida, duración, capacidad y valor desde. Elige uno para preparar la consulta con tu familia y llegar al WhatsApp con todo decidido.
+          </p>
+        </div>
+        <div class="packages-grid" role="list">
+          <template x-for="(plan, i) in packages" :key="plan.name">
+            <article class="pkg" role="listitem">
+              <p class="pkg-age" x-text="plan.age"></p>
+              <p class="pkg-name" x-text="plan.name"></p>
+              <div class="pkg-details">
+                <div class="pkg-detail-row">
+                  <span class="pkg-detail-label">Duración</span>
+                  <span x-text="plan.duration"></span>
+                </div>
+                <div class="pkg-detail-row">
+                  <span class="pkg-detail-label">Grupo</span>
+                  <span x-text="plan.guests"></span>
+                </div>
+              </div>
+              <p class="pkg-price" x-text="'Desde ' + plan.price"></p>
+              <button
+                type="button"
+                :aria-label="`Elegir paquete ${plan.name}`"
+                @click="choosePackage(plan)"
+              >
+                <!-- Check icon -->
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="display:inline;margin-right:6px;vertical-align:middle">
+                  <path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span x-text="`Elegir ${plan.name}`"></span>
+              </button>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INCLUDES — Dark strip
+    ============================================================ -->
+    <section id="incluye" class="section includes" aria-labelledby="incluye-title">
+      <div class="wrap">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Para que todos disfruten</p>
+            <h2 id="incluye-title">
+              Lo esencial<br>está <span style="color:var(--yellow)">incluido.</span>
+            </h2>
+          </div>
+          <p class="section-desc">
+            La familia sabe exactamente qué encontrará. Menos sorpresas, mejor celebración.
+          </p>
+        </div>
+        <div class="includes-grid" role="list">
+          <article class="inc-card" role="listitem">
+            <span class="inc-num" aria-hidden="true">01</span>
+            <h3>Juegos con ritmo</h3>
+            <p>Dinámicas acordes a la edad para empezar juntos y calentar el ambiente.</p>
+          </article>
+          <article class="inc-card" role="listitem">
+            <span class="inc-num" aria-hidden="true">02</span>
+            <h3>Crear y llevar</h3>
+            <p>Una actividad para inventar, pintar o construir que cada niño se lleva.</p>
+          </article>
+          <article class="inc-card" role="listitem">
+            <span class="inc-num" aria-hidden="true">03</span>
+            <h3>Colación organizada</h3>
+            <p>Revisamos opciones y restricciones alimentarias antes de confirmar la fecha.</p>
+          </article>
+          <article class="inc-card" role="listitem">
+            <span class="inc-num" aria-hidden="true">04</span>
+            <h3>Acompañamiento</h3>
+            <p>Equipo presente durante cada momento de la celebración. Sin dejar nada al azar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESERVATION FORM
+    ============================================================ -->
+    <section id="reserva" class="section reservation" aria-labelledby="reserva-title">
+      <div class="wrap">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Reserva preparada</p>
+            <h2 id="reserva-title">
+              Cuéntanos<br><span style="color:var(--red)">lo importante.</span>
+            </h2>
+          </div>
+          <p class="section-desc">
+            Deja listo el paquete, edad, asistentes y fecha preferida. La disponibilidad se confirma directamente por WhatsApp.
+          </p>
+        </div>
+
+        <div class="reserve-grid">
+          <!-- Summary aside -->
+          <aside class="reserve-aside" aria-live="polite" aria-label="Resumen de tu selección">
+            <p class="eyebrow">Tu celebración</p>
+            <template x-if="selectedPackage">
+              <div>
+                <h3 x-text="`Paquete ${selectedPackage.name}`"></h3>
+                <p style="font-size:15px;margin-top:8px;opacity:.8" x-text="`${selectedPackage.duration} · ${selectedPackage.guests}`"></p>
+                <p style="font-size:24px;font-weight:800;letter-spacing:-.04em;margin-top:16px" x-text="'Desde ' + selectedPackage.price"></p>
+                <div class="selected-badge">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span>Paquete seleccionado</span>
+                </div>
+              </div>
+            </template>
+            <template x-if="!selectedPackage">
+              <div>
+                <h3>Elige un paquete para comenzar.</h3>
+                <p style="font-size:15px;margin-top:12px;opacity:.75">Después completa cuatro datos y el mensaje queda listo para WhatsApp.</p>
+              </div>
+            </template>
+
+            <!-- Mini Mondrian decoration -->
+            <div aria-hidden="true" style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;width:56px;height:56px;border:3px solid #0D0D0D;gap:0">
+              <span style="background:var(--red)"></span>
+              <span style="background:var(--ink);border-left:3px solid #0D0D0D"></span>
+              <span style="background:var(--white);border-top:3px solid #0D0D0D"></span>
+              <span style="background:var(--blue);border-top:3px solid #0D0D0D;border-left:3px solid #0D0D0D"></span>
+            </div>
+          </aside>
+
+          <!-- Form -->
+          <form class="reserve-form" @submit.prevent="submitReservation" novalidate>
+            <div class="fields">
+              <label class="field" for="reserva-nombre">
+                Nombre de quien reserva
+                <input
+                  id="reserva-nombre"
+                  type="text"
+                  required
+                  x-model="draft.name"
+                  placeholder="Ej: Camila Rojas"
+                  autocomplete="name"
+                >
+              </label>
+              <label class="field" for="reserva-edad">
+                Edad que celebra
+                <input
+                  id="reserva-edad"
+                  type="number"
+                  required
+                  min="1"
+                  max="18"
+                  x-model="draft.age"
+                  placeholder="Ej: 8"
+                >
+              </label>
+              <label class="field" for="reserva-asistentes">
+                Cantidad de asistentes
+                <input
+                  id="reserva-asistentes"
+                  type="number"
+                  required
+                  min="1"
+                  x-model="draft.guests"
+                  placeholder="Ej: 12"
+                >
+              </label>
+              <label class="field" for="reserva-fecha">
+                Fecha preferida
+                <input
+                  id="reserva-fecha"
+                  type="date"
+                  required
+                  x-model="draft.date"
+                >
+              </label>
+            </div>
+            <div class="form-actions">
+              <button
+                class="btn-primary"
+                type="submit"
+                :disabled="!selectedPackage"
+                style="width:100%;justify-content:center"
+              >
+                <!-- WhatsApp icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.02.99-1.02 2.43 0 1.43 1.04 2.82 1.19 3.01.15.2 2.05 3.12 4.97 4.37.69.3 1.23.47 1.65.6.69.18 1.32.15 1.82.09.55-.07 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.27-.19-.57-.34zM12 2a10 10 0 0 1 10 10c0 2.39-.84 4.59-2.23 6.33L21 22l-3.85-1.2A9.96 9.96 0 0 1 12 22 10 10 0 0 1 2 12 10 10 0 0 1 12 2z"/>
+                </svg>
+                Preparar mensaje por WhatsApp
+              </button>
+              <p class="form-note" x-show="!selectedPackage">
+                ↑ Selecciona primero un paquete en la sección de arriba.
+              </p>
+            </div>
+            <div
+              x-cloak
+              x-show="sent"
+              class="success-msg"
+              role="status"
+              aria-live="assertive"
+            >
+              <!-- Check circle icon -->
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="9" stroke="#1a7a44" stroke-width="2"/>
+                <path d="M6 10l3 3 5-5" stroke="#1a7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Tu mensaje quedó preparado. Puedes enviarlo por WhatsApp para confirmar disponibilidad.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <footer class="footer wrap">La Casa de los Colores · Demo Vitrina Express <span style="float:right"><a class="focus" href="../index.html">Volver al portafolio</a></span></footer>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="footer-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        La Casa de los Colores · Demo Vitrina Express
+      </div>
+      <a href="../index.html" aria-label="Volver al portafolio de demos">
+        ← Volver al portafolio
+      </a>
+    </div>
+  </footer>
+
+  <!-- Nav shadow on scroll -->
+  <script>
+    (function(){
+      const header = document.getElementById('top-header');
+      if (!header) return;
+      const observer = new IntersectionObserver(
+        ([e]) => header.classList.toggle('scrolled', e.intersectionRatio < 1),
+        { threshold: [1], rootMargin: '-1px 0px 0px 0px' }
+      );
+      observer.observe(header);
+    })();
+  </script>
 </body>
 </html>
