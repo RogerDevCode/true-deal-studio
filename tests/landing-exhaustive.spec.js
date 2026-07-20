@@ -56,6 +56,27 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Commercial redesign keeps local reach and human criteria visible', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    const hero = page.locator('#inicio');
+    const ia = page.locator('#ia-practica');
+
+    await expect(hero.getByText('Atención desde Biobío para negocios de todo Chile', { exact: true })).toBeVisible();
+    await expect(ia.getByRole('heading', { name: 'La herramienta acelera. STAX se hace cargo del criterio.' })).toBeVisible();
+    await expect(ia.getByText('Escuchamos cómo atiendes', { exact: true })).toBeVisible();
+    await expect(ia.getByText('Ordenamos tu información', { exact: true })).toBeVisible();
+    await expect(ia.getByText('Revisamos que funcione de verdad', { exact: true })).toBeVisible();
+    await expect(ia.getByText('Te entregamos control', { exact: true })).toBeVisible();
+    await expect(page.locator('.business-notebook-pattern')).toHaveCount(1);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+    await page.evaluate(() => document.documentElement.classList.add('light-theme'));
+    await expect(page.locator('.business-notebook-pattern').evaluate((node) => getComputedStyle(node).backgroundImage)).resolves.not.toBe('none');
+
+    await guards.assertHealthyContext();
+  });
+
   test('Plans explain the business stage, required material, and scope limits', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const prices = page.locator('#precios');
