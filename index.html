@@ -430,6 +430,13 @@
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
     }
 
+    html.light-theme body .band-dark .business-card .text-drac-fg {
+      color: #172B4D;
+    }
+    html.light-theme body .band-dark .business-card .text-drac-comment {
+      color: #475569;
+    }
+
     /* Glassmorphism */
     .glass {
       background: rgba(var(--drac-bg), 0.7);
@@ -553,14 +560,29 @@
        ============================================= */
     .hero-photo-bg {
       background-image:
-        linear-gradient(90deg,
-          rgba(11, 31, 74, 0.90) 0%,
-          rgba(11, 31, 74, 0.78) 52%,
-          rgba(88, 42, 31, 0.58) 100%),
-        url('./assets/optimized/santiago-hero.webp');
-      background-size: cover;
-      background-position: center 30%;
-      background-repeat: no-repeat;
+        linear-gradient(rgba(32, 61, 91, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(32, 61, 91, 0.055) 1px, transparent 1px),
+        radial-gradient(circle at 10% 12%, rgba(180, 67, 43, 0.12), transparent 22rem),
+        radial-gradient(circle at 90% 88%, rgba(32, 61, 91, 0.10), transparent 26rem);
+      background-color: #F5F1E8;
+      background-size: 28px 28px, 28px 28px, auto, auto;
+      background-position: center;
+    }
+    #inicio .premium-note {
+      color: #25415F;
+      background: rgba(255, 253, 248, 0.86);
+      border-color: rgba(32, 61, 91, 0.18);
+    }
+    #inicio .editorial-bar {
+      border-left-color: #B4432B;
+    }
+    #inicio .editorial-bar h1 {
+      color: #172B4D;
+      text-shadow: none;
+    }
+    #inicio .hero-subtitle,
+    #inicio .hero-trust {
+      color: #43546A;
     }
 
     /* Hero: a quiet visual journey from a vague question to prepared attention. */
@@ -1038,7 +1060,7 @@
               </h1>
             </div>
 
-            <p class="mt-5 max-w-xl text-[15px] leading-relaxed text-[rgba(255,255,255,0.88)] sm:text-lg">
+            <p class="hero-subtitle mt-5 max-w-xl text-[15px] leading-relaxed sm:text-lg">
               Tus clientes pueden revisar qué ofreces, valores desde, horarios y cómo avanzar antes de conversar contigo por WhatsApp.
             </p>
 
@@ -1059,15 +1081,15 @@
 
             <!-- Trust signals -->
             <div class="mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
-              <div class="flex items-center gap-2 text-sm text-[rgba(255,255,255,0.82)]">
+              <div class="hero-trust flex items-center gap-2 text-sm">
                 <svg class="h-4 w-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 Atención en todo Chile
               </div>
-              <div class="flex items-center gap-2 text-sm text-[rgba(255,255,255,0.82)]">
+              <div class="hero-trust flex items-center gap-2 text-sm">
                 <svg class="h-4 w-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 Precios transparentes en CLP (neto + IVA)
               </div>
-              <div class="mobile-soft-hide flex items-center gap-2 text-sm text-[rgba(255,255,255,0.82)]">
+              <div class="hero-trust mobile-soft-hide flex items-center gap-2 text-sm">
                 <svg class="h-4 w-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 Dominio, contenidos y accesos bajo tu control
               </div>

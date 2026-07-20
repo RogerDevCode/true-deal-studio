@@ -14,7 +14,8 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).toContainText('Muestra lo importante antes de que te escriban.');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
     await expect(page.getByRole('link', { name: 'Revisar lo que explico por WhatsApp' })).toBeVisible();
-    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('santiago-hero.webp');
+    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('linear-gradient');
+    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.not.toContain('santiago-hero.webp');
     
     // Check navigation anchor links
     const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#necesidades'];
@@ -68,6 +69,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(ia.getByText('Revisamos que funcione de verdad', { exact: true })).toBeVisible();
     await expect(ia.getByText('Te entregamos control', { exact: true })).toBeVisible();
     await expect(page.locator('.business-notebook-pattern')).toHaveCount(4);
+    await expect(ia.locator('.business-card .text-drac-fg').first()).toHaveCSS('color', 'rgb(23, 43, 77)');
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
