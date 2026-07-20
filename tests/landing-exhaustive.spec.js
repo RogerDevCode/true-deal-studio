@@ -240,6 +240,9 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(plan).toContainText('El plazo comienza cuando recibimos tu información completa.');
     await expect(plan).toContainText('Tu dominio queda a tu nombre');
     await expect(plan).toContainText('Una ronda consolidada de cambios');
+    await expect(plan).toContainText('Dos hitos: $49.999 CLP para iniciar + $50.000 CLP al aprobar tu versión lista');
+    await expect(plan).toContainText('15 días para ajustes menores después de publicar');
+    await expect(plan).toContainText('El nombre de tu sitio y su publicación los compras tú');
     await expect(plan).toContainText('No incluye: páginas extra, cambios de estructura, carro ni pagos en línea.');
     await expect(plan.getByRole('link', { name: 'Quiero mi vitrina en 3 días' })).toHaveAttribute('href', '#contacto');
     await guards.assertHealthyContext();
