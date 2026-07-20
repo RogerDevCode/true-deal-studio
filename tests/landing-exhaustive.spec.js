@@ -62,7 +62,9 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const hero = page.locator('#inicio');
     const ia = page.locator('#ia-practica');
 
-    await expect(hero.getByText('Atención desde Biobío para negocios de todo Chile', { exact: true })).toBeVisible();
+    const localReach = hero.getByText('Atención desde Biobío para negocios de todo Chile', { exact: true });
+    await expect(localReach).toBeVisible();
+    await expect(localReach).toHaveCSS('color', 'rgb(37, 65, 95)');
     await expect(ia.getByRole('heading', { name: 'La herramienta acelera. STAX se hace cargo del criterio.' })).toBeVisible();
     await expect(ia.getByText('Escuchamos cómo atiendes', { exact: true })).toBeVisible();
     await expect(ia.getByText('Ordenamos tu información', { exact: true })).toBeVisible();

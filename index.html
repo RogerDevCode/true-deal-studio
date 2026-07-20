@@ -15,7 +15,6 @@
   <meta name="twitter:title" content="Ordena tu atención por WhatsApp | STAX" />
   <meta name="twitter:description" content="Muestra lo importante antes de que te escriban: servicios, valores, horarios y formas de atención." />
   <meta name="twitter:image" content="./demo-psicologa/preview.png" />
-  <link rel="preload" as="image" href="./assets/optimized/santiago-hero.webp" fetchpriority="high" />
 
   <script>
     (function bootstrapTheme() {
@@ -222,33 +221,33 @@
       color: #68A2FF;
     }
 
-    /* In light theme, the transparent header still sits over the dark hero photo */
+    /* The transparent header sits over the light commercial notebook hero. */
     html.light-theme #navbar:not(.glass) .text-drac-fg {
-      color: #FFFFFF;
+      color: #172B4D;
     }
     html.light-theme #navbar:not(.glass) .text-drac-comment {
-      color: rgba(236, 241, 250, 0.88);
+      color: #43546A;
     }
     html.light-theme #navbar:not(.glass) .link-underline:hover {
-      color: #FFFFFF;
+      color: #0B5A91;
     }
     html.light-theme #navbar:not(.glass) button[aria-label="Cambiar tema"],
     html.light-theme #navbar:not(.glass) button[aria-label="Menú"] {
-      color: #FFFFFF;
-      border-color: rgba(255, 255, 255, 0.34);
-      background-color: rgba(255, 255, 255, 0.08);
+      color: #172B4D;
+      border-color: rgba(32, 61, 91, 0.24);
+      background-color: rgba(255, 253, 248, 0.74);
     }
     html.light-theme #navbar:not(.glass) > div:first-child {
-      background-color: rgba(11, 21, 38, 0.52);
-      border-bottom-color: rgba(255, 255, 255, 0.12);
+      background-color: rgba(255, 253, 248, 0.72);
+      border-bottom-color: rgba(32, 61, 91, 0.14);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
     html.light-theme #navbar:not(.glass) > div:first-child .text-drac-comment {
-      color: #EAF0FB;
+      color: #43546A;
     }
     html.light-theme #navbar:not(.glass) > div:first-child .text-drac-cyan {
-      color: #B9E6FF;
+      color: #0B5A91;
     }
     .mini-wa {
       background-color: rgba(var(--drac-green), 0.15);
@@ -583,6 +582,11 @@
     #inicio .hero-subtitle,
     #inicio .hero-trust {
       color: #43546A;
+    }
+    #inicio .hero-local-reach {
+      color: #25415F;
+      background: rgba(255, 253, 248, 0.86);
+      border-color: rgba(32, 61, 91, 0.18);
     }
 
     /* Hero: a quiet visual journey from a vague question to prepared attention. */
@@ -1064,7 +1068,7 @@
               Tus clientes pueden revisar qué ofreces, valores desde, horarios y cómo avanzar antes de conversar contigo por WhatsApp.
             </p>
 
-            <p class="mt-4 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90">
+            <p class="hero-local-reach mt-4 inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">
               Atención desde Biobío para negocios de todo Chile
             </p>
 
