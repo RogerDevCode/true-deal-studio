@@ -14,6 +14,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
     await expect(page.locator('h1')).not.toContainText('Muestra lo que haces.');
+    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('santiago-hero.webp');
     
     // Check navigation anchor links
     const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#propuestas-premium'];
