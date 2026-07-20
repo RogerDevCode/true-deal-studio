@@ -19,7 +19,7 @@ El panel representa cuatro estados conectados en profundidad, de atrás hacia de
 3. **Página que orienta** — una mini tarjeta de negocio con oferta y acción clara.
 4. **WhatsApp con contexto** — una conversación preparada que muestra comuna, servicio e intención.
 
-Los estados avanzan levemente a través de un carril diagonal de baja intensidad, terminando en una etiqueta visible: “Listo para atender”. La animación dura aproximadamente cinco segundos, se ejecuta una vez y no depende del scroll continuo. En estado reducido o móvil, todos los estados quedan visibles sin desplazamiento.
+Los estados avanzan levemente a través de un carril diagonal de baja intensidad, terminando en una etiqueta visible: “Listo para atender”. Una señal luminosa recorre el carril y hace perceptible la secuencia; se ejecuta una vez y no depende del scroll continuo. En estado reducido, todos los estados quedan visibles sin desplazamiento y la señal no se muestra.
 
 La paleta parte del azul profundo de la marca, usa blanco para los datos legibles, verde sólo para el destino WhatsApp y rojo chileno como acento de avance. No se añade un arcoíris ni ornamentos extra: el riesgo visual está en la profundidad tipográfica y espacial del carril.
 

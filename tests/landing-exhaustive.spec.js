@@ -33,7 +33,9 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(tunnel.locator('[data-clarity-step]')).toHaveCount(4);
     await expect(tunnel).toContainText('Consulta suelta');
     await expect(tunnel).toContainText('WhatsApp con contexto');
+    await expect(tunnel.locator('.clarity-tunnel__signal')).toHaveCount(1);
     await expect(tunnel).toHaveClass(/is-visible/);
+    await expect(tunnel.locator('.clarity-tunnel__signal').evaluate((signal) => signal.getAnimations().length)).resolves.toBeGreaterThan(0);
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
 
     await page.setViewportSize({ width: 390, height: 844 });

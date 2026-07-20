@@ -577,8 +577,22 @@
       box-shadow: 0 0 0 5px rgba(213, 43, 30, 0.16);
       content: '';
     }
+    .clarity-tunnel__signal {
+      position: absolute;
+      z-index: 2;
+      top: 5.35rem;
+      left: 17%;
+      width: 0.72rem;
+      height: 0.72rem;
+      border-radius: 999px;
+      background: #D8FFE4;
+      box-shadow: 0 0 0 5px rgba(80, 250, 123, 0.18), 0 0 24px 5px rgba(80, 250, 123, 0.62);
+      opacity: 0;
+      pointer-events: none;
+    }
     .clarity-tunnel__step {
       position: relative;
+      z-index: 1;
       display: grid;
       gap: 0.22rem;
       width: min(88%, 22rem);
@@ -635,16 +649,35 @@
     .clarity-tunnel.is-visible .clarity-tunnel__step--details { animation-delay: 320ms; }
     .clarity-tunnel.is-visible .clarity-tunnel__step--page { animation-delay: 640ms; }
     .clarity-tunnel.is-visible .clarity-tunnel__step--whatsapp { animation-delay: 960ms; }
+    .clarity-tunnel.is-visible .clarity-tunnel__signal { animation: clarity-signal 2850ms cubic-bezier(.22,.7,.28,1) 120ms both; }
     @keyframes clarity-arrive { to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
+    @keyframes clarity-signal {
+      0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.25); }
+      10%, 22% { opacity: 1; transform: translate3d(0, 0.7rem, 0) scale(1); }
+      40% { opacity: 1; transform: translate3d(5.4rem, 5.65rem, 0) scale(1); }
+      63% { opacity: 1; transform: translate3d(10.2rem, 11.1rem, 0) scale(1); }
+      84% { opacity: 1; transform: translate3d(4.35rem, 16.4rem, 0) scale(1.15); }
+      100% { opacity: 0; transform: translate3d(4.35rem, 16.4rem, 0) scale(0.5); }
+    }
     @media (max-width: 1023px) {
       .clarity-tunnel { min-height: auto; max-width: 34rem; margin-inline: auto; }
     }
     @media (max-width: 540px) {
       .clarity-tunnel { padding: 1rem; border-radius: 1.4rem; }
       .clarity-tunnel::before { left: 1.6rem; top: 14%; bottom: 8%; transform: none; }
+      .clarity-tunnel__signal { top: 4.5rem; left: 1.22rem; }
+      .clarity-tunnel.is-visible .clarity-tunnel__signal { animation-name: clarity-signal-mobile; }
       .clarity-tunnel__step { width: auto; margin-left: 1.35rem; padding: 0.7rem 0.75rem; }
       .clarity-tunnel__step::before { top: 50%; right: auto; left: -1.35rem; width: 1.2rem; }
       .clarity-tunnel__step h2 { font-size: 0.9rem; }
+    }
+    @keyframes clarity-signal-mobile {
+      0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.25); }
+      10%, 22% { opacity: 1; transform: translate3d(0, 0.8rem, 0) scale(1); }
+      40% { opacity: 1; transform: translate3d(0, 5.9rem, 0) scale(1); }
+      63% { opacity: 1; transform: translate3d(0, 11.25rem, 0) scale(1); }
+      84% { opacity: 1; transform: translate3d(0, 16.5rem, 0) scale(1.15); }
+      100% { opacity: 0; transform: translate3d(0, 16.5rem, 0) scale(0.5); }
     }
 
     /* Noise texture on hero only */
@@ -783,6 +816,7 @@
         opacity: 1;
         transform: none;
       }
+      .clarity-tunnel__signal { display: none; }
     }
 
     /* Typing cursor */
@@ -966,6 +1000,7 @@
           <div class="reveal-right overflow-x-clip" style="transition-delay: .15s">
             <figure class="clarity-tunnel" aria-label="Ruta de claridad: consulta suelta, información ordenada, página que orienta y WhatsApp con contexto">
               <figcaption class="clarity-tunnel__caption">Ruta de claridad</figcaption>
+              <span class="clarity-tunnel__signal" aria-hidden="true"></span>
               <article class="clarity-tunnel__step clarity-tunnel__step--query" data-clarity-step>
                 <span class="clarity-tunnel__eyebrow">01 · Antes</span>
                 <h2>Consulta suelta</h2>
