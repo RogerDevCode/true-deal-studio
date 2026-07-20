@@ -56,6 +56,20 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Plans explain the business stage, required material, and scope limits', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    const prices = page.locator('#precios');
+
+    await expect(prices.getByText('Oferta clara', { exact: true })).toBeVisible();
+    await expect(prices.getByText('Atención ordenada', { exact: true })).toBeVisible();
+    await expect(prices.getByText('Pedidos en línea', { exact: true })).toBeVisible();
+    await expect(prices.getByText('Necesitas aportar:', { exact: true })).toHaveCount(3);
+    await expect(prices.getByText('No incluye:', { exact: true })).toHaveCount(2);
+    await expect(prices.getByText('Considera:', { exact: true })).toHaveCount(1);
+
+    await guards.assertHealthyContext();
+  });
+
   test('Process timeline loops through each step only while the section is visible', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const process = page.locator('#proceso');
