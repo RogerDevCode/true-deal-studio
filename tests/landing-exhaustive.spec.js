@@ -215,6 +215,8 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       const link = page.locator(`a[href="${demoPath}"]`).first();
       await expect(link, `Link to ${demoPath} must exist on landing`).toBeAttached();
     }
+    const casaRondaCard = page.locator('a[href="./demo-casa-colores/index.html"]').first();
+    await expect(casaRondaCard.getByRole('heading', { name: 'Casa Ronda', exact: true })).toBeVisible();
     await guards.assertHealthyContext();
   });
 

@@ -25,6 +25,8 @@ test("Landing and demos stay production-ready", async ({ page }) => {
   await expect(page.getByText("Atención en todo Chile", { exact: true })).toHaveCount(2);
   await expect(page.locator("body")).not.toContainText(/Santiago|Concepción/i);
   await page.getByRole("button", { name: /Ver las 10 demostraciones en vivo|Mostrar menos demostraciones/i }).click();
+  const casaRondaCard = page.locator('a[href="./demo-casa-colores/index.html"]').first();
+  await expect(casaRondaCard.getByRole("heading", { name: "Casa Ronda", exact: true })).toBeVisible();
 
   for (const href of demoPaths) {
     const link = page.locator(`a[href="${href}"]`).first();
