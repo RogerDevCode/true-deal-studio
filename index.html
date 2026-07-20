@@ -132,7 +132,7 @@
     }
 
     /* In Light Theme: only specific light sections should promote cards to solid white */
-    html.light-theme body #propuestas-premium [class*="bg-drac-bg/"],
+    html.light-theme body #necesidades [class*="bg-drac-bg/"],
     html.light-theme body #demos [class*="bg-drac-bg/"],
     html.light-theme body #beneficios [class*="bg-drac-bg/"],
     html.light-theme body #precios [class*="bg-drac-bg/"],
@@ -919,7 +919,7 @@
       <nav class="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
         <a href="#beneficios" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Beneficios</a>
         <a href="#proceso" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Proceso</a>
-        <a href="#propuestas-premium" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Propuestas</a>
+        <a href="#necesidades" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Cómo atiendes</a>
         <a href="#demos" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Demos</a>
         <a href="#precios" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Inversión</a>
         <a href="#faq" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Preguntas</a>
@@ -970,7 +970,7 @@
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
         <a @click="mobileMenu=false" href="#beneficios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
         <a @click="mobileMenu=false" href="#proceso" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Proceso</a>
-        <a @click="mobileMenu=false" href="#propuestas-premium" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Propuestas</a>
+        <a @click="mobileMenu=false" href="#necesidades" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Cómo atiendes</a>
         <a @click="mobileMenu=false" href="#demos" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Demos</a>
         <a @click="mobileMenu=false" href="#precios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Inversión</a>
         <a @click="mobileMenu=false" href="#faq" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Preguntas</a>
@@ -1136,9 +1136,9 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 3 PROPUESTAS DE DIRECCION -->
+    <!-- NECESIDADES DE ATENCION -->
     <!-- ============================================ -->
-    <section id="propuestas-premium" x-data="{ showMoreProposals: false }" class="relative band-white py-12 overflow-hidden lg:py-16">
+    <section id="necesidades" class="relative band-white py-12 overflow-hidden lg:py-16">
 
       <div class="absolute top-10 right-0 h-56 w-56 rounded-full bg-chile-blue/6 blur-[100px] pointer-events-none"></div>
       <div class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-drac-orange/6 blur-[120px] pointer-events-none"></div>
@@ -1146,80 +1146,48 @@
       <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="reveal mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <span class="section-kicker inline-flex items-center rounded-full border border-drac-current/20 bg-drac-current/20 px-4 py-1.5 text-xs font-bold uppercase text-drac-comment mb-5">
-            Nuevas direcciones para tu futura landing
+            Parte por cómo atiendes hoy
           </span>
           <h2 class="font-display text-2xl font-black sm:text-3xl lg:text-4xl">
-            Elige cómo quieres
-            <span class="text-drac-fg">que te recuerden</span>
+            Elige lo que necesitas
+            <span class="text-drac-fg">dejar claro</span>
           </h2>
           <p class="mt-4 text-base leading-relaxed text-drac-comment sm:text-lg">
-            Tres caminos visuales distintos para que tu negocio se vea claro, cercano y listo para recibir consultas.
+            No todos los negocios necesitan lo mismo. Partimos por la información que hoy repites para que cada persona sepa cómo avanzar contigo.
           </p>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-3">
-          <a href="./demo-propuesta-empezar-simple/index.html" target="_blank" class="reveal group relative flex min-h-[340px] flex-col overflow-hidden rounded-[1.75rem] border border-drac-current/30 bg-drac-bg/70 p-5 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-chile-blueLight/35 hover:shadow-card-hover md:min-h-[420px] md:p-7">
-            <div class="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-chile-blueLight/15 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
-            <div class="relative flex flex-grow flex-col">
-              <div class="mb-5 h-40 overflow-hidden rounded-3xl border border-white/10 md:mb-6 md:h-44">
-                <img src="./assets/optimized/salon-card.webp" alt="Vista editorial boutique" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              </div>
-              <span class="inline-flex w-fit rounded-full bg-chile-blueLight/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-chile-blueLight">Propuesta 01 · Editorial boutique viva</span>
-              <h3 class="mt-4 font-display text-xl font-black leading-tight text-drac-fg sm:text-2xl">Una vitrina que eleva tu imagen</h3>
-              <p class="mt-3 text-sm leading-relaxed text-drac-comment sm:text-base">
-                Ideal para negocios donde la imagen, el gusto y la atención personalizada marcan la diferencia desde el primer vistazo.
-              </p>
-              <div class="mt-5 rounded-2xl border border-drac-current/20 bg-drac-current/15 p-4">
-                <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Primer vistazo</p>
-                <p class="mt-2 text-sm leading-relaxed text-drac-comment">Hero visual, mockup móvil y estética boutique para instalar deseo inmediato.</p>
-              </div>
-              <div class="mt-auto pt-6 text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Ver propuesta editorial →</div>
-            </div>
-          </a>
-
-          <a href="./demo-propuesta-impacto-comercial/index.html" target="_blank" :class="showMoreProposals ? 'flex' : 'hidden'" class="hidden md:flex reveal group relative min-h-[340px] flex-col overflow-hidden rounded-[1.75rem] border border-drac-current/30 bg-drac-bg/70 p-5 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-chile-blueLight/35 hover:shadow-card-hover md:min-h-[420px] md:p-7" style="transition-delay: .08s">
-            <div class="absolute -right-10 bottom-8 h-40 w-40 rounded-full bg-chile-blueLight/15 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
-            <div class="relative flex flex-grow flex-col">
-              <div class="mb-5 h-40 overflow-hidden rounded-3xl border border-white/10 md:mb-6 md:h-44">
-                <img src="./assets/optimized/ecommerce-card.webp" alt="Vista de impacto comercial" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              </div>
-              <span class="inline-flex w-fit rounded-full bg-chile-blueLight/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-chile-blueLight">Propuesta 02 · Impacto comercial vivo</span>
-              <h3 class="mt-4 font-display text-xl font-black leading-tight text-drac-fg sm:text-2xl">Una página que invita a consultar y comprar</h3>
-              <p class="mt-3 text-sm leading-relaxed text-drac-comment sm:text-base">
-                Directa, comercial y fácil de recorrer. Funciona bien cuando quieres mostrar valor rápido y recibir mensajes con intención.
-              </p>
-              <div class="mt-5 rounded-2xl border border-drac-current/20 bg-drac-current/15 p-4">
-                <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Primer vistazo</p>
-                <p class="mt-2 text-sm leading-relaxed text-drac-comment">Contraste fuerte, señales claras y botones ubicados en el momento correcto.</p>
-              </div>
-              <div class="mt-auto pt-6 text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Ver propuesta comercial →</div>
-            </div>
-          </a>
-
-          <a href="./demo-propuesta-atencion-ordenada/index.html" target="_blank" :class="showMoreProposals ? 'flex' : 'hidden'" class="hidden md:flex reveal group relative min-h-[340px] flex-col overflow-hidden rounded-[1.75rem] border border-drac-current/30 bg-drac-bg/70 p-5 shadow-card transition-all duration-500 hover:-translate-y-1 hover:border-chile-blueLight/35 hover:shadow-card-hover md:min-h-[420px] md:p-7" style="transition-delay: .16s">
-            <div class="absolute -left-14 top-20 h-40 w-40 rounded-full bg-chile-blueLight/12 blur-2xl transition-transform duration-500 group-hover:scale-125"></div>
-            <div class="relative flex flex-grow flex-col">
-              <div class="mb-5 h-40 overflow-hidden rounded-3xl border border-white/10 md:mb-6 md:h-44">
-                <img src="./assets/optimized/contabilidad-card.webp" alt="Vista de sistema vivo" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              </div>
-              <span class="inline-flex w-fit rounded-full bg-chile-blueLight/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-chile-blueLight">Propuesta 03 · Sistema vivo</span>
-              <h3 class="mt-4 font-display text-xl font-black leading-tight text-drac-fg sm:text-2xl">Una página que ordena la atención</h3>
-              <p class="mt-3 text-sm leading-relaxed text-drac-comment sm:text-base">
-                Ideal para servicios con agenda, pedidos o consultas frecuentes. La atención se entiende mejor y el cliente llega más preparado.
-              </p>
-              <div class="mt-5 rounded-2xl border border-drac-current/20 bg-drac-current/15 p-4">
-                <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Primer vistazo</p>
-                <p class="mt-2 text-sm leading-relaxed text-drac-comment">Panel visual, pasos claros y módulos interactivos para explicar con simpleza.</p>
-              </div>
-              <div class="mt-auto pt-6 text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Ver propuesta sistema →</div>
-            </div>
-          </a>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Atención presencial</p>
+            <h3 class="mt-3 text-xl font-black text-drac-fg">Atiendes en un local</h3>
+            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Deja claros horarios, ubicación, servicios y cómo llegar antes de que te pregunten.</p>
+          </article>
+          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card" style="transition-delay: .06s">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Pedidos y reparto</p>
+            <h3 class="mt-3 text-xl font-black text-drac-fg">Haces delivery</h3>
+            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Explica productos, valores desde, zonas, horarios de entrega y la forma de pedir.</p>
+          </article>
+          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card" style="transition-delay: .12s">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Horas y visitas</p>
+            <h3 class="mt-3 text-xl font-black text-drac-fg">Trabajas con reservas</h3>
+            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Presenta servicios, modalidades, disponibilidad y qué necesita saber la persona antes de agendar.</p>
+          </article>
+          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card" style="transition-delay: .18s">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Productos</p>
+            <h3 class="mt-3 text-xl font-black text-drac-fg">Vendes por catálogo</h3>
+            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Ordena fotos, variantes, valores y condiciones para recibir mensajes con una selección más clara.</p>
+          </article>
+          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card sm:col-span-2 lg:col-span-1" style="transition-delay: .24s">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Siguiente etapa</p>
+            <h3 class="mt-3 text-xl font-black text-drac-fg">Quieres cobrar en línea</h3>
+            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Primero revisamos si tus productos, precios y forma de entrega están listos para recibir pedidos.</p>
+          </article>
         </div>
 
-        <div class="mt-5 flex justify-center md:hidden">
-          <button @click="showMoreProposals = !showMoreProposals" class="inline-flex items-center justify-center rounded-full border border-drac-current/30 bg-drac-current/15 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-comment/40 hover:bg-drac-current/25">
-            <span x-text="showMoreProposals ? 'Ver menos direcciones' : 'Ver 2 direcciones más'"></span>
-          </button>
+        <div class="reveal mt-8 rounded-3xl border border-chile-blueLight/20 bg-chile-blueLight/10 p-6 text-center">
+          <p class="text-lg font-bold text-drac-fg">No necesitas elegir un plan ahora.</p>
+          <p class="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-drac-comment">Cuéntanos cómo atiendes y revisamos qué información conviene ordenar primero para tu negocio.</p>
         </div>
       </div>
     </section>

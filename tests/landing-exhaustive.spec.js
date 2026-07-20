@@ -17,11 +17,18 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('santiago-hero.webp');
     
     // Check navigation anchor links
-    const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#propuestas-premium'];
+    const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#necesidades'];
     for (const href of navLinks) {
       const link = page.locator(`a[href="${href}"]`).first();
       await expect(link).toBeAttached();
     }
+    const needs = page.locator('#necesidades');
+    await expect(needs).toBeVisible();
+    await expect(needs.getByRole('heading', { name: 'Atiendes en un local' })).toBeVisible();
+    await expect(needs.getByRole('heading', { name: 'Haces delivery' })).toBeVisible();
+    await expect(needs.getByRole('heading', { name: 'Trabajas con reservas' })).toBeVisible();
+    await expect(needs.getByRole('heading', { name: 'Vendes por catálogo' })).toBeVisible();
+    await expect(needs.getByRole('heading', { name: 'Quieres cobrar en línea' })).toBeVisible();
     await guards.assertHealthyContext();
   });
 
