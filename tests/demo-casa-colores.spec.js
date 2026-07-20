@@ -11,6 +11,31 @@ async function installWindowOpenProbe(page) {
   });
 }
 
+function channelToLinear(value) {
+  const channel = value / 255;
+  return channel <= 0.04045
+    ? channel / 12.92
+    : Math.pow((channel + 0.055) / 1.055, 2.4);
+}
+
+function contrastRatio(first, second) {
+  const luminance = ([red, green, blue]) =>
+    0.2126 * channelToLinear(red) +
+    0.7152 * channelToLinear(green) +
+    0.0722 * channelToLinear(blue);
+  const light = Math.max(luminance(first), luminance(second));
+  const dark = Math.min(luminance(first), luminance(second));
+  return (light + 0.05) / (dark + 0.05);
+}
+
+function parseColor(value) {
+  const channels = value.match(/[\d.]+/g)?.slice(0, 3).map(Number);
+  if (!channels || channels.length !== 3) {
+    throw new Error(`Unsupported color value: ${value}`);
+  }
+  return channels;
+}
+
 test("Casa Ronda prepara una consulta familiar de bajo riesgo y reinicia", async ({ page }) => {
   await installWindowOpenProbe(page);
   await page.goto("/demo-casa-colores/index.html");
@@ -55,4 +80,105 @@ test("Casa Ronda prepara una consulta familiar de bajo riesgo y reinicia", async
   await expect(page.locator("#reserva-nombre")).toHaveValue("");
   await expect(page.locator("#reserva-necesidad")).toHaveValue("");
   await guards.assertHealthyContext();
+});
+
+test("Casa Ronda mantiene una jerarquía mobile-first sin ideas fragmentadas", async ({ page }) => {
+  const viewports = [
+    { width: 320, height: 844 },
+    { width: 390, height: 844 },
+    { width: 768, height: 1024 },
+    { width: 1440, height: 1000 },
+  ];
+
+  for (const viewport of viewports) {
+    await page.setViewportSize(viewport);
+    await page.goto("/demo-casa-colores/index.html");
+    await waitForAlpine(page);
+
+    const metrics = await page.evaluate(() => {
+      const visualLines = (node) => {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        return [...range.getClientRects()].filter((rect) => rect.width > 0 && rect.height > 0).length;
+      };
+      const cards = [...document.querySelectorAll(".experience-card")];
+      const grid = document.querySelector(".experience-grid");
+
+      return {
+        viewport: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        h1: parseFloat(getComputedStyle(document.querySelector("h1")).fontSize),
+        h2: [...document.querySelectorAll("h2")].map((node) => parseFloat(getComputedStyle(node).fontSize)),
+        cardTitles: cards.map((node) => parseFloat(getComputedStyle(node.querySelector("h3")).fontSize)),
+        headings: [...document.querySelectorAll("[data-idea-heading]")].map((heading) => ({
+          totalLines: [...heading.querySelectorAll("[data-idea-line]")].reduce((total, line) => total + visualLines(line), 0),
+          ideaLines: [...heading.querySelectorAll("[data-idea-line]")].map(visualLines),
+        })),
+        fields: [...document.querySelectorAll(".field input, .field textarea")].map((node) => ({
+          height: node.getBoundingClientRect().height,
+          fontSize: parseFloat(getComputedStyle(node).fontSize),
+        })),
+        controls: [...document.querySelectorAll(".reset-button, .experience-card button, summary, .booking-form .button")].map((node) => node.getBoundingClientRect().height),
+        gridOverflowX: getComputedStyle(grid).overflowX,
+        cardRects: cards.map((card) => {
+          const rect = card.getBoundingClientRect();
+          return { left: rect.left, right: rect.right, top: rect.top };
+        }),
+      };
+    });
+
+    expect(metrics.scrollWidth, `horizontal overflow at ${viewport.width}px`).toBeLessThanOrEqual(metrics.viewport);
+    expect(metrics.headings, `idea headings at ${viewport.width}px`).toHaveLength(5);
+    for (const heading of metrics.headings) {
+      expect(heading.totalLines, `heading lines at ${viewport.width}px`).toBeLessThanOrEqual(2);
+      expect(heading.ideaLines.every((lineCount) => lineCount === 1), `complete idea lines at ${viewport.width}px`).toBe(true);
+    }
+
+    const mobile = viewport.width < 900;
+    expect(metrics.h1).toBeLessThanOrEqual(mobile ? 44 : 64);
+    for (const size of metrics.h2) expect(size).toBeLessThanOrEqual(mobile ? 38 : 48);
+    for (const size of metrics.cardTitles) expect(size).toBeLessThanOrEqual(mobile ? 28 : 32);
+    for (const field of metrics.fields) {
+      expect(field.height).toBeGreaterThanOrEqual(48);
+      expect(field.fontSize).toBeGreaterThanOrEqual(16);
+    }
+    for (const height of metrics.controls) expect(height).toBeGreaterThanOrEqual(44);
+
+    if (mobile) {
+      expect(metrics.gridOverflowX).not.toBe("auto");
+      for (const rect of metrics.cardRects) {
+        expect(rect.left).toBeGreaterThanOrEqual(0);
+        expect(rect.right).toBeLessThanOrEqual(metrics.viewport);
+      }
+      expect(metrics.cardRects[1].top).toBeGreaterThan(metrics.cardRects[0].top);
+      expect(metrics.cardRects[2].top).toBeGreaterThan(metrics.cardRects[1].top);
+    }
+  }
+});
+
+test("Casa Ronda usa pares de color legibles en acciones y superficies", async ({ page }) => {
+  await page.goto("/demo-casa-colores/index.html");
+  await waitForAlpine(page);
+
+  const colors = await page.evaluate(() => {
+    const root = getComputedStyle(document.documentElement);
+    const primary = getComputedStyle(document.querySelector(".button-primary"));
+    const story = getComputedStyle(document.querySelector(".story-section"));
+    const read = (name) => root.getPropertyValue(name).trim();
+    return {
+      pairs: [
+        [read("--cta-text"), read("--cta-bg")],
+        [read("--text-on-dark"), read("--surface-dark")],
+        [read("--text-primary"), read("--surface-light")],
+      ],
+      primary: [primary.color, primary.backgroundColor],
+      storyBackground: story.backgroundColor,
+      coral: read("--coral"),
+    };
+  });
+
+  for (const [foreground, background] of [...colors.pairs, colors.primary]) {
+    expect(contrastRatio(parseColor(foreground), parseColor(background))).toBeGreaterThanOrEqual(4.5);
+  }
+  expect(parseColor(colors.storyBackground)).not.toEqual(parseColor(colors.coral));
 });
