@@ -70,6 +70,19 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Contact section explains the three steps before opening WhatsApp', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    const contact = page.locator('#contacto');
+
+    await expect(contact.getByText('1. Nos cuentas cómo atiendes', { exact: true })).toBeVisible();
+    await expect(contact.getByText('2. Recibes una recomendación inicial', { exact: true })).toBeVisible();
+    await expect(contact.getByText('3. Decides con claridad', { exact: true })).toBeVisible();
+    await expect(contact.getByText(/Respondemos dentro del horario de atención/)).toBeVisible();
+    await expect(contact.getByText('Tu mensaje está listo', { exact: true })).toBeAttached();
+
+    await guards.assertHealthyContext();
+  });
+
   test('Process timeline loops through each step only while the section is visible', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const process = page.locator('#proceso');
