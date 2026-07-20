@@ -3,886 +3,348 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Casa de los Colores | Celebraciones infantiles</title>
-  <meta name="description" content="Demo de celebraciones infantiles para niños de 4 a 10 años, con experiencias claras y una consulta preparada por WhatsApp.">
-  <meta name="theme-color" content="#FFF9F3">
-  <meta property="og:title" content="La Casa de los Colores | Celebraciones infantiles">
-  <meta property="og:description" content="Experiencias, acompañamiento y una consulta preparada para celebrar con tranquilidad.">
-  <meta property="og:image" content="../demo-psicologa/preview.png">
+  <title>Casa Ronda | Celebraciones infantiles</title>
+  <meta name="description" content="Demo de celebraciones para niños de 4 a 10 años: experiencias claras, momentos acompañados y consulta sin costo por WhatsApp.">
+  <meta name="theme-color" content="#2D2032">
+  <meta property="og:title" content="Casa Ronda | Celebraciones infantiles">
+  <meta property="og:description" content="Aquí el cumpleaños se vive en ronda. Conoce el plan antes de consultar una fecha.">
+  <meta property="og:image" content="./assets/casa-ronda-hero.webp">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="La Casa de los Colores">
-  <meta name="twitter:description" content="Celebraciones infantiles con todo claro antes de reservar.">
-  <meta name="twitter:image" content="../demo-psicologa/preview.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"EntertainmentBusiness","name":"La Casa de los Colores","description":"Demo de un espacio de celebraciones infantiles con consulta preparada.","areaServed":"Chile"}</script>
+  <meta name="twitter:title" content="Casa Ronda | Celebraciones infantiles">
+  <meta name="twitter:description" content="Juegos, creación, comida y tiempo compartido con un plan claro para la familia.">
+  <meta name="twitter:image" content="./assets/casa-ronda-hero.webp">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"EntertainmentBusiness","name":"Casa Ronda","description":"Demo ficticio de un espacio de celebraciones infantiles con consulta preparada.","areaServed":"Chile"}</script>
   <script defer src="./app.js"></script>
   <script defer src="../assets/vendor/alpinejs.min.js"></script>
   <style>
-    @font-face {
-      font-family: "Instrument Serif";
-      src: url("../assets/fonts/instrument-serif-400.ttf") format("truetype");
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "DM Sans";
-      src: url("../assets/fonts/dm-sans-400.ttf") format("truetype");
-      font-weight: 400;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "DM Sans";
-      src: url("../assets/fonts/dm-sans-500.ttf") format("truetype");
-      font-weight: 500;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "DM Sans";
-      src: url("../assets/fonts/dm-sans-700.ttf") format("truetype");
-      font-weight: 700;
-      font-display: swap;
-    }
+    @font-face { font-family:"Archivo Black"; src:url("../assets/fonts/archivo-black-400.ttf") format("truetype"); font-display:swap; }
+    @font-face { font-family:"Newsreader"; src:url("../assets/fonts/newsreader-500.ttf") format("truetype"); font-weight:500; font-display:swap; }
+    @font-face { font-family:"Newsreader"; src:url("../assets/fonts/newsreader-700.ttf") format("truetype"); font-weight:700; font-display:swap; }
+    @font-face { font-family:"DM Sans"; src:url("../assets/fonts/dm-sans-400.ttf") format("truetype"); font-weight:400; font-display:swap; }
+    @font-face { font-family:"DM Sans"; src:url("../assets/fonts/dm-sans-500.ttf") format("truetype"); font-weight:500; font-display:swap; }
+    @font-face { font-family:"DM Sans"; src:url("../assets/fonts/dm-sans-700.ttf") format("truetype"); font-weight:700; font-display:swap; }
 
     :root {
-      --cloud: #fff9f3;
-      --surface: #fffefd;
-      --plum: #352b38;
-      --berry: #b83f68;
-      --berry-dark: #8e2e4e;
-      --sky: #78b7c4;
-      --leaf: #6e8b72;
-      --peach: #f2a27f;
-      --sun: #f3c965;
-      --line: rgba(53, 43, 56, 0.16);
-      --display: "Instrument Serif", Georgia, serif;
-      --body: "DM Sans", system-ui, sans-serif;
-      --shadow: 0 1.7rem 4.5rem rgba(78, 47, 66, 0.13);
+      --aubergine:#2d2032;
+      --aubergine-soft:#49354f;
+      --coral:#f06459;
+      --coral-dark:#cc473e;
+      --marigold:#f3c84b;
+      --aqua:#a8d7cc;
+      --play-blue:#4464ad;
+      --porcelain:#fffdf8;
+      --paper:#f7f1e8;
+      --ink-soft:rgba(45,32,50,.72);
+      --line:rgba(45,32,50,.16);
+      --display:"Newsreader",Georgia,serif;
+      --brand:"Archivo Black",system-ui,sans-serif;
+      --body:"DM Sans",system-ui,sans-serif;
+      --shadow:0 2rem 5rem rgba(45,32,50,.16);
     }
 
-    [x-cloak] { display: none !important; }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      overflow-x: hidden;
-      background:
-        radial-gradient(circle at 9% 7%, rgba(242, 162, 127, 0.16), transparent 24rem),
-        radial-gradient(circle at 92% 17%, rgba(120, 183, 196, 0.16), transparent 26rem),
-        var(--cloud);
-      color: var(--plum);
-      font-family: var(--body);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    body::before {
-      position: fixed;
-      z-index: -1;
-      inset: 0;
-      background-image: radial-gradient(rgba(53, 43, 56, 0.095) 0.65px, transparent 0.65px);
-      background-size: 15px 15px;
-      opacity: 0.32;
-      content: "";
-      pointer-events: none;
-    }
-    button, input { font: inherit; }
-    button { color: inherit; }
-    h1, h2, h3, p { margin-top: 0; }
-    a { color: inherit; }
-    :focus-visible {
-      outline: 3px solid var(--berry);
-      outline-offset: 4px;
-    }
-    .skip-link {
-      position: fixed;
-      z-index: 50;
-      top: 0.75rem;
-      left: 0.75rem;
-      padding: 0.75rem 1rem;
-      border-radius: 0.8rem;
-      background: var(--plum);
-      color: white;
-      text-decoration: none;
-      transform: translateY(-160%);
-      transition: transform 180ms ease;
-    }
-    .skip-link:focus { transform: translateY(0); }
-    .wrap {
-      width: min(72rem, calc(100% - 2.25rem));
-      margin-inline: auto;
-    }
-    .eyebrow {
-      margin-bottom: 1.2rem;
-      color: var(--berry-dark);
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .section-heading {
-      max-width: 42rem;
-      margin-bottom: clamp(2.5rem, 7vw, 5.2rem);
-    }
-    .section-heading h2 {
-      margin-bottom: 1.2rem;
-      font-family: var(--display);
-      font-size: clamp(3.15rem, 7vw, 6rem);
-      font-weight: 400;
-      letter-spacing: -0.045em;
-      line-height: 0.92;
-      text-wrap: balance;
-    }
-    .section-heading > p:last-child {
-      max-width: 58ch;
-      margin-bottom: 0;
-      color: rgba(53, 43, 56, 0.76);
-      font-size: clamp(1rem, 1.6vw, 1.13rem);
-    }
+    [x-cloak]{display:none!important}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;overflow-x:hidden;background:var(--porcelain);color:var(--aubergine);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+    button,input,textarea{font:inherit}
+    button{color:inherit}
+    h1,h2,h3,p{margin-top:0}
+    a{color:inherit}
+    img{display:block;max-width:100%}
+    :focus-visible{outline:3px solid var(--marigold);outline-offset:4px}
+    .skip-link{position:fixed;z-index:100;top:.75rem;left:.75rem;padding:.75rem 1rem;border-radius:.65rem;background:var(--marigold);color:var(--aubergine);font-weight:700;text-decoration:none;transform:translateY(-160%);transition:transform 180ms ease}
+    .skip-link:focus{transform:translateY(0)}
+    .wrap{width:min(75rem,calc(100% - 2.25rem));margin-inline:auto}
+    .eyebrow{margin-bottom:1rem;color:var(--coral-dark);font-size:.73rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+    .section-copy{max-width:42rem}
+    .section-copy h2{margin-bottom:1.15rem;font-family:var(--display);font-size:clamp(3.2rem,7vw,6.5rem);font-weight:500;letter-spacing:-.055em;line-height:.88;text-wrap:balance}
+    .section-copy>p:last-child{max-width:58ch;margin-bottom:0;color:var(--ink-soft);font-size:clamp(1rem,1.5vw,1.12rem);text-wrap:pretty}
 
-    .site-header {
-      position: sticky;
-      z-index: 20;
-      top: 0;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 249, 243, 0.88);
-      backdrop-filter: blur(18px);
-    }
-    .nav {
-      display: flex;
-      min-height: 4.8rem;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.92rem;
-      font-weight: 700;
-      line-height: 1.15;
-      text-decoration: none;
-    }
-    .brand-flower {
-      position: relative;
-      display: grid;
-      width: 2.4rem;
-      height: 2.4rem;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--sun);
-      box-shadow:
-        -0.58rem 0 var(--peach),
-        0.58rem 0 var(--sky),
-        0 -0.58rem var(--berry),
-        0 0.58rem var(--leaf);
-      transform: scale(0.65);
-    }
-    .brand-flower::after {
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: 50%;
-      background: var(--cloud);
-      content: "";
-    }
-    .nav-links {
-      display: none;
-      align-items: center;
-      gap: 1.8rem;
-    }
-    .nav-links a {
-      font-size: 0.84rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .nav-links a:hover { color: var(--berry); }
-    .reset-button {
-      min-height: 2.65rem;
-      padding: 0.6rem 0.9rem;
-      border: 1px solid var(--line);
-      border-radius: 0.85rem 1.25rem 0.9rem 1.15rem;
-      background: rgba(255, 254, 253, 0.8);
-      font-size: 0.76rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: border-color 180ms ease, transform 180ms ease;
-    }
-    .reset-button:hover {
-      border-color: var(--berry);
-      transform: translateY(-2px);
-    }
+    .site-header{position:fixed;z-index:40;top:0;left:0;width:100%;border-bottom:1px solid rgba(255,255,255,.13);background:rgba(45,32,50,.86);color:var(--porcelain);backdrop-filter:blur(18px)}
+    .nav{display:flex;min-height:4.8rem;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:inline-flex;align-items:center;gap:.75rem;font-family:var(--brand);font-size:.9rem;letter-spacing:-.03em;text-decoration:none;text-transform:uppercase}
+    .brand-mark{position:relative;width:2.3rem;height:2.3rem;flex:0 0 auto;border:7px solid var(--coral);border-radius:50%}
+    .brand-mark::before{position:absolute;inset:-12px;border:3px solid var(--marigold);border-right-color:transparent;border-radius:50%;content:"";transform:rotate(28deg)}
+    .nav-links{display:none;align-items:center;gap:1.7rem}
+    .nav-links a{font-size:.78rem;font-weight:700;text-decoration:none}
+    .nav-links a:hover{color:var(--marigold)}
+    .reset-button{min-height:2.55rem;padding:.55rem .8rem;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:transparent;color:var(--porcelain);font-size:.7rem;font-weight:700;cursor:pointer;transition:background 180ms ease,color 180ms ease}
+    .reset-button:hover{background:var(--porcelain);color:var(--aubergine)}
 
-    .hero {
-      position: relative;
-      display: grid;
-      min-height: calc(100dvh - 4.8rem);
-      align-items: center;
-      gap: clamp(2.5rem, 6vw, 5rem);
-      overflow: clip;
-      padding-block: clamp(4.4rem, 9vw, 7.5rem);
-    }
-    .hero::after {
-      position: absolute;
-      z-index: -1;
-      right: -10rem;
-      bottom: 2rem;
-      width: 22rem;
-      height: 12rem;
-      border-radius: 50%;
-      background: rgba(110, 139, 114, 0.12);
-      filter: blur(4px);
-      content: "";
-      transform: rotate(-12deg);
-    }
-    .hero-copy { position: relative; z-index: 2; }
-    .hero h1 {
-      max-width: 11.5ch;
-      margin-bottom: 1.75rem;
-      font-family: var(--display);
-      font-size: clamp(3.6rem, 8vw, 7.35rem);
-      font-weight: 400;
-      letter-spacing: -0.052em;
-      line-height: 0.88;
-      text-wrap: balance;
-    }
-    .hero h1 span { display: block; }
-    .hero h1 span:last-child {
-      margin-top: 0.16em;
-      color: var(--berry);
-      font-style: italic;
-    }
-    .hero-lead {
-      max-width: 54ch;
-      margin-bottom: 2rem;
-      color: rgba(53, 43, 56, 0.78);
-      font-size: clamp(1.02rem, 1.8vw, 1.18rem);
-      text-wrap: pretty;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1.2rem;
-    }
-    .button {
-      display: inline-flex;
-      min-height: 3.2rem;
-      align-items: center;
-      justify-content: center;
-      padding: 0.85rem 1.35rem;
-      border: 1px solid transparent;
-      border-radius: 1.1rem 1.65rem 1.15rem 1.55rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-    }
-    .button-primary {
-      background: var(--berry);
-      color: white;
-      box-shadow: 0 0.75rem 1.8rem rgba(184, 63, 104, 0.22);
-    }
-    .button-primary:hover {
-      background: var(--berry-dark);
-      box-shadow: 0 1rem 2.2rem rgba(142, 46, 78, 0.24);
-      transform: translateY(-2px);
-    }
-    .button:active { transform: translateY(1px); }
-    .button:disabled {
-      background: rgba(53, 43, 56, 0.22);
-      box-shadow: none;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .text-link {
-      padding-block: 0.4rem;
-      border-bottom: 1px solid var(--berry);
-      color: var(--berry-dark);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .trust-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin: 2.1rem 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    .trust-list li {
-      padding: 0.45rem 0.75rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 254, 253, 0.72);
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
+    .hero-section{position:relative;overflow:clip;background:var(--aubergine);color:var(--porcelain)}
+    .hero-section::before{position:absolute;top:18%;left:-8rem;width:20rem;height:20rem;border:1px solid rgba(168,215,204,.2);border-radius:50%;content:""}
+    .hero-section::after{position:absolute;right:-9rem;bottom:-12rem;width:28rem;height:28rem;border:5rem solid rgba(240,100,89,.08);border-radius:50%;content:""}
+    .hero-layout{position:relative;z-index:2;display:grid;min-height:100dvh;align-items:center;gap:3rem;padding-top:7.8rem;padding-bottom:4rem}
+    .brand-kicker{display:inline-flex;margin-bottom:1.4rem;align-items:center;gap:.65rem;color:var(--marigold);font-family:var(--brand);font-size:.7rem;letter-spacing:.1em}
+    .brand-kicker::before{width:1.9rem;height:1px;background:currentColor;content:""}
+    .hero-copy{position:relative;z-index:3}
+    .hero-copy h1{max-width:10.5ch;margin-bottom:1.65rem;font-family:var(--display);font-size:clamp(3.7rem,8vw,8rem);font-weight:500;letter-spacing:-.065em;line-height:.82;text-wrap:balance}
+    .hero-copy h1 span{display:block}
+    .hero-copy h1 span:last-child{margin-top:.15em;color:var(--coral);font-style:italic}
+    .hero-lead{max-width:52ch;margin-bottom:1.9rem;color:rgba(255,253,248,.72);font-size:clamp(1rem,1.7vw,1.16rem);text-wrap:pretty}
+    .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem}
+    .button{display:inline-flex;min-height:3.25rem;align-items:center;justify-content:center;padding:.85rem 1.25rem;border:1px solid transparent;border-radius:999px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform 180ms ease,box-shadow 180ms ease,background 180ms ease}
+    .button:hover{transform:translateY(-2px)}
+    .button:active{transform:translateY(1px)}
+    .button-primary{background:var(--coral);color:white;box-shadow:0 1rem 2.6rem rgba(240,100,89,.26)}
+    .button-primary:hover{background:#ff7166;box-shadow:0 1.2rem 3rem rgba(240,100,89,.34)}
+    .text-link{padding:.3rem 0;border-bottom:1px solid currentColor;color:var(--porcelain);font-size:.9rem;font-weight:700;text-decoration:none}
+    .hero-facts{display:flex;flex-wrap:wrap;gap:.55rem;margin:2rem 0 0;padding:0;list-style:none}
+    .hero-facts li{padding:.4rem .7rem;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:rgba(255,253,248,.82);font-size:.7rem;font-weight:700}
+    .hero-photo-composition{position:relative;margin:0;padding:1rem}
+    .hero-photo-frame{position:relative;aspect-ratio:1;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:var(--paper);box-shadow:0 3rem 7rem rgba(10,5,12,.36)}
+    .hero-photo-frame::after{position:absolute;inset:0;border:1.2rem solid rgba(255,253,248,.07);border-radius:50%;content:""}
+    .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center}
+    .photo-orbit{position:absolute;z-index:-1;inset:0;border:1px solid rgba(243,200,75,.5);border-right-color:transparent;border-radius:50%;transform:rotate(-18deg)}
+    .photo-orbit::after{position:absolute;top:7%;right:7%;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--marigold);box-shadow:0 0 0 .55rem rgba(243,200,75,.14);content:""}
+    .photo-note{position:absolute;right:0;bottom:3%;display:grid;max-width:14rem;gap:.15rem;margin:0;padding:1rem 1.1rem;border-radius:1.2rem;background:var(--marigold);color:var(--aubergine);box-shadow:0 1.2rem 3rem rgba(10,5,12,.28);transform:rotate(-3deg)}
+    .photo-note strong{font-family:var(--display);font-size:1.28rem;line-height:1.05}
+    .photo-note span{font-size:.7rem;font-weight:700;line-height:1.4}
 
-    .celebration-scene {
-      position: relative;
-      min-height: clamp(26rem, 65vw, 35rem);
-      overflow: hidden;
-      border: 1px solid rgba(53, 43, 56, 0.1);
-      border-radius: 46% 54% 42% 58% / 55% 42% 58% 45%;
-      background:
-        radial-gradient(circle at 74% 20%, rgba(255, 255, 255, 0.72), transparent 8rem),
-        color-mix(in srgb, var(--sky) 24%, white);
-      box-shadow: var(--shadow);
-      isolation: isolate;
-    }
-    .celebration-scene::before {
-      position: absolute;
-      z-index: -1;
-      top: 32%;
-      left: -8%;
-      width: 18rem;
-      height: 18rem;
-      border-radius: 50%;
-      background: rgba(242, 162, 127, 0.36);
-      content: "";
-    }
-    .celebration-scene svg {
-      position: absolute;
-      inset: 2% 2% 7%;
-      width: 96%;
-      height: 91%;
-      filter: drop-shadow(0 1rem 1rem rgba(53, 43, 56, 0.1));
-    }
-    .garland-line {
-      fill: none;
-      stroke: var(--plum);
-      stroke-linecap: round;
-      stroke-width: 3;
-    }
-    .garland-leaf:nth-of-type(2) { fill: var(--berry); }
-    .garland-leaf:nth-of-type(3) { fill: var(--sun); }
-    .garland-leaf:nth-of-type(4) { fill: var(--leaf); }
-    .scene-rug { fill: rgba(255, 254, 253, 0.76); }
-    .scene-table { fill: var(--berry); }
-    .scene-cake { fill: #fff0dd; stroke: var(--plum); stroke-width: 2; }
-    .scene-cake-top { fill: var(--sun); stroke: var(--plum); stroke-width: 2; }
-    .scene-child-one { fill: var(--peach); }
-    .scene-child-two { fill: var(--leaf); }
-    .scene-balloon-one { fill: var(--berry); }
-    .scene-balloon-two { fill: var(--sun); }
-    .scene-balloon-three { fill: var(--sky); }
-    .scene-stem { fill: none; stroke: var(--plum); stroke-width: 2; }
-    .scene-note {
-      position: absolute;
-      right: 7%;
-      bottom: 4%;
-      display: grid;
-      max-width: 14rem;
-      gap: 0.1rem;
-      margin: 0;
-      padding: 0.9rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 1.35rem 0.75rem 1.4rem 0.8rem;
-      background: rgba(255, 254, 253, 0.92);
-      box-shadow: 0 0.8rem 2rem rgba(53, 43, 56, 0.12);
-      transform: rotate(-2deg);
-    }
-    .scene-note strong { font-family: var(--display); font-size: 1.22rem; font-weight: 400; }
-    .scene-note span { font-size: 0.7rem; font-weight: 700; line-height: 1.4; }
+    .experiences-section{position:relative;overflow-x:clip;padding-block:clamp(5.5rem,11vw,10rem);background:var(--porcelain)}
+    .experiences-section::before{position:absolute;top:1rem;right:-6rem;width:15rem;height:15rem;border:3rem solid rgba(243,200,75,.15);border-radius:50%;content:""}
+    .experiences-heading{display:grid;gap:2rem;margin-bottom:clamp(3.5rem,8vw,6.5rem)}
+    .experiences-aside{max-width:23rem;align-self:end;padding:1.1rem 1.2rem;border-left:4px solid var(--coral);color:var(--ink-soft);font-size:.83rem}
+    .experience-grid{display:flex;max-width:100vw;margin-inline:-1.125rem;padding:1.5rem 1.125rem 2.5rem;gap:1rem;overflow-x:auto;contain:inline-size;scroll-snap-type:x mandatory}
+    .experience-card{position:relative;display:flex;min-width:min(84vw,22rem);min-height:31rem;flex-direction:column;padding:1.8rem;border:1px solid var(--line);border-radius:1.4rem;background:var(--paper);box-shadow:0 1.5rem 3.5rem rgba(45,32,50,.1);scroll-snap-align:center;transition:transform 220ms ease,border-color 220ms ease,box-shadow 220ms ease}
+    .experience-card--small{background:color-mix(in srgb,var(--marigold) 24%,white)}
+    .experience-card--create{background:color-mix(in srgb,var(--aqua) 34%,white)}
+    .experience-card--large{background:color-mix(in srgb,var(--coral) 17%,white)}
+    .experience-card::before{display:grid;width:3rem;height:3rem;margin-bottom:2rem;place-items:center;border-radius:50%;background:var(--aubergine);color:white;font-family:var(--brand);font-size:.72rem;content:"01"}
+    .experience-card:nth-child(2)::before{background:var(--play-blue);content:"02"}
+    .experience-card:nth-child(3)::before{background:var(--coral-dark);content:"03"}
+    .experience-card.is-selected{border-color:var(--coral);box-shadow:0 1.7rem 4rem rgba(240,100,89,.2)}
+    .experience-situation{min-height:3.6rem;margin-bottom:1.2rem;color:var(--ink-soft);font-size:.82rem;font-weight:700;line-height:1.45}
+    .experience-card h3{max-width:8ch;margin-bottom:.4rem;font-family:var(--display);font-size:clamp(2.5rem,4vw,4rem);font-weight:700;letter-spacing:-.045em;line-height:.88}
+    .experience-age{margin-bottom:1.5rem;color:var(--coral-dark);font-size:.76rem;font-weight:700;text-transform:uppercase}
+    .experience-card dl{display:grid;margin:0 0 1.8rem}
+    .experience-card dl div{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-block:.7rem;border-top:1px solid var(--line)}
+    .experience-card dt{color:var(--ink-soft);font-size:.73rem}
+    .experience-card dd{margin:0;font-size:.8rem;font-weight:700;text-align:right}
+    .experience-card button{min-height:3rem;margin-top:auto;padding:.7rem 1rem;border:1px solid var(--aubergine);border-radius:999px;background:transparent;font-weight:700;cursor:pointer;transition:background 180ms ease,color 180ms ease,transform 180ms ease}
+    .experience-card button:hover,.experience-card button[aria-pressed="true"]{background:var(--aubergine);color:white;transform:translateY(-2px)}
 
-    .experiences {
-      position: relative;
-      padding-block: clamp(5rem, 10vw, 9rem);
-    }
-    .experiences::before {
-      position: absolute;
-      z-index: -1;
-      top: 2rem;
-      left: -8vw;
-      width: 22rem;
-      height: 8rem;
-      border-radius: 50%;
-      background: rgba(242, 201, 101, 0.2);
-      content: "";
-      transform: rotate(8deg);
-    }
-    .experience-grid {
-      display: flex;
-      margin-inline: calc((100vw - min(72rem, calc(100vw - 2.25rem))) / -2);
-      padding: 1.5rem max(1.125rem, calc((100vw - 72rem) / 2));
-      gap: 1.1rem;
-      overflow-x: auto;
-      scroll-padding-inline: 1.125rem;
-      scroll-snap-type: x mandatory;
-    }
-    .experience-card {
-      display: flex;
-      min-width: min(84vw, 21.5rem);
-      min-height: 29rem;
-      flex-direction: column;
-      padding: clamp(1.5rem, 4vw, 2.2rem);
-      border: 1px solid var(--line);
-      border-radius: 2.2rem 1.1rem 2.7rem 1.45rem;
-      background: var(--surface);
-      box-shadow: 0 1.2rem 3rem rgba(78, 47, 66, 0.09);
-      scroll-snap-align: center;
-      transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
-    }
-    .experience-card:nth-child(2) {
-      border-radius: 1.2rem 2.8rem 1.4rem 2.35rem;
-      background: color-mix(in srgb, var(--sun) 24%, white);
-    }
-    .experience-card:nth-child(3) {
-      border-radius: 2.8rem 1.45rem 2rem 1.15rem;
-      background: color-mix(in srgb, var(--sky) 18%, white);
-    }
-    .experience-card:hover { transform: translateY(-0.35rem); }
-    .experience-card.is-selected {
-      border-color: var(--berry);
-      box-shadow: 0 1.4rem 3.5rem rgba(184, 63, 104, 0.19);
-    }
-    .experience-fit {
-      min-height: 3.2rem;
-      margin-bottom: 1.6rem;
-      color: rgba(53, 43, 56, 0.68);
-      font-size: 0.8rem;
-      font-weight: 700;
-      line-height: 1.45;
-    }
-    .experience-card h3 {
-      margin-bottom: 0.2rem;
-      font-family: var(--display);
-      font-size: 3.8rem;
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 1;
-    }
-    .experience-age {
-      margin-bottom: 1.7rem;
-      color: var(--berry-dark);
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-    .experience-card dl {
-      display: grid;
-      margin: 0 0 2rem;
-      gap: 0;
-    }
-    .experience-card dl div {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-block: 0.78rem;
-      border-top: 1px solid var(--line);
-    }
-    .experience-card dt { color: rgba(53, 43, 56, 0.6); font-size: 0.75rem; }
-    .experience-card dd { margin: 0; font-size: 0.84rem; font-weight: 700; text-align: right; }
-    .experience-card button {
-      min-height: 3rem;
-      margin-top: auto;
-      padding: 0.7rem 1rem;
-      border: 1px solid var(--plum);
-      border-radius: 0.95rem 1.45rem 0.9rem 1.35rem;
-      background: transparent;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-    }
-    .experience-card button:hover,
-    .experience-card.is-selected button {
-      background: var(--plum);
-      color: white;
-      transform: translateY(-2px);
-    }
+    .story-section{position:relative;overflow:clip;padding-block:clamp(5.5rem,11vw,10rem);background:var(--coral);color:var(--aubergine)}
+    .story-section::before{position:absolute;left:-10rem;bottom:-11rem;width:25rem;height:25rem;border:5rem solid rgba(255,253,248,.12);border-radius:50%;content:""}
+    .story-heading{display:grid;gap:2rem;margin-bottom:4.5rem}
+    .story-heading .eyebrow{color:var(--aubergine)}
+    .story-number{font-family:var(--brand);font-size:clamp(5rem,12vw,10rem);letter-spacing:-.08em;line-height:.75;opacity:.16}
+    .story-route{position:relative;display:grid;gap:1rem}
+    .route-line{display:none}
+    .story-step{position:relative;z-index:2;display:grid;grid-template-columns:3.1rem 1fr;gap:1rem;align-items:start;padding:1.15rem;border:1px solid rgba(45,32,50,.2);border-radius:1.1rem;background:rgba(255,253,248,.86);box-shadow:0 1rem 2.5rem rgba(95,28,30,.1)}
+    .story-step:nth-of-type(even){background:var(--marigold)}
+    .step-marker{display:grid;width:3rem;height:3rem;place-items:center;border-radius:50%;background:var(--aubergine);color:white;font-family:var(--brand);font-size:.66rem}
+    .story-step h3{margin-bottom:.35rem;font-family:var(--display);font-size:1.55rem;line-height:1}
+    .story-step p{margin-bottom:0;color:var(--ink-soft);font-size:.79rem;line-height:1.5}
 
-    .care {
-      position: relative;
-      padding-block: clamp(5rem, 10vw, 9rem);
-      background: color-mix(in srgb, var(--leaf) 10%, var(--cloud));
-    }
-    .care::before,
-    .care::after {
-      position: absolute;
-      width: 9rem;
-      height: 9rem;
-      border: 1px solid rgba(110, 139, 114, 0.22);
-      border-radius: 62% 38% 57% 43%;
-      content: "";
-      transform: rotate(24deg);
-    }
-    .care::before { top: 3rem; right: 6vw; }
-    .care::after { bottom: 4rem; left: 4vw; width: 5rem; height: 5rem; }
-    .care-path {
-      position: relative;
-      display: grid;
-      gap: 1rem;
-    }
-    .care-route { display: none; }
-    .care-card {
-      position: relative;
-      z-index: 2;
-      padding: 1.4rem 1.35rem 1.5rem;
-      border: 1px solid rgba(110, 139, 114, 0.24);
-      border-radius: 1.8rem 0.9rem 2.1rem 1.1rem;
-      background: rgba(255, 254, 253, 0.84);
-    }
-    .care-card:nth-of-type(even) { border-radius: 0.9rem 2rem 1rem 1.8rem; }
-    .care-icon {
-      display: grid;
-      width: 2.4rem;
-      height: 2.4rem;
-      margin-bottom: 1.4rem;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--leaf);
-      color: white;
-      font-family: var(--display);
-      font-size: 1.35rem;
-    }
-    .care-card:nth-of-type(2) .care-icon { background: var(--peach); }
-    .care-card:nth-of-type(3) .care-icon { background: var(--berry); }
-    .care-card:nth-of-type(4) .care-icon { background: var(--sky); }
-    .care-card h3 {
-      margin-bottom: 0.55rem;
-      font-family: var(--display);
-      font-size: 1.65rem;
-      font-weight: 400;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-    }
-    .care-card p {
-      margin-bottom: 0;
-      color: rgba(53, 43, 56, 0.7);
-      font-size: 0.86rem;
-      line-height: 1.55;
-    }
-    .care-note {
-      max-width: 48rem;
-      margin: 2.5rem auto 0;
-      padding: 1rem 1.2rem;
-      border-left: 3px solid var(--leaf);
-      color: rgba(53, 43, 56, 0.76);
-      font-size: 0.86rem;
-      text-align: left;
-    }
+    .questions-section{padding-block:clamp(5.5rem,11vw,10rem);background:var(--paper)}
+    .questions-layout{display:grid;gap:3.5rem}
+    .questions-intro{align-self:start}
+    .risk-stamp{display:grid;width:9rem;height:9rem;margin-top:2.3rem;place-items:center;border:1px solid var(--coral);border-radius:50%;color:var(--coral-dark);font-family:var(--brand);font-size:.72rem;line-height:1.25;text-align:center;text-transform:uppercase;transform:rotate(-8deg)}
+    .questions-list{display:grid;gap:.7rem}
+    .question details{overflow:hidden;border-bottom:1px solid var(--line);background:rgba(255,253,248,.55)}
+    .question summary{display:flex;min-height:4.25rem;align-items:center;justify-content:space-between;gap:1rem;padding:1rem;font-family:var(--display);font-size:clamp(1.25rem,2vw,1.6rem);font-weight:700;line-height:1.1;list-style:none;cursor:pointer}
+    .question summary::-webkit-details-marker{display:none}
+    .question summary::after{display:grid;width:1.8rem;height:1.8rem;flex:0 0 auto;place-items:center;border-radius:50%;background:var(--aubergine);color:white;font-family:var(--body);font-size:1rem;content:"+"}
+    .question details[open] summary::after{background:var(--coral);content:"−"}
+    .question-answer{padding:0 1rem 1.2rem;color:var(--ink-soft);font-size:.88rem}
+    .question-answer p{margin-bottom:0}
+    .commitments{display:grid;margin-top:3rem;border-top:1px solid var(--line)}
+    .commitment{display:grid;grid-template-columns:2.5rem 1fr;gap:.8rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line);font-size:.8rem;font-weight:700}
+    .commitment span:first-child{display:grid;width:2.25rem;height:2.25rem;place-items:center;border-radius:50%;background:var(--aqua);font-family:var(--brand)}
 
-    .reservation {
-      padding-block: clamp(5rem, 10vw, 9rem);
-    }
-    .booking-shell {
-      display: grid;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 2.7rem 1.2rem 3.2rem 1.6rem;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-    }
-    .booking-summary {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(1.8rem, 5vw, 3.25rem);
-      background: color-mix(in srgb, var(--leaf) 19%, white);
-    }
-    .booking-summary::after {
-      position: absolute;
-      right: -3rem;
-      bottom: -4rem;
-      width: 11rem;
-      height: 11rem;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.42);
-      content: "";
-    }
-    .booking-summary h3 {
-      max-width: 10ch;
-      margin: 1.4rem 0 1rem;
-      font-family: var(--display);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 0.98;
-    }
-    .booking-summary p:last-child { margin-bottom: 0; }
-    .booking-form { padding: clamp(1.8rem, 5vw, 3.25rem); }
-    .fields {
-      display: grid;
-      gap: 1.15rem;
-    }
-    .field {
-      display: grid;
-      gap: 0.45rem;
-      color: rgba(53, 43, 56, 0.82);
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .field input {
-      width: 100%;
-      min-height: 3.2rem;
-      padding: 0.8rem 0.95rem;
-      border: 1px solid rgba(53, 43, 56, 0.24);
-      border-radius: 0.8rem 1.15rem 0.85rem 1.1rem;
-      background: #fff;
-      color: var(--plum);
-      transition: border-color 180ms ease, box-shadow 180ms ease;
-    }
-    .field input:focus {
-      border-color: var(--berry);
-      box-shadow: 0 0 0 4px rgba(184, 63, 104, 0.1);
-      outline: 0;
-    }
-    .booking-form .button { width: 100%; margin-top: 1.5rem; }
-    .success-message {
-      margin: 1.1rem 0 0;
-      padding: 0.9rem 1rem;
-      border-radius: 0.9rem;
-      background: rgba(110, 139, 114, 0.15);
-      color: #3d6145;
-      font-size: 0.83rem;
-      font-weight: 700;
-    }
+    .booking-section{position:relative;overflow:clip;padding-block:clamp(5.5rem,11vw,10rem);background:var(--aubergine);color:var(--porcelain)}
+    .booking-section::before{position:absolute;top:-10rem;right:-8rem;width:28rem;height:28rem;border:5rem solid rgba(168,215,204,.08);border-radius:50%;content:""}
+    .booking-heading{position:relative;z-index:2;margin-bottom:3.5rem}
+    .booking-heading .eyebrow{color:var(--marigold)}
+    .booking-heading h2{max-width:11ch;color:var(--porcelain)}
+    .booking-heading>p:last-child{color:rgba(255,253,248,.68)}
+    .booking-shell{position:relative;z-index:2;display:grid;overflow:hidden;border:1px solid rgba(255,255,255,.15);border-radius:1.5rem;background:var(--porcelain);color:var(--aubergine);box-shadow:0 3rem 7rem rgba(10,5,12,.35)}
+    .booking-summary{position:relative;overflow:hidden;padding:clamp(1.8rem,5vw,3.2rem);background:var(--marigold)}
+    .booking-summary::after{position:absolute;right:-5rem;bottom:-5rem;width:13rem;height:13rem;border:2.2rem solid rgba(255,253,248,.28);border-radius:50%;content:""}
+    .booking-summary h3{max-width:9ch;margin:1.4rem 0 1rem;font-family:var(--display);font-size:clamp(2.6rem,5vw,4.5rem);font-weight:700;letter-spacing:-.05em;line-height:.9}
+    .booking-summary p:last-child{margin-bottom:0}
+    .booking-form{padding:clamp(1.8rem,5vw,3.2rem)}
+    .fields{display:grid;gap:1rem}
+    .field{display:grid;gap:.4rem;color:var(--ink-soft);font-size:.75rem;font-weight:700}
+    .field input,.field textarea{width:100%;min-height:3.1rem;padding:.75rem .9rem;border:1px solid rgba(45,32,50,.24);border-radius:.75rem;background:white;color:var(--aubergine);resize:vertical;transition:border-color 180ms ease,box-shadow 180ms ease}
+    .field textarea{min-height:6.5rem}
+    .field input:focus,.field textarea:focus{border-color:var(--coral);box-shadow:0 0 0 4px rgba(240,100,89,.12);outline:0}
+    .no-risk-note{display:flex;gap:.7rem;align-items:flex-start;margin:1.2rem 0 1rem;padding:1rem;border-radius:.8rem;background:rgba(168,215,204,.28);font-size:.8rem;font-weight:700}
+    .no-risk-note::before{display:grid;width:1.55rem;height:1.55rem;flex:0 0 auto;place-items:center;border-radius:50%;background:var(--aqua);content:"✓"}
+    .booking-form .button{width:100%;border:0}
+    .booking-form .button:disabled{background:rgba(45,32,50,.22);box-shadow:none;cursor:not-allowed;transform:none}
+    .success-message{margin:1rem 0 0;padding:.9rem;border-radius:.75rem;background:rgba(168,215,204,.3);color:#315a51;font-size:.8rem;font-weight:700}
 
-    .footer {
-      padding-block: 2.2rem;
-      border-top: 1px solid var(--line);
-      background: rgba(255, 254, 253, 0.48);
-    }
-    .footer-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .footer a { color: var(--berry-dark); }
+    .footer{padding-block:2rem;border-top:1px solid var(--line);background:var(--porcelain)}
+    .footer-content{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;font-size:.74rem;font-weight:700}
+    .footer-content p{margin-bottom:0}
+    .footer-content a{color:var(--coral-dark)}
 
-    @media (min-width: 650px) {
-      .nav-links { display: flex; }
-      .fields { grid-template-columns: 1fr 1fr; }
-      .care-path { grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+    @media(min-width:650px){
+      .nav-links{display:flex}
+      .fields{grid-template-columns:1fr 1fr}
+      .field-wide{grid-column:1/-1}
+      .commitments{grid-template-columns:repeat(3,1fr)}
+      .commitment{padding-inline:1rem;border-right:1px solid var(--line)}
+      .commitment:last-child{border-right:0}
     }
-    @media (min-width: 900px) {
-      .hero { grid-template-columns: 0.9fr 1.1fr; }
-      .experience-grid {
-        display: grid;
-        margin: 0;
-        padding: 1.5rem 0 2.5rem;
-        grid-template-columns: 0.84fr 1.08fr 0.9fr;
-        gap: 1.35rem;
-        overflow: visible;
-      }
-      .experience-card {
-        min-width: 0;
-        min-height: 31rem;
-        scroll-snap-align: none;
-      }
-      .experience-card:nth-child(1) { transform: translateY(1.7rem) rotate(-0.7deg); }
-      .experience-card:nth-child(2) { transform: translateY(-1.15rem) rotate(0.5deg); }
-      .experience-card:nth-child(3) { transform: translateY(2.6rem) rotate(0.8deg); }
-      .experience-card:nth-child(1):hover { transform: translateY(1.25rem) rotate(-0.7deg); }
-      .experience-card:nth-child(2):hover { transform: translateY(-1.6rem) rotate(0.5deg); }
-      .experience-card:nth-child(3):hover { transform: translateY(2.15rem) rotate(0.8deg); }
-      .care-path { grid-template-columns: repeat(4, 1fr); gap: 1.2rem; padding-block: 2rem; }
-      .care-route {
-        position: absolute;
-        z-index: 1;
-        top: 25%;
-        left: 2%;
-        display: block;
-        width: 96%;
-        height: 55%;
-        overflow: visible;
-      }
-      .care-route path {
-        fill: none;
-        stroke: rgba(110, 139, 114, 0.56);
-        stroke-dasharray: 7 10;
-        stroke-linecap: round;
-        stroke-width: 3;
-      }
-      .care-card:nth-of-type(2),
-      .care-card:nth-of-type(4) { transform: translateY(3rem); }
-      .care-note { margin-top: 5rem; text-align: center; }
-      .booking-shell { grid-template-columns: 0.8fr 1.2fr; }
+    @media(min-width:800px){
+      .question details:not([open])>:not(summary){display:block}
+      .question summary{pointer-events:none}
+      .question summary::after{display:none}
     }
-    @media (max-width: 430px) {
-      .wrap { width: min(100% - 1.4rem, 72rem); }
-      .brand span:last-child { max-width: 8.5rem; }
-      .reset-button { padding-inline: 0.65rem; font-size: 0.69rem; }
-      .hero { padding-top: 3.2rem; }
-      .hero h1 { font-size: clamp(3.1rem, 13.5vw, 3.6rem); }
-      .celebration-scene { min-height: 24rem; }
-      .scene-note { right: 4%; bottom: 3%; max-width: 12.5rem; }
-      .experience-grid { margin-inline: -0.7rem; padding-inline: 0.7rem; }
-      .footer-content { align-items: flex-start; flex-direction: column; }
+    @media(min-width:900px){
+      .hero-layout{grid-template-columns:.88fr 1.12fr;gap:2.5rem}
+      .hero-photo-composition{margin-right:0}
+      .experiences-heading{grid-template-columns:1fr .45fr;align-items:end}
+      .experience-grid{display:grid;margin:0;padding:2rem 0 3rem;grid-template-columns:.92fr 1.08fr .92fr;gap:1.25rem;overflow:visible}
+      .experience-card{min-width:0;scroll-snap-align:none}
+      .experience-card:nth-child(1){transform:translateY(2rem) rotate(-1deg)}
+      .experience-card:nth-child(2){transform:translateY(-1.5rem) rotate(.5deg)}
+      .experience-card:nth-child(3){transform:translateY(2.7rem) rotate(1deg)}
+      .experience-card:nth-child(1):hover{transform:translateY(1.5rem) rotate(-1deg)}
+      .experience-card:nth-child(2):hover{transform:translateY(-2rem) rotate(.5deg)}
+      .experience-card:nth-child(3):hover{transform:translateY(2.2rem) rotate(1deg)}
+      .story-heading{grid-template-columns:1fr auto;align-items:end}
+      .story-route{grid-template-columns:repeat(5,1fr);gap:1rem;padding-block:2rem}
+      .route-line{position:absolute;z-index:1;top:12%;left:2%;display:block;width:96%;height:75%;overflow:visible}
+      .route-line path{fill:none;stroke:rgba(45,32,50,.55);stroke-dasharray:8 11;stroke-linecap:round;stroke-width:3}
+      .story-step{display:block;min-height:15rem;padding:1.2rem}
+      .story-step:nth-of-type(even){transform:translateY(3.2rem)}
+      .step-marker{margin-bottom:1.7rem}
+      .questions-layout{grid-template-columns:.72fr 1.28fr;gap:clamp(3rem,7vw,7rem)}
+      .questions-intro{position:sticky;top:8rem}
+      .booking-shell{grid-template-columns:.8fr 1.2fr}
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
+    @media(max-width:430px){
+      .wrap{width:min(100% - 1.35rem,75rem)}
+      .nav{min-height:4.3rem}
+      .brand{font-size:.76rem}
+      .brand-mark{width:1.8rem;height:1.8rem;border-width:5px}
+      .brand-mark::before{inset:-9px;border-width:2px}
+      .reset-button{padding-inline:.65rem;font-size:.65rem}
+      .hero-layout{min-height:0;padding-top:7rem;padding-bottom:4.2rem}
+      .hero-copy h1{font-size:clamp(3.6rem,16vw,4.35rem)}
+      .hero-photo-composition{padding:.6rem}
+      .photo-note{right:.2rem;bottom:-.5rem;max-width:12rem}
+      .experience-grid{margin-inline:-.675rem;padding-inline:.675rem}
+      .section-copy h2{font-size:clamp(3rem,14vw,4rem)}
+      .story-step{grid-template-columns:2.7rem 1fr}
+      .step-marker{width:2.6rem;height:2.6rem}
+      .footer-content{align-items:flex-start;flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
     }
   </style>
 </head>
-<body x-data="casaColoresApp()">
+<body x-data="casaRondaApp()">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <header class="site-header">
     <nav class="nav wrap" aria-label="Navegación principal">
-      <a class="brand" href="#inicio">
-        <span class="brand-flower" aria-hidden="true"></span>
-        <span>La Casa de los Colores</span>
-      </a>
-      <div class="nav-links">
-        <a href="#paquetes">Experiencias</a>
-        <a href="#incluye">Qué cuidamos</a>
-        <a href="#reserva">Consultar</a>
-      </div>
+      <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"></span><span>Casa Ronda</span></a>
+      <div class="nav-links"><a href="#experiencias">Experiencias</a><a href="#momentos">Así se vive</a><a href="#antes">Antes de reservar</a></div>
       <button class="reset-button" type="button" @click="resetDemo">Restablecer demo</button>
     </nav>
   </header>
 
-  <main id="contenido">
-    <section id="inicio" class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Celebraciones para niñas y niños</p>
-        <h1 id="hero-title">
-          <span>Su día para jugar.</span>
-          <span>Tu tranquilidad para disfrutarlo.</span>
-        </h1>
-        <p class="hero-lead">Preparamos el espacio, una actividad y los momentos principales para que la familia sepa qué esperar antes de reservar.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#paquetes">Ver experiencias</a>
-          <a class="text-link" href="#reserva">Consultar una fecha</a>
+  <main id="contenido" :data-selected-plan="selectedPackage?.tone || 'none'">
+    <section id="inicio" class="hero-section" aria-labelledby="hero-title">
+      <div class="wrap hero-layout">
+        <div class="hero-copy">
+          <p class="brand-kicker">Casa Ronda · Celebraciones</p>
+          <h1 id="hero-title"><span>Aquí el cumpleaños</span><span>se vive en ronda.</span></h1>
+          <p class="hero-lead">Juegos, creación, comida y tiempo compartido para niños de 4 a 10 años. Conoce el plan antes de reservar.</p>
+          <div class="hero-actions"><a href="#experiencias" class="button button-primary">Elegir una experiencia</a><a href="#reserva" class="text-link">Consultar una fecha</a></div>
+          <ul class="hero-facts" aria-label="Información principal"><li>4 a 10 años</li><li>Hasta 24 invitados</li><li>Consultar no tiene costo</li></ul>
         </div>
-        <ul class="trust-list" aria-label="Datos principales">
-          <li>4 a 10 años</li>
-          <li>Grupos acotados</li>
-          <li>Consulta por WhatsApp</li>
-        </ul>
-      </div>
-
-      <div class="celebration-scene" aria-hidden="true">
-        <svg viewBox="0 0 620 540" role="presentation">
-          <path class="garland-line" d="M36 92 Q170 12 306 88 T584 72"/>
-          <path class="garland-leaf" d="M96 61c24 5 33 23 21 41-22-4-31-22-21-41Z"/>
-          <path class="garland-leaf" d="M266 61c22 8 28 27 13 43-21-7-27-25-13-43Z"/>
-          <path class="garland-leaf" d="M455 53c24 4 34 21 23 40-23-3-33-21-23-40Z"/>
-          <path class="scene-stem" d="M99 171c-18-48-14-76 6-94M149 174c8-55 27-80 47-92M513 175c-2-46-21-72-42-91"/>
-          <circle class="scene-balloon-one" cx="89" cy="156" r="35"/>
-          <circle class="scene-balloon-two" cx="155" cy="159" r="42"/>
-          <circle class="scene-balloon-three" cx="517" cy="158" r="39"/>
-          <ellipse class="scene-rug" cx="316" cy="454" rx="248" ry="55"/>
-          <path class="scene-table" d="M150 304h330l-28 148H178Z"/>
-          <path class="scene-cake" d="M258 250h118v56H258Z"/>
-          <path class="scene-cake-top" d="M246 250c26-30 112-30 142 0Z"/>
-          <circle class="scene-child scene-child-one" cx="122" cy="302" r="48"/>
-          <circle class="scene-child scene-child-two" cx="506" cy="293" r="52"/>
-          <path d="M110 274q14 11 27 0" fill="none" stroke="#352b38" stroke-linecap="round" stroke-width="3"/>
-          <path d="M490 265q15 12 30 0" fill="none" stroke="#fffefd" stroke-linecap="round" stroke-width="3"/>
-          <circle cx="283" cy="275" r="5" fill="#b83f68"/>
-          <circle cx="316" cy="268" r="5" fill="#78b7c4"/>
-          <circle cx="351" cy="278" r="5" fill="#6e8b72"/>
-        </svg>
-        <p class="scene-note"><strong>Espacio preparado</strong><span>Actividad, colación y acompañamiento</span></p>
+        <figure class="hero-photo-composition">
+          <span class="photo-orbit" aria-hidden="true"></span>
+          <div class="hero-photo-frame"><img class="hero-photo" src="./assets/casa-ronda-hero.webp" alt="Mesa conceptual de celebración con pastel, papeles de colores y manos preparando una actividad creativa"></div>
+          <figcaption class="photo-note"><strong>Un plan claro para la familia</strong><span>Actividad, mesa y próximos pasos conversados antes de confirmar.</span></figcaption>
+        </figure>
       </div>
     </section>
 
-    <section id="paquetes" class="experiences" aria-labelledby="paquetes-title">
+    <section id="experiencias" class="experiences-section" aria-labelledby="experiencias-title">
       <div class="wrap">
-        <header class="section-heading">
-          <p class="eyebrow">Elige según su forma de celebrar</p>
-          <h2 id="paquetes-title">Tres experiencias, una tarde para recordar.</h2>
-          <p>Compara por edad, tamaño del grupo y tipo de actividad. El valor final se confirma junto con la fecha y cualquier necesidad particular.</p>
+        <header class="experiences-heading">
+          <div class="section-copy"><p class="eyebrow">Elige el tipo de tarde</p><h2 id="experiencias-title">No todos celebran de la misma manera.</h2><p>Parte por el tamaño del grupo y la experiencia que quieres compartir. Los detalles se conversan antes de confirmar.</p></div>
+          <p class="experiences-aside"><strong>Valores desde.</strong> La fecha, alimentación y cualquier necesidad particular pueden cambiar el valor final.</p>
         </header>
-
         <div class="experience-grid">
           <template x-for="plan in packages" :key="plan.name">
-            <article class="experience-card" :class="{ 'is-selected': selectedPackage?.name === plan.name }">
-              <p class="experience-fit" x-text="{
-                Explora: 'Una celebración pequeña para jugar con calma',
-                Crea: 'Actividad manual y un recuerdo para llevar',
-                Celebra: 'Más espacio para compartir con el curso o la familia'
-              }[plan.name]"></p>
+            <article class="experience-card" :class="`experience-card--${plan.tone}${selectedPackage?.name === plan.name ? ' is-selected' : ''}`">
+              <p class="experience-situation" x-text="plan.situation"></p>
               <h3 x-text="plan.name"></h3>
               <p class="experience-age" x-text="plan.age"></p>
-              <dl>
-                <div><dt>Duración</dt><dd x-text="plan.duration"></dd></div>
-                <div><dt>Grupo</dt><dd x-text="plan.guests"></dd></div>
-                <div><dt>Valor desde</dt><dd x-text="plan.price"></dd></div>
-              </dl>
-              <button type="button" :aria-label="`Elegir ${plan.name}`" @click="choosePackage(plan)" x-text="selectedPackage?.name === plan.name ? `${plan.name} elegido` : `Elegir ${plan.name}`"></button>
+              <dl><div><dt>Duración</dt><dd x-text="plan.duration"></dd></div><div><dt>Grupo</dt><dd x-text="plan.guests"></dd></div><div><dt>Valor desde</dt><dd x-text="plan.price"></dd></div></dl>
+              <button type="button" :aria-label="`Elegir ${plan.name}`" :aria-pressed="selectedPackage?.name === plan.name ? 'true' : 'false'" @click="choosePackage(plan)">Elegir esta experiencia</button>
             </article>
           </template>
         </div>
       </div>
     </section>
 
-    <section id="incluye" class="care" aria-labelledby="incluye-title">
+    <section id="momentos" class="story-section" aria-labelledby="momentos-title">
       <div class="wrap">
-        <header class="section-heading">
-          <p class="eyebrow">Lo que la familia necesita saber</p>
-          <h2 id="incluye-title">Jugamos con ellos. Te mantenemos al tanto.</h2>
-          <p>La celebración se conversa antes: actividad, grupo, colación y tiempos. Así la consulta parte con información útil.</p>
-        </header>
-
-        <div class="care-path">
-          <svg class="care-route" viewBox="0 0 1000 260" aria-hidden="true"><path d="M40 130 C180 20 280 230 430 120 S700 20 960 132"/></svg>
-          <article class="care-card"><span class="care-icon" aria-hidden="true">✦</span><h3>Juegos acompañados</h3><p>Actividades pensadas para la edad y el tamaño del grupo.</p></article>
-          <article class="care-card"><span class="care-icon" aria-hidden="true">◌</span><h3>Momento creativo</h3><p>Materiales preparados para crear algo que puedan llevar.</p></article>
-          <article class="care-card"><span class="care-icon" aria-hidden="true">❋</span><h3>Colación conversada</h3><p>Revisamos alternativas y restricciones antes de confirmar.</p></article>
-          <article class="care-card"><span class="care-icon" aria-hidden="true">⌁</span><h3>Adultos informados</h3><p>Horario, capacidad y próximos pasos claros para la familia.</p></article>
+        <header class="story-heading"><div class="section-copy"><p class="eyebrow">Así se vive una Ronda</p><h2 id="momentos-title">La tarde tiene un ritmo. La familia conoce el plan.</h2><p>Cada momento cumple una función: recibir, jugar, crear, compartir y cerrar sin apuros.</p></div><span class="story-number" aria-hidden="true">05</span></header>
+        <div class="story-route">
+          <svg class="route-line" viewBox="0 0 1000 260" aria-hidden="true"><path d="M35 125 C180 10 280 230 430 118 S700 12 965 132"/></svg>
+          <article class="story-step"><span class="step-marker">01</span><div><h3>Nos encontramos</h3><p>Recibimos al grupo y explicamos la primera actividad.</p></div></article>
+          <article class="story-step"><span class="step-marker">02</span><div><h3>Jugamos juntos</h3><p>Una persona del equipo guía el momento de juego.</p></div></article>
+          <article class="story-step"><span class="step-marker">03</span><div><h3>Creamos algo</h3><p>Los materiales esperan listos para una actividad manual.</p></div></article>
+          <article class="story-step"><span class="step-marker">04</span><div><h3>Compartimos la mesa</h3><p>La colación y la torta tienen un momento definido.</p></div></article>
+          <article class="story-step"><span class="step-marker">05</span><div><h3>Cerramos con calma</h3><p>Ordenamos el final y avisamos los próximos pasos a la familia.</p></div></article>
         </div>
-        <p class="care-note">La disponibilidad, el menú y cualquier necesidad específica se confirman por WhatsApp antes de reservar.</p>
       </div>
     </section>
 
-    <section id="reserva" class="reservation wrap" aria-labelledby="reserva-title">
-      <header class="section-heading">
-        <p class="eyebrow">Consulta una fecha</p>
-        <h2 id="reserva-title">Lleguemos a WhatsApp con lo importante listo.</h2>
-        <p>Elige una experiencia y completa cuatro datos. La disponibilidad se confirma directamente contigo.</p>
-      </header>
-
-      <div class="booking-shell">
-        <aside class="booking-summary" aria-live="polite">
-          <p class="eyebrow">Tu celebración</p>
-          <template x-if="selectedPackage">
-            <div>
-              <h3 x-text="`${selectedPackage.name} elegido para tu celebración`"></h3>
-              <p x-text="`${selectedPackage.duration} · ${selectedPackage.guests} · ${selectedPackage.price}`"></p>
-            </div>
-          </template>
-          <template x-if="!selectedPackage">
-            <div>
-              <h3>Primero elige una experiencia.</h3>
-              <p>Después completa los datos y dejamos tu consulta preparada.</p>
-            </div>
-          </template>
-        </aside>
-
-        <form class="booking-form" @submit.prevent="submitReservation">
-          <div class="fields">
-            <label class="field" for="reserva-nombre">Nombre de quien reserva
-              <input id="reserva-nombre" required x-model="draft.name" autocomplete="name" placeholder="Ej: Camila Rojas">
-            </label>
-            <label class="field" for="reserva-edad">Edad que celebra
-              <input id="reserva-edad" required min="1" max="18" type="number" inputmode="numeric" x-model="draft.age" placeholder="Ej: 8">
-            </label>
-            <label class="field" for="reserva-asistentes">Cantidad de asistentes
-              <input id="reserva-asistentes" required min="1" type="number" inputmode="numeric" x-model="draft.guests" placeholder="Ej: 12">
-            </label>
-            <label class="field" for="reserva-fecha">Fecha preferida
-              <input id="reserva-fecha" required type="date" x-model="draft.date">
-            </label>
+    <section id="antes" class="questions-section" aria-labelledby="antes-title">
+      <div class="wrap questions-layout">
+        <header class="questions-intro section-copy"><p class="eyebrow">Preguntas reales</p><h2 id="antes-title">Antes de reservar</h2><p>Una celebración se disfruta más cuando las condiciones importantes quedan conversadas.</p><span class="risk-stamp" aria-hidden="true">Pregunta<br>sin<br>compromiso</span></header>
+        <div>
+          <div class="questions-list">
+            <article class="question"><details open><summary>¿Consultar significa pagar?</summary><div class="question-answer"><p>No. Preparar y enviar la consulta no realiza cobros ni confirma automáticamente una reserva.</p></div></details></article>
+            <article class="question"><details><summary>¿Puedo conversar alergias o restricciones?</summary><div class="question-answer"><p>Sí. Cuéntanos la necesidad en la consulta. Antes de confirmar revisamos contigo las alternativas de colación y lo que la familia debe aportar.</p></div></details></article>
+            <article class="question"><details><summary>¿Cuántos adultos pueden acompañar?</summary><div class="question-answer"><p>Depende de la experiencia y del tamaño del grupo. Lo dejamos acordado antes de confirmar la fecha.</p></div></details></article>
+            <article class="question"><details><summary>¿Qué debe llevar la familia?</summary><div class="question-answer"><p>Después de conocer la experiencia indicamos qué está incluido y qué debe traer la familia, como torta, velas o elementos personales.</p></div></details></article>
+            <article class="question"><details><summary>¿Cómo se confirma la fecha?</summary><div class="question-answer"><p>Primero revisamos disponibilidad por WhatsApp. La fecha queda confirmada solo cuando ambas partes aceptan las condiciones informadas.</p></div></details></article>
           </div>
-          <button class="button button-primary" type="submit" :disabled="!selectedPackage">Preparar mensaje por WhatsApp</button>
-          <p x-cloak x-show="sent" class="success-message">Tu mensaje quedó preparado. En WhatsApp confirmamos disponibilidad y los detalles de la celebración.</p>
-        </form>
+          <div class="commitments" aria-label="Compromisos de información"><div class="commitment"><span>1</span><span>Información acordada antes de confirmar</span></div><div class="commitment"><span>2</span><span>Espacio preparado para recibir al grupo</span></div><div class="commitment"><span>3</span><span>Cierre y próximos pasos informados</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserva" class="booking-section" aria-labelledby="reserva-title">
+      <div class="wrap">
+        <header class="booking-heading section-copy"><p class="eyebrow">Consulta de bajo riesgo</p><h2 id="reserva-title">Cuéntanos lo importante. Revisamos la fecha contigo.</h2><p>Elige una experiencia y deja preparado el contexto. WhatsApp se abre solo cuando tú decides enviar.</p></header>
+        <div class="booking-shell">
+          <aside class="booking-summary" aria-live="polite">
+            <p class="eyebrow">Tu Ronda</p>
+            <template x-if="selectedPackage"><div><h3 x-text="`${selectedPackage.name} elegida para tu celebración`"></h3><p x-text="`${selectedPackage.duration} · ${selectedPackage.guests} · ${selectedPackage.price}`"></p></div></template>
+            <template x-if="!selectedPackage"><div><h3>Primero elige una experiencia.</h3><p>Después completa cuatro datos y cualquier necesidad que debamos conversar.</p></div></template>
+          </aside>
+          <form class="booking-form" @submit.prevent="submitReservation">
+            <div class="fields">
+              <label class="field" for="reserva-nombre">Nombre de quien reserva<input id="reserva-nombre" required x-model="draft.name" autocomplete="name" placeholder="Ej: Camila Rojas"></label>
+              <label class="field" for="reserva-edad">Edad que celebra<input id="reserva-edad" required min="1" max="18" type="number" inputmode="numeric" x-model="draft.age" placeholder="Ej: 7"></label>
+              <label class="field" for="reserva-asistentes">Cantidad de asistentes<input id="reserva-asistentes" required min="1" type="number" inputmode="numeric" x-model="draft.guests" placeholder="Ej: 11"></label>
+              <label class="field" for="reserva-fecha">Fecha preferida<input id="reserva-fecha" required type="date" x-model="draft.date"></label>
+              <label class="field field-wide" for="reserva-necesidad">Necesidad que debemos conversar<textarea id="reserva-necesidad" x-model="draft.needs" maxlength="240" placeholder="Ej: alergia alimentaria, accesibilidad u otra consideración"></textarea></label>
+            </div>
+            <p class="no-risk-note">Consultar una fecha no realiza ningún cobro ni confirma la reserva.</p>
+            <button class="button button-primary" type="submit" :disabled="!selectedPackage">Preparar consulta por WhatsApp</button>
+            <p x-cloak x-show="sent" class="success-message">Tu consulta quedó preparada. La disponibilidad y las condiciones todavía deben revisarse contigo.</p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-content wrap">
-      <span>La Casa de los Colores · Demo Vitrina Express</span>
-      <a href="../index.html">Volver al portafolio STAX</a>
-    </div>
-  </footer>
+  <footer class="footer"><div class="footer-content wrap"><p>Casa Ronda · Demo ficticio creado para mostrar una Vitrina Express.</p><a href="../index.html">Volver al portafolio STAX</a></div></footer>
 </body>
 </html>
