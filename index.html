@@ -1102,7 +1102,7 @@
 
           <!-- Right: Browser mockup -->
           <div class="reveal-right overflow-x-clip" style="transition-delay: .15s">
-            <figure class="clarity-tunnel" aria-label="Ruta de claridad: consulta suelta, información ordenada, página que orienta y WhatsApp con contexto">
+            <figure class="clarity-tunnel is-visible" aria-label="Ruta de claridad: consulta suelta, información ordenada, página que orienta y WhatsApp con contexto">
               <figcaption class="clarity-tunnel__caption">Ruta de claridad</figcaption>
               <span class="clarity-tunnel__signal" aria-hidden="true"></span>
               <article class="clarity-tunnel__step clarity-tunnel__step--query" data-clarity-step>
@@ -1447,12 +1447,29 @@
               </div>
             </div>
           </a>
+
+          <!-- Demo 10: La Casa de los Colores -->
+          <a x-show="showAllDemos" x-cloak href="./demo-casa-colores/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-yellow/50 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-yellow hover:shadow-mega hover:-translate-y-2" style="transition-delay: .54s">
+            <div class="relative h-48 w-full overflow-hidden bg-[#f8f4ea]">
+              <div class="absolute inset-0 grid grid-cols-3 grid-rows-2 border-b-[7px] border-drac-darker">
+                <span class="border-r-[7px] border-b-[7px] border-drac-darker bg-white"></span><span class="border-r-[7px] border-b-[7px] border-drac-darker bg-[#db302d]"></span><span class="border-b-[7px] border-drac-darker bg-[#f5c328]"></span><span class="col-span-2 border-r-[7px] border-drac-darker bg-[#1456a0]"></span><span class="bg-drac-darker"></span>
+              </div>
+              <div class="absolute top-4 left-4 rounded-full bg-[#f5c328] px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Celebraciones</div>
+              <div class="absolute bottom-4 left-4 right-4 border-2 border-drac-darker bg-white px-3 py-2 text-sm font-black text-drac-darker shadow-[4px_4px_0_#141414]">La Casa de los Colores</div>
+            </div>
+            <div class="flex flex-grow flex-col p-6">
+              <h3 class="text-xl font-bold text-drac-fg transition-colors group-hover:text-drac-yellow">Celebraciones infantiles</h3>
+              <p class="demo-card-copy mt-2 text-sm leading-relaxed text-drac-comment text-left">Una vitrina de cuatro secciones: paquetes, lo que incluye y una consulta preparada con edad, asistentes y fecha.</p>
+              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-yellow">Qué deja claro:</strong> alternativas, valores y reserva. <strong class="text-drac-yellow">Qué puedes revisar:</strong> consultas con el contexto listo.</p>
+              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-yellow mt-auto"><span>Ver demo Vitrina</span><span class="transition-transform duration-300 group-hover:translate-x-1">→</span></div>
+            </div>
+          </a>
         </div> <!-- /Showcase grid -->
 
         <!-- Toggle button centered below grid -->
         <div class="reveal mt-12 flex justify-center" style="transition-delay: .1s">
           <button @click="showAllDemos = !showAllDemos" class="inline-flex items-center justify-center rounded-full border border-drac-current/40 bg-drac-bg/95 px-8 py-3.5 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-green hover:bg-drac-green/10 hover:text-drac-green shadow-lg hover:shadow-glow">
-            <span x-text="showAllDemos ? 'Mostrar menos demostraciones' : 'Ver las 9 demostraciones en vivo'"></span>
+            <span x-text="showAllDemos ? 'Mostrar menos demostraciones' : 'Ver las 10 demostraciones en vivo'"></span>
             <svg class="ml-2.5 h-4 w-4 transition-transform duration-300" :class="showAllDemos ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
             </svg>
@@ -2140,6 +2157,7 @@
               <p class="mt-5 text-sm font-semibold leading-relaxed text-drac-fg">Sección adicional desde $30.000 CLP. Página adicional, redacción desde cero, catálogo amplio, reservas o pagos en línea se cotizan antes de avanzar.</p>
             </div>
             <div class="p-6 pt-0">
+              <a href="./demo-casa-colores/index.html" target="_blank" class="mb-3 flex w-full items-center justify-center rounded-2xl border border-drac-current/30 bg-drac-current/10 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-yellow hover:text-drac-yellow">Ver demo: celebraciones infantiles</a>
               <a href="#contacto" class="btn-glow flex w-full items-center justify-center rounded-2xl border border-chile-blue/30 bg-chile-blue/10 px-5 py-3.5 text-sm font-bold text-chile-blueLight transition-all duration-300 hover:bg-chile-blue/20">Quiero mi vitrina en 3 días</a>
             </div>
           </div>

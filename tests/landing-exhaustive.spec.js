@@ -186,7 +186,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
-  test('Exhaustive validation of all 9 visible demo cards after expanding catalog', async ({ page }) => {
+  test('Exhaustive validation of all 10 visible demo cards after expanding catalog', async ({ page }) => {
     const guards = await attachPageGuards(page);
 
     // Click "Ver todas las demos" / expand button first so all cards exist and become visible
@@ -205,6 +205,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       './demo-propiedades/index.html',
       './demo-ecommerce-tech/index.html',
       './demo-agenda/index.html',
+      './demo-casa-colores/index.html',
       './demo-fonoaudiologia/index.html',
       './demo-plan-profesional/index.html',
       './demo-plan-premium/index.html'
