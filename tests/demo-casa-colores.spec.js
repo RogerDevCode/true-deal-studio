@@ -55,11 +55,13 @@ test("Casa Ronda prepara una consulta familiar de bajo riesgo y reinicia", async
   await expect(page.getByText("No. Preparar y enviar la consulta no realiza cobros ni confirma automáticamente una reserva.", { exact: true })).toBeVisible();
   await expect(page.locator('link[href*="fonts.googleapis.com"]')).toHaveCount(0);
   await expect(page.locator('img[src="./assets/casa-ronda-hero.webp"]')).toHaveCount(1);
+  await expect(page.locator(".experience-card")).toHaveCount(3);
+  expect(await page.locator(".experience-card").evaluateAll((cards) => cards.map((card) => card.dataset.index))).toEqual(["01", "02", "03"]);
 
   const planButton = page.getByRole("button", { name: "Elegir Ronda Pequeña" });
   await planButton.click();
   await expect(planButton).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByText("Ronda Pequeña elegida para tu celebración")).toBeVisible();
+  await expect(page.getByText("Elegiste Ronda Pequeña.")).toBeVisible();
   await page.getByLabel("Nombre de quien reserva").fill("Familia QA");
   await page.getByLabel("Edad que celebra").fill("7");
   await page.getByLabel("Cantidad de asistentes").fill("11");
@@ -76,7 +78,7 @@ test("Casa Ronda prepara una consulta familiar de bajo riesgo y reinicia", async
   expect(opened).toContain("Alergia a los frutos secos");
 
   await page.getByRole("button", { name: "Restablecer demo" }).click();
-  await expect(page.getByText("Ronda Pequeña elegida para tu celebración")).toHaveCount(0);
+  await expect(page.getByText("Elegiste Ronda Pequeña.")).toHaveCount(0);
   await expect(page.locator("#reserva-nombre")).toHaveValue("");
   await expect(page.locator("#reserva-necesidad")).toHaveValue("");
   await guards.assertHealthyContext();

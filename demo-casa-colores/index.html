@@ -235,6 +235,144 @@
       .step-marker{width:2.6rem;height:2.6rem}
       .footer-content{align-items:flex-start;flex-direction:column}
     }
+
+    /* Editorial sereno: la base nace en móvil y escala desde 900 px. */
+    :root{
+      --surface-dark:rgb(45,32,50);
+      --surface-light:rgb(255,253,248);
+      --surface-paper:rgb(247,241,232);
+      --surface-coral-soft:rgb(248,227,221);
+      --text-primary:rgb(45,32,50);
+      --text-secondary:rgb(91,77,96);
+      --text-on-dark:rgb(255,253,248);
+      --cta-bg:rgb(243,200,75);
+      --cta-text:rgb(45,32,50);
+      --coral:rgb(240,100,89);
+      --ink-soft:var(--text-secondary);
+    }
+    .wrap{width:min(72rem,calc(100% - 1.5rem))}
+    .section-copy{max-width:38rem}
+    .section-copy h2{max-width:none;margin-bottom:1rem;font-size:clamp(2rem,9.5vw,2.375rem);letter-spacing:-.04em;line-height:1;text-wrap:initial}
+    .section-copy>p:last-child{max-width:58ch;color:var(--text-secondary);font-size:1rem;line-height:1.65}
+    [data-idea-line]{display:block;white-space:nowrap}
+    .eyebrow{margin-bottom:.75rem;font-size:.8125rem;letter-spacing:.1em}
+
+    .nav{min-height:4.5rem}
+    .brand{font-size:.8125rem}
+    .brand-mark{width:2rem;height:2rem;border-width:5px}
+    .brand-mark::before{inset:-9px;border-width:2px}
+    .reset-button{min-height:2.75rem;padding:.6rem .8rem;font-size:.8125rem}
+
+    .hero-section{background:var(--surface-dark);color:var(--text-on-dark)}
+    .hero-layout{min-height:0;gap:2rem;padding-top:6.5rem;padding-bottom:3.75rem}
+    .hero-copy h1{max-width:none;margin-bottom:1.35rem;font-size:clamp(2.5rem,11.25vw,2.75rem);letter-spacing:-.052em;line-height:.98;text-wrap:initial}
+    .hero-copy h1 span:last-child{margin-top:.06em}
+    .hero-lead{margin-bottom:1.5rem;color:rgb(229,220,230);font-size:1rem;line-height:1.65}
+    .hero-actions{gap:.8rem 1rem}
+    .button{min-height:2.75rem;border-radius:.85rem}
+    .button-primary{background:var(--cta-bg);color:var(--cta-text);box-shadow:0 .8rem 2rem rgba(10,5,12,.2)}
+    .button-primary:hover{background:rgb(248,216,113);color:var(--cta-text);box-shadow:0 1rem 2.3rem rgba(10,5,12,.24)}
+    .text-link{min-height:2.75rem;align-items:center;font-size:.875rem}
+    .hero-facts{gap:.5rem;margin-top:1.5rem}
+    .hero-facts li{color:var(--text-on-dark);font-size:.8125rem}
+    .hero-photo-composition{max-width:34rem;margin:0 auto;padding:0}
+    .hero-photo-frame{box-shadow:0 1.8rem 4rem rgba(10,5,12,.3)}
+    .photo-note{position:static;max-width:none;margin-top:1rem;padding:1rem 1.1rem;border-radius:.9rem;box-shadow:none;transform:none}
+    .photo-note strong{font-size:1.2rem;line-height:1.1}
+    .photo-note span{font-size:.8125rem;line-height:1.5}
+
+    .experiences-section{padding-block:4.5rem 5.5rem;background:var(--surface-light)}
+    .experiences-heading{gap:1.5rem;margin-bottom:2rem}
+    .experiences-aside{max-width:none;padding:.85rem 1rem;color:var(--text-secondary);font-size:.875rem;line-height:1.6}
+    .experience-grid{display:grid;max-width:none;margin:0;padding:0;gap:1rem;overflow:visible;contain:none;scroll-snap-type:none}
+    .experience-card{min-width:0;min-height:0;padding:1.3rem;border-radius:1rem;background:var(--surface-paper);box-shadow:0 .8rem 2rem rgba(45,32,50,.08);scroll-snap-align:none}
+    .experience-card--small,.experience-card--create,.experience-card--large{background:var(--surface-paper)}
+    .experience-card::before,.experience-card:nth-child(2)::before,.experience-card:nth-child(3)::before{width:2.5rem;height:2.5rem;margin-bottom:1.1rem;background:var(--surface-dark);font-size:.8125rem;content:attr(data-index)}
+    .experience-card.is-selected{border-color:var(--coral);background:rgb(255,249,230);box-shadow:0 1rem 2.5rem rgba(45,32,50,.11)}
+    .experience-situation{min-height:0;margin-bottom:.9rem;color:var(--text-secondary);font-size:.875rem}
+    .experience-card h3{max-width:none;margin-bottom:.35rem;font-size:clamp(1.5rem,7vw,1.75rem);letter-spacing:-.035em;line-height:1}
+    .experience-age{margin-bottom:1.1rem;font-size:.8125rem}
+    .experience-card dl{margin-bottom:1rem}
+    .experience-card dt,.experience-card dd{font-size:.8125rem}
+    .experience-card button{min-height:2.75rem;border-radius:.8rem}
+
+    .story-section{padding-block:4.5rem 5.25rem;background:var(--surface-coral-soft);color:var(--text-primary)}
+    .story-section::before{border-color:rgba(240,100,89,.08)}
+    .story-heading{gap:1rem;margin-bottom:2rem}
+    .story-number{display:none}
+    .story-route{gap:0;margin-left:1.2rem;padding-left:1.6rem;border-left:2px solid rgba(240,100,89,.45)}
+    .story-step,.story-step:nth-of-type(even){display:grid;min-height:0;padding:.35rem 0 1.4rem;border:0;border-radius:0;background:transparent;box-shadow:none;grid-template-columns:2.5rem 1fr}
+    .story-step:last-child{padding-bottom:0}
+    .step-marker{width:2.5rem;height:2.5rem;margin-left:-2.9rem;background:var(--surface-dark);font-size:.75rem;box-shadow:0 0 0 .45rem var(--surface-coral-soft)}
+    .story-step h3{font-size:1.35rem;line-height:1.1}
+    .story-step p{color:var(--text-secondary);font-size:.875rem}
+
+    .questions-section{padding-block:4.5rem 5.25rem;background:var(--surface-paper)}
+    .questions-layout{gap:2rem}
+    .risk-stamp{width:7rem;height:7rem;margin-top:1.5rem;font-size:.75rem;transform:none}
+    .questions-list{gap:.6rem}
+    .question details{background:var(--surface-light)}
+    .question summary{min-height:3.5rem;padding:.85rem 1rem;font-size:1.125rem;line-height:1.25}
+    .question summary::after{width:2rem;height:2rem;background:var(--surface-dark);color:var(--text-on-dark)}
+    .question details[open] summary::after{background:var(--cta-bg);color:var(--cta-text)}
+    .question-answer{color:var(--text-secondary);font-size:.875rem;line-height:1.6}
+    .commitments{margin-top:2rem}
+    .commitment{min-height:3.5rem;font-size:.8125rem}
+
+    .booking-section{padding-block:4.5rem 5.5rem;background:var(--surface-dark);color:var(--text-on-dark)}
+    .booking-heading{margin-bottom:2rem}
+    .booking-heading h2{max-width:none;color:var(--text-on-dark)}
+    .booking-heading>p:last-child{color:rgb(229,220,230)}
+    .booking-shell{border-radius:1rem;background:var(--surface-light);color:var(--text-primary);box-shadow:0 1.8rem 4.5rem rgba(10,5,12,.28)}
+    .booking-summary{padding:1.5rem;background:var(--cta-bg)}
+    .booking-summary h3{max-width:none;margin:1rem 0 .75rem;font-size:clamp(1.5rem,7vw,1.75rem);letter-spacing:-.035em;line-height:1}
+    .booking-form{padding:1.5rem}
+    .fields{gap:.9rem}
+    .field{gap:.45rem;color:var(--text-secondary);font-size:.8125rem}
+    .field input,.field textarea{min-height:3rem;padding:.75rem .85rem;border-color:rgba(45,32,50,.3);font-size:1rem}
+    .field textarea{min-height:6.5rem}
+    .no-risk-note{font-size:.8125rem;line-height:1.5}
+    .booking-form .button{min-height:3rem}
+    .booking-form .button:disabled{background:rgb(221,216,215);color:rgb(83,72,86)}
+    .success-message{color:rgb(49,90,81);font-size:.8125rem}
+
+    .footer-content{align-items:flex-start;flex-direction:column;font-size:.8125rem}
+
+    @media(min-width:650px){
+      .wrap{width:min(72rem,calc(100% - 3rem))}
+      .fields{grid-template-columns:1fr 1fr}
+      .field-wide{grid-column:1/-1}
+      .commitments{grid-template-columns:repeat(3,1fr)}
+      .footer-content{align-items:center;flex-direction:row}
+    }
+    @media(min-width:800px){
+      .question details:not([open])>:not(summary){display:none}
+      .question details[open]>:not(summary){display:block}
+      .question summary{pointer-events:auto}
+      .question summary::after{display:grid}
+    }
+    @media(min-width:900px){
+      .hero-layout{min-height:46rem;padding-top:7rem;padding-bottom:4.5rem;grid-template-columns:.95fr 1.05fr;gap:4rem}
+      .hero-copy h1{font-size:4rem}
+      .section-copy h2{font-size:3rem}
+      .hero-photo-composition{max-width:none;margin:0}
+      .experiences-section{padding-block:6.5rem 7.5rem}
+      .experiences-heading{grid-template-columns:1fr .55fr;align-items:end;margin-bottom:3rem}
+      .experience-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+      .experience-card,.experience-card:nth-child(1),.experience-card:nth-child(2),.experience-card:nth-child(3){transform:none}
+      .experience-card:hover,.experience-card:nth-child(1):hover,.experience-card:nth-child(2):hover,.experience-card:nth-child(3):hover{transform:translateY(-2px)}
+      .experience-card h3{font-size:2rem}
+      .story-section,.questions-section,.booking-section{padding-block:6.5rem 7.5rem}
+      .story-heading{grid-template-columns:1fr;align-items:start;margin-bottom:3rem}
+      .story-route{grid-template-columns:repeat(5,minmax(0,1fr));gap:1.25rem;margin:0;padding:0;border:0}
+      .route-line{display:none}
+      .story-step,.story-step:nth-of-type(even){display:block;min-height:0;padding:1.25rem 0 0;border-top:2px solid rgba(240,100,89,.45);transform:none}
+      .step-marker{margin:-2.55rem 0 1.2rem;box-shadow:0 0 0 .45rem var(--surface-coral-soft)}
+      .questions-layout{grid-template-columns:.72fr 1.28fr;gap:5rem}
+      .booking-shell{grid-template-columns:.78fr 1.22fr}
+      .booking-summary,.booking-form{padding:2.5rem}
+      .booking-summary h3{font-size:2rem}
+    }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
     }
@@ -256,7 +394,7 @@
       <div class="wrap hero-layout">
         <div class="hero-copy">
           <p class="brand-kicker">Casa Ronda · Celebraciones</p>
-          <h1 id="hero-title"><span>Aquí el cumpleaños</span><span>se vive en ronda.</span></h1>
+          <h1 id="hero-title" data-idea-heading><span data-idea-line>Aquí el cumpleaños</span><span data-idea-line>se vive en ronda.</span></h1>
           <p class="hero-lead">Juegos, creación, comida y tiempo compartido para niños de 4 a 10 años. Conoce el plan antes de reservar.</p>
           <div class="hero-actions"><a href="#experiencias" class="button button-primary">Elegir una experiencia</a><a href="#reserva" class="text-link">Consultar una fecha</a></div>
           <ul class="hero-facts" aria-label="Información principal"><li>4 a 10 años</li><li>Hasta 24 invitados</li><li>Consultar no tiene costo</li></ul>
@@ -272,12 +410,12 @@
     <section id="experiencias" class="experiences-section" aria-labelledby="experiencias-title">
       <div class="wrap">
         <header class="experiences-heading">
-          <div class="section-copy"><p class="eyebrow">Elige el tipo de tarde</p><h2 id="experiencias-title">No todos celebran de la misma manera.</h2><p>Parte por el tamaño del grupo y la experiencia que quieres compartir. Los detalles se conversan antes de confirmar.</p></div>
+          <div class="section-copy"><p class="eyebrow">Elige el tipo de tarde</p><h2 id="experiencias-title" data-idea-heading><span data-idea-line>Elige su manera</span><span data-idea-line>de celebrar.</span></h2><p>Parte por el tamaño del grupo y la experiencia que quieres compartir. Los detalles se conversan antes de confirmar.</p></div>
           <p class="experiences-aside"><strong>Valores desde.</strong> La fecha, alimentación y cualquier necesidad particular pueden cambiar el valor final.</p>
         </header>
         <div class="experience-grid">
-          <template x-for="plan in packages" :key="plan.name">
-            <article class="experience-card" :class="`experience-card--${plan.tone}${selectedPackage?.name === plan.name ? ' is-selected' : ''}`">
+          <template x-for="(plan, index) in packages" :key="plan.name">
+            <article class="experience-card" :data-index="String(index + 1).padStart(2, '0')" :class="`experience-card--${plan.tone}${selectedPackage?.name === plan.name ? ' is-selected' : ''}`">
               <p class="experience-situation" x-text="plan.situation"></p>
               <h3 x-text="plan.name"></h3>
               <p class="experience-age" x-text="plan.age"></p>
@@ -291,7 +429,7 @@
 
     <section id="momentos" class="story-section" aria-labelledby="momentos-title">
       <div class="wrap">
-        <header class="story-heading"><div class="section-copy"><p class="eyebrow">Así se vive una Ronda</p><h2 id="momentos-title">La tarde tiene un ritmo. La familia conoce el plan.</h2><p>Cada momento cumple una función: recibir, jugar, crear, compartir y cerrar sin apuros.</p></div><span class="story-number" aria-hidden="true">05</span></header>
+        <header class="story-heading"><div class="section-copy"><p class="eyebrow">Así se vive una Ronda</p><h2 id="momentos-title" data-idea-heading><span data-idea-line>Una tarde con</span><span data-idea-line>un plan claro.</span></h2><p>Cada momento cumple una función: recibir, jugar, crear, compartir y cerrar sin apuros.</p></div><span class="story-number" aria-hidden="true">05</span></header>
         <div class="story-route">
           <svg class="route-line" viewBox="0 0 1000 260" aria-hidden="true"><path d="M35 125 C180 10 280 230 430 118 S700 12 965 132"/></svg>
           <article class="story-step"><span class="step-marker">01</span><div><h3>Nos encontramos</h3><p>Recibimos al grupo y explicamos la primera actividad.</p></div></article>
@@ -305,7 +443,7 @@
 
     <section id="antes" class="questions-section" aria-labelledby="antes-title">
       <div class="wrap questions-layout">
-        <header class="questions-intro section-copy"><p class="eyebrow">Preguntas reales</p><h2 id="antes-title">Antes de reservar</h2><p>Una celebración se disfruta más cuando las condiciones importantes quedan conversadas.</p><span class="risk-stamp" aria-hidden="true">Pregunta<br>sin<br>compromiso</span></header>
+        <header class="questions-intro section-copy"><p class="eyebrow">Preguntas reales</p><h2 id="antes-title" data-idea-heading><span data-idea-line>Antes de reservar</span></h2><p>Una celebración se disfruta más cuando las condiciones importantes quedan conversadas.</p><span class="risk-stamp" aria-hidden="true">Pregunta<br>sin<br>compromiso</span></header>
         <div>
           <div class="questions-list">
             <article class="question"><details open><summary>¿Consultar significa pagar?</summary><div class="question-answer"><p>No. Preparar y enviar la consulta no realiza cobros ni confirma automáticamente una reserva.</p></div></details></article>
@@ -321,12 +459,12 @@
 
     <section id="reserva" class="booking-section" aria-labelledby="reserva-title">
       <div class="wrap">
-        <header class="booking-heading section-copy"><p class="eyebrow">Consulta de bajo riesgo</p><h2 id="reserva-title">Cuéntanos lo importante. Revisamos la fecha contigo.</h2><p>Elige una experiencia y deja preparado el contexto. WhatsApp se abre solo cuando tú decides enviar.</p></header>
+        <header class="booking-heading section-copy"><p class="eyebrow">Consulta de bajo riesgo</p><h2 id="reserva-title" data-idea-heading><span data-idea-line>Revisemos la fecha</span><span data-idea-line>contigo.</span></h2><p>Elige una experiencia y deja preparado el contexto. WhatsApp se abre solo cuando tú decides enviar.</p></header>
         <div class="booking-shell">
           <aside class="booking-summary" aria-live="polite">
             <p class="eyebrow">Tu Ronda</p>
-            <template x-if="selectedPackage"><div><h3 x-text="`${selectedPackage.name} elegida para tu celebración`"></h3><p x-text="`${selectedPackage.duration} · ${selectedPackage.guests} · ${selectedPackage.price}`"></p></div></template>
-            <template x-if="!selectedPackage"><div><h3>Primero elige una experiencia.</h3><p>Después completa cuatro datos y cualquier necesidad que debamos conversar.</p></div></template>
+            <template x-if="selectedPackage"><div><h3 x-text="`Elegiste ${selectedPackage.name}.`"></h3><p x-text="`${selectedPackage.duration} · ${selectedPackage.guests} · ${selectedPackage.price}`"></p></div></template>
+            <template x-if="!selectedPackage"><div><h3>Elige una experiencia.</h3><p>Después completa cuatro datos y cualquier necesidad que debamos conversar.</p></div></template>
           </aside>
           <form class="booking-form" @submit.prevent="submitReservation">
             <div class="fields">
