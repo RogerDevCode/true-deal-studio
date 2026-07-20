@@ -227,4 +227,20 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     expect(ctaCount).toBeGreaterThan(0);
     await guards.assertHealthyContext();
   });
+
+  test('Plan Vitrina Express states a closed low-risk scope', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    const pricing = page.locator('#precios');
+    const plan = pricing.getByText('Plan Vitrina Express', { exact: true }).locator('..').locator('..');
+
+    await expect(pricing.getByText('Plan Vitrina Express', { exact: true })).toBeVisible();
+    await expect(pricing.getByText('$99.999', { exact: false })).toBeVisible();
+    await expect(plan).toContainText('3 días hábiles');
+    await expect(plan).toContainText('El plazo comienza cuando recibimos tu información completa.');
+    await expect(plan).toContainText('Tu dominio queda a tu nombre');
+    await expect(plan).toContainText('Una ronda consolidada de cambios');
+    await expect(plan).toContainText('No incluye: páginas extra, cambios de estructura, carro ni pagos en línea.');
+    await expect(plan.getByRole('link', { name: 'Quiero mi vitrina en 3 días' })).toHaveAttribute('href', '#contacto');
+    await guards.assertHealthyContext();
+  });
 });

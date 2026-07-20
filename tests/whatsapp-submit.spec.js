@@ -114,3 +114,22 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
     await context.close();
   }
 });
+
+test("Landing contact form names Plan Vitrina Express in WhatsApp", async ({ browser }) => {
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await installWindowOpenProbe(page);
+  const guards = await attachPageGuards(page);
+
+  await page.goto("/index.html");
+  await waitForAlpine(page);
+  await page.locator("#form-nombre").fill("PYME QA");
+  await page.locator("#form-negocio").fill("Taller QA");
+  await page.locator("#form-telefono").fill("+56911112222");
+  await page.locator("#form-mensaje").fill("Valores y horarios");
+  await page.locator("#contacto form").getByRole("button", { name: "Quiero mi vitrina en 3 días" }).click();
+
+  await expectWhatsAppOpen(page, ["PYME QA", "Plan Vitrina Express", "Valores y horarios"]);
+  await guards.assertHealthyContext();
+  await context.close();
+});
