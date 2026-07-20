@@ -9,11 +9,11 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
   test('Hero section elements, typography, and primary CTA responsiveness', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    await expect(page).toHaveTitle(/Que te vean\. Que te crean\./);
+    await expect(page).toHaveTitle(/Ordena tu atención por WhatsApp/);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
+    await expect(page.locator('h1')).toContainText('Muestra lo importante antes de que te escriban.');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
-    await expect(page.locator('h1')).not.toContainText('Muestra lo que haces.');
+    await expect(page.getByRole('link', { name: 'Revisar lo que explico por WhatsApp' })).toBeVisible();
     await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('santiago-hero.webp');
     
     // Check navigation anchor links

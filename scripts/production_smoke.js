@@ -2,7 +2,7 @@
 
 const PROD_URL = "https://true-deal-studio.vercel.app/";
 const PAGES = [
-  { path: "", expectedTitle: "STAX | Que te vean. Que te crean." },
+  { path: "", expectedTitle: "STAX | Ordena tu atención por WhatsApp" },
   { path: "privacidad.html", expectedTitle: "STAX | Aviso de Privacidad" },
   { path: "demo-agenda/index.html", expectedTitle: "CRM Express | Panel de Control de Agenda y Clientes Demo" },
   { path: "demo-artesanias/index.html", expectedTitle: "Artesanías del Sur | Catálogo & Tienda Online - Chile" },
