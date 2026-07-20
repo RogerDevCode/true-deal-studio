@@ -79,6 +79,8 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(contact.getByText('3. Decides con claridad', { exact: true })).toBeVisible();
     await expect(contact.getByText(/Respondemos dentro del horario de atención/)).toBeVisible();
     await expect(contact.getByText('Tu mensaje está listo', { exact: true })).toBeAttached();
+    await expect(contact.locator('.contact-form-note')).toHaveCount(3);
+    await expect(contact.locator('.contact-form-note').first()).toHaveCSS('color', 'rgb(52, 64, 84)');
 
     await guards.assertHealthyContext();
   });
