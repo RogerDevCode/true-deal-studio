@@ -680,6 +680,49 @@
       100% { opacity: 0; transform: translate3d(0, 16.5rem, 0) scale(0.5); }
     }
 
+    /* Process: the information stays readable while one stage receives focus. */
+    .process-timeline-rail {
+      background: linear-gradient(180deg, #0039A6, #BD93F9 50%, #D52B1E);
+    }
+    .process-timeline-signal {
+      position: absolute;
+      left: 50%;
+      top: var(--process-progress, 0%);
+      width: 0.85rem;
+      height: 0.85rem;
+      border: 3px solid rgb(var(--drac-darker));
+      border-radius: 999px;
+      background: #50FA7B;
+      box-shadow: 0 0 0 5px rgba(80, 250, 123, 0.16), 0 0 22px rgba(80, 250, 123, 0.65);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.72);
+      transition: top 700ms cubic-bezier(.2,.8,.2,1), opacity 250ms ease, transform 250ms ease;
+    }
+    .process-motion-enabled .process-timeline-signal {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .process-step-card {
+      transition: border-color 450ms ease, box-shadow 450ms ease, transform 450ms cubic-bezier(.2,.8,.2,1), background-color 450ms ease;
+    }
+    .process-step-card.is-active {
+      border-color: rgba(80, 250, 123, 0.62);
+      background-color: rgba(12, 43, 53, 0.9);
+      box-shadow: 0 24px 52px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(80, 250, 123, 0.1), 0 0 34px rgba(80, 250, 123, 0.11);
+      transform: translateX(0.55rem);
+    }
+    .process-step-card.is-active .process-step-chip {
+      border-color: rgba(80, 250, 123, 0.6);
+      background: rgba(80, 250, 123, 0.16);
+      color: #B9FFD0;
+    }
+    .process-step-card.is-active .process-step-meta {
+      border-color: rgba(80, 250, 123, 0.34);
+    }
+    @media (max-width: 1023px) {
+      .process-step-card.is-active { transform: translateY(-0.2rem); }
+    }
+
     /* Noise texture on hero only */
     .noise::after {
       content: '';
@@ -817,6 +860,8 @@
         transform: none;
       }
       .clarity-tunnel__signal { display: none; }
+      .process-timeline-signal { display: none; }
+      .process-step-card.is-active { transform: none; }
     }
 
     /* Typing cursor */
@@ -1723,12 +1768,14 @@
         <!-- Timeline -->
         <div class="relative">
           <!-- Vertical line -->
-          <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-chile-blue via-drac-purple to-chile-red hidden lg:block"></div>
+          <div class="process-timeline-rail absolute left-8 top-0 bottom-0 w-px hidden lg:block" aria-hidden="true">
+            <span class="process-timeline-signal"></span>
+          </div>
 
           <div class="space-y-8 lg:space-y-12">
             <!-- Step 1 -->
             <div class="reveal lg:ml-20 group">
-              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blue/30 hover:shadow-card-hover">
+              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blue/30 hover:shadow-card-hover" data-process-step="1">
                 <!-- Step number (desktop) -->
                 <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">1</div>
                 <!-- Step number (mobile) -->
@@ -1753,7 +1800,7 @@
 
             <!-- Step 2 -->
             <div class="reveal lg:ml-20 group" style="transition-delay: .08s">
-              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blueLight/30 hover:shadow-card-hover">
+              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blueLight/30 hover:shadow-card-hover" data-process-step="2">
                 <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">2</div>
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black mb-4">2</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
@@ -1776,7 +1823,7 @@
 
             <!-- Step 3 -->
             <div class="reveal lg:ml-20 group" style="transition-delay: .16s">
-              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blueLight/30 hover:shadow-card-hover">
+              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blueLight/30 hover:shadow-card-hover" data-process-step="3">
                 <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">3</div>
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black mb-4">3</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
@@ -1799,7 +1846,7 @@
 
             <!-- Step 4 -->
             <div class="reveal lg:ml-20 group" style="transition-delay: .24s">
-              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-drac-green/30 hover:shadow-card-hover">
+              <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-drac-green/30 hover:shadow-card-hover" data-process-step="4">
                 <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-drac-green to-[#3DD668] text-drac-darker text-sm font-black ring-4 ring-drac-darker" style="box-shadow: 0 0 30px rgba(80,250,123,0.2)">4</div>
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-drac-green to-[#3DD668] text-drac-darker text-sm font-black mb-4">4</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
@@ -2802,6 +2849,53 @@
       clarityObserver.observe(clarityTunnel);
     } else if (clarityTunnel) {
       clarityTunnel.classList.add('is-visible');
+    }
+
+    // Keep the process readable: one stage is highlighted only while this section is in view.
+    const processSection = document.querySelector('#proceso');
+    const processSteps = processSection ? [...processSection.querySelectorAll('[data-process-step]')] : [];
+    const reduceProcessMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (processSection && processSteps.length === 4 && !reduceProcessMotion) {
+      let activeProcessIndex = 0;
+      let processTimer = null;
+
+      const setActiveProcessStep = (index) => {
+        activeProcessIndex = index;
+        processSection.dataset.activeProcessStep = String(index + 1);
+        processSection.style.setProperty('--process-progress', `${(index / (processSteps.length - 1)) * 100}%`);
+        processSteps.forEach((step, stepIndex) => step.classList.toggle('is-active', stepIndex === index));
+      };
+
+      const startProcessLoop = () => {
+        if (processTimer) return;
+        processSection.classList.add('process-motion-enabled');
+        setActiveProcessStep(0);
+        processTimer = window.setInterval(() => {
+          setActiveProcessStep((activeProcessIndex + 1) % processSteps.length);
+        }, 2600);
+      };
+
+      const stopProcessLoop = () => {
+        if (processTimer) window.clearInterval(processTimer);
+        processTimer = null;
+        processSection.classList.remove('process-motion-enabled');
+        processSection.removeAttribute('data-active-process-step');
+        processSteps.forEach((step) => step.classList.remove('is-active'));
+      };
+
+      if ('IntersectionObserver' in window) {
+        const processObserver = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting && !document.hidden) startProcessLoop();
+          else stopProcessLoop();
+        }, { threshold: 0.38 });
+        processObserver.observe(processSection);
+      } else {
+        startProcessLoop();
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopProcessLoop();
+      });
     }
 
     // Smooth scroll for anchor links

@@ -49,6 +49,29 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Process timeline loops through each step only while the section is visible', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    const process = page.locator('#proceso');
+    const steps = process.locator('[data-process-step]');
+
+    await expect(steps).toHaveCount(4);
+    await process.scrollIntoViewIfNeeded();
+    await expect(process).toHaveClass(/process-motion-enabled/);
+    await expect(process.locator('[data-process-step].is-active')).toHaveCount(1);
+
+    const initialStep = await process.getAttribute('data-active-process-step');
+    await page.waitForFunction((step) => document.querySelector('#proceso')?.dataset.activeProcessStep !== step, initialStep);
+    await expect(process.locator('[data-process-step].is-active')).toHaveCount(1);
+
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.reload();
+    const reducedProcess = page.locator('#proceso');
+    await reducedProcess.scrollIntoViewIfNeeded();
+    await expect(reducedProcess).not.toHaveClass(/process-motion-enabled/);
+
+    await guards.assertHealthyContext();
+  });
+
   test('Theme switcher combinatorial testing: toggling, classes, and storage persistence', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const themeToggle = page.getByRole('button', { name: 'Cambiar tema' }).first();
