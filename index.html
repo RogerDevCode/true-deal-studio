@@ -1777,7 +1777,7 @@
             <div class="reveal lg:ml-20 group">
               <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blue/30 hover:shadow-card-hover" data-process-step="1">
                 <!-- Step number (desktop) -->
-                <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">1</div>
+                <div class="process-step-marker absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">1</div>
                 <!-- Step number (mobile) -->
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black mb-4">1</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
@@ -1801,7 +1801,7 @@
             <!-- Step 2 -->
             <div class="reveal lg:ml-20 group" style="transition-delay: .08s">
               <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blueLight/30 hover:shadow-card-hover" data-process-step="2">
-                <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">2</div>
+                <div class="process-step-marker absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">2</div>
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black mb-4">2</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                   <div class="flex-1">
@@ -1824,7 +1824,7 @@
             <!-- Step 3 -->
             <div class="reveal lg:ml-20 group" style="transition-delay: .16s">
               <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-chile-blueLight/30 hover:shadow-card-hover" data-process-step="3">
-                <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">3</div>
+                <div class="process-step-marker absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black shadow-glow ring-4 ring-drac-darker">3</div>
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-chile-blue to-chile-blueLight text-white text-sm font-black mb-4">3</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                   <div class="flex-1">
@@ -1847,7 +1847,7 @@
             <!-- Step 4 -->
             <div class="reveal lg:ml-20 group" style="transition-delay: .24s">
               <div class="process-step-card relative rounded-[1.75rem] border border-drac-current/40 bg-drac-bg/68 p-8 shadow-[0_16px_44px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-drac-green/30 hover:shadow-card-hover" data-process-step="4">
-                <div class="absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-drac-green to-[#3DD668] text-drac-darker text-sm font-black ring-4 ring-drac-darker" style="box-shadow: 0 0 30px rgba(80,250,123,0.2)">4</div>
+                <div class="process-step-marker absolute -left-[4.75rem] top-8 hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-drac-green to-[#3DD668] text-drac-darker text-sm font-black ring-4 ring-drac-darker" style="box-shadow: 0 0 30px rgba(80,250,123,0.2)">4</div>
                 <span class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-drac-green to-[#3DD668] text-drac-darker text-sm font-black mb-4">4</span>
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                   <div class="flex-1">
@@ -2859,11 +2859,22 @@
       let activeProcessIndex = 0;
       let processTimer = null;
 
+      const syncProcessSignal = () => {
+        const rail = processSection.querySelector('.process-timeline-rail');
+        const activeMarker = processSteps[activeProcessIndex]?.querySelector('.process-step-marker');
+        if (!rail || !activeMarker) return;
+        const railBox = rail.getBoundingClientRect();
+        const markerBox = activeMarker.getBoundingClientRect();
+        if (railBox.height === 0 || markerBox.height === 0) return;
+        const centerOffset = markerBox.top + markerBox.height / 2 - railBox.top;
+        processSection.style.setProperty('--process-progress', `${Math.max(0, Math.min(railBox.height, centerOffset))}px`);
+      };
+
       const setActiveProcessStep = (index) => {
         activeProcessIndex = index;
         processSection.dataset.activeProcessStep = String(index + 1);
-        processSection.style.setProperty('--process-progress', `${(index / (processSteps.length - 1)) * 100}%`);
         processSteps.forEach((step, stepIndex) => step.classList.toggle('is-active', stepIndex === index));
+        window.requestAnimationFrame(syncProcessSignal);
       };
 
       const startProcessLoop = () => {
@@ -2880,6 +2891,7 @@
         processTimer = null;
         processSection.classList.remove('process-motion-enabled');
         processSection.removeAttribute('data-active-process-step');
+        processSection.style.removeProperty('--process-progress');
         processSteps.forEach((step) => step.classList.remove('is-active'));
       };
 
@@ -2895,6 +2907,9 @@
 
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) stopProcessLoop();
+      });
+      window.addEventListener('resize', () => {
+        if (processTimer) window.requestAnimationFrame(syncProcessSignal);
       });
     }
 

@@ -55,9 +55,19 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const steps = process.locator('[data-process-step]');
 
     await expect(steps).toHaveCount(4);
+    await expect(process.locator('.process-step-marker')).toHaveCount(4);
     await process.scrollIntoViewIfNeeded();
     await expect(process).toHaveClass(/process-motion-enabled/);
     await expect(process.locator('[data-process-step].is-active')).toHaveCount(1);
+    await page.waitForFunction(() => {
+      const section = document.querySelector('#proceso');
+      const signal = section?.querySelector('.process-timeline-signal');
+      const activeMarker = section?.querySelector('[data-process-step].is-active .process-step-marker');
+      if (!signal || !activeMarker) return false;
+      const signalBox = signal.getBoundingClientRect();
+      const markerBox = activeMarker.getBoundingClientRect();
+      return Math.abs((signalBox.top + signalBox.height / 2) - (markerBox.top + markerBox.height / 2)) <= 4;
+    });
 
     const initialStep = await process.getAttribute('data-active-process-step');
     await page.waitForFunction((step) => document.querySelector('#proceso')?.dataset.activeProcessStep !== step, initialStep);

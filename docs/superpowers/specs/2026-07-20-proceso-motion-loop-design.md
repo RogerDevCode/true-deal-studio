@@ -8,6 +8,7 @@ Convertir los cuatro pasos del proceso en una secuencia visible que explique ava
 
 - Mientras `#proceso` está en viewport, una sola tarjeta queda activa cada vez.
 - El estado activo destaca su enumeración, borde, chip de plazo y párrafo asociado; un indicador avanza por la línea vertical de escritorio.
+- El indicador se alinea con el centro geométrico del círculo activo, calculado al cambiar de etapa y al redimensionar la ventana.
 - Las etapas rotan en orden 1 → 2 → 3 → 4 y vuelven a 1 cada 2,6 segundos.
 - Al salir del viewport o al ocultarse la pestaña, el intervalo se detiene y se elimina el estado temporal.
 - Con `prefers-reduced-motion`, las cuatro etapas se muestran estáticas y no se inicia el loop.
