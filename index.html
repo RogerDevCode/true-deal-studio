@@ -264,8 +264,8 @@
       background-color: #2F7A42;
     }
 
-    /* Smooth transition for theme switch, excluding transforms to preserve fast interactions */
-    html, body, header, section, footer, nav, div, a, p, span, h1, h2, h3, h4, h5, h6, svg, button {
+    /* Smooth transition for theme switch on structural and interactive containers */
+    html, body, header, section, footer, nav, article, main, aside, div, form, input, textarea, select, button, a {
       transition-property: background-color, border-color, color, fill, stroke, text-decoration-color;
       transition-duration: 300ms;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -275,6 +275,18 @@
     button { color: inherit; }
     :root { --text-muted: #A8AFCB; }
     html.light-theme { --text-muted: #55575F; }
+
+    /* High contrast input placeholder styling for WCAG AA compliance */
+    html.light-theme input::placeholder,
+    html.light-theme textarea::placeholder {
+      color: #4B5563;
+      opacity: 0.9;
+    }
+    html:not(.light-theme) input::placeholder,
+    html:not(.light-theme) textarea::placeholder {
+      color: #94A3B8;
+      opacity: 0.9;
+    }
 
     /* Responsive typography legibility overrides for mobile devices */
     /* Responsive custom typography system without !important */
@@ -341,6 +353,11 @@
       overflow-x: hidden;
     }
 
+    .font-display {
+      font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+      letter-spacing: -0.022em;
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: rgba(var(--drac-darker), 1); }
@@ -403,10 +420,10 @@
     .business-notebook-pattern {
       background-color: #F5F1E8;
       background-image:
-        linear-gradient(rgba(32, 61, 91, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(32, 61, 91, 0.055) 1px, transparent 1px),
-        radial-gradient(circle at 18% 15%, rgba(180, 67, 43, 0.07), transparent 24rem);
-      background-size: 28px 28px, 28px 28px, auto;
+        linear-gradient(rgba(32, 61, 91, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(32, 61, 91, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 18% 15%, rgba(180, 67, 43, 0.05), transparent 28rem);
+      background-size: 32px 32px, 32px 32px, auto;
     }
 
     .business-card {
@@ -418,9 +435,9 @@
     html:not(.light-theme) .business-notebook-pattern {
       background-color: #182233;
       background-image:
-        linear-gradient(rgba(225, 232, 240, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(225, 232, 240, 0.07) 1px, transparent 1px),
-        radial-gradient(circle at 18% 15%, rgba(200, 91, 64, 0.15), transparent 24rem);
+        linear-gradient(rgba(225, 232, 240, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225, 232, 240, 0.04) 1px, transparent 1px),
+        radial-gradient(circle at 18% 15%, rgba(200, 91, 64, 0.10), transparent 28rem);
     }
 
     html:not(.light-theme) .business-card {
@@ -542,16 +559,16 @@
 
     /* Custom Shadow Fallbacks */
     html body .shadow-glow {
-      box-shadow: 0 0 28px rgba(10, 49, 97, 0.42), 0 0 48px rgba(42, 104, 200, 0.22);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45);
     }
     html body .shadow-glow-red {
-      box-shadow: 0 0 28px rgba(213, 43, 30, 0.42), 0 0 48px rgba(255, 85, 85, 0.22);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.45);
     }
     html body .shadow-card {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     }
     html body .shadow-card-hover {
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22), 0 0 24px rgba(42, 104, 200, 0.15);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.28);
     }
 
     /* =============================================
@@ -834,7 +851,7 @@
        EDITORIAL: Left accent bar (Opcion 3)
        ============================================= */
     .editorial-bar {
-      border-left: 5px solid #0039A6;
+      border-left: 2px solid rgba(104, 162, 255, 0.7);
       padding-left: 1.25rem;
     }
 
@@ -855,16 +872,20 @@
       filter: blur(8px);
     }
 
-    /* Button hover glow */
+    /* Button hover & active tactile feedback */
     .btn-glow {
       position: relative;
       overflow: hidden;
       box-shadow: 0 8px 18px rgba(10, 49, 97, 0.18);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-glow:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(10, 49, 97, 0.24);
+      box-shadow: 0 14px 28px rgba(10, 49, 97, 0.28);
+    }
+    .btn-glow:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 0 4px 12px rgba(10, 49, 97, 0.18);
     }
 
     /* Counter animation */
@@ -893,13 +914,15 @@
       position: absolute;
       bottom: -2px;
       left: 0;
-      width: 0;
+      width: 100%;
       height: 2px;
       background: linear-gradient(90deg, #0039A6, #D52B1E);
-      transition: width 0.3s ease;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
     .link-underline:hover::after {
-      width: 100%;
+      transform: scaleX(1);
     }
 
     /* Reduced motion */
@@ -1060,7 +1083,7 @@
             <div class="editorial-bar">
               <h1 class="font-display text-[2.25rem] font-black leading-[1.02] sm:text-5xl lg:text-6xl xl:text-[3.5rem] text-white drop-shadow-lg">
                 Muestra lo importante
-                <span class="block bg-gradient-to-r from-orange-300 via-yellow-200 to-white bg-clip-text text-transparent">antes de que te escriban.</span>
+                <span class="block text-amber-200">antes de que te escriban.</span>
               </h1>
             </div>
 
@@ -1100,94 +1123,123 @@
             </div>
           </div>
 
-          <!-- Right: Browser mockup -->
-          <div class="reveal-right overflow-x-clip" style="transition-delay: .15s">
-            <figure class="clarity-tunnel is-visible" aria-label="Ruta de claridad: consulta suelta, información ordenada, página que orienta y WhatsApp con contexto">
-              <figcaption class="clarity-tunnel__caption">Ruta de claridad</figcaption>
-              <span class="clarity-tunnel__signal" aria-hidden="true"></span>
-              <article class="clarity-tunnel__step clarity-tunnel__step--query" data-clarity-step>
-                <span class="clarity-tunnel__eyebrow">01 · Antes</span>
-                <h2>Consulta suelta</h2>
-                <p>“¿Cuánto sale y cómo te hablo?”</p>
-              </article>
-              <article class="clarity-tunnel__step clarity-tunnel__step--details" data-clarity-step>
-                <span class="clarity-tunnel__eyebrow">02 · Orden</span>
-                <h2>Información que orienta</h2>
-                <div class="clarity-tunnel__chips"><span>Servicio</span><span>Horarios</span><span>Cobertura</span></div>
-              </article>
-              <article class="clarity-tunnel__step clarity-tunnel__step--page" data-clarity-step>
-                <span class="clarity-tunnel__eyebrow">03 · Presencia</span>
-                <h2>Página que explica</h2>
-                <p>Tu oferta, tus valores y el siguiente paso sin vueltas.</p>
-              </article>
-              <article class="clarity-tunnel__step clarity-tunnel__step--whatsapp" data-clarity-step>
-                <span class="clarity-tunnel__eyebrow">04 · Atención</span>
-                <h2>WhatsApp con contexto</h2>
-                <p>La persona llega sabiendo qué necesita revisar contigo.</p>
-                <span class="clarity-tunnel__ready">● Listo para atender</span>
-              </article>
-            </figure>
-            <div class="relative animate-float-slow hidden" aria-hidden="true">
-              <!-- Glow behind -->
-              <div class="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-chile-blue/20 via-transparent to-chile-red/15 blur-2xl sm:-inset-4"></div>
-
-              <!-- Browser frame -->
-              <div class="relative glass rounded-[2rem] shadow-mega overflow-hidden">
-                <!-- Browser chrome -->
-                <div class="flex items-center justify-between border-b border-drac-current/50 px-5 py-3.5">
-                  <div class="flex items-center gap-2">
-                    <span class="h-3 w-3 rounded-full bg-chile-red/80"></span>
-                    <span class="h-3 w-3 rounded-full bg-drac-orange/80"></span>
-                    <span class="h-3 w-3 rounded-full bg-drac-green/80"></span>
-                  </div>
-                  <div class="flex-1 mx-4">
-                    <div class="flex items-center justify-center rounded-lg bg-drac-darker/60 px-3 py-1.5 text-xs text-drac-comment">
-                      <svg class="mr-1.5 h-3 w-3 text-drac-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
-                      tunegocio.cl
-                    </div>
-                  </div>
-                  <span class="rounded-full border border-chile-blueLight/30 bg-chile-blue px-3 py-1 text-responsive-caption font-bold uppercase tracking-wider text-white">Vista previa</span>
-                </div>
-
-                <!-- Mock website content -->
-                <div class="p-5 space-y-4">
-                  <!-- Mini hero -->
-                  <div class="rounded-2xl p-6 text-white" style="background: linear-gradient(135deg, #0A1E3F 0%, #112A56 55%, #193B77 100%); border: 1px solid rgba(255, 255, 255, 0.15);">
-                    <p class="text-responsive-caption font-bold uppercase tracking-[0.2em] text-white/90">Tu marca aquí</p>
-                    <h2 class="mt-2 font-display text-xl font-bold leading-tight">Servicio claro, atención simple</h2>
-                    <p class="mt-2 text-xs text-white/85 leading-relaxed">Todo lo importante listo para que te escriban.</p>
-                    <div class="mt-4 flex gap-2">
-                      <span class="rounded-full bg-white/20 px-3 py-1.5 text-responsive-caption font-bold">Cotizar Ahora</span>
-                      <span class="rounded-full border border-white/30 px-3 py-1.5 text-responsive-caption font-bold">Ver Servicios</span>
-                    </div>
-                  </div>
-
-                  <div class="mobile-soft-hide rounded-xl border border-drac-current/30 bg-drac-current/20 p-4">
-                    <p class="text-responsive-caption font-bold text-drac-fg">Tu cliente entiende rápido</p>
-                    <p class="mt-2 text-responsive-detail text-drac-comment leading-relaxed">Qué haces, cómo atiendes y cómo avanzar contigo, sin vueltas ni ruido.</p>
-                  </div>
-
-                  <!-- WhatsApp bar -->
-                  <div class="mini-wa rounded-xl border p-3 flex items-center justify-between">
-                    <span class="mini-wa-text text-responsive-caption font-bold text-drac-green">💬 Contactar por WhatsApp</span>
-                    <span class="mini-wa-dot h-2 w-2 rounded-full bg-drac-green animate-pulse-soft"></span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Floating badge -->
-              <div class="absolute -right-3 -bottom-3 hidden glass rounded-2xl px-4 py-3 shadow-card lg:block" style="animation-delay: 1s">
-                <div class="flex items-center gap-2">
-                  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-drac-green/20 text-drac-green">
-                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <!-- Right: Interactive Live Simulator Frame -->
+          <div class="reveal-right overflow-x-clip" style="transition-delay: .15s" x-data="{
+            activeRubro: 'salud',
+            demos: {
+              salud: {
+                name: 'Nahovy Gallegos · Fonoaudiología',
+                rubro: 'Salud & Reservas',
+                url: './demo-fonoaudiologia/index.html',
+                img: './assets/optimized/fonoaudiologia-card.webp',
+                badge: 'Reserva & Evaluación',
+                modality: 'Presencial primero · A domicilio',
+                whatsapp: '“Hola, quiero consultar por evaluación fonoaudiológica para mi hijo...”'
+              },
+              cafe: {
+                name: 'Café La Ruta · Valparaíso',
+                rubro: 'Cafetería & Almuerzos',
+                url: './demo-cafe-valparaiso/index.html',
+                img: './assets/optimized/cafe-card.webp',
+                badge: 'Carta & Pedidos',
+                modality: 'Presencial primero · Delivery y retiro',
+                whatsapp: '“Hola, quiero hacer un pedido para retiro hoy a las 14:00...”'
+              },
+              salon: {
+                name: 'Studio Chic · Alta Peluquería',
+                rubro: 'Salón & Estilo',
+                url: './demo-salon-belleza/index.html',
+                img: './assets/optimized/salon-card.webp',
+                badge: 'Agenda & Servicios',
+                modality: 'Presencial primero · Reserva online',
+                whatsapp: '“Hola, me gustaría agendar hora para balayage este viernes...”'
+              },
+              artesanias: {
+                name: 'Artesanías del Sur · Catálogo',
+                rubro: 'Artesanía & Venta Directa',
+                url: './demo-artesanias/index.html',
+                img: './assets/optimized/artesanias-card.webp',
+                badge: 'Catálogo & Pedidos',
+                modality: 'Presencial primero · Envíos a todo Chile',
+                whatsapp: '“Hola, me interesan las pieceras de lana tejido telar...”'
+              },
+              contabilidad: {
+                name: 'ContaDigital · Asesoría Pymes',
+                rubro: 'Servicios Profesionales',
+                url: './demo-contabilidad/index.html',
+                img: './assets/optimized/contabilidad-card.webp',
+                badge: 'Planes & Cotización',
+                modality: 'Presencial primero · Atención remota',
+                whatsapp: '“Hola, tengo una SpA y quiero cotizar plan mensual de contabilidad...”'
+              },
+              propiedades: {
+                name: 'Cobre & Co. · Corretaje',
+                rubro: 'Inmobiliaria & Visitas',
+                url: './demo-propiedades/index.html',
+                img: './assets/optimized/propiedades-card.webp',
+                badge: 'Fichas & Agendamiento',
+                modality: 'Presencial primero · Coordinación directa',
+                whatsapp: '“Hola, me interesa agendar una visita para el depto en Providencia...”'
+              }
+            }
+          }">
+            <!-- Interactive Simulator Card -->
+            <div class="relative glass rounded-[2rem] p-5 shadow-mega border border-white/20">
+              
+              <!-- Rubro Selector Tabs -->
+              <div class="mb-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-drac-cyan">Simulador Interactivo en Vivo</span>
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-bold text-emerald-400">
+                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse-soft"></span>
+                    Prueba tu rubro
                   </span>
-                  <div>
-                    <p class="text-responsive-caption font-bold text-drac-fg">Adaptada a Celular</p>
-                    <p class="text-responsive-caption text-drac-comment">Se ve perfecto en todo</p>
-                  </div>
+                </div>
+                <div class="flex flex-nowrap sm:flex-wrap overflow-x-auto pb-1 gap-1.5 no-scrollbar">
+                  <button type="button" @click="activeRubro = 'salud'" :class="activeRubro === 'salud' ? 'bg-chile-blue text-white border-chile-blue' : 'bg-drac-darker/60 text-drac-comment border-drac-current/40 hover:text-drac-fg'" class="shrink-0 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all">🩺 Salud</button>
+                  <button type="button" @click="activeRubro = 'cafe'" :class="activeRubro === 'cafe' ? 'bg-chile-blue text-white border-chile-blue' : 'bg-drac-darker/60 text-drac-comment border-drac-current/40 hover:text-drac-fg'" class="shrink-0 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all">☕ Cafetería</button>
+                  <button type="button" @click="activeRubro = 'salon'" :class="activeRubro === 'salon' ? 'bg-chile-blue text-white border-chile-blue' : 'bg-drac-darker/60 text-drac-comment border-drac-current/40 hover:text-drac-fg'" class="shrink-0 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all">💇‍♀️ Salón</button>
+                  <button type="button" @click="activeRubro = 'artesanias'" :class="activeRubro === 'artesanias' ? 'bg-chile-blue text-white border-chile-blue' : 'bg-drac-darker/60 text-drac-comment border-drac-current/40 hover:text-drac-fg'" class="shrink-0 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all">🧶 Catálogo</button>
+                  <button type="button" @click="activeRubro = 'contabilidad'" :class="activeRubro === 'contabilidad' ? 'bg-chile-blue text-white border-chile-blue' : 'bg-drac-darker/60 text-drac-comment border-drac-current/40 hover:text-drac-fg'" class="shrink-0 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all">📊 Asesoría</button>
+                  <button type="button" @click="activeRubro = 'propiedades'" :class="activeRubro === 'propiedades' ? 'bg-chile-blue text-white border-chile-blue' : 'bg-drac-darker/60 text-drac-comment border-drac-current/40 hover:text-drac-fg'" class="shrink-0 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-all">🏡 Inmobiliaria</button>
                 </div>
               </div>
 
+              <!-- Live Preview Screen -->
+              <div class="overflow-hidden rounded-xl border border-drac-current/40 bg-drac-darker/90 p-4 transition-all">
+                
+                <!-- Mock Header -->
+                <div class="flex items-center justify-between border-b border-drac-current/40 pb-3 mb-3">
+                  <div>
+                    <span class="text-[10px] font-bold text-drac-comment uppercase tracking-wider" x-text="demos[activeRubro].rubro"></span>
+                    <h3 class="font-display text-base font-bold text-drac-fg" x-text="demos[activeRubro].name"></h3>
+                  </div>
+                  <span class="rounded-full bg-drac-cyan/15 border border-drac-cyan/30 px-2.5 py-1 text-[10px] font-bold text-drac-cyan" x-text="demos[activeRubro].badge"></span>
+                </div>
+
+                <!-- Preview Image & Modality -->
+                <div class="relative overflow-hidden rounded-lg aspect-video bg-drac-darker mb-3">
+                  <img src="./assets/optimized/fonoaudiologia-card.webp" :src="demos[activeRubro].img" :alt="demos[activeRubro].name" class="h-full w-full object-cover transition-all duration-300 hover:scale-105" />
+                  <div class="absolute bottom-2 left-2 right-2 rounded-md bg-drac-darker/85 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-drac-fg" x-text="demos[activeRubro].modality"></div>
+                </div>
+
+                <!-- Pre-filled WhatsApp Simulation -->
+                <div class="rounded-lg bg-emerald-950/40 border border-emerald-500/25 p-3">
+                  <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 mb-1">
+                    <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                    Mensaje prellenado al contactar:
+                  </div>
+                  <p class="text-xs italic text-emerald-100/90 leading-relaxed" x-text="demos[activeRubro].whatsapp"></p>
+                </div>
+
+                <!-- Direct Action Link -->
+                <div class="mt-3 flex items-center justify-between">
+                  <span class="text-[11px] text-drac-comment font-medium">Prueba la experiencia real:</span>
+                  <a :href="demos[activeRubro].url" class="btn-glow inline-flex items-center gap-1 rounded-lg bg-gradient-to-r from-chile-blue to-chile-blueLight px-3.5 py-2 text-xs font-bold text-white shadow-md transition-all hover:-translate-y-0.5">
+                    Ver demo en vivo →
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1487,7 +1539,7 @@
                 </span>
                 <h3 class="mt-4 font-display text-3xl font-black leading-tight text-drac-fg sm:text-4xl lg:text-5xl">
                   Mismo criterio visual.
-                  <span class="bg-gradient-to-r from-drac-purple via-drac-pink to-drac-red bg-clip-text text-transparent">Cualquier rubro.</span>
+                  <span class="block sm:inline text-drac-purple">Cualquier rubro.</span>
                 </h3>
                 <p class="mt-6 text-base text-drac-comment leading-relaxed">
                   Cada negocio necesita mostrar información distinta. Adaptamos diseño, textos y flujos de atención —reservas, catálogos o cotizadores— a la forma en que vendes y atiendes cada día.

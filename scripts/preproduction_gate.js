@@ -140,7 +140,7 @@ function extractAttributes(content, attributeName) {
 function isIgnorableReference(reference) {
   return (
     !reference ||
-    /[`{}$()]/.test(reference) ||
+    /[\[\]`{}$()]/.test(reference) ||
     reference.includes("||") ||
     /\s/.test(reference) ||
     /^[a-zA-Z0-9_.-]+$/.test(reference) ||
