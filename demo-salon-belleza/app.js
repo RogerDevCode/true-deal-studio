@@ -1,18 +1,8 @@
 window.salonApp = function salonApp() {
-  const bookingStorageKey = 'tuwebpro_bookings';
-
-  function createBookingId() {
-    return 'B-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
-  }
-
-  function saveBooking(entry) {
-    try {
-      const bookings = JSON.parse(localStorage.getItem(bookingStorageKey) || '[]');
-      bookings.push({ ...entry, id: createBookingId(), status: 'pendiente', dateAdded: new Date().toISOString() });
-      localStorage.setItem(bookingStorageKey, JSON.stringify(bookings));
-    } catch (error) {
-      console.error('Error al guardar reserva local:', error);
-    }
+  function getTodayLocal() {
+    const today = new Date();
+    const offset = today.getTimezoneOffset() * 60000;
+    return new Date(today.getTime() - offset).toISOString().slice(0, 10);
   }
 
   function openWhatsApp(phone, bodyText) {
@@ -25,7 +15,7 @@ window.salonApp = function salonApp() {
     try {
       popup.focus();
     } catch (error) {
-      // Ignore focus issues in strict browsers.
+      // The request is already prepared when strict browsers block focus.
     }
   }
 
@@ -34,30 +24,39 @@ window.salonApp = function salonApp() {
     selectedServices: [],
     selectedDuration: 0,
     selectedPrice: 0,
+    needsGuidance: false,
     successToast: false,
     sliderVal: 50,
     formName: '',
-    formEmail: '',
     formPhone: '',
     formDate: '',
     formTime: '',
-    formSector: 'presencial',
     formStylist: 'any',
     formComment: '',
-    autoStylist: '',
-    autoStylistSpecialty: '',
-    activeServiceContext: '',
+    formError: '',
+    minDate: getTodayLocal(),
+    lastTrigger: null,
+
+    get checkoutLabel() {
+      if (this.needsGuidance || this.selectedServices.length === 0) {
+        return 'Revisar solicitud de orientación';
+      }
+      const amount = this.selectedPrice.toLocaleString('es-CL');
+      if (this.selectedServices.length === 1) {
+        return `Revisar solicitud · $${amount} estimado`;
+      }
+      return `Revisar ${this.selectedServices.length} servicios · $${amount} estimado`;
+    },
 
     getDefaultFormState() {
       return {
         formName: '',
-        formEmail: '',
         formPhone: '',
         formDate: '',
         formTime: '',
-        formSector: 'presencial',
         formStylist: 'any',
         formComment: '',
+        formError: '',
       };
     },
 
@@ -69,9 +68,7 @@ window.salonApp = function salonApp() {
       this.selectedServices = [];
       this.selectedDuration = 0;
       this.selectedPrice = 0;
-      this.autoStylist = '';
-      this.autoStylistSpecialty = '';
-      this.activeServiceContext = '';
+      this.needsGuidance = false;
     },
 
     toggleService(id, title, price, duration) {
@@ -85,110 +82,120 @@ window.salonApp = function salonApp() {
         this.selectedPrice += price;
         this.selectedDuration += duration;
       }
-
-      const hasBalayage = this.selectedServices.some((service) => service.title.toLowerCase().includes('balayage') || service.title.toLowerCase().includes('iluminac'));
-      const hasCorte = this.selectedServices.some((service) => service.title.toLowerCase().includes('corte') || service.title.toLowerCase().includes('peinado'));
-
-      if (hasBalayage) {
-        this.autoStylist = 'Valentina Moretti';
-        this.autoStylistSpecialty = 'Especialista en Balayage e Iluminación';
-        this.formStylist = 'stylist1';
-      } else if (hasCorte) {
-        this.autoStylist = 'Ariadna Ruiz';
-        this.autoStylistSpecialty = 'Especialista en Cortes y Peinados';
-        this.formStylist = 'stylist2';
-      } else {
-        this.autoStylist = '';
-        this.autoStylistSpecialty = '';
-        this.formStylist = 'any';
-      }
-
-      const hasColor = this.selectedServices.some((service) =>
-        service.title.toLowerCase().includes('color') ||
-        service.title.toLowerCase().includes('balayage') ||
-        service.title.toLowerCase().includes('iluminac') ||
-        service.title.toLowerCase().includes('keratina') ||
-        service.title.toLowerCase().includes('reconstruc')
-      );
-      const hasCorteCtx = this.selectedServices.some((service) => service.title.toLowerCase().includes('corte') || service.title.toLowerCase().includes('peinado'));
-
-      if (hasColor) {
-        this.activeServiceContext = 'color';
-      } else if (hasCorteCtx) {
-        this.activeServiceContext = 'corte';
-      } else {
-        this.activeServiceContext = '';
-      }
+      this.needsGuidance = false;
     },
 
-    openBooking() {
+    chooseGuidance(trigger = null) {
+      this.resetServiceSelection();
+      this.needsGuidance = true;
+      this.openBooking(true, trigger);
+    },
+
+    openBooking(useGuidance = true, trigger = null) {
       this.resetBookingForm();
+      this.needsGuidance = this.selectedServices.length === 0 && useGuidance;
+      this.lastTrigger = trigger || document.activeElement;
       this.bookingModal = true;
+      this.$nextTick(() => {
+        document.getElementById('salon-name')?.focus();
+      });
     },
 
     closeBooking() {
-      this.resetBookingForm();
+      const trigger = this.lastTrigger;
       this.bookingModal = false;
+      this.resetBookingForm();
+      this.resetServiceSelection();
+      this.$nextTick(() => {
+        trigger?.focus?.();
+      });
     },
 
-    submitBooking() {
-      if (!this.formName || !this.formPhone || !this.formDate || !this.formTime) {
-        alert('Por favor, ingresa los datos requeridos (Nombre, Teléfono, Fecha y Hora).');
+    handleModalKeydown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        this.closeBooking();
+        return;
+      }
+      if (event.key !== 'Tab') {
         return;
       }
 
-      const servicesNames = this.selectedServices.map((service) => service.title).join(', ');
-      const servicesList = this.selectedServices.map((service) => `- ${service.title} ($${service.price.toLocaleString('es-CL')})`).join('\n');
-      const stylistLabel = this.formStylist === 'stylist1' ? 'Valentina Moretti' : 'Cualquier profesional disponible';
+      const dialog = event.currentTarget;
+      const focusable = Array.from(dialog.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]'
+      )).filter((element) => element.offsetParent !== null);
+      if (focusable.length === 0) {
+        return;
+      }
 
-      saveBooking({
-        source: 'Peluquería',
-        clientName: this.formName,
-        clientPhone: this.formPhone,
-        clientEmail: this.formEmail || '',
-        date: this.formDate,
-        time: this.formTime,
-        type: this.formSector,
-        details: `Estilista: ${stylistLabel}. Servicios: ${servicesNames || 'Ninguno'} (Total: $${this.selectedPrice.toLocaleString('es-CL')} CLP)`,
-      });
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    },
 
-      const bodyText = `Hola Studio Chic, solicito agendar una hora de atención:\n\n` +
+    submitBooking() {
+      this.formError = '';
+      if (!this.formName || !this.formPhone || !this.formDate || !this.formTime) {
+        this.formError = 'Completa tu nombre, WhatsApp, fecha y hora preferida para preparar la solicitud.';
+        return;
+      }
+      if (this.formDate < this.minDate) {
+        this.formError = 'Elige una fecha desde hoy en adelante.';
+        document.getElementById('salon-date')?.focus();
+        return;
+      }
+      if (this.selectedServices.length === 0 && !this.needsGuidance) {
+        this.formError = 'Selecciona un servicio o elige orientación para preparar la solicitud.';
+        return;
+      }
+
+      const stylistLabels = {
+        any: 'Sin preferencia: recomiéndenme según lo que busco',
+        stylist1: 'Valentina Moretti',
+        stylist2: 'Ariadna Ruiz',
+      };
+      const stylistLabel = stylistLabels[this.formStylist] || stylistLabels.any;
+      const serviceNames = this.needsGuidance
+        ? 'Quiero orientación para elegir'
+        : this.selectedServices.map((service) => service.title).join(', ');
+      const referenceValue = this.needsGuidance
+        ? 'Por conversar'
+        : `Desde $${this.selectedPrice.toLocaleString('es-CL')}`;
+      const duration = this.needsGuidance
+        ? 'Por conversar'
+        : `${this.selectedDuration} min estimados`;
+      const comment = this.formComment.trim() || 'Por conversar';
+
+      const bodyText = `Hola, Studio Chic. Quiero consultar disponibilidad.\n\n` +
         `Nombre: ${this.formName}\n` +
-        `Teléfono: ${this.formPhone}\n` +
-        `Email: ${this.formEmail || 'No provisto'}\n\n` +
-        `Servicios Solicitados:\n${servicesList || 'Ninguno seleccionado'}\n` +
-        `Total Estimado: $${this.selectedPrice.toLocaleString('es-CL')} (${this.selectedDuration} min)\n\n` +
-        `Fecha: ${this.formDate}\n` +
-        `Hora: ${this.formTime}\n` +
-        `Estilista de Preferencia: ${stylistLabel}\n` +
-        `Sector de Atención: ${this.formSector === 'presencial' ? 'Presencial (Tocador Central)' : 'Online / Diagnóstico a Distancia'}\n` +
-        `Detalles Adicionales: ${this.formComment || 'Ninguno'}`;
+        `WhatsApp: ${this.formPhone}\n` +
+        `Servicio(s): ${serviceNames}\n` +
+        `Valor referencial: ${referenceValue}\n` +
+        `Duración estimada: ${duration}\n` +
+        `Fecha preferida: ${this.formDate}\n` +
+        `Hora preferida: ${this.formTime}\n` +
+        `Profesional de preferencia: ${stylistLabel}\n` +
+        `Modalidad: Presencial\n` +
+        `Sobre mi cabello y lo que busco: ${comment}\n\n` +
+        `Entiendo que el horario y el valor final se confirman por este medio.`;
 
+      const trigger = this.lastTrigger;
       openWhatsApp('56999040515', bodyText);
-
       this.bookingModal = false;
       this.resetBookingForm();
       this.resetServiceSelection();
       this.successToast = true;
+      this.$nextTick(() => trigger?.focus?.());
       setTimeout(() => {
         this.successToast = false;
-      }, 3500);
-    },
-
-    handleDrag(event) {
-      const rect = this.$refs.sliderContainer.getBoundingClientRect();
-      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-      const offset = clientX - rect.left;
-      let percentage = (offset / rect.width) * 100;
-
-      if (percentage < 0) {
-        percentage = 0;
-      }
-      if (percentage > 100) {
-        percentage = 100;
-      }
-
-      this.sliderVal = percentage.toFixed(2);
+      }, 5000);
     },
   };
 };

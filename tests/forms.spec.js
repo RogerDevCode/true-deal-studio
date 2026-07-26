@@ -73,18 +73,18 @@ test("Salon modal resets and defaults to Presencial", async ({ page }) => {
   await openViaAlpine(page, "openBooking");
   await page.locator('input[x-model="formName"]').fill("Cliente Salon");
   await page.locator('input[x-model="formPhone"]').fill("+56 9 5555 6666");
-  await page.locator('input[x-model="formEmail"]').fill("salon@demo.cl");
   await page.locator('input[x-model="formDate"]').fill("2026-07-20");
   await page.locator('input[x-model="formTime"]').fill("16:00");
-  await page.locator('select[x-model="formSector"]').selectOption("online");
+  await page.locator('select[x-model="formStylist"]').selectOption("stylist2");
   await page.locator('textarea[x-model="formComment"]').fill("Coloracion de prueba");
   await openViaAlpine(page, "closeBooking");
 
   await openViaAlpine(page, "openBooking");
   await expect(page.locator('input[x-model="formName"]')).toHaveValue("");
   await expect(page.locator('input[x-model="formPhone"]')).toHaveValue("");
-  await expect(page.locator('input[x-model="formEmail"]')).toHaveValue("");
-  await expect(page.locator('select[x-model="formSector"]')).toHaveValue("presencial");
+  await expect(page.locator('input[x-model="formDate"]')).toHaveValue("");
+  await expect(page.locator('input[x-model="formTime"]')).toHaveValue("");
+  await expect(page.locator('select[x-model="formStylist"]')).toHaveValue("any");
   await expect(page.locator('textarea[x-model="formComment"]')).toHaveValue("");
 
   await guards.assertHealthyContext();

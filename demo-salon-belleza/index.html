@@ -6,11 +6,11 @@
     <title>Studio Chic | Salón de Alta Peluquería & Estilo - Santiago</title>
     
     <!-- Meta tags SEO -->
-    <meta name="description" content="Descubre Studio Chic, salón de alta peluquería en Santiago. Especialistas en balayage, cortes de autor y tratamientos de reconstrucción capilar. Agenda online.">
+    <meta name="description" content="Demo interactiva de un salón de belleza: servicios con valores desde, tiempos estimados y solicitud de disponibilidad por WhatsApp.">
     <meta name="keywords" content="peluquería santiago, salon de belleza, balayage chile, corte de pelo, alisado de keratina, masajes capilares, agenda peluqueria">
     <meta property="og:title" content="Studio Chic | Salón de Alta Peluquería & Estilo - Santiago" />
-    <meta property="og:description" content="Descubre Studio Chic, salón de alta peluquería en Santiago. Especialistas en balayage, cortes de autor y tratamientos capilares." />
-    <meta property="og:type" content="business.business" />
+    <meta property="og:description" content="Explora una demo de salón con servicios, valores referenciales y coordinación por WhatsApp." />
+    <meta property="og:type" content="website" />
     <meta property="og:image" content="./hero.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -18,23 +18,16 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BeautySalon",
+      "@type": "WebPage",
       "name": "Studio Chic",
       "image": "./hero.png",
-      "description": "Salón de alta peluquería en Santiago. Especialistas en color, cortes de autor y cuidado capilar.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Providencia 2045, Oficina 402",
-        "addressLocality": "Providencia",
-        "addressRegion": "Santiago",
-        "addressCountry": "CL"
-      },
-      "telephone": "+56999040515",
-      "priceRange": "$$$"
+      "description": "Demostración interactiva de una página para salón de belleza con servicios, valores referenciales y solicitud por WhatsApp.",
+      "inLanguage": "es-CL"
     }
     </script>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <link rel="preload" href="./hero.png" as="image" fetchpriority="high">
 
     <!-- Google Fonts: Outfit (luxury headings) & Inter (clean body) -->
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -46,6 +39,8 @@
     
     <!-- Custom Vanilla CSS for Luxury Editorial Theme -->
     <style>
+        [x-cloak] { display: none !important; }
+
         /* Design Tokens & Theme Colors */
         :root {
             --bg-dark: #0A0A0A;        /* Matte black background */
@@ -89,6 +84,11 @@
             text-decoration: none;
             color: inherit;
             transition: var(--transition-smooth);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
         }
 
         /* Scrollbar Styling */
@@ -301,6 +301,7 @@
             cursor: pointer;
             overflow: hidden;
             transition: var(--transition-luxury);
+            min-height: 44px;
         }
 
         .btn-luxury::before {
@@ -314,7 +315,7 @@
 
         .btn-luxury:hover {
             border-color: var(--accent-gold);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
             color: var(--accent-gold);
             transform: translateY(-2px);
         }
@@ -391,16 +392,20 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            width: 100%;
+            color: inherit;
+            font: inherit;
+            text-align: left;
         }
         
-        /* Floating Aura Glow on Hover */
+        /* Subtle border emphasis on hover */
         .service-card::after {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: 16px;
             opacity: 0;
-            box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.05), 0 0 20px rgba(212, 175, 55, 0.03);
+            box-shadow: inset 0 -2px 0 rgba(212, 175, 55, 0.22);
             transition: var(--transition-luxury);
             pointer-events: none;
             z-index: 1;
@@ -418,7 +423,7 @@
         .service-card.selected {
             border-color: var(--accent-gold);
             background-color: rgba(212, 175, 55, 0.03);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
         }
 
         .service-header {
@@ -571,7 +576,7 @@
             background-color: var(--accent-gold);
             z-index: 3;
             pointer-events: none;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.42);
         }
 
         .slider-handle-button {
@@ -584,7 +589,7 @@
             border-radius: 50%;
             background-color: var(--bg-dark);
             border: 2px solid var(--accent-gold);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -595,6 +600,23 @@
         }
         .slider-handle-button:hover {
             transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .before-after-range {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: ew-resize;
+            opacity: 0.001;
+        }
+
+        .before-after-range:focus-visible {
+            opacity: 0.01;
+            outline: 3px solid var(--accent-gold);
+            outline-offset: -4px;
         }
         
         .slider-label {
@@ -701,24 +723,43 @@
         }
 
         /* Focus Animation Triggered on Hover */
-        .team-card:hover {
+        .team-card:hover,
+        .team-card:focus-within,
+        .team-card:focus-visible {
             border-color: var(--accent-gold);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.44);
         }
         
-        .team-card:hover .team-img {
+        .team-card:hover .team-img,
+        .team-card:focus-within .team-img,
+        .team-card:focus-visible .team-img {
             transform: scale(1.05);
             filter: blur(2px);
         }
 
-        .team-card:hover .team-card-overlay {
+        .team-card:hover .team-card-overlay,
+        .team-card:focus-within .team-card-overlay,
+        .team-card:focus-visible .team-card-overlay {
             background: linear-gradient(to top, rgba(10, 10, 10, 0.98) 35%, rgba(10, 10, 10, 0.4) 100%);
         }
 
-        .team-card:hover .stylist-details {
+        .team-card:hover .stylist-details,
+        .team-card:focus-within .stylist-details,
+        .team-card:focus-visible .stylist-details {
             max-height: 80px;
             opacity: 1;
             margin-top: 0.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .stylist-details {
+                max-height: 120px;
+                opacity: 1;
+                margin-top: 0.5rem;
+            }
+            .team-card-overlay {
+                background: linear-gradient(to top, rgba(10, 10, 10, 0.98) 42%, rgba(10, 10, 10, 0.18) 100%);
+            }
         }
 
         /* Sticky Styles for checkout preview bar */
@@ -748,6 +789,28 @@
                 width: calc(100% - 4rem);
                 left: 2rem;
                 right: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .checkout-preview {
+                bottom: max(1rem, env(safe-area-inset-bottom));
+                left: 1rem;
+                right: 1rem;
+                width: calc(100% - 2rem);
+                padding: 0.5rem;
+                border-radius: 16px;
+            }
+            .checkout-info {
+                display: none;
+            }
+            .checkout-preview .checkout-action {
+                width: 100%;
+                min-height: 52px;
+                padding: 0.75rem 1rem;
+                border-radius: 12px;
+                letter-spacing: 0.02em;
+                text-transform: none;
             }
         }
 
@@ -823,8 +886,8 @@
             border: none;
             color: var(--text-muted);
             cursor: pointer;
-            width: 2.25rem;
-            height: 2.25rem;
+            width: 2.75rem;
+            height: 2.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -904,7 +967,7 @@
         }
         .form-input:focus {
             border-color: var(--accent-gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
         }
         
         select.form-input {
@@ -921,6 +984,41 @@
             justify-content: flex-end;
             gap: 1.25rem;
             margin-top: 2rem;
+            position: sticky;
+            bottom: -2rem;
+            background: linear-gradient(to top, var(--bg-dark) 80%, rgba(10, 10, 10, 0));
+            padding: 1.25rem 0 0;
+        }
+
+        .form-error {
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--text-light);
+            padding: 0.85rem 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .request-context,
+        .demo-disclosure,
+        .commercial-note {
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: rgba(197, 168, 128, 0.06);
+            color: var(--text-muted);
+            padding: 1rem;
+            line-height: 1.55;
+        }
+
+        .demo-disclosure {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 0.8rem;
+            color: var(--text-light);
+            font-size: 0.78rem;
+            font-weight: 700;
         }
 
         /* Location Section (Map) */
@@ -978,14 +1076,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.42);
             z-index: 100;
             transition: var(--transition-smooth);
             cursor: pointer;
         }
         .whatsapp-float:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
         }
         .whatsapp-float svg {
             width: 2rem;
@@ -1028,6 +1126,34 @@
             }
         }
 
+        @media (max-width: 600px) {
+            .modal-overlay-bg {
+                padding: 0.75rem;
+            }
+            .modal-card {
+                max-height: calc(100dvh - 1.5rem);
+                border-radius: 18px;
+            }
+            .modal-header,
+            .modal-body {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+            .form-actions {
+                flex-direction: column-reverse;
+                gap: 0.75rem;
+            }
+            .form-actions .btn-luxury {
+                width: 100%;
+            }
+            .success-toast {
+                top: 4.5rem;
+                left: 1rem;
+                right: 1rem;
+                padding: 0.85rem 1rem;
+            }
+        }
+
         /* Keyframes Animations */
         @keyframes kenBurns {
             0% { transform: scale(1); }
@@ -1037,6 +1163,20 @@
         @keyframes slideUp {
             from { transform: translate3d(0, 40px, 0); opacity: 0; }
             to { transform: translate3d(0, 0, 0); opacity: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .sidebar-bg {
+                animation: none !important;
+            }
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
         }
 
 
@@ -1068,41 +1208,6 @@
             html body .demo-bar a,
             html body .demo-bar span,
             html body .back-link {
-                font-size: 14px;
-                line-height: 1.45;
-            }
-        }
-
-        .showcase-back-btn {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            z-index: 9999;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 18px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(17, 17, 17, 0.88);
-            color: #FFF7ED;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.26);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, border-color .25s ease;
-        }
-        .showcase-back-btn:hover {
-            transform: translateY(-2px);
-            background: rgba(17, 17, 17, 0.96);
-            border-color: rgba(255,255,255,0.18);
-            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32);
-        }
-        @media (max-width: 768px) {
-            html body .showcase-back-btn,
-            html body .showcase-back-btn span {
                 font-size: 14px;
                 line-height: 1.45;
             }
@@ -1141,22 +1246,24 @@
          x-transition:leave-start="opacity-100 scale-100 translate-y-0"
          x-transition:leave-end="opacity-0 scale-95 translate-y-[-20px]"
          class="success-toast" 
+         role="status"
+         aria-live="polite"
          style="display: none;">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span>¡Reserva solicitada correctamente!</span>
+        <span>Tu solicitud quedó preparada en WhatsApp. Revísala y envíala para coordinar.</span>
     </div>
 
     <!-- Mobile Header Navigation (Sticky) -->
-    <div class="mobile-header">
+    <div class="mobile-header" :inert="bookingModal ? true : null">
         <a href="#" class="brand-logo">
             Studio<span>Chic</span>
         </a>
-        <button @click="openBooking()" class="btn-luxury" class="text-responsive-caption" style="padding: 0.5rem 1rem; ">Reservar</button>
+        <button @click="openBooking(true, $event.currentTarget)" class="btn-luxury text-responsive-caption" style="padding: 0.5rem 1rem;">Solicitar disponibilidad</button>
     </div>
 
-    <div class="page-wrapper">
+    <div class="page-wrapper" :inert="bookingModal ? true : null">
         
         <!-- FIXED SIDEBAR COVER (HERO PANE) -->
         <aside class="sidebar-cover">
@@ -1167,10 +1274,14 @@
             </a>
 
             <div class="cover-content" style="position: relative; z-index: 5;">
-                <span class="cover-badge">Estilo & Sofisticación</span>
+                <span class="demo-disclosure" style="margin-bottom: 1rem;">Demo interactiva · contenido ilustrativo</span>
+                <span class="cover-badge">Corte, color y cuidado capilar</span>
                 <h1 class="cover-title">Tu cabello habla de ti. Dale voz.</h1>
-                <p class="cover-desc">Alta peluquería en Santiago. Diseñamos cortes de autor, iluminaciones con técnica balayage y tratamientos orgánicos premium para lucir una melena radiante y saludable.</p>
-                <button @click="openBooking()" class="btn-luxury btn-luxury-solid">Agendar tu Cita</button>
+                <p class="cover-desc">Elige un servicio o cuéntanos qué cambio buscas. Revisamos tu cabello, el tiempo necesario y la disponibilidad antes de confirmar la hora por WhatsApp.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                    <button @click="openBooking(true, $event.currentTarget)" class="btn-luxury btn-luxury-solid">Solicitar disponibilidad</button>
+                    <a href="#servicios" class="btn-luxury">Ver servicios y valores</a>
+                </div>
             </div>
 
             <!-- Anchor links sidebar menu -->
@@ -1191,20 +1302,23 @@
             <section id="servicios">
                 <div class="section-header">
                     <span class="section-num">01</span>
-                    <span class="section-subtitle">Nuestra Carta</span>
-                    <h2 class="section-title">Servicios de Autor</h2>
+                    <span class="section-subtitle">Servicios y valores</span>
+                    <h2 class="section-title">Elige lo que quieres hacerte</h2>
                 </div>
+
+                <p style="color: var(--text-muted); margin: -1.5rem 0 2rem;">Selecciona uno o más servicios. Si aún estás decidiendo, cuéntanos qué cambio buscas y te orientamos.</p>
 
                 <div class="services-grid">
                     <!-- Service 1 -->
-                    <div class="service-card" 
+                    <button type="button" class="service-card"
                          :class="{'selected': selectedServices.some(s => s.id === 1)}"
+                         :aria-pressed="selectedServices.some(s => s.id === 1)"
                          @click="toggleService(1, 'Corte de Autor & Styling', 35000, 60)">
                         <div class="service-header">
                             <h3 class="service-title">Corte de Autor</h3>
-                            <span class="service-price">$35.000</span>
+                            <span class="service-price">Desde $35.000</span>
                         </div>
-                        <p class="service-desc">Corte personalizado diseñado según tu visagismo. Incluye lavado orgánico nutritivo y peinado final de pasarela.</p>
+                        <p class="service-desc">Corte personalizado según la forma de tu rostro, tu tipo de cabello y el estilo que buscas. Incluye lavado y peinado final.</p>
                         <div class="service-footer">
                             <span class="service-duration">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1218,17 +1332,18 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </button>
 
                     <!-- Service 2 -->
-                    <div class="service-card" 
+                    <button type="button" class="service-card"
                          :class="{'selected': selectedServices.some(s => s.id === 2)}"
+                         :aria-pressed="selectedServices.some(s => s.id === 2)"
                          @click="toggleService(2, 'Balayage Iluminación Champagne', 85000, 180)">
                         <div class="service-header">
                             <h3 class="service-title">Balayage Champagne</h3>
-                            <span class="service-price">$85.000</span>
+                            <span class="service-price">Desde $85.000</span>
                         </div>
-                        <p class="service-desc">Difuminado suave de luz natural con tonos arena o champagne. Cuidado máximo de la fibra capilar, incluye tratamiento plex protector.</p>
+                        <p class="service-desc">Iluminación personalizada en tonos arena o champagne, con protección para la fibra capilar durante el proceso.</p>
                         <div class="service-footer">
                             <span class="service-duration">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1242,17 +1357,18 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </button>
 
                     <!-- Service 3 -->
-                    <div class="service-card" 
+                    <button type="button" class="service-card"
                          :class="{'selected': selectedServices.some(s => s.id === 3)}"
+                         :aria-pressed="selectedServices.some(s => s.id === 3)"
                          @click="toggleService(3, 'Reconstrucción Capilar de Keratina', 45000, 90)">
                         <div class="service-header">
-                            <h3 class="service-title">Reconstrucción Plex</h3>
-                            <span class="service-price">$45.000</span>
+                            <h3 class="service-title">Reconstrucción Capilar</h3>
+                            <span class="service-price">Desde $45.000</span>
                         </div>
-                        <p class="service-desc">Tratamiento reparador molecular intensivo para cabellos dañados o porosos. Devuelve la fuerza, brillo y suavidad de inmediato.</p>
+                        <p class="service-desc">Tratamiento intensivo para cabello seco, poroso o sensibilizado, elegido según su estado actual.</p>
                         <div class="service-footer">
                             <span class="service-duration">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1266,17 +1382,18 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </button>
 
                     <!-- Service 4 -->
-                    <div class="service-card" 
+                    <button type="button" class="service-card"
                          :class="{'selected': selectedServices.some(s => s.id === 4)}"
+                         :aria-pressed="selectedServices.some(s => s.id === 4)"
                          @click="toggleService(4, 'Peinado Novia / Eventos', 60000, 120)">
                         <div class="service-header">
                             <h3 class="service-title">Peinado de Evento</h3>
-                            <span class="service-price">$60.000</span>
+                            <span class="service-price">Desde $60.000</span>
                         </div>
-                        <p class="service-desc">Estilismo para ocasiones especiales (novias, graduaciones). Recogidos elegantes, ondas desarmadas o alisados con pulido espejo.</p>
+                        <p class="service-desc">Ondas, recogidos o acabado pulido para matrimonios, graduaciones y otras ocasiones especiales.</p>
                         <div class="service-footer">
                             <span class="service-duration">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1290,7 +1407,16 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </button>
+                </div>
+
+                <div class="commercial-note" style="margin-top: 1.5rem;">
+                    <strong style="color: var(--text-light);">Valores referenciales.</strong> El total puede variar según largo, densidad, estado del cabello, técnica y productos requeridos. El salón confirma el valor antes de agendar.
+                </div>
+
+                <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+                    <p style="color: var(--text-muted);">¿Aún estás decidiendo? Cuéntanos qué resultado buscas.</p>
+                    <button type="button" @click="chooseGuidance($event.currentTarget)" class="btn-luxury">Quiero orientación</button>
                 </div>
             </section>
 
@@ -1302,38 +1428,37 @@
                     <h2 class="section-title">El Arte de la Transformación</h2>
                 </div>
                 
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">
-                    Desliza el tirador dorado hacia los lados para revelar el cambio de frizz y opacidad a una melena de espejo perfectamente hidratada con nuestra técnica de reestructuración orgánica.
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                    Mueve el control para comparar una referencia visual. En el sitio publicado, esta galería puede mostrar trabajos reales autorizados por cada clienta.
                 </p>
-
-                <!-- Adaptive caption (CHANGE 2) -->
-                <p x-show="activeServiceContext" style="text-align: center; color: var(--accent-champagne); font-size: 0.875rem; margin-bottom: 16px; font-style: italic;" x-cloak x-text="activeServiceContext === 'color' ? '🎨 Mira los resultados del servicio de color que seleccionaste' : '✂️ Así luce un corte de autor realizado por nuestros estilistas'"></p>
+                <p class="demo-disclosure" style="margin-bottom: 1.5rem;">Ejemplo visual demostrativo</p>
 
                 <!-- Custom Slider Widget -->
                 <div class="before-after-container" 
-                     x-ref="sliderContainer"
-                     @mousemove="handleDrag($event)"
-                     @touchmove="handleDrag($event)">
+                     x-ref="sliderContainer">
                     
                     <!-- Background: Before Image -->
                     <div class="image-before-wrapper">
-                        <img src="before.png" alt="Pelo dañado y seco antes del tratamiento" class="slider-image">
+                        <img src="before.png" alt="Referencia visual del cabello antes del servicio" class="slider-image" width="1024" height="1024" loading="lazy" decoding="async">
                     </div>
                     
                     <!-- Clip Pane: After Image -->
                     <div class="image-after-wrapper" :style="'width: ' + sliderVal + '%'">
-                        <img src="after.png" alt="Pelo brillante y liso después del tratamiento" :style="'width: ' + ($refs.sliderContainer ? $refs.sliderContainer.clientWidth + 'px' : '100%') + '; max-width: none;'">
+                        <img src="after.png" alt="Referencia visual del cabello después del servicio" width="1024" height="1024" loading="lazy" decoding="async" :style="'width: ' + ($refs.sliderContainer ? $refs.sliderContainer.clientWidth + 'px' : '100%') + '; max-width: none;'">
                     </div>
                     
                     <!-- Divider Line -->
                     <div class="slider-bar" :style="'left: ' + sliderVal + '%'"></div>
                     
                     <!-- Interactive Button Handle -->
-                    <div class="slider-handle-button" :style="'left: ' + sliderVal + '%'" @mousedown="handleDrag($event)">
+                    <div class="slider-handle-button" :style="'left: ' + sliderVal + '%'" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem;">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                         </svg>
                     </div>
+
+                    <label for="salon-comparison" class="sr-only">Comparar ejemplo visual antes y después</label>
+                    <input id="salon-comparison" class="before-after-range" type="range" min="0" max="100" step="1" x-model.number="sliderVal" aria-label="Comparar ejemplo visual antes y después">
                     
                     <!-- Labels -->
                     <span class="slider-label label-after">Después</span>
@@ -1349,28 +1474,31 @@
                     <h2 class="section-title">Estilistas Profesionales</h2>
                 </div>
 
+                <p style="color: var(--text-muted); margin: -1.5rem 0 1rem;">Conoce la especialidad de cada profesional y elige una preferencia. El salón confirmará quién tiene disponibilidad para el servicio que buscas.</p>
+                <p class="demo-disclosure" style="margin-bottom: 1.5rem;">Perfiles ilustrativos · credenciales verificables al publicar</p>
+
                 <div class="team-container">
                     <!-- Stylist 1 -->
-                    <div class="team-card">
+                    <div class="team-card" tabindex="0">
                         <div class="team-img-container">
-                            <img src="stylist.png" alt="Valentina Moretti, Directora de Estilo" class="team-img">
+                            <img src="stylist.png" alt="Perfil ilustrativo de Valentina Moretti, especialista en color" class="team-img" width="1024" height="1024" loading="lazy" decoding="async">
                         </div>
                         <div class="team-card-overlay">
                             <h4 class="stylist-name">Valentina Moretti</h4>
                             <span class="stylist-specialty">Directora Creativa & Colorista</span>
-                            <p class="stylist-details">Con más de 10 años de experiencia, Valentina es especialista certificada en balayage europeo e iluminación capilar saludable.</p>
+                            <p class="stylist-details">Perfil demostrativo para presentar especialidad, formación y trabajos verificables en una publicación real.</p>
                         </div>
                     </div>
 
                     <!-- Stylist 2 (Simulado con la misma o con una tarjeta artística) -->
-                    <div class="team-card">
+                    <div class="team-card" tabindex="0">
                         <div class="team-img-container">
-                            <img src="hero.png" alt="Ariadna Ruiz, Estilista Senior" class="team-img">
+                            <img src="hero.png" alt="Perfil ilustrativo de Ariadna Ruiz, especialista en cortes y peinados" class="team-img" width="1024" height="1024" loading="lazy" decoding="async">
                         </div>
                         <div class="team-card-overlay">
                             <h4 class="stylist-name">Ariadna Ruiz</h4>
                             <span class="stylist-specialty">Especialista en Cortes & Peinados</span>
-                            <p class="stylist-details">Egresada de academias en Londres, Ariadna diseña cortes asimétricos, de autor y peinados de alta costura para eventos exclusivos.</p>
+                            <p class="stylist-details">Perfil demostrativo para mostrar experiencia, estilo de trabajo y referencias autorizadas por la profesional.</p>
                         </div>
                     </div>
                 </div>
@@ -1386,15 +1514,16 @@
 
                 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                     <p style="color: var(--text-muted); font-size: 0.95rem;">
-                        Estamos ubicados en un sector exclusivo de Providencia, con estacionamiento propio y servicio de cafetería de cortesía durante tu atención.
+                        Ubicación demostrativa. En una publicación real, aquí aparecen dirección, horarios, estacionamiento y servicios confirmados por el salón.
                     </p>
                     <p style="font-family: var(--font-headings); font-size: 1.1rem; color: var(--accent-champagne);">
-                        📍 Av. Providencia 2045, Oficina 402, Providencia, Santiago
+                        📍 Providencia, Santiago · ubicación de referencia
                     </p>
                     
                     <div class="map-wrapper">
                         <!-- Google Maps Embed centered on Providencia Area, Santiago -->
                         <iframe 
+                            title="Ubicación demostrativa de Studio Chic en Providencia"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.9881180295195!2d-70.6120302!3d-33.4223253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf6405206ef7%3A0xe54d3ca34f89fbef!2sAv.%20Providencia%202045%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1781042500000!5m2!1ses-419!2scl" 
                             allowfullscreen="" 
                             loading="lazy" 
@@ -1407,18 +1536,18 @@
                 <footer>
                     <div>
                         <div class="footer-logo">Studio<span>Chic</span></div>
-                        <p class="text-responsive-detail" style="max-width: 250px;  line-height: 1.4;">Alta peluquería, elegancia y cuidado molecular de tu cabello en un solo lugar.</p>
+                        <p class="text-responsive-detail" style="max-width: 250px; line-height: 1.4;">Corte, color y cuidado capilar con información clara antes de solicitar disponibilidad.</p>
                     </div>
                     <div>
-                        <p style="margin-bottom: 0.5rem;">Lunes a Sábado: 10:00 - 20:00</p>
-                        <p>Teléfono: +56 9 9904 0515</p>
+                        <p style="margin-bottom: 0.5rem;">Horario demostrativo: lunes a sábado, 10:00–20:00</p>
+                        <p>Coordinación por WhatsApp</p>
                     </div>
                     <div>
                         <p>&copy; 2026 Studio Chic. Todos los derechos reservados.</p>
-                        <p class="text-responsive-caption" style=" color: var(--accent-gold); margin-top: 0.25rem;">Estilismo de Vanguardia.</p>
+                        <p class="text-responsive-caption" style="color: var(--accent-gold); margin-top: 0.25rem;">Demo interactiva.</p>
                     </div>
                     <div class="text-responsive-disclaimer" style="width: 100%; border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px;  color: var(--text-muted); line-height: 1.4; text-align: center;">
-                        * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                        Esta demostración utiliza nombres, imágenes, valores y ubicación ilustrativos. Al publicar, cada dato se reemplaza por información revisada con el salón.
                     </div>
                 </footer>
             </section>
@@ -1426,26 +1555,26 @@
     </div>
 
     <!-- STICKY CHECKOUT BAR (Triggered when services selected) -->
-    <div x-show="selectedServices.length > 0" class="checkout-preview" style="display: none;">
+    <div x-show="selectedServices.length > 0 && !bookingModal" class="checkout-preview" style="display: none;">
         <div class="checkout-info">
             <div class="checkout-stat">
                 <span class="checkout-label">Servicios</span>
                 <span class="checkout-val" x-text="selectedServices.length">0</span>
             </div>
             <div class="checkout-stat">
-                <span class="checkout-label">Tiempo Estimado</span>
-                <span class="checkout-val" x-text="selectedDuration + ' min'">0 min</span>
+                <span class="checkout-label">Duración estimada</span>
+                <span class="checkout-val" x-text="selectedDuration + ' min estimados'">0 min</span>
             </div>
             <div class="checkout-stat">
-                <span class="checkout-label">Total Cita</span>
-                <span class="checkout-val" x-text="'$' + selectedPrice.toLocaleString('es-CL')">$0</span>
+                <span class="checkout-label">Valor referencial</span>
+                <span class="checkout-val" x-text="'Desde $' + selectedPrice.toLocaleString('es-CL')">Desde $0</span>
             </div>
         </div>
-        <button @click="openBooking()" class="btn-luxury btn-luxury-solid text-responsive-detail" style="padding: 0.75rem 1.5rem;  border-radius: 50px;">Solicitar Hora</button>
+        <button @click="openBooking(false, $event.currentTarget)" class="checkout-action btn-luxury btn-luxury-solid text-responsive-detail" style="padding: 0.75rem 1.5rem; border-radius: 50px;" x-text="checkoutLabel">Revisar solicitud</button>
     </div>
 
     <!-- Floating WhatsApp Widget -->
-    <a href="https://wa.me/56999040515?text=Hola%20Studio%20Chic%2C%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20por%20horas%20disponibles." 
+    <a x-show="selectedServices.length === 0 && !bookingModal" href="https://wa.me/56999040515?text=Hola%20Studio%20Chic%2C%20quiero%20consultar%20disponibilidad."
        target="_blank" 
        rel="noopener noreferrer" 
        class="whatsapp-float" 
@@ -1465,21 +1594,26 @@
          x-transition:leave="transition ease-in duration-200"
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
+         @click.self="closeBooking()"
          style="display: none;">
         
         <div class="modal-card" 
              x-show="bookingModal"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="salon-dialog-title"
+             aria-describedby="salon-dialog-intro salon-privacy-note"
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 scale-95 translate-y-[30px]"
              x-transition:enter-end="opacity-100 scale-100 translate-y-0"
              x-transition:leave="transition ease-in duration-200"
              x-transition:leave-start="opacity-100 scale-100 translate-y-0"
              x-transition:leave-end="opacity-0 scale-95 translate-y-[30px]"
-             @click.away="closeBooking()">
+             @keydown="handleModalKeydown($event)">
             
             <div class="modal-header">
-                <h3>Solicitar Hora de Estilo</h3>
-                <button @click="closeBooking()" class="modal-close-btn" aria-label="Cerrar modal">
+                <h3 id="salon-dialog-title">Solicitar disponibilidad</h3>
+                <button type="button" @click="closeBooking()" class="modal-close-btn" aria-label="Cerrar solicitud">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; stroke-width: 2.5;">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -1487,105 +1621,75 @@
             </div>
             
             <div class="modal-body">
-                <form @submit.prevent="submitBooking()">
-                    <!-- Name & Phone -->
-                    <div class="form-group-grid">
-                        <div class="form-group">
-                            <label class="form-label">Nombre Completo *</label>
-                            <input type="text" x-model="formName" required class="form-input" placeholder="Ej: Marcela Paz" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Teléfono / WhatsApp *</label>
-                            <input type="tel" x-model="formPhone" required class="form-input" placeholder="Ej: +56 9 1234 5678" autocomplete="off">
-                        </div>
-                    </div>
+                <p id="salon-dialog-intro" class="request-context" style="margin-bottom: 1.25rem;">Cuéntanos qué te gustaría hacerte y cuándo te acomoda. Prepararemos tu mensaje para WhatsApp; el salón confirmará horario y valor final.</p>
 
-                    <!-- Email & Stylist -->
-                    <div class="form-group-grid">
-                        <div class="form-group">
-                            <label class="form-label">Email (Opcional)</label>
-                            <input type="email" x-model="formEmail" class="form-input" placeholder="marcela@ejemplo.cl" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Estilista de Preferencia</label>
-                            <!-- Auto-specialist banner (CHANGE 1) -->
-                            <div x-show="autoStylist" style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.3); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px;" x-cloak>
-                                <span style="font-size: 1.5rem;">✨</span>
-                                <div>
-                                    <p style="color: var(--accent-gold); font-weight: 600; font-size: 0.875rem; margin-bottom: 2px;" x-text="'Hemos asignado a ' + autoStylist"></p>
-                                    <p class="text-responsive-caption" style="color: var(--text-muted); " x-text="autoStylistSpecialty + ' — la mejor opción para lo que elegiste'"></p>
-                                </div>
+                <div class="request-context" style="margin-bottom: 1.25rem;">
+                    <p class="form-label" style="margin-bottom: 0.5rem;">Tu solicitud</p>
+                    <p x-show="needsGuidance" style="color: var(--text-light); font-weight: 700;">Quiero orientación para elegir</p>
+                    <div x-show="selectedServices.length > 0">
+                        <template x-for="service in selectedServices" :key="service.id">
+                            <div style="display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.35rem;">
+                                <span x-text="service.title" style="color: var(--text-light);"></span>
+                                <span x-text="'Desde $' + service.price.toLocaleString('es-CL')" style="color: var(--accent-gold); font-weight: 700;"></span>
                             </div>
-                            <!-- Stylist selector: hidden when auto-assigned (CHANGE 1) -->
-                            <div x-show="!autoStylist">
-                                <select x-model="formStylist" class="form-input">
-                                    <option value="any">Cualquier Profesional Disponible</option>
-                                    <option value="stylist1">Valentina Moretti (Directora)</option>
-                                    <option value="stylist2">Ariadna Ruiz (Senior)</option>
-                                </select>
-                            </div>
-                            <a href="#" @click.prevent="autoStylist = ''; formStylist = 'any'" x-show="autoStylist" class="text-responsive-caption" style=" color: var(--accent-champagne); text-decoration: underline; display: inline-block; margin-top: 6px;" x-cloak>Elegir estilista manualmente</a>
-                        </div>
+                        </template>
+                        <p style="border-top: 1px solid var(--border-color); margin-top: 0.75rem; padding-top: 0.75rem;">Valor referencial desde <strong style="color: var(--accent-gold);" x-text="'$' + selectedPrice.toLocaleString('es-CL')"></strong> · <span x-text="selectedDuration + ' min estimados'"></span></p>
                     </div>
+                </div>
 
-                    <!-- Date & Time -->
+                <form @submit.prevent="submitBooking()" novalidate>
                     <div class="form-group-grid">
                         <div class="form-group">
-                            <label class="form-label">Fecha Solicitada *</label>
-                            <input type="date" x-model="formDate" required class="form-input">
+                            <label class="form-label" for="salon-name">Nombre *</label>
+                            <input id="salon-name" type="text" x-model="formName" required class="form-input" placeholder="Ej: Marcela Paz" autocomplete="name">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Hora Solicitada *</label>
-                            <input type="time" x-model="formTime" required class="form-input">
+                            <label class="form-label" for="salon-phone">WhatsApp *</label>
+                            <input id="salon-phone" type="tel" x-model="formPhone" required class="form-input" placeholder="Ej: +56 9 1234 5678" autocomplete="tel" inputmode="tel">
                         </div>
                     </div>
 
-                    <!-- Modality / Preferred Sector (Marked "presencial" as first and default) -->
                     <div class="form-group">
-                        <label class="form-label">Modalidad de Atención *</label>
-                        <select x-model="formSector" class="form-input">
-                            <option value="presencial">Presencial - Atención en el Salón (Providencia)</option>
-                            <option value="online">Online - Asesoría / Diagnóstico Capilar Virtual</option>
+                        <label class="form-label" for="salon-stylist">Profesional de preferencia</label>
+                        <select id="salon-stylist" x-model="formStylist" class="form-input">
+                            <option value="any">Sin preferencia: recomiéndenme según lo que busco</option>
+                            <option value="stylist1">Valentina Moretti</option>
+                            <option value="stylist2">Ariadna Ruiz</option>
                         </select>
+                        <p class="text-responsive-caption" style="color: var(--text-muted);">La preferencia queda sujeta a disponibilidad.</p>
                     </div>
 
-                    <!-- Comments / Selected Services summary (Read-only reference) -->
-                    <div class="form-group" x-show="selectedServices.length > 0">
-                        <label class="form-label">Servicios Pre-Seleccionados</label>
-                        <div style="background-color: var(--bg-card); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color); font-size: 0.85rem;">
-                            <template x-for="service in selectedServices" :key="service.id">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
-                                    <span x-text="service.title" style="color: var(--text-light);"></span>
-                                    <span x-text="'$' + service.price.toLocaleString('es-CL')" style="color: var(--accent-gold); font-weight: 600;"></span>
-                                </div>
-                            </template>
-                            <div style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 0.5rem; padding-top: 0.5rem; display: flex; justify-content: space-between; font-weight: 700;">
-                                <span>Total Estimado:</span>
-                                <span x-text="'$' + selectedPrice.toLocaleString('es-CL')" style="color: var(--accent-gold);"></span>
-                            </div>
+                    <div class="form-group-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="salon-date">Fecha preferida *</label>
+                            <input id="salon-date" type="date" x-model="formDate" :min="minDate" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="salon-time">Hora preferida *</label>
+                            <input id="salon-time" type="time" x-model="formTime" required class="form-input">
                         </div>
                     </div>
 
-                    <!-- Special Comments -->
                     <div class="form-group">
-                        <label class="form-label">Comentarios / Alergias / Mensaje</label>
-                        <textarea x-model="formComment" class="form-input" placeholder="Cuéntanos sobre tu cabello, tratamientos previos, etc..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
+                        <label class="form-label" for="salon-comment">Cuéntanos sobre tu cabello y el resultado que buscas</label>
+                        <textarea id="salon-comment" x-model="formComment" class="form-input" placeholder="Ej: Busco iluminarlo con un cambio suave y tengo coloración previa." style="resize: vertical; min-height: 88px;"></textarea>
+                        <p class="text-responsive-caption" style="color: var(--text-muted);">También puedes adjuntar una foto de tu cabello o una referencia cuando se abra WhatsApp.</p>
                     </div>
 
-                    <!-- Actions -->
+                    <p x-show="formError" x-text="formError" class="form-error" role="alert" aria-live="assertive" x-cloak></p>
+
+                    <p id="salon-privacy-note" class="text-responsive-detail" style="color: var(--text-muted); margin-top: 1rem;">Usaremos estos datos para preparar tu solicitud y coordinar la atención. <a href="../privacidad.html" style="color: var(--accent-champagne); text-decoration: underline;">Revisa el aviso de privacidad</a>.</p>
+
+                    <p class="text-responsive-detail" style="color: var(--text-light); margin-top: 1rem;">La hora queda confirmada cuando el salón responde por WhatsApp.</p>
+
                     <div class="form-actions">
-                        <button type="button" @click="closeBooking()" class="btn-luxury">Cancelar</button>
-                        <button type="submit" class="btn-luxury btn-luxury-solid">Enviar Solicitud</button>
+                        <button type="button" @click="closeBooking()" class="btn-luxury">Seguir mirando</button>
+                        <button type="submit" class="btn-luxury btn-luxury-solid">Preparar solicitud por WhatsApp</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- Botón Flotante para Volver al Showcase -->
-    <a href="../index.html#demos" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" class="showcase-back-btn no-print">
-         <span>⬅️ Volver al Showcase</span>
-    </a>
 
     <script defer src="../demo-nav.js"></script>
 </body>

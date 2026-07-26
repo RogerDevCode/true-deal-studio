@@ -74,12 +74,11 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
       fill: async (page) => {
         await page.locator('input[x-model="formName"]').fill("Clienta QA");
         await page.locator('input[x-model="formPhone"]').fill("+56955556666");
-        await page.locator('input[x-model="formEmail"]').fill("salon@example.com");
         await page.locator('input[x-model="formDate"]').fill("2026-07-30");
         await page.locator('input[x-model="formTime"]').fill("16:00");
         await page.locator('textarea[x-model="formComment"]').fill("Coloracion");
       },
-      submitName: /Enviar Solicitud/i,
+      submitName: /Preparar solicitud por WhatsApp/i,
       expectedParts: ["Clienta QA", "Coloracion"],
     },
     {
