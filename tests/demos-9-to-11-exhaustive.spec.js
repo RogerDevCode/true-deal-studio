@@ -9,6 +9,66 @@ test.describe('Exhaustive Tests for Demos 9 to 11', () => {
       await waitForAlpine(page);
     });
 
+    test('Commercial hero presents one concise promise and two clear actions', async ({ page }) => {
+      const hero = page.getByTestId('fono-hero');
+
+      await expect(hero.getByText('Fonoaudiología infantil a domicilio · Santiago', { exact: true })).toBeVisible();
+      await expect(hero.locator('h1')).toHaveText('Acompañamos su lenguaje desde casa.');
+      await expect(hero.getByText(
+        'Una primera visita basada en el juego para conocer cómo se comunica tu hijo, orientar a la familia y acordar juntos el siguiente paso.',
+        { exact: true }
+      )).toBeVisible();
+      await expect(hero.getByTestId('fono-primary-cta')).toHaveText('Solicitar primera visita');
+      await expect(hero.getByRole('link', { name: 'Consultar por WhatsApp' })).toHaveAttribute('href', /wa\.me\/56964910042/);
+      await expect(hero).toContainText('Atención a domicilio · Orientación para la familia · Coordinación por WhatsApp');
+    });
+
+    test('Hero hierarchy fits the first mobile screen and stays editorial on desktop', async ({ page }) => {
+      for (const viewport of [
+        { width: 390, height: 844, maxLines: 3 },
+        { width: 1440, height: 900, maxLines: 2 },
+      ]) {
+        await page.setViewportSize(viewport);
+        await page.reload();
+        await waitForAlpine(page);
+
+        const hero = page.getByTestId('fono-hero');
+        const heading = hero.locator('h1');
+        const metrics = await heading.evaluate((node) => {
+          const style = getComputedStyle(node);
+          const rect = node.getBoundingClientRect();
+          return {
+            lines: Math.round(rect.height / Number.parseFloat(style.lineHeight)),
+            fontSize: Number.parseFloat(style.fontSize),
+          };
+        });
+
+        expect(metrics.lines).toBeLessThanOrEqual(viewport.maxLines);
+        expect(metrics.fontSize).toBeGreaterThanOrEqual(viewport.width === 390 ? 38 : 52);
+        await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+
+        if (viewport.width === 390) {
+          const heroTop = await hero.evaluate((node) => node.getBoundingClientRect().top);
+          const ctaBottom = await hero.getByTestId('fono-primary-cta').evaluate((node) => node.getBoundingClientRect().bottom);
+          expect(heroTop).toBeLessThan(180);
+          expect(ctaBottom).toBeLessThanOrEqual(844);
+        }
+      }
+    });
+
+    test('Commercial sequence explains the visit before specialties and professional proof', async ({ page }) => {
+      const order = await page.locator('main > section[id]').evaluateAll((sections) =>
+        sections.map((section) => section.id)
+      );
+
+      expect(order).toEqual(['enfoque', 'areas', 'como-funciona', 'sobre-mi']);
+      await expect(page.getByTestId('fono-first-visit').getByRole('heading', { name: '¿Qué aporta la primera visita?' })).toBeVisible();
+      await expect(page.locator('#como-funciona')).toContainText('Orientación inicial y coordinación');
+
+      const visibleCopy = await page.locator('body').innerText();
+      expect(visibleCopy).not.toMatch(/más efectiva|ansiedad baja a cero|mucho más rápido|Pre-Diagnóstico|Especialista en Desarrollo Infantil/i);
+    });
+
     test('Clinical service details toggle, home consultation modal priority, and state reset', async ({ page }) => {
       const guards = await attachPageGuards(page);
 
