@@ -188,7 +188,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(prices.getByText('Pedidos en línea', { exact: true })).toBeVisible();
     await expect(prices.getByText('Necesitas aportar:', { exact: true })).toHaveCount(2);
     await expect(prices.getByText('Para empezar necesitas:', { exact: true })).toHaveCount(1);
-    await expect(prices.getByText('No incluye:', { exact: true })).toHaveCount(3);
+    await expect(prices.getByText('Queda fuera del alcance:', { exact: true })).toHaveCount(3);
     await expect(prices.getByText('Considera:', { exact: true })).toHaveCount(1);
 
     await guards.assertHealthyContext();
@@ -201,7 +201,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       await disclosure.locator("summary").focus();
       await page.keyboard.press("Enter");
       await expect(disclosure).toHaveAttribute("open", "");
-      await expect(disclosure.locator("summary")).toHaveText("Ver detalle del alcance");
+      await expect(disclosure.locator("summary")).toHaveText("Revisar condiciones, plazos y soporte");
     }
     await expect(page.locator("body")).not.toContainText("Se vende mejor");
     await expect(page.locator("body")).not.toContainText("Más del 80%");
@@ -390,7 +390,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(plan).toContainText('Dos hitos: $49.999 CLP para iniciar + $50.000 CLP al aprobar tu versión lista');
     await expect(plan).toContainText('Dominio y publicación: los compras directamente al proveedor y quedan a tu nombre; STAX te guía y realiza la conexión.');
     await expect(plan).toContainText('Cambios: incluye una ronda consolidada y 15 días para ajustes menores después de publicar.');
-    await expect(plan).toContainText('No incluye: páginas extra, cambios de estructura, carro ni pagos en línea.');
+    await expect(plan).toContainText('Queda fuera del alcance: páginas extra, cambios de estructura, carro y pagos en línea.');
     await expect(plan.getByRole('link', { name: 'Revisar este plan' })).toHaveAttribute('href', '#contacto');
     await guards.assertHealthyContext();
   });
