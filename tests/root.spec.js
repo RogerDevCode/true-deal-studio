@@ -20,11 +20,11 @@ test("Landing and demos stay production-ready", async ({ page }) => {
   const guards = await attachPageGuards(page);
   await page.goto("/");
 
-  await expect(page).toHaveTitle("STAX | Ordena tu atención por WhatsApp");
+  await expect(page).toHaveTitle("STAX | Que te vean. Que te crean.");
   await expect(page.locator("h1")).toHaveCount(1);
-  await expect(page.getByText("Atención en todo Chile", { exact: true })).toHaveCount(2);
+  await expect(page.getByText("Desde Biobío para negocios de todo Chile", { exact: true })).toHaveCount(1);
   await expect(page.locator("body")).not.toContainText(/Santiago|Concepción/i);
-  await page.getByRole("button", { name: /Ver las 10 demostraciones en vivo|Mostrar menos demostraciones/i }).click();
+  await page.getByRole("button", { name: /Ver los 10 ejemplos|Mostrar menos/i }).click();
   const casaRondaCard = page.locator('a[href="./demo-casa-colores/index.html"]').first();
   await expect(casaRondaCard.getByRole("heading", { name: "Casa Ronda", exact: true })).toBeVisible();
 
@@ -40,7 +40,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
     await expect(backLink, `No se encontro link de retorno en ${href}`).toBeVisible();
     await expect(backLink).toHaveAttribute("href", /..\/*index\.html/);
     await page.goto("/");
-    await expect(page).toHaveTitle("STAX | Ordena tu atención por WhatsApp");
+    await expect(page).toHaveTitle("STAX | Que te vean. Que te crean.");
   }
 
   await guards.assertHealthyContext();

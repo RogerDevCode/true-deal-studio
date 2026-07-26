@@ -9,13 +9,19 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
   test('Hero section elements, typography, and primary CTA responsiveness', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    await expect(page).toHaveTitle(/Ordena tu atención por WhatsApp/);
+    await expect(page).toHaveTitle(/Que te vean\. Que te crean\./);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('h1')).toContainText('Muestra lo importante antes de que te escriban.');
+    await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
-    await expect(page.getByRole('link', { name: 'Revisar lo que explico por WhatsApp' })).toBeVisible();
-    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('linear-gradient');
-    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.not.toContain('santiago-hero.webp');
+    await expect(page.getByRole('link', { name: 'Hablar por WhatsApp' })).toHaveAttribute('href', '#contacto');
+    const examplesCta = page.getByRole('link', { name: 'Ver ejemplos', exact: true });
+    await expect(examplesCta).toHaveAttribute('href', '#demos');
+    await expect(examplesCta).toHaveCSS('color', 'rgb(37, 65, 95)');
+    await examplesCta.click();
+    await expect.poll(async () => page.locator('#demos').evaluate((section) => section.getBoundingClientRect().top)).toBeGreaterThanOrEqual(72);
+    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.not.toBe('none');
+    await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.toContain('stax-hero-atmosphere.webp');
+    await expect(page.locator('head style').evaluateAll((styles) => styles.some((style) => /(^|\n)\s*\.\s*(?=\{|:)/m.test(style.textContent || '')))).resolves.toBe(false);
     
     // Check navigation anchor links
     const navLinks = ['#demos', '#beneficios', '#precios', '#faq', '#necesidades'];
@@ -30,29 +36,46 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(needs.getByRole('heading', { name: 'Trabajas con reservas' })).toBeVisible();
     await expect(needs.getByRole('heading', { name: 'Vendes por catálogo' })).toBeVisible();
     await expect(needs.getByRole('heading', { name: 'Quieres cobrar en línea' })).toBeVisible();
+    await expect(needs.locator('.need-visual')).toHaveCount(5);
+    await expect(needs.locator('.need-visual').evaluateAll((visuals) => visuals.every((visual) => visual.getAttribute('aria-hidden') === 'true'))).resolves.toBe(true);
+    await expect(needs.locator('.need-visual img')).toHaveCount(5);
+    await expect(needs.locator('.need-visual img').evaluateAll((images) => images.every((image) => image.getAttribute('loading') === 'lazy'))).resolves.toBe(true);
+
+    const visualEvidence = page.getByTestId('benefits-visual-evidence');
+    await expect(visualEvidence).toBeVisible();
+    await expect(visualEvidence.locator('img')).toHaveCount(3);
+    await expect(visualEvidence.locator('img').evaluateAll((images) => images.every((image) => image.getAttribute('loading') === 'lazy'))).resolves.toBe(true);
     await guards.assertHealthyContext();
   });
 
-  test('Hero clarity tunnel explains the service path without layout overflow', async ({ page }) => {
+  test('Hero rubro simulator switches examples without layout overflow', async ({ page }) => {
     const guards = await attachPageGuards(page);
-    const tunnel = page.locator('.clarity-tunnel');
+    const simulator = page.getByTestId('hero-rubro-simulator');
 
-    await expect(tunnel).toBeVisible();
-    await expect(tunnel.locator('[data-clarity-step]')).toHaveCount(4);
-    await expect(tunnel).toContainText('Consulta suelta');
-    await expect(tunnel).toContainText('WhatsApp con contexto');
-    await expect(tunnel.locator('.clarity-tunnel__signal')).toHaveCount(1);
-    await expect(tunnel).toHaveClass(/is-visible/);
-    await expect(tunnel.locator('.clarity-tunnel__signal').evaluate((signal) => signal.getAnimations().length)).resolves.toBeGreaterThan(0);
+    await expect(simulator).toBeVisible();
+    await expect(simulator.getByRole('button')).toHaveCount(6);
+    await expect(simulator.getByRole('button', { name: /Salud/ })).toHaveAttribute('aria-pressed', 'true');
+    await simulator.getByRole('button', { name: /Salón/ }).click();
+    await expect(simulator.getByRole('button', { name: /Salud/ })).toHaveAttribute('aria-pressed', 'false');
+    await expect(simulator.getByRole('button', { name: /Salón/ })).toHaveAttribute('aria-pressed', 'true');
+    await expect(simulator).toContainText('Studio Chic · Alta Peluquería');
+    await expect(simulator).toContainText('balayage');
+    await expect(simulator.getByRole('link', { name: 'Ver ejemplo funcionando' })).toHaveAttribute('href', './demo-salon-belleza/index.html');
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
-
-    await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.reload();
-    await expect(page.locator('.clarity-tunnel')).toHaveClass(/is-visible/);
-    await expect(page.locator('.clarity-tunnel [data-clarity-step]')).toHaveCount(4);
+    for (const button of await simulator.getByRole('button').all()) {
+      const box = await button.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box.height).toBeGreaterThanOrEqual(44);
+    }
+    for (const locator of [page.locator('#inicio .hero-subtitle'), page.getByRole('link', { name: 'Hablar por WhatsApp' }), page.getByRole('link', { name: 'Ver ejemplos', exact: true }), simulator]) {
+      const box = await locator.boundingBox();
+      expect(box).not.toBeNull();
+      expect(box.x).toBeGreaterThanOrEqual(0);
+      expect(box.x + box.width).toBeLessThanOrEqual(390);
+    }
 
     await guards.assertHealthyContext();
   });
@@ -62,7 +85,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const hero = page.locator('#inicio');
     const ia = page.locator('#ia-practica');
 
-    const localReach = hero.getByText('Atención desde Biobío para negocios de todo Chile', { exact: true });
+    const localReach = hero.getByText('Desde Biobío para negocios de todo Chile', { exact: true });
     await expect(localReach).toBeVisible();
     await expect(localReach).toHaveCSS('color', 'rgb(37, 65, 95)');
     await expect(ia.getByRole('heading', { name: 'La herramienta acelera. STAX se hace cargo del criterio.' })).toBeVisible();
@@ -70,13 +93,13 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(ia.getByText('Ordenamos tu información', { exact: true })).toBeVisible();
     await expect(ia.getByText('Revisamos que funcione de verdad', { exact: true })).toBeVisible();
     await expect(ia.getByText('Te entregamos control', { exact: true })).toBeVisible();
-    await expect(page.locator('.business-notebook-pattern')).toHaveCount(4);
+    await expect(ia.locator('.business-card')).toHaveCount(4);
     await expect(ia.locator('.business-card .text-drac-fg').first()).toHaveCSS('color', 'rgb(23, 43, 77)');
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
     await page.evaluate(() => document.documentElement.classList.add('light-theme'));
-    await expect(page.locator('.business-notebook-pattern').evaluate((node) => getComputedStyle(node).backgroundImage)).resolves.not.toBe('none');
+    await expect(ia.locator('.business-card').first()).toBeVisible();
 
     await guards.assertHealthyContext();
   });
@@ -188,13 +211,24 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
   test('Exhaustive validation of all 10 visible demo cards after expanding catalog', async ({ page }) => {
     const guards = await attachPageGuards(page);
+    const demoCards = page.locator('#demos .grid.gap-8 > a[href^="./demo-"]');
 
-    // Click "Ver todas las demos" / expand button first so all cards exist and become visible
-    const expandBtn = page.getByRole('button', { name: /Ver las \d+ demostraciones|Mostrar menos/i }).first();
+    await expect(demoCards).toHaveCount(10);
+    await expect.poll(async () => demoCards.evaluateAll((cards) => cards.filter((card) => card.getClientRects().length > 0).length)).toBe(3);
+
+    const expandBtn = page.getByRole('button', { name: /Ver los 10 ejemplos|Mostrar menos/i }).first();
+    await expect(expandBtn).toHaveAttribute('aria-expanded', 'false');
+    await expect(expandBtn).toHaveAttribute('aria-controls', 'demo-showcase-grid');
+    await expect(page.locator('#demo-showcase-grid')).toHaveCount(1);
     if (await expandBtn.isVisible()) {
       await expandBtn.click({ force: true });
       await page.waitForTimeout(300);
     }
+    await expect(expandBtn).toHaveAttribute('aria-expanded', 'true');
+    await expect.poll(async () => demoCards.evaluateAll((cards) => cards.filter((card) => card.getClientRects().length > 0).length)).toBe(10);
+    await expect(page.locator('#demos').getByText('Antes de escribir', { exact: true })).toHaveCount(10);
+    await expect(page.locator('#demos').getByText('En tus mensajes puedes revisar', { exact: true })).toHaveCount(9);
+    await expect(page.locator('#demos').getByText('En el panel puedes revisar', { exact: true })).toHaveCount(1);
 
     const demoPaths = [
       './demo-psicologa/index.html',
