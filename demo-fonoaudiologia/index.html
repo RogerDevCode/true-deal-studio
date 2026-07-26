@@ -93,6 +93,26 @@
       color: #3D584C;
     }
 
+    .booking-modal-shell {
+      align-items: flex-start;
+      padding-top: 4.75rem;
+    }
+
+    .booking-modal-panel {
+      max-height: calc(100dvh - 5.75rem);
+    }
+
+    @media (min-width: 640px) {
+      .booking-modal-shell {
+        align-items: center;
+        padding-top: 1rem;
+      }
+
+      .booking-modal-panel {
+        max-height: calc(100dvh - 2rem);
+      }
+    }
+
     @media (min-width: 1024px) {
       .fono-hero-title {
         font-size: 3.5rem;
@@ -528,19 +548,19 @@
   </footer>
 
   <!-- BOOKING VISIT MODAL -->
-  <div x-show="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4" x-cloak>
+  <div x-show="bookingModal" class="booking-modal-shell fixed inset-0 z-50 flex justify-center p-4" x-cloak>
     <!-- Overlay -->
     <div class="absolute inset-0 bg-forest-900/60 backdrop-blur-sm" @click="bookingModal = false"></div>
 
     <!-- Modal Box -->
-    <div class="relative bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-cream-100 flex flex-col justify-between overflow-y-auto"
-         style="max-height: calc(100dvh - 2rem);"
+    <div class="booking-modal-panel relative bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-cream-100 flex flex-col justify-between overflow-y-auto"
+         role="dialog" aria-modal="true" aria-labelledby="fono-booking-title"
          x-data="{ clientName: '', clientPhone: '', apptDate: '', apptSlot: 'mañana', apptDetails: '' }"
          x-effect="if (!bookingModal) { clientName = ''; clientPhone = ''; apptDate = ''; apptSlot = 'mañana'; apptDetails = ''; }">
       
       <!-- Header -->
       <div class="flex items-center justify-between mb-4">
-        <h3 class="font-serif text-xl sm:text-2xl font-bold text-forest-900">Solicitar primera visita</h3>
+        <h3 id="fono-booking-title" class="font-serif text-xl sm:text-2xl font-bold text-forest-900">Solicitar primera visita</h3>
         <button @click="bookingModal = false" aria-label="Cerrar solicitud" class="flex h-11 w-11 items-center justify-center rounded-full text-2xl font-semibold text-forest-600 transition-colors hover:bg-cream-50 hover:text-forest-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-700">&times;</button>
       </div>
 

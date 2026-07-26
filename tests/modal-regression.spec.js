@@ -112,12 +112,21 @@ test("Core conversion modals remain usable across mobile and desktop", async ({ 
       await expect(modal, `${modalCase.name} ${viewport.name}`).toBeVisible();
 
       if (modalCase.name === "fonoaudiologia") {
-        await expect(modal.getByRole("heading", { name: "Solicitar primera visita" })).toBeVisible();
+        const modalHeading = modal.getByRole("heading", { name: "Solicitar primera visita" });
+        await expect(modalHeading).toBeVisible();
         await expect(modal.getByRole("button", { name: "Preparar solicitud por WhatsApp" })).toBeVisible();
         await expect(modal.getByTestId("fono-booking-privacy")).toContainText(
           "Usaremos estos datos para preparar y coordinar tu solicitud por WhatsApp."
         );
         await expect(modal.getByRole("link", { name: "aviso de privacidad" })).toHaveAttribute("href", "../privacidad.html");
+
+        if (viewport.name === "mobile") {
+          const [demoBarBox, headingBox] = await Promise.all([
+            page.getByTestId("fono-demo-bar").boundingBox(),
+            modalHeading.boundingBox(),
+          ]);
+          expect(headingBox.y).toBeGreaterThanOrEqual(demoBarBox.y + demoBarBox.height);
+        }
       }
 
       const metrics = await modal.evaluate((node) => {
