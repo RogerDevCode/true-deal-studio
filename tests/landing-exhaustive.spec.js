@@ -108,7 +108,10 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await menuButton.click();
     const backdrop = page.getByTestId("mobile-menu-backdrop");
     await expect(backdrop).toBeVisible();
-    await backdrop.click();
+    const panelBox = await page.getByTestId("mobile-menu-panel").boundingBox();
+    expect(panelBox).not.toBeNull();
+    expect(panelBox.width).toBeGreaterThanOrEqual(380);
+    await backdrop.click({ position: { x: 5, y: 700 } });
     await expect(menuButton).toBeFocused();
     await expect(menuButton).toHaveAttribute("aria-expanded", "false");
 
@@ -187,6 +190,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     }
     await prices.getByTestId("plan-cta-premium").click();
     await expect(page.getByTestId("selected-plan-summary")).toContainText("Pedidos en línea");
+    await expect(page.getByTestId("selected-plan-summary")).toBeFocused();
     await page.getByTestId("clear-selected-plan").click();
     await expect(page.getByTestId("selected-plan-summary")).not.toBeVisible();
     await expect(page.locator("#contacto")).toContainText("Te orientamos hacia un primer paso acorde a tu negocio.");
@@ -202,9 +206,24 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(contact.getByText(/Respondemos dentro del horario de atención/)).toBeVisible();
     await expect(contact.getByText('Tu mensaje está listo', { exact: true })).toBeAttached();
     await expect(contact.locator('.contact-form-note')).toHaveCount(3);
-    await expect(contact.locator('.contact-form-note').first()).toHaveCSS('color', 'rgb(52, 64, 84)');
+    await expect(contact.locator('.contact-form-note').first()).toHaveCSS('color', 'rgb(226, 232, 240)');
 
     await guards.assertHealthyContext();
+  });
+
+  test('Consultative floating actions preserve context and critical contrast', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    const floating = page.getByTestId('floating-whatsapp');
+    await expect(floating).toHaveAttribute('href', '#contacto');
+    await expect(floating).toHaveCSS('background-color', 'rgb(11, 93, 53)');
+
+    await page.locator('#contacto').scrollIntoViewIfNeeded();
+    await expect(page.locator('#contacto .contact-form-note').first()).toHaveCSS('color', 'rgb(226, 232, 240)');
+
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.evaluate(() => document.documentElement.classList.remove('light-theme'));
+    await expect(page.locator('#navbar')).not.toHaveClass(/\bglass\b/);
+    await expect(page.locator('#navbar a[aria-label="Inicio"] .text-drac-fg')).toHaveCSS('color', 'rgb(23, 43, 77)');
   });
 
   test('Process presents exactly three static steps without an automatic loop', async ({ page }) => {

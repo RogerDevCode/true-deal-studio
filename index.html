@@ -189,12 +189,12 @@
       color: #68A2FF;
     }
 
-    /* The contact card is light in the light theme, so its helper copy needs a dark ink color. */
+    /* The contact card remains dark inside the navy band in both themes. */
     html.light-theme body #contacto .contact-form-note {
-      color: #344054;
+      color: #E2E8F0;
     }
     html.light-theme body #contacto .contact-form-note a {
-      color: #0B5A91;
+      color: #7DD3FC;
     }
     html:not(.light-theme) body #contacto .contact-form-note {
       color: #E2E8F0;
@@ -257,6 +257,21 @@
     }
     html.light-theme #navbar:not(.glass) > div:first-child .text-drac-cyan {
       color: #0B5A91;
+    }
+
+    /* The hero remains light in both themes, so its transparent header always uses dark ink. */
+    #navbar:not(.glass) .text-drac-fg,
+    #navbar:not(.glass) .text-drac-comment,
+    #navbar:not(.glass) button[aria-label="Cambiar tema"],
+    #navbar:not(.glass) button[aria-label="Menú"],
+    #navbar:not(.glass) button[aria-label="Cambiar tema"] svg {
+      color: #172B4D;
+    }
+
+    #precios .text-xs,
+    #contacto .text-xs {
+      font-size: 14px;
+      line-height: 1.45;
     }
     .mini-wa {
       background-color: rgba(var(--drac-green), 0.15);
@@ -920,6 +935,12 @@
       visibility: hidden;
       pointer-events: none;
     }
+    .whatsapp-safe-action {
+      background-color: #0B5D35;
+    }
+    .whatsapp-safe-action:hover {
+      background-color: #084A2B;
+    }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -1040,10 +1061,11 @@
           <svg x-show="mobileMenu" x-cloak viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
     </div>
+    </div>
 
     <!-- Mobile menu -->
     <button type="button" data-testid="mobile-menu-backdrop" x-show="mobileMenu" x-cloak @click="mobileMenu = false; $nextTick(() => $refs.mobileMenuButton.focus())" aria-label="Cerrar menú" class="fixed inset-0 top-[72px] z-0 bg-slate-950/45 lg:hidden"></button>
-    <div x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" class="glass relative z-10 border-t border-drac-current/30 lg:hidden" x-cloak>
+    <div data-testid="mobile-menu-panel" x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" class="glass relative z-10 border-t border-drac-current/30 lg:hidden" x-cloak>
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
         <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#beneficios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
         <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#proceso" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Proceso</a>
@@ -2014,7 +2036,7 @@
               <p class="mt-2 text-sm leading-relaxed text-drac-comment">Muchas pymes ya están en redes. Menos tienen un espacio propio que ordene su oferta y las haga verse a la altura.</p>
             </div>
             <div class="rounded-2xl border border-drac-current/20 bg-drac-darker/40 p-4">
-              <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Claridad que vende</p>
+              <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Claridad para decidir</p>
               <p class="mt-2 text-sm leading-relaxed text-drac-comment">La decisión se vuelve más simple cuando la persona entiende qué ofreces, cómo atiendes y qué paso sigue.</p>
             </div>
             <div class="rounded-2xl border border-drac-current/20 bg-drac-darker/40 p-4">
@@ -2075,7 +2097,7 @@
           <div class="reveal rounded-[2rem] border-2 border-chile-blue/50 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 relative flex flex-col h-full" style="transition-delay: .08s">
             <!-- Popular badge -->
             <div class="bg-gradient-to-r from-chile-blue to-chile-blueLight py-2 px-4 text-center">
-              <p class="text-xs font-bold text-white uppercase tracking-[0.2em]">⭐ Más popular</p>
+              <p class="text-xs font-bold text-white uppercase tracking-[0.2em]">Recomendado para ordenar atención</p>
             </div>
             <div class="p-8 flex-grow">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-chile-blueLight">Atención ordenada</p>
@@ -2183,21 +2205,21 @@
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>
               </div>
               <p class="text-sm font-bold text-drac-fg">Ordena tu atención</p>
-              <p class="mt-1 text-xs text-drac-comment">La gente entiende mejor antes de escribirte, y eso eleva la calidad del primer contacto.</p>
+              <p class="mt-1 text-xs text-drac-comment">La persona revisa la información antes de escribirte y llega con más contexto.</p>
             </div>
             <div class="text-center">
               <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-drac-orange/10 text-drac-orange mb-3">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
               </div>
               <p class="text-sm font-bold text-drac-fg">Se justifica con claridad</p>
-              <p class="mt-1 text-xs text-drac-comment">En varios rubros, pocos cierres bien logrados pueden respaldar la inversión completa.</p>
+              <p class="mt-1 text-xs text-drac-comment">Puedes evaluar la inversión frente al alcance definido y al valor de tus propios servicios.</p>
             </div>
             <div class="text-center">
               <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-chile-red/10 text-chile-red mb-3">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
               </div>
               <p class="text-sm font-bold text-drac-fg">Eleva tu credibilidad</p>
-              <p class="mt-1 text-xs text-drac-comment">Cuando tu negocio se ve bien presentado, el cliente avanza con más seguridad hacia la consulta o la compra.</p>
+              <p class="mt-1 text-xs text-drac-comment">Cuando el alcance está claro, la persona avanza con más información hacia la consulta o la compra.</p>
             </div>
           </div>
         </div>
@@ -2480,7 +2502,7 @@
                     }
                 }" @submit.prevent="handleSubmit()">
                   <div x-show="!sent">
-                    <div x-show="getSelectedPlan()" x-cloak data-testid="selected-plan-summary" class="mb-6 rounded-2xl bg-drac-current/20 p-4">
+                    <div x-ref="selectedPlanSummary" x-show="getSelectedPlan()" x-cloak data-testid="selected-plan-summary" role="status" aria-live="polite" tabindex="-1" class="mb-6 rounded-2xl bg-drac-current/20 p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue">
                       <p class="text-sm font-bold text-drac-fg" x-text="getSelectedPlan()?.label"></p>
                       <p class="mt-1 text-sm text-drac-comment" x-text="getSelectedPlan()?.price"></p>
                       <p class="mt-2 text-sm leading-relaxed text-drac-comment" x-text="getSelectedPlan()?.summary"></p>
@@ -2526,7 +2548,7 @@
                     </div>
                     <h4 class="text-xl font-bold text-drac-fg">Tu mensaje está listo</h4>
                     <p class="mt-2 text-sm text-drac-comment">Envíalo por WhatsApp y revisaremos contigo el primer paso que mejor calza con tu negocio.</p>
-                    <a :href="preparedUrl" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-xl bg-[#25D366] px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5">
+                    <a :href="preparedUrl" target="_blank" rel="noopener" class="whatsapp-safe-action mt-6 inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5">
                       Ir a WhatsApp
                     </a>
                     <button type="button" data-testid="edit-contact-form" @click="editForm()" class="mt-4 min-h-11 rounded-xl px-4 text-sm font-semibold text-drac-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue">Editar información</button>
@@ -2604,17 +2626,17 @@
   <!-- ============================================ -->
   <!-- FLOATING WHATSAPP BUTTON -->
   <!-- ============================================ -->
-  <a href="https://wa.me/56999040515?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener"
+  <a href="#contacto"
      data-testid="floating-whatsapp"
-     class="floating-whatsapp-action fixed right-4 z-50 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-lg hover:shadow-xl sm:hidden"
-     aria-label="Contactar por WhatsApp">
+     class="floating-whatsapp-action whatsapp-safe-action fixed right-4 z-50 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-white shadow-lg hover:shadow-xl sm:hidden"
+     aria-label="Ir al formulario de orientación por WhatsApp">
     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
     <span>WhatsApp</span>
   </a>
 
-  <a href="https://wa.me/56999040515?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener"
-     class="floating-whatsapp-action fixed right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:scale-110 hover:shadow-xl animate-float sm:flex"
-     aria-label="Contactar por WhatsApp"
+  <a href="#contacto"
+     class="floating-whatsapp-action whatsapp-safe-action fixed right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full text-white shadow-lg hover:scale-110 hover:shadow-xl animate-float sm:flex"
+     aria-label="Ir al formulario de orientación por WhatsApp"
      style="animation-delay: 3s">
     <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.278 0-4.381-.762-6.065-2.046l-.424-.328-2.643.886.886-2.643-.328-.424A9.72 9.72 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z"/></svg>
   </a>
@@ -2750,6 +2772,10 @@
         selectPlan(planId) {
           if (!Object.prototype.hasOwnProperty.call(this.planOptions, planId)) return;
           this.selectedPlan = planId;
+          this.$nextTick(() => {
+            const summary = document.querySelector('[data-testid="selected-plan-summary"]');
+            if (summary) summary.focus({ preventScroll: true });
+          });
         },
 
         clearSelectedPlan() {
