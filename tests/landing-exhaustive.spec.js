@@ -13,7 +13,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
-    await expect(page.getByRole('link', { name: 'Hablar por WhatsApp' })).toHaveAttribute('href', '#contacto');
+    await expect(page.locator('#inicio').getByRole('link', { name: 'Quiero orientación para mi negocio' })).toHaveAttribute('href', '#contacto');
     const examplesCta = page.getByRole('link', { name: 'Ver ejemplos', exact: true });
     await expect(examplesCta).toHaveAttribute('href', '#demos');
     await expect(examplesCta).toHaveCSS('color', 'rgb(37, 65, 95)');
@@ -70,7 +70,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       expect(box).not.toBeNull();
       expect(box.height).toBeGreaterThanOrEqual(44);
     }
-    for (const locator of [page.locator('#inicio .hero-subtitle'), page.getByRole('link', { name: 'Hablar por WhatsApp' }), page.getByRole('link', { name: 'Ver ejemplos', exact: true }), simulator]) {
+    for (const locator of [page.locator('#inicio .hero-subtitle'), page.locator('#inicio').getByRole('link', { name: 'Quiero orientación para mi negocio' }), page.getByRole('link', { name: 'Ver ejemplos', exact: true }), simulator]) {
       const box = await locator.boundingBox();
       expect(box).not.toBeNull();
       expect(box.x).toBeGreaterThanOrEqual(0);
@@ -113,10 +113,24 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(prices.getByText('Pedidos en línea', { exact: true })).toBeVisible();
     await expect(prices.getByText('Necesitas aportar:', { exact: true })).toHaveCount(2);
     await expect(prices.getByText('Para empezar necesitas:', { exact: true })).toHaveCount(1);
-    await expect(prices.getByText('No incluye:', { exact: true })).toHaveCount(2);
+    await expect(prices.getByText('No incluye:', { exact: true })).toHaveCount(3);
     await expect(prices.getByText('Considera:', { exact: true })).toHaveCount(1);
 
     await guards.assertHealthyContext();
+  });
+
+  test("Pricing scope is available without hover and copy stays consultative", async ({ page }) => {
+    const pricing = page.locator("#precios");
+    await expect(pricing.locator("details[data-plan-details]")).toHaveCount(3);
+    for (const disclosure of await pricing.locator("details[data-plan-details]").all()) {
+      await disclosure.locator("summary").focus();
+      await page.keyboard.press("Enter");
+      await expect(disclosure).toHaveAttribute("open", "");
+      await expect(disclosure.locator("summary")).toHaveText("Ver detalle del alcance");
+    }
+    await expect(page.locator("body")).not.toContainText("Se vende mejor");
+    await expect(page.locator("body")).not.toContainText("Más del 80%");
+    await expect(page.locator("body")).not.toContainText("los ajustes que necesites hasta que quede como tú quieres");
   });
 
   test("Plan CTAs make one explicit, reversible selection", async ({ page }) => {
@@ -286,15 +300,15 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
     await expect(pricing.getByText('Plan Vitrina Express', { exact: true })).toBeVisible();
     await expect(pricing.getByText('$99.999', { exact: false })).toBeVisible();
+    await expect(plan).toContainText('neto + IVA');
+    await expect(plan).toContainText('Total con IVA: $118.999 CLP');
     await expect(plan).toContainText('3 días hábiles');
     await expect(plan).toContainText('El plazo comienza cuando recibimos tu información completa.');
-    await expect(plan).toContainText('Tu dominio queda a tu nombre');
-    await expect(plan).toContainText('Una ronda consolidada de cambios');
     await expect(plan).toContainText('Dos hitos: $49.999 CLP para iniciar + $50.000 CLP al aprobar tu versión lista');
-    await expect(plan).toContainText('15 días para ajustes menores después de publicar');
-    await expect(plan).toContainText('El nombre de tu sitio y su publicación los compras tú');
+    await expect(plan).toContainText('Dominio y publicación: los compras directamente al proveedor y quedan a tu nombre; STAX te guía y realiza la conexión.');
+    await expect(plan).toContainText('Cambios: incluye una ronda consolidada y 15 días para ajustes menores después de publicar.');
     await expect(plan).toContainText('No incluye: páginas extra, cambios de estructura, carro ni pagos en línea.');
-    await expect(plan.getByRole('link', { name: 'Quiero mi vitrina en 3 días' })).toHaveAttribute('href', '#contacto');
+    await expect(plan.getByRole('link', { name: 'Revisar este plan' })).toHaveAttribute('href', '#contacto');
     await guards.assertHealthyContext();
   });
 });
