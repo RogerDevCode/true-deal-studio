@@ -35,16 +35,21 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(needs.getByRole('heading', { name: 'Haces delivery' })).toBeVisible();
     await expect(needs.getByRole('heading', { name: 'Trabajas con reservas' })).toBeVisible();
     await expect(needs.getByRole('heading', { name: 'Vendes por catálogo' })).toBeVisible();
-    await expect(needs.getByRole('heading', { name: 'Quieres cobrar en línea' })).toBeVisible();
-    await expect(needs.locator('.need-visual')).toHaveCount(5);
+    await expect(needs.getByRole('heading', { name: 'Quieres cobrar en línea' })).toHaveCount(0);
+    await expect(needs.locator('.need-visual')).toHaveCount(4);
     await expect(needs.locator('.need-visual').evaluateAll((visuals) => visuals.every((visual) => visual.getAttribute('aria-hidden') === 'true'))).resolves.toBe(true);
-    await expect(needs.locator('.need-visual img')).toHaveCount(5);
+    await expect(needs.locator('.need-visual img')).toHaveCount(4);
     await expect(needs.locator('.need-visual img').evaluateAll((images) => images.every((image) => image.getAttribute('loading') === 'lazy'))).resolves.toBe(true);
 
     const visualEvidence = page.getByTestId('benefits-visual-evidence');
     await expect(visualEvidence).toBeVisible();
     await expect(visualEvidence.locator('img')).toHaveCount(3);
     await expect(visualEvidence.locator('img').evaluateAll((images) => images.every((image) => image.getAttribute('loading') === 'lazy'))).resolves.toBe(true);
+    const benefits = page.locator('#beneficios');
+    await expect(benefits).toContainText('Tu oferta queda fácil de revisar, WhatsApp recibe consultas con más contexto');
+    for (const removedHeading of ['Oferta fácil de revisar', 'WhatsApp con contexto', 'Base propia para crecer']) {
+      await expect(benefits.getByRole('heading', { name: removedHeading })).toHaveCount(0);
+    }
     await guards.assertHealthyContext();
   });
 
@@ -80,6 +85,23 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test("Mobile visitors reach price context early and floating WhatsApp never competes with local CTAs", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/index.html");
+    await waitForAlpine(page);
+    const earlyPrice = page.getByTestId("starting-price-summary");
+    const priceY = await earlyPrice.evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
+    expect(priceY).toBeLessThan(2200);
+    const floating = page.getByTestId("floating-whatsapp");
+    for (const sectionId of ["inicio", "precios", "contacto"]) {
+      await page.locator(`#${sectionId}`).scrollIntoViewIfNeeded();
+      await expect(floating).toHaveClass(/is-context-hidden/);
+    }
+    await page.locator("#demos").scrollIntoViewIfNeeded();
+    await expect(floating).not.toHaveClass(/is-context-hidden/);
+    await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+  });
+
   test('Commercial redesign keeps local reach and human criteria visible', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const hero = page.locator('#inicio');
@@ -89,17 +111,13 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(localReach).toBeVisible();
     await expect(localReach).toHaveCSS('color', 'rgb(37, 65, 95)');
     await expect(ia.getByRole('heading', { name: 'La herramienta acelera. STAX se hace cargo del criterio.' })).toBeVisible();
-    await expect(ia.getByText('Escuchamos cómo atiendes', { exact: true })).toBeVisible();
-    await expect(ia.getByText('Ordenamos tu información', { exact: true })).toBeVisible();
-    await expect(ia.getByText('Revisamos que funcione de verdad', { exact: true })).toBeVisible();
-    await expect(ia.getByText('Te entregamos control', { exact: true })).toBeVisible();
-    await expect(ia.locator('.business-card')).toHaveCount(4);
-    await expect(ia.locator('.business-card .text-drac-fg').first()).toHaveCSS('color', 'rgb(23, 43, 77)');
+    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; STAX aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
+    await expect(ia.locator('.business-card')).toHaveCount(0);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
     await page.evaluate(() => document.documentElement.classList.add('light-theme'));
-    await expect(ia.locator('.business-card').first()).toBeVisible();
+    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; STAX aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
 
     await guards.assertHealthyContext();
   });
@@ -161,35 +179,27 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
-  test('Process timeline loops through each step only while the section is visible', async ({ page }) => {
+  test('Process presents exactly three static steps without an automatic loop', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const process = page.locator('#proceso');
     const steps = process.locator('[data-process-step]');
 
-    await expect(steps).toHaveCount(4);
-    await expect(process.locator('.process-step-marker')).toHaveCount(4);
+    await expect(steps).toHaveCount(3);
+    await expect(process.locator('.process-step-marker')).toHaveCount(3);
+    await expect(process.getByRole('heading', { name: 'Entendemos tu atención' })).toBeVisible();
+    await expect(process.getByRole('heading', { name: 'Ordenamos y construimos' })).toBeVisible();
+    await expect(process.getByRole('heading', { name: 'Revisas y publicamos' })).toBeVisible();
     await process.scrollIntoViewIfNeeded();
-    await expect(process).toHaveClass(/process-motion-enabled/);
-    await expect(process.locator('[data-process-step].is-active')).toHaveCount(1);
-    await page.waitForFunction(() => {
-      const section = document.querySelector('#proceso');
-      const signal = section?.querySelector('.process-timeline-signal');
-      const activeMarker = section?.querySelector('[data-process-step].is-active .process-step-marker');
-      if (!signal || !activeMarker) return false;
-      const signalBox = signal.getBoundingClientRect();
-      const markerBox = activeMarker.getBoundingClientRect();
-      return Math.abs((signalBox.top + signalBox.height / 2) - (markerBox.top + markerBox.height / 2)) <= 4;
-    });
-
-    const initialStep = await process.getAttribute('data-active-process-step');
-    await page.waitForFunction((step) => document.querySelector('#proceso')?.dataset.activeProcessStep !== step, initialStep);
-    await expect(process.locator('[data-process-step].is-active')).toHaveCount(1);
+    await expect(process).not.toHaveClass(/process-motion-enabled/);
+    await expect(process.locator('[data-process-step].is-active')).toHaveCount(0);
+    await expect(process.locator('.process-timeline-signal')).toHaveCount(0);
 
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.reload();
     const reducedProcess = page.locator('#proceso');
     await reducedProcess.scrollIntoViewIfNeeded();
     await expect(reducedProcess).not.toHaveClass(/process-motion-enabled/);
+    await expect(reducedProcess.locator('[data-process-step]')).toHaveCount(3);
 
     await guards.assertHealthyContext();
   });
