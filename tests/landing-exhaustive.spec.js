@@ -102,6 +102,27 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
   });
 
+  test("Mobile menu returns focus and public actions keep readable text", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    const menuButton = page.getByRole("button", { name: "Menú" });
+    await menuButton.click();
+    await expect(page.getByTestId("mobile-menu-backdrop")).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(menuButton).toBeFocused();
+    await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+
+    const commercialText = page.locator("#precios p, #precios li, #contacto p, #contacto label");
+    for (const element of await commercialText.all()) {
+      if (!(await element.isVisible())) continue;
+      const size = Number.parseFloat(await element.evaluate((node) => getComputedStyle(node).fontSize));
+      expect(size).toBeGreaterThanOrEqual(14);
+    }
+
+    const blankLinks = page.locator('#demos a[target="_blank"]');
+    await expect(blankLinks.evaluateAll((links) => links.every((link) => link.rel.includes("noopener")))).resolves.toBe(true);
+    await expect(blankLinks.evaluateAll((links) => links.every((link) => link.textContent.includes("abre en una pestaña nueva")))).resolves.toBe(true);
+  });
+
   test('Commercial redesign keeps local reach and human criteria visible', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const hero = page.locator('#inicio');

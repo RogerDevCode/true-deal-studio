@@ -122,7 +122,7 @@
       --drac-pink: 138, 28, 52;      /* Deep burgundy */
       --drac-purple: 76, 58, 117;    /* Elegant dark indigo */
       --drac-red: 201, 42, 42;       /* Solemn crimson */
-      --drac-yellow: 184, 134, 11;   /* Antique gold */
+      --drac-yellow: 112, 78, 0;     /* Deep antique gold with AA contrast on white */
     }
 
     /* In Light Theme: only specific light sections should promote cards to solid white */
@@ -198,6 +198,20 @@
     }
     html:not(.light-theme) body #contacto .contact-form-note {
       color: #E2E8F0;
+    }
+
+    /* Keep the contact surface dark inside the navy band in both themes. */
+    html.light-theme body #contacto .glass {
+      background: rgba(14, 24, 43, 0.92);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+    html.light-theme body #contacto {
+      --drac-darker: 30, 31, 41;
+      --drac-current: 68, 71, 90;
+    }
+
+    html.light-theme body #precios .text-chile-blueLight {
+      color: #0B5A91;
     }
 
     /* Light band sections get dark text in light theme */
@@ -950,6 +964,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar"
     x-data="{ scrolled: false }"
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 20 })"
+    @keydown.escape.window="if (mobileMenu) { mobileMenu = false; $nextTick(() => $refs.mobileMenuButton.focus()); }"
     :class="scrolled ? 'glass shadow-card' : 'bg-transparent'">
     <!-- Top info bar -->
     <div x-show="!scrolled" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="hidden bg-drac-darker/20 border-b border-drac-current/10 py-1.5 text-center text-xs text-drac-comment font-semibold md:block" x-cloak>
@@ -986,7 +1001,7 @@
         <a href="#faq" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Preguntas</a>
         
         <!-- Theme Toggle (Desktop) -->
-        <button @click="toggleTheme()" :aria-pressed="darkMode.toString()" :class="darkMode ? 'bg-drac-current/20 border-drac-comment/70 shadow-[0_0_0_1px_rgba(248,248,242,0.05)]' : 'bg-drac-current/10 border-drac-current/50'" class="ml-2 relative inline-flex h-11 w-11 items-center justify-center rounded-xl border text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus:outline-none" aria-label="Cambiar tema">
+        <button @click="toggleTheme()" :aria-pressed="darkMode.toString()" :class="darkMode ? 'bg-drac-current/20 border-drac-comment/70 shadow-[0_0_0_1px_rgba(248,248,242,0.05)]' : 'bg-drac-current/10 border-drac-current/50'" class="ml-2 relative inline-flex h-11 w-11 items-center justify-center rounded-xl border text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue" aria-label="Cambiar tema">
           <!-- Sun icon (visible in dark mode) -->
           <svg x-show="darkMode" x-cloak class="h-5 w-5 text-drac-yellow transition-transform duration-500 hover:rotate-90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="4"></circle>
@@ -1007,7 +1022,7 @@
       <!-- Right side for Mobile (Theme Toggle + Menu Button) -->
       <div class="flex items-center gap-2 lg:hidden">
         <!-- Theme Toggle (Mobile) -->
-        <button @click="toggleTheme()" :aria-pressed="darkMode.toString()" :class="darkMode ? 'bg-drac-current/20 border-drac-comment/70 shadow-[0_0_0_1px_rgba(248,248,242,0.05)]' : 'bg-drac-current/10 border-drac-current/50'" class="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus:outline-none" aria-label="Cambiar tema">
+        <button @click="toggleTheme()" :aria-pressed="darkMode.toString()" :class="darkMode ? 'bg-drac-current/20 border-drac-comment/70 shadow-[0_0_0_1px_rgba(248,248,242,0.05)]' : 'bg-drac-current/10 border-drac-current/50'" class="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue" aria-label="Cambiar tema">
           <!-- Sun icon (visible in dark mode) -->
           <svg x-show="darkMode" x-cloak class="h-5 w-5 text-drac-yellow transition-transform duration-500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="4"></circle>
@@ -1020,22 +1035,23 @@
         </button>
 
         <!-- Mobile menu button -->
-        <button @click="mobileMenu = !mobileMenu" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-drac-current/50 text-drac-fg transition-colors hover:bg-drac-current/30" :aria-expanded="mobileMenu.toString()" aria-label="Menú">
+        <button x-ref="mobileMenuButton" @click="mobileMenu = !mobileMenu" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-drac-current/50 text-drac-fg transition-colors hover:bg-drac-current/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue" :aria-expanded="mobileMenu.toString()" aria-label="Menú">
           <svg x-show="!mobileMenu" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           <svg x-show="mobileMenu" x-cloak viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
     </div>
 
     <!-- Mobile menu -->
+    <button type="button" data-testid="mobile-menu-backdrop" x-show="mobileMenu" x-cloak @click="mobileMenu = false; $nextTick(() => $refs.mobileMenuButton.focus())" aria-label="Cerrar menú" class="fixed inset-0 top-[72px] z-[-1] bg-slate-950/45 lg:hidden"></button>
     <div x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" class="glass border-t border-drac-current/30 lg:hidden" x-cloak>
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
-        <a @click="mobileMenu=false" href="#beneficios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
-        <a @click="mobileMenu=false" href="#proceso" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Proceso</a>
-        <a @click="mobileMenu=false" href="#necesidades" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Cómo atiendes</a>
-        <a @click="mobileMenu=false" href="#demos" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Demos</a>
-        <a @click="mobileMenu=false" href="#precios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Inversión</a>
-        <a @click="mobileMenu=false" href="#faq" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Preguntas</a>
-        <a @click="mobileMenu=false" href="#contacto" class="mt-2 rounded-xl bg-gradient-to-r from-chile-red to-chile-redDark px-4 py-3 text-center text-sm font-bold text-white">
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#beneficios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#proceso" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Proceso</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#necesidades" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Cómo atiendes</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#demos" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Demos</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#precios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Inversión</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#faq" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Preguntas</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#contacto" class="mt-2 rounded-xl bg-gradient-to-r from-chile-red to-chile-redDark px-4 py-3 text-center text-sm font-bold text-white">
           Quiero orientación para mi negocio
         </a>
       </nav>
@@ -1312,7 +1328,7 @@
         <!-- Showcase grid -->
         <div id="demo-showcase-grid" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <!-- Demo 1: Fonoaudiología -->
-          <a href="./demo-fonoaudiologia/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2">
+          <a href="./demo-fonoaudiologia/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/fonoaudiologia-card.webp" alt="Demo Nahovy Gallegos Fonoaudiología" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1323,14 +1339,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite conocer servicios, forma de atención y opciones para solicitar una evaluación.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-green">Antes de escribir</strong>: servicios, atención y agenda. <strong class="text-drac-green">En tus mensajes puedes revisar</strong>: si indican servicio y horario.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 2: Psicóloga -->
-          <a x-show="showAllDemos" x-cloak href="./demo-psicologa/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .06s">
+          <a x-show="showAllDemos" x-cloak href="./demo-psicologa/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .06s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/psicologa-card.webp" alt="Demo Clara Altieri Psicóloga" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1341,14 +1357,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite conocer especialidad, atención presencial u online y opciones de reserva.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-purple">Antes de escribir</strong>: especialidad, atención y reserva. <strong class="text-drac-purple">En tus mensajes puedes revisar</strong>: si indican atención y horario.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-purple mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 3: Café La Ruta -->
-          <a x-show="showAllDemos" x-cloak href="./demo-cafe-valparaiso/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .12s">
+          <a x-show="showAllDemos" x-cloak href="./demo-cafe-valparaiso/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .12s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/cafe-card.webp" alt="Demo Café La Ruta Valparaíso" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1359,14 +1375,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite revisar carta, valores, horarios y alternativas de pedido o retiro.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-orange">Antes de escribir</strong>: carta, valores y pedidos. <strong class="text-drac-orange">En tus mensajes puedes revisar</strong>: si indican producto, cantidad o fecha.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-orange mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 4: Studio Chic -->
-          <a href="./demo-salon-belleza/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .18s">
+          <a href="./demo-salon-belleza/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .18s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/salon-card.webp" alt="Demo Studio Chic Peluquería" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1377,14 +1393,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite revisar servicios, referencias y cómo solicitar una hora.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-yellow">Antes de escribir</strong>: servicios, referencias y reserva. <strong class="text-drac-yellow">En tus mensajes puedes revisar</strong>: si indican servicio y fecha.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-yellow mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 5: Artesanías del Sur -->
-          <a x-show="showAllDemos" x-cloak href="./demo-artesanias/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .24s">
+          <a x-show="showAllDemos" x-cloak href="./demo-artesanias/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .24s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/artesanias-card.webp" alt="Demo Artesanías del Sur E-commerce" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1395,14 +1411,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite recorrer productos, elegir opciones y preparar un pedido por WhatsApp.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-pink">Antes de escribir</strong>: productos, opciones y pedido. <strong class="text-drac-pink">En tus mensajes puedes revisar</strong>: si indican producto y cantidad.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-pink mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 6: ContaDigital -->
-          <a x-show="showAllDemos" x-cloak href="./demo-contabilidad/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .30s">
+          <a x-show="showAllDemos" x-cloak href="./demo-contabilidad/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .30s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/contabilidad-card.webp" alt="Demo ContaDigital Contabilidad" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1413,14 +1429,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite comparar planes, valores y alcance antes de pedir una cotización.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-cyan">Antes de escribir</strong>: planes, valores y alcance. <strong class="text-drac-cyan">En tus mensajes puedes revisar</strong>: si indican plan o necesidad.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 7: Corredora de Propiedades (Cobre & Co.) -->
-          <a x-show="showAllDemos" x-cloak href="./demo-propiedades/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .36s">
+          <a x-show="showAllDemos" x-cloak href="./demo-propiedades/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .36s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/propiedades-card.webp" alt="Demo Cobre & Co. Propiedades" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1431,14 +1447,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite revisar propiedades, precios y solicitar una visita.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-cyan">Antes de escribir</strong>: propiedad, precio y visita. <strong class="text-drac-cyan">En tus mensajes puedes revisar</strong>: si indican propiedad y horario.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 8: E-commerce & Admin (El Siguiente Paso) -->
-          <a href="./demo-ecommerce-tech/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-purple/60 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-purple/60 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .42s">
+          <a href="./demo-ecommerce-tech/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-purple/60 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-purple/60 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .42s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/ecommerce-card.webp" alt="Demo E-commerce con Panel de Control" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1453,7 +1469,7 @@
                 <span class="rounded-full border border-drac-purple/30 bg-drac-purple/10 px-3 py-1">Atención por WhatsApp</span>
               </div>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-purple mt-auto">
-                <span>Ver ejemplo funcionando</span>
+                <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
@@ -1461,7 +1477,7 @@
 
 
           <!-- Demo 9: CRM Express (Gestor de Citas y Clientes) -->
-          <a x-show="showAllDemos" x-cloak href="./demo-agenda/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-cyan/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-cyan hover:shadow-mega hover:-translate-y-2" style="transition-delay: .48s">
+          <a x-show="showAllDemos" x-cloak href="./demo-agenda/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-cyan/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-cyan hover:shadow-mega hover:-translate-y-2" style="transition-delay: .48s">
             <div class="relative h-48 w-full overflow-hidden">
               <!-- Custom designed visual preview -->
               <div class="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900 to-sky-950 flex flex-col items-center justify-center p-4">
@@ -1477,14 +1493,14 @@
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Muestra cómo el negocio recibe, confirma y gestiona citas y contactos.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-cyan">Antes de escribir</strong>: servicio, hora y datos de contacto. <strong class="text-drac-cyan">En el panel puedes revisar</strong>: citas, estado y contacto.</p>
               <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
-                <span>Ver panel funcionando</span>
+                <span>Ver panel funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </div>
           </a>
 
           <!-- Demo 10: Casa Ronda -->
-          <a x-show="showAllDemos" x-cloak href="./demo-casa-colores/index.html" target="_blank" class="reveal group relative flex flex-col rounded-3xl border border-drac-yellow/50 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-yellow hover:shadow-mega hover:-translate-y-2" style="transition-delay: .54s">
+          <a x-show="showAllDemos" x-cloak href="./demo-casa-colores/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-yellow/50 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-yellow hover:shadow-mega hover:-translate-y-2" style="transition-delay: .54s">
             <div class="relative h-48 w-full overflow-hidden bg-[#2d2032]">
               <img src="./demo-casa-colores/assets/casa-ronda-hero.webp" alt="Mesa de celebración creativa del demo Casa Ronda" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#2d2032] via-[#2d2032]/25 to-transparent"></div>
@@ -1495,7 +1511,7 @@
               <h3 class="text-xl font-bold text-drac-fg transition-colors group-hover:text-drac-yellow">Casa Ronda</h3>
               <p class="demo-card-copy mt-2 text-sm leading-relaxed text-drac-comment text-left">Permite comparar experiencias, valores y condiciones antes de consultar una fecha.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-yellow">Antes de escribir</strong>: experiencias, valores y condiciones. <strong class="text-drac-yellow">En tus mensajes puedes revisar</strong>: si indican experiencia y fecha.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-yellow mt-auto"><span>Ver ejemplo funcionando</span><span class="transition-transform duration-300 group-hover:translate-x-1">→</span></div>
+              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-yellow mt-auto"><span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span><span class="transition-transform duration-300 group-hover:translate-x-1">→</span></div>
             </div>
           </a>
         </div> <!-- /Showcase grid -->
@@ -1563,9 +1579,9 @@
                   </div>
                   
                   <div class="mt-8 flex flex-col gap-3 relative z-10">
-                    <a href="https://wa.me/56999040515?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" class="inline-flex w-full items-center justify-center rounded-2xl border border-drac-green/35 bg-drac-green/10 px-6 py-4 text-base font-bold text-drac-green transition-all duration-300 hover:bg-drac-green/20 hover:border-drac-green shadow-sm">
+                    <a href="https://wa.me/56999040515?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" class="inline-flex w-full items-center justify-center rounded-2xl border border-drac-green/35 bg-drac-green/10 px-6 py-4 text-base font-bold text-drac-green transition-all duration-300 hover:bg-drac-green/20 hover:border-drac-green shadow-sm">
                       <svg class="mr-2.5 h-5.5 w-5.5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966a9.9 9.9 0 00-6.98-2.779c-5.443 0-9.874 4.372-9.879 9.802-.002 1.741.454 3.442 1.324 4.952l-.993 3.627 3.749-.988zm11.233-6.938c-.3-.15-1.771-.875-2.04-.972-.27-.099-.467-.148-.662.15-.195.297-.757.97-.927 1.168-.17.199-.34.223-.64.073-.3-.15-1.268-.467-2.414-1.49-1.002-.894-1.502-1.996-1.699-2.33-.2-.332-.02-.511.147-.677.15-.15.3-.35.45-.526.15-.175.2-.299.3-.5.1-.202.05-.377-.025-.526-.075-.15-.662-1.597-.907-2.185-.238-.574-.48-.496-.662-.505-.17-.008-.367-.01-.563-.01-.197 0-.517.074-.788.374-.27.3-.1.574-.1.574s-.123.238-.123.57c0 .87.616 1.713.712 1.838.096.126 1.293 2.127 3.25 2.87.568.216 1.01.345 1.353.453.57.18 1.088.156 1.498.094.46-.07 1.77-.723 2.022-1.422.253-.7.253-1.3.177-1.423-.075-.12-.275-.196-.575-.346z"/></svg>
-                      Escribir por WhatsApp
+                      Escribir por WhatsApp<span class="sr-only"> (abre en una pestaña nueva)</span>
                     </a>
                     <a href="#contacto" class="inline-flex w-full items-center justify-center rounded-2xl bg-drac-green px-6 py-4 text-base font-bold text-drac-darker shadow-lg shadow-drac-green/20 transition-all duration-300 hover:scale-[1.02]">
                       Quiero orientación para mi negocio
@@ -2050,7 +2066,7 @@
               <p class="mt-5 text-sm font-semibold leading-relaxed text-drac-fg">Sección adicional desde $30.000 CLP. Página adicional, redacción desde cero, catálogo amplio, reservas o pagos en línea se cotizan antes de avanzar.</p>
             </div>
             <div class="p-6 pt-0">
-              <a href="./demo-casa-colores/index.html" target="_blank" class="mb-3 flex w-full items-center justify-center rounded-2xl border border-drac-current/30 bg-drac-current/10 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-yellow hover:text-drac-yellow">Ver demo: Casa Ronda</a>
+              <a href="./demo-casa-colores/index.html" target="_blank" rel="noopener" class="mb-3 flex w-full items-center justify-center rounded-2xl border border-drac-current/30 bg-drac-current/10 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-yellow hover:text-drac-yellow">Ver demo: Casa Ronda<span class="sr-only"> (abre en una pestaña nueva)</span></a>
               <a href="#contacto" data-testid="plan-cta-esencial" @click="selectPlan('esencial')" class="flex w-full items-center justify-center rounded-2xl border border-chile-blue/30 bg-chile-blue/10 px-5 py-3.5 text-sm font-bold text-chile-blueLight transition-all duration-300 hover:bg-chile-blue/20">Revisar este plan</a>
             </div>
           </div>
@@ -2489,7 +2505,7 @@
                       <label for="form-mensaje" class="mb-2 block text-sm font-bold text-drac-fg">¿Qué información explicas hoy con frecuencia?</label>
                       <textarea id="form-mensaje" x-model="formMensaje" maxlength="500" rows="3" placeholder="Ej: servicios, valores, horarios, zona de delivery, reservas o productos..." class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20 resize-none"></textarea>
                     </div>
-                    <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-4 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+                    <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-xl bg-[#0B5D35] px-5 py-4 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#084A2B] hover:shadow-xl">
                       <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
                       Preparar mi consulta por WhatsApp
                     </button>
