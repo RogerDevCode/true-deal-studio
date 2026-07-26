@@ -106,7 +106,14 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     const menuButton = page.getByRole("button", { name: "Menú" });
     await menuButton.click();
-    await expect(page.getByTestId("mobile-menu-backdrop")).toBeVisible();
+    const backdrop = page.getByTestId("mobile-menu-backdrop");
+    await expect(backdrop).toBeVisible();
+    await backdrop.click();
+    await expect(menuButton).toBeFocused();
+    await expect(menuButton).toHaveAttribute("aria-expanded", "false");
+
+    await menuButton.click();
+    await expect(backdrop).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(menuButton).toBeFocused();
     await expect(menuButton).toHaveAttribute("aria-expanded", "false");
