@@ -108,6 +108,8 @@ Cada página pública mantiene:
 4. Mantener cambios focalizados; agregar o ajustar pruebas cuando cambie el comportamiento.
 5. Ejecutar la validación proporcional al cambio.
 
+Preferir ejecución directa a usar agentes, salvo cuando una tarea especializada se beneficie claramente de esa colaboración.
+
 ## 7. Instalación y QA
 
 ```bash
