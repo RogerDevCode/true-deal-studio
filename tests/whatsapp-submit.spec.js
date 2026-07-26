@@ -153,6 +153,12 @@ for (const plan of [
     await waitForAlpine(page);
     await page.getByTestId(`plan-cta-${plan[0]}`).click();
     await expect(page.getByTestId("selected-plan-summary")).toContainText(plan[1]);
+    const expectedPrice = {
+      esencial: "Total con IVA: $118.999 CLP",
+      profesional: "Total referencial desde $297.488 CLP con IVA",
+      premium: "Total referencial desde $535.488 CLP con IVA",
+    }[plan[0]];
+    await expect(page.getByTestId("selected-plan-summary")).toContainText(expectedPrice);
     await fillLandingContact(page);
     await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
     await expectWhatsAppOpen(page, ["PYME QA", plan[1], "Quiero revisar"]);

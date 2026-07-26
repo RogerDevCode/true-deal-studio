@@ -153,6 +153,32 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Commercial copy stays factual, affirmative and easy to act on', async ({ page }) => {
+    const visibleCopy = await page.locator('body').innerText();
+
+    await expect(page.locator('#inicio .hero-subtitle')).toHaveText(
+      'Creamos páginas web que ordenan tus servicios, valores y horarios para que tus clientes lleguen a WhatsApp con más contexto.'
+    );
+    await expect(page.getByTestId('early-plans-link')).toHaveAttribute('href', '#precios');
+    await expect(page.getByTestId('early-guidance-link')).toHaveAttribute('href', '#contacto');
+    await expect(page.getByTestId('starting-price-summary').getByRole('link')).toHaveCount(2);
+    expect(visibleCopy).not.toMatch(/\bno\b/i);
+    expect(visibleCopy).not.toMatch(/Hosting|HTTPS|SEO|HTML \+ Tailwind|Alpine\.js/);
+    expect(visibleCopy).not.toMatch(/ventas garantizadas|se paga sola|15 horas|cupos/i);
+  });
+
+  test('Every plan shows its IVA total and affirmative scope language', async ({ page }) => {
+    const prices = page.locator('#precios');
+
+    await expect(prices.getByText('Total con IVA: $118.999 CLP', { exact: true })).toBeVisible();
+    await expect(prices.getByText('Total referencial desde $297.488 CLP con IVA', { exact: true })).toBeVisible();
+    await expect(prices.getByText('Total referencial desde $535.488 CLP con IVA', { exact: true })).toBeVisible();
+    await expect(prices.getByText('Queda fuera del alcance:', { exact: true })).toHaveCount(3);
+    for (const disclosure of await prices.locator('details[data-plan-details]').all()) {
+      await expect(disclosure.locator('summary')).toHaveText('Revisar condiciones, plazos y soporte');
+    }
+  });
+
   test('Plans explain the business stage, required material, and scope limits', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const prices = page.locator('#precios');
