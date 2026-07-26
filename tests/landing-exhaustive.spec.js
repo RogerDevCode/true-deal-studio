@@ -1,6 +1,32 @@
 const { test, expect } = require('@playwright/test');
 const { attachPageGuards, waitForAlpine } = require('./helpers');
 
+function parseRgb(color) {
+  return color.match(/\d+/g).slice(0, 3).map(Number);
+}
+
+function luminance([red, green, blue]) {
+  const channels = [red, green, blue].map((value) => {
+    const channel = value / 255;
+    return channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+}
+
+function contrastRatio(foreground, background) {
+  const lighter = Math.max(luminance(foreground), luminance(background));
+  const darker = Math.min(luminance(foreground), luminance(background));
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+async function setTheme(page, theme) {
+  await page.evaluate((selectedTheme) => {
+    window.themeController.writeStoredTheme(selectedTheme);
+  }, theme);
+  await page.reload();
+  await waitForAlpine(page);
+}
+
 test.describe('Exhaustive Landing Page (index.html) Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/index.html');
@@ -297,6 +323,53 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       }
     }
     await guards.assertHealthyContext();
+  });
+
+  test('Theme contrast stays strong across hero, menu, bands and responsive widths', async ({ page }) => {
+    const themes = {
+      dark: {
+        heroBackground: 'rgb(12, 26, 46)',
+        heading: 'rgb(248, 250, 252)',
+        subtitle: 'rgb(216, 225, 236)',
+        menuBackground: 'rgb(21, 26, 38)',
+        menuText: 'rgb(230, 234, 242)',
+      },
+      light: {
+        heroBackground: 'rgb(226, 218, 203)',
+        heading: 'rgb(18, 35, 63)',
+        subtitle: 'rgb(51, 70, 94)',
+        menuBackground: 'rgb(221, 212, 196)',
+        menuText: 'rgb(23, 43, 77)',
+      },
+    };
+
+    for (const [theme, colors] of Object.entries(themes)) {
+      for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+        await page.setViewportSize(viewport);
+        await setTheme(page, theme);
+        await expect(page.locator('.hero-photo-bg')).toHaveCSS('background-color', colors.heroBackground);
+        await expect(page.locator('#inicio h1')).toHaveCSS('color', colors.heading);
+        await expect(page.locator('#inicio .hero-subtitle')).toHaveCSS('color', colors.subtitle);
+        expect(contrastRatio(parseRgb(colors.heading), parseRgb(colors.heroBackground))).toBeGreaterThanOrEqual(4.5);
+        expect(contrastRatio(parseRgb(colors.subtitle), parseRgb(colors.heroBackground))).toBeGreaterThanOrEqual(4.5);
+        await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+
+        if (viewport.width === 390) {
+          await page.getByRole('button', { name: 'Menú' }).click();
+          const menu = page.getByTestId('mobile-menu-panel');
+          const firstLink = menu.getByRole('link', { name: 'Beneficios' });
+          await expect(menu).toHaveCSS('background-color', colors.menuBackground);
+          await expect(firstLink).toHaveCSS('color', colors.menuText);
+          expect(contrastRatio(parseRgb(colors.menuText), parseRgb(colors.menuBackground))).toBeGreaterThanOrEqual(4.5);
+        }
+      }
+    }
+
+    await setTheme(page, 'light');
+    await expect(page.locator('.band-white').first()).toHaveCSS('background-color', 'rgb(241, 238, 231)');
+    await expect(page.locator('.band-lino').first()).toHaveCSS('background-color', 'rgb(221, 217, 207)');
+    await expect(page.locator('.navbar-shell')).toHaveCount(1);
+    await expect(page.locator('.mobile-menu-surface')).toHaveCount(1);
   });
 
   test('FAQ accordion exhaustive interactive checking: expand, collapse, mutual exclusion', async ({ page }) => {
