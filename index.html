@@ -2092,9 +2092,7 @@
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
 
           <!-- Plan Esencial -->
-          <div class="reveal rounded-[2rem] border border-drac-current/40 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:border-chile-blue/30 hover:shadow-card-hover hover:-translate-y-1 flex flex-col h-full"
-               @mouseenter="startPlanHover('esencial')"
-               @mouseleave="endPlanHover('esencial')">
+          <div class="reveal rounded-[2rem] border border-drac-current/40 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:border-chile-blue/30 hover:shadow-card-hover hover:-translate-y-1 flex flex-col h-full">
             <div class="p-8 flex-grow">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-chile-blueLight">Plan Vitrina Express</p>
               <p class="mt-4 font-display text-4xl font-black text-drac-fg">$99.999<span class="text-base font-medium text-drac-comment"> CLP</span></p>
@@ -2232,14 +2230,12 @@
             </div>
             <div class="p-6 pt-0">
               <a href="./demo-casa-colores/index.html" target="_blank" class="mb-3 flex w-full items-center justify-center rounded-2xl border border-drac-current/30 bg-drac-current/10 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-yellow hover:text-drac-yellow">Ver demo: Casa Ronda</a>
-              <a href="#contacto" class="flex w-full items-center justify-center rounded-2xl border border-chile-blue/30 bg-chile-blue/10 px-5 py-3.5 text-sm font-bold text-chile-blueLight transition-all duration-300 hover:bg-chile-blue/20">Quiero mi vitrina en 3 días</a>
+              <a href="#contacto" data-testid="plan-cta-esencial" @click="selectPlan('esencial')" class="flex w-full items-center justify-center rounded-2xl border border-chile-blue/30 bg-chile-blue/10 px-5 py-3.5 text-sm font-bold text-chile-blueLight transition-all duration-300 hover:bg-chile-blue/20">Revisar este plan</a>
             </div>
           </div>
 
           <!-- Plan Profesional (Featured) -->
-          <div class="reveal rounded-[2rem] border-2 border-chile-blue/50 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 relative flex flex-col h-full" style="transition-delay: .08s"
-               @mouseenter="startPlanHover('profesional')"
-               @mouseleave="endPlanHover('profesional')">
+          <div class="reveal rounded-[2rem] border-2 border-chile-blue/50 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:-translate-y-2 relative flex flex-col h-full" style="transition-delay: .08s">
             <!-- Popular badge -->
             <div class="bg-gradient-to-r from-chile-blue to-chile-blueLight py-2 px-4 text-center">
               <p class="text-xs font-bold text-white uppercase tracking-[0.2em]">⭐ Más popular</p>
@@ -2378,9 +2374,8 @@
               </ul>
             </div>
             <div class="p-6 pt-0 space-y-3">
-              <a href="#contacto" class="flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-chile-blue to-chile-blueLight px-5 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:shadow-xl">
-                <svg class="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-                Este me conviene
+              <a href="#contacto" data-testid="plan-cta-profesional" @click="selectPlan('profesional')" class="flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-chile-blue to-chile-blueLight px-5 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:shadow-xl">
+                Revisar este plan
               </a>
               <a href="./demo-plan-profesional/index.html" class="flex w-full items-center justify-center rounded-2xl border border-chile-blueLight/30 bg-drac-darker/50 px-5 py-3 text-xs font-bold text-chile-blueLight transition-all duration-300 hover:bg-chile-blueLight/10">
                 🌐 Ver Demo de este Plan
@@ -2389,9 +2384,7 @@
           </div>
 
           <!-- Plan Premium -->
-          <div class="reveal rounded-[2rem] border border-drac-current/40 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:border-drac-purple/30 hover:shadow-card-hover hover:-translate-y-1 flex flex-col h-full" style="transition-delay: .16s"
-               @mouseenter="startPlanHover('premium')"
-               @mouseleave="endPlanHover('premium')">
+          <div class="reveal rounded-[2rem] border border-drac-current/40 bg-drac-bg/80 overflow-hidden transition-all duration-300 hover:border-drac-purple/30 hover:shadow-card-hover hover:-translate-y-1 flex flex-col h-full" style="transition-delay: .16s">
             <div class="p-8 flex-grow">
               <p class="text-sm font-bold uppercase tracking-[0.2em] text-drac-purple">Pedidos en línea</p>
               <p class="mt-4 font-display text-4xl font-black text-drac-fg"><span class="text-lg font-medium text-drac-comment">Desde </span>$449.990<span class="text-base font-medium text-drac-comment"> CLP</span><span class="text-sm font-semibold text-drac-comment ml-1 align-middle"> neto + IVA</span></p>
@@ -2527,7 +2520,7 @@
               </ul>
             </div>
             <div class="p-6 pt-0 space-y-3">
-              <a href="#contacto" class="flex w-full items-center justify-center rounded-2xl border border-drac-purple/30 bg-drac-purple/10 px-5 py-3.5 text-sm font-bold text-drac-purple transition-all duration-300 hover:bg-drac-purple/20">Quiero vender con esto</a>
+              <a href="#contacto" data-testid="plan-cta-premium" @click="selectPlan('premium')" class="flex w-full items-center justify-center rounded-2xl border border-drac-purple/30 bg-drac-purple/10 px-5 py-3.5 text-sm font-bold text-drac-purple transition-all duration-300 hover:bg-drac-purple/20">Revisar este plan</a>
               <a href="./demo-plan-premium/index.html" class="flex w-full items-center justify-center rounded-2xl border border-drac-purple/30 bg-drac-darker/50 px-5 py-3 text-xs font-bold text-drac-purple transition-all duration-300 hover:bg-drac-purple/10">
                 🌐 Ver Demo de este Plan
               </a>
@@ -2801,42 +2794,81 @@
               <div class="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-chile-blue/20 via-transparent to-chile-red/15 blur-xl sm:-inset-3"></div>
               <div class="relative glass rounded-[2rem] p-8 shadow-mega">
                 <h3 class="text-xl font-bold text-drac-fg mb-6">Cuéntame qué ofreces y cómo atiendes</h3>
-                <form class="space-y-4" x-data="{ 
-                    formNombre: '', 
-                    formNegocio: '', 
-                    formTelefono: '', 
+                <form class="space-y-4" x-data="{
+                    formNombre: '',
+                    formNegocio: '',
+                    formTelefono: '',
                     formMensaje: '',
+                    telefonoError: '',
                     sent: false,
+                    preparedUrl: '',
+                    phoneIsValid() {
+                        const compact = this.formTelefono.replace(/[\s()-]/g, '');
+                        return compact === '' || /^(?:\+?56)?9\d{8}$/.test(compact);
+                    },
                     handleSubmit() {
-                        const plan = getMostViewedPlan();
-                        const text = `Hola! Mi nombre es ${this.formNombre}. Tengo un negocio de ${this.formNegocio}. Quiero revisar el Plan ${plan}. Entiendo que el plazo comienza cuando entregue mi información completa. Mi WhatsApp es ${this.formTelefono}. Información adicional: ${this.formMensaje}`;
-                        const waUrl = `https://wa.me/56999040515?text=${encodeURIComponent(text)}`;
-                        const opened = window.openWhatsAppWithFallback ? window.openWhatsAppWithFallback(waUrl) : !!window.open(waUrl, '_blank');
-                        if (opened) {
-                          this.sent = true;
+                        this.telefonoError = this.phoneIsValid() ? '' : 'Escribe un número chileno válido, por ejemplo +56 9 1234 5678.';
+                        if (this.telefonoError) {
+                          this.$nextTick(() => this.$refs.telefono.focus());
+                          return;
                         }
+                        const text = this.buildWhatsAppMessage({
+                          name: this.formNombre,
+                          business: this.formNegocio,
+                          phone: this.formTelefono,
+                          details: this.formMensaje
+                        });
+                        this.preparedUrl = `https://wa.me/56999040515?text=${encodeURIComponent(text)}`;
+                        const opened = window.openWhatsAppWithFallback
+                          ? window.openWhatsAppWithFallback(this.preparedUrl)
+                          : !!window.open(this.preparedUrl, '_blank');
+                        if (opened) this.sent = true;
+                    },
+                    editForm() {
+                        this.sent = false;
+                        this.$nextTick(() => this.$refs.nombre.focus());
+                    },
+                    resetForm() {
+                        this.formNombre = '';
+                        this.formNegocio = '';
+                        this.formTelefono = '';
+                        this.formMensaje = '';
+                        this.telefonoError = '';
+                        this.preparedUrl = '';
+                        this.sent = false;
+                        this.clearSelectedPlan();
+                        this.$nextTick(() => this.$refs.nombre.focus());
                     }
                 }" @submit.prevent="handleSubmit()">
                   <div x-show="!sent">
+                    <div x-show="getSelectedPlan()" x-cloak data-testid="selected-plan-summary" class="mb-6 rounded-2xl bg-drac-current/20 p-4">
+                      <p class="text-sm font-bold text-drac-fg" x-text="getSelectedPlan()?.label"></p>
+                      <p class="mt-1 text-sm text-drac-comment" x-text="getSelectedPlan()?.price"></p>
+                      <p class="mt-2 text-sm leading-relaxed text-drac-comment" x-text="getSelectedPlan()?.summary"></p>
+                      <button type="button" data-testid="clear-selected-plan" @click="clearSelectedPlan()" class="mt-3 min-h-11 rounded-xl px-3 text-sm font-semibold text-chile-blueLight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue">Cambiar plan</button>
+                    </div>
+                    <p x-show="!getSelectedPlan()" class="mb-6 text-sm leading-relaxed text-drac-comment">Te orientamos hacia un primer paso acorde a tu negocio.</p>
                     <div>
                       <label for="form-nombre" class="mb-2 block text-sm font-bold text-drac-fg">Tu nombre</label>
-                      <input id="form-nombre" type="text" x-model="formNombre" placeholder="Ej: Juan Pérez" required class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
+                      <input id="form-nombre" type="text" x-model="formNombre" x-ref="nombre" maxlength="80" autocomplete="name" placeholder="Ej: Juan Pérez" required class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
                     </div>
                     <div class="mt-4">
                       <label for="form-negocio" class="mb-2 block text-sm font-bold text-drac-fg">¿Qué negocio, pyme o servicio tienes?</label>
-                      <input id="form-negocio" type="text" x-model="formNegocio" placeholder="Ej: Floristería, peluquería, consulta, taller, tienda..." required class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
+                      <input id="form-negocio" type="text" x-model="formNegocio" maxlength="120" autocomplete="organization" placeholder="Ej: Floristería, peluquería, consulta, taller, tienda..." required class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
                     </div>
                     <div class="mt-4">
                       <label for="form-telefono" class="mb-2 block text-sm font-bold text-drac-fg">Tu WhatsApp (con +56)</label>
-                      <input id="form-telefono" type="tel" x-model="formTelefono" placeholder="Ej: +56 9 1234 5678" class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
+                      <input id="form-telefono" type="tel" x-model="formTelefono" x-ref="telefono" autocomplete="tel" :aria-invalid="telefonoError ? 'true' : 'false'" aria-describedby="form-telefono-hint form-telefono-error" placeholder="Ej: +56 9 1234 5678" class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
+                      <p id="form-telefono-hint" class="mt-2 text-sm text-drac-comment">Opcional. Puedes escribirlo con o sin +56.</p>
+                      <p id="form-telefono-error" x-show="telefonoError" x-text="telefonoError" role="alert" class="mt-2 text-sm font-semibold text-red-300"></p>
                     </div>
                     <div class="mt-4">
                       <label for="form-mensaje" class="mb-2 block text-sm font-bold text-drac-fg">¿Qué información explicas hoy con frecuencia?</label>
-                      <textarea id="form-mensaje" x-model="formMensaje" rows="3" placeholder="Ej: servicios, valores, horarios, zona de delivery, reservas o productos..." class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20 resize-none"></textarea>
+                      <textarea id="form-mensaje" x-model="formMensaje" maxlength="500" rows="3" placeholder="Ej: servicios, valores, horarios, zona de delivery, reservas o productos..." class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20 resize-none"></textarea>
                     </div>
                     <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-4 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
                       <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-                      Quiero mi vitrina en 3 días
+                      Preparar mi consulta por WhatsApp
                     </button>
                     <p class="contact-form-note mt-3 text-center text-xs">El botón abre WhatsApp con el contexto de tu consulta listo para enviar. Respondemos dentro del horario de atención.</p>
                     <p class="contact-form-note mt-2 text-center text-xs">Tus datos se usan solo para responder esta consulta. Revisa el <a href="./privacidad.html" class="font-semibold hover:underline">aviso de privacidad</a>.</p>
@@ -2855,9 +2887,11 @@
                     </div>
                     <h4 class="text-xl font-bold text-drac-fg">Tu mensaje está listo</h4>
                     <p class="mt-2 text-sm text-drac-comment">Envíalo por WhatsApp y revisaremos contigo el primer paso que mejor calza con tu negocio.</p>
-                    <a :href="`https://wa.me/56999040515?text=${encodeURIComponent('Hola! Mi nombre es ' + formNombre + '. Tengo un negocio de ' + formNegocio + '. Quiero revisar el Plan ' + getMostViewedPlan() + '. Entiendo que el plazo comienza cuando entregue mi información completa. WhatsApp: ' + formTelefono + '. Información adicional: ' + formMensaje)}`" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-xl bg-[#25D366] px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5">
-                      Ir a WhatsApp directo →
+                    <a :href="preparedUrl" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-xl bg-[#25D366] px-6 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5">
+                      Ir a WhatsApp
                     </a>
+                    <button type="button" data-testid="edit-contact-form" @click="editForm()" class="mt-4 min-h-11 rounded-xl px-4 text-sm font-semibold text-drac-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue">Editar información</button>
+                    <button type="button" data-testid="reset-contact-form" @click="resetForm()" class="mt-2 min-h-11 rounded-xl px-4 text-sm font-semibold text-drac-comment focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue">Empezar de nuevo</button>
                   </div>
                 </form>
               </div>
@@ -3078,9 +3112,24 @@
       return {
         mobileMenu: false,
         showVideo: false,
-        planTimes: { esencial: 0, profesional: 0, premium: 0 },
-        activePlan: null,
-        hoverStart: null,
+        selectedPlan: null,
+        planOptions: {
+          esencial: {
+            label: 'Plan Vitrina Express',
+            price: '$99.999 CLP neto + IVA',
+            summary: 'Una página de alcance cerrado para mostrar tu oferta y orientar consultas.'
+          },
+          profesional: {
+            label: 'Atención ordenada',
+            price: 'Desde $249.990 CLP neto + IVA',
+            summary: 'Catálogo, reservas o cotización para ordenar más consultas.'
+          },
+          premium: {
+            label: 'Pedidos en línea',
+            price: 'Desde $449.990 CLP neto + IVA',
+            summary: 'Venta en línea para una operación preparada para cobrar y entregar.'
+          }
+        },
         darkMode: themeController ? themeController.getInitialTheme() === themeController.DARK_THEME : false,
 
         syncTheme(nextTheme) {
@@ -3102,34 +3151,30 @@
           this.syncTheme(this.darkMode ? 'light' : 'dark');
         },
 
-        startPlanHover(plan) {
-          this.activePlan = plan;
-          this.hoverStart = Date.now();
+        selectPlan(planId) {
+          if (!Object.prototype.hasOwnProperty.call(this.planOptions, planId)) return;
+          this.selectedPlan = planId;
         },
 
-        endPlanHover(plan) {
-          if (this.activePlan === plan && this.hoverStart) {
-            this.planTimes[plan] += Date.now() - this.hoverStart;
-            this.activePlan = null;
-            this.hoverStart = null;
-          }
+        clearSelectedPlan() {
+          this.selectedPlan = null;
         },
 
-        getMostViewedPlan() {
-          let maxTime = 0;
-          let mostViewed = 'Vitrina Express';
-          const planLabels = {
-            esencial: 'Vitrina Express',
-            profesional: 'Atención ordenada',
-            premium: 'Pedidos en línea',
-          };
-          for (const [plan, time] of Object.entries(this.planTimes)) {
-            if (time > maxTime) {
-              maxTime = time;
-              mostViewed = planLabels[plan] || plan;
-            }
-          }
-          return mostViewed;
+        getSelectedPlan() {
+          return this.selectedPlan ? this.planOptions[this.selectedPlan] : null;
+        },
+
+        buildWhatsAppMessage({ name, business, phone, details }) {
+          const plan = this.getSelectedPlan();
+          const parts = [
+            `Hola, mi nombre es ${name.trim()} y tengo un negocio de ${business.trim()}.`,
+            plan
+              ? `Quiero revisar ${plan.label} y confirmar si se ajusta a mi negocio.`
+              : 'Quiero orientación para ordenar la información de mi negocio antes de conversar por WhatsApp.',
+          ];
+          if (phone.trim()) parts.push(`Mi WhatsApp es ${phone.trim()}.`);
+          if (details.trim()) parts.push(`Hoy explico con frecuencia: ${details.trim()}.`);
+          return parts.join(' ');
         },
       };
     };

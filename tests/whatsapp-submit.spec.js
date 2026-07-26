@@ -155,7 +155,7 @@ for (const plan of [
     await expect(page.getByTestId("selected-plan-summary")).toContainText(plan[1]);
     await fillLandingContact(page);
     await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
-    await expectWhatsAppOpen(page, ["PYME QA", plan[1], "quiero revisar"]);
+    await expectWhatsAppOpen(page, ["PYME QA", plan[1], "Quiero revisar"]);
     await guards.assertHealthyContext();
   });
 }
