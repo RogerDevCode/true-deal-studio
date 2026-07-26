@@ -79,6 +79,30 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test('Visual evidence links to corresponding demos with low-friction navigation', async ({ page }) => {
+    const guards = await attachPageGuards(page);
+    await page.setViewportSize({ width: 390, height: 844 });
+    const visualEvidence = page.getByTestId('benefits-visual-evidence');
+    const evidenceLinks = visualEvidence.locator('a.benefits-demo-link');
+
+    await expect(evidenceLinks).toHaveCount(3);
+    await expect(evidenceLinks.nth(0)).toHaveAttribute('href', './demo-fonoaudiologia/index.html');
+    await expect(evidenceLinks.nth(1)).toHaveAttribute('href', './demo-salon-belleza/index.html');
+    await expect(evidenceLinks.nth(2)).toHaveAttribute('href', './demo-ecommerce-tech/index.html');
+    await expect(evidenceLinks.evaluateAll((links) => links.every((link) => link.target === ''))).resolves.toBe(true);
+    await evidenceLinks.nth(0).focus();
+    await expect(evidenceLinks.nth(0)).toBeFocused();
+    await expect(evidenceLinks.nth(0)).toHaveCSS('outline-style', 'solid');
+    await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
+
+    await evidenceLinks.nth(0).click();
+    await expect(page).toHaveURL(/\/demo-fonoaudiologia\/index\.html$/);
+    await page.goBack();
+    await waitForAlpine(page);
+    await expect(visualEvidence).toBeVisible();
+    await guards.assertHealthyContext();
+  });
+
   test('Hero rubro simulator switches examples without layout overflow', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const simulator = page.getByTestId('hero-rubro-simulator');

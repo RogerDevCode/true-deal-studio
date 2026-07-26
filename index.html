@@ -705,8 +705,14 @@
       scroll-snap-type: inline mandatory;
       scrollbar-width: thin;
     }
-    .benefits-evidence figure {
+    .benefits-evidence > .benefits-demo-link {
       scroll-snap-align: start;
+      color: inherit;
+      text-decoration: none;
+    }
+    .benefits-demo-link:focus-visible {
+      outline: 3px solid rgb(var(--drac-cyan));
+      outline-offset: -3px;
     }
     @media (min-width: 640px) {
       .need-visual {
@@ -1700,18 +1706,27 @@
         </div>
 
         <div data-testid="benefits-visual-evidence" class="benefits-evidence reveal mb-8 grid rounded-[1.75rem] border border-drac-current/30 bg-drac-bg/70 shadow-card">
-          <figure class="group relative min-h-44 overflow-hidden border-b border-drac-current/20 sm:border-b-0 sm:border-r">
+          <a href="./demo-fonoaudiologia/index.html" aria-label="Ver demo de fonoaudiología infantil: servicios y reservas" class="benefits-demo-link group relative min-h-44 overflow-hidden border-b border-drac-current/20 sm:border-b-0 sm:border-r">
             <img src="./assets/optimized/fonoaudiologia-card.webp" alt="Ejemplo de página para presentar servicios y facilitar una reserva" loading="lazy" decoding="async" class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">Servicios y reservas</figcaption>
-          </figure>
-          <figure class="group relative min-h-44 overflow-hidden border-b border-drac-current/20 sm:border-b-0 sm:border-r">
+            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">
+              <span>Servicios y reservas</span>
+              <span aria-hidden="true" class="shrink-0 text-xs uppercase tracking-wider">Ver demo →</span>
+            </span>
+          </a>
+          <a href="./demo-salon-belleza/index.html" aria-label="Ver demo de salón de belleza: atención en un local" class="benefits-demo-link group relative min-h-44 overflow-hidden border-b border-drac-current/20 sm:border-b-0 sm:border-r">
             <img src="./assets/optimized/salon-card.webp" alt="Ejemplo de página para mostrar servicios de atención en un local" loading="lazy" decoding="async" class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">Atención en un local</figcaption>
-          </figure>
-          <figure class="group relative min-h-44 overflow-hidden">
+            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">
+              <span>Atención en un local</span>
+              <span aria-hidden="true" class="shrink-0 text-xs uppercase tracking-wider">Ver demo →</span>
+            </span>
+          </a>
+          <a href="./demo-ecommerce-tech/index.html" aria-label="Ver demo de tienda en línea: catálogo y productos" class="benefits-demo-link group relative min-h-44 overflow-hidden">
             <img src="./assets/optimized/ecommerce-card.webp" alt="Ejemplo de página para ordenar productos en un catálogo" loading="lazy" decoding="async" class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">Catálogo y productos</figcaption>
-          </figure>
+            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">
+              <span>Catálogo y productos</span>
+              <span aria-hidden="true" class="shrink-0 text-xs uppercase tracking-wider">Ver demo →</span>
+            </span>
+          </a>
         </div>
 
         <p class="reveal mx-auto max-w-3xl text-base leading-relaxed text-drac-comment">Tu oferta queda fácil de revisar, WhatsApp recibe consultas con más contexto y tu dominio, contenidos y accesos forman una base propia para sumar catálogo, reservas o una tienda cuando tu operación esté preparada.</p>
