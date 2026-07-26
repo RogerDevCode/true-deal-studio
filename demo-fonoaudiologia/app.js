@@ -1,7 +1,7 @@
 window.fonoaudiologiaApp = function fonoaudiologiaApp() {
   const bookingStorageKey = 'tuwebpro_bookings';
   const serviceNames = {
-    evaluacion: 'Primera Visita de Juego',
+    evaluacion: 'Primera visita de orientación',
     inicio_tardio: 'Inicio Tardío del Habla',
     sonidos: 'Sonidos del Habla (TSH)',
     comunicacion: 'Comunicación Social y Juego',
@@ -47,6 +47,7 @@ window.fonoaudiologiaApp = function fonoaudiologiaApp() {
       }
 
       const selectedServiceName = serviceNames[this.selectedService] || 'Fonoaudiología';
+      const detailSummary = details.trim() || 'Por conversar durante la coordinación';
 
       saveBooking({
         source: 'Fonoaudiología',
@@ -56,14 +57,14 @@ window.fonoaudiologiaApp = function fonoaudiologiaApp() {
         date,
         time: slot === 'mañana' ? '09:00 - 13:00' : '14:00 - 18:00',
         type: 'presencial',
-        details: `Servicio: "${selectedServiceName}". Comentarios: ${details || 'Ninguno'}. Atención a domicilio en Santiago.`,
+        details: `Servicio: "${selectedServiceName}". Antecedentes: ${detailSummary}. Atención a domicilio en Santiago.`,
       });
 
-      const message = `¡Hola Nahovy Gallegos Fonoaudiología! Solicito agendar una primera visita de juego en casa para mi hijo/a:\n\n` +
+      const message = `Hola, Nahovy. Quiero solicitar una primera visita a domicilio para mi hijo/a:\n\n` +
         `- Servicio consultado: ${selectedServiceName}\n` +
-        `- Fecha solicitada: ${date}\n` +
-        `- Bloque de preferencia: ${slot === 'mañana' ? 'Mañana (09:00 - 13:00)' : 'Tarde (14:00 - 18:00)'}\n` +
-        `- Comentarios del niño/a: ${details || 'Ninguno'}\n\n` +
+        `- Fecha preferida: ${date}\n` +
+        `- Horario preferido: ${slot === 'mañana' ? 'Mañana (09:00 - 13:00)' : 'Tarde (14:00 - 18:00)'}\n` +
+        `- Antecedentes compartidos: ${detailSummary}\n\n` +
         `Mis datos de contacto:\n` +
         `- Nombre: ${name}\n` +
         `- WhatsApp: ${phone}`;
