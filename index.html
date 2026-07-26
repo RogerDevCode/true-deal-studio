@@ -99,7 +99,7 @@
       --drac-darker: 30, 31, 41;
       --drac-current: 68, 71, 90;
       --drac-fg: 248, 248, 242;
-      --drac-comment: 168, 175, 203; /* WCAG AA compliant contrast (>6.4:1) on dark backgrounds */
+      --drac-comment: 192, 200, 218;
       --drac-cyan: 139, 233, 253;
       --drac-green: 80, 250, 123;
       --drac-orange: 255, 184, 108;
@@ -111,11 +111,11 @@
 
     html.light-theme {
       color-scheme: light;
-      --drac-bg: 255, 255, 255;      /* Pure white for panels, cards and navbar glass */
-      --drac-darker: 234, 234, 225;  /* Richer warm linen/stone gray for body background */
-      --drac-current: 206, 206, 194; /* Subtle granite gray for visible borders */
-      --drac-fg: 30, 32, 34;         /* Rich dark charcoal black for crisp contrast */
-      --drac-comment: 85, 87, 95;    /* Muted neutral slate gray (>6.5:1 on white) */
+      --drac-bg: 251, 250, 247;
+      --drac-darker: 221, 217, 207;
+      --drac-current: 174, 170, 158;
+      --drac-fg: 24, 35, 49;
+      --drac-comment: 68, 72, 80;
       --drac-cyan: 31, 58, 96;       /* Deep navy blue */
       --drac-green: 45, 90, 39;      /* Sage/forest green */
       --drac-orange: 163, 93, 34;    /* Luxury bronze/copper */
@@ -131,7 +131,7 @@
     html.light-theme body #beneficios [class*="bg-drac-bg/"],
     html.light-theme body #precios [class*="bg-drac-bg/"],
     html.light-theme body #faq [class*="bg-drac-bg/"] {
-      background-color: rgb(255, 255, 255);
+      background-color: #FBFAF7;
     }
 
     /* In Light Theme: ensure dark band sections show white text and translucent dark cards */
@@ -230,42 +230,47 @@
       color: #68A2FF;
     }
 
-    /* The transparent header sits over the light commercial notebook hero. */
-    html.light-theme #navbar:not(.glass) .text-drac-fg {
-      color: #172B4D;
-    }
-    html.light-theme #navbar:not(.glass) .text-drac-comment {
-      color: #43546A;
-    }
-    html.light-theme #navbar:not(.glass) .link-underline:hover {
-      color: #0B5A91;
-    }
-    html.light-theme #navbar:not(.glass) button[aria-label="Cambiar tema"],
-    html.light-theme #navbar:not(.glass) button[aria-label="Menú"] {
-      color: #172B4D;
-      border-color: rgba(32, 61, 91, 0.24);
-      background-color: rgba(255, 253, 248, 0.74);
-    }
-    html.light-theme #navbar:not(.glass) > div:first-child {
-      background-color: rgba(255, 253, 248, 0.72);
-      border-bottom-color: rgba(32, 61, 91, 0.14);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-    html.light-theme #navbar:not(.glass) > div:first-child .text-drac-comment {
-      color: #43546A;
-    }
-    html.light-theme #navbar:not(.glass) > div:first-child .text-drac-cyan {
-      color: #0B5A91;
-    }
-
-    /* The hero remains light in both themes, so its transparent header always uses dark ink. */
+    /* The transparent header keeps its own readable surface over the hero. */
     #navbar:not(.glass) .text-drac-fg,
     #navbar:not(.glass) .text-drac-comment,
     #navbar:not(.glass) button[aria-label="Cambiar tema"],
     #navbar:not(.glass) button[aria-label="Menú"],
     #navbar:not(.glass) button[aria-label="Cambiar tema"] svg {
+      color: #F8FAFC;
+    }
+    #navbar:not(.glass) .text-drac-cyan {
+      color: #8BDCF1;
+    }
+    #navbar:not(.glass) .navbar-shell,
+    #navbar:not(.glass) > div:first-child {
+      background-color: rgba(8, 20, 38, 0.88);
+      border-bottom-color: rgba(230, 234, 242, 0.2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    #navbar:not(.glass) button[aria-label="Cambiar tema"],
+    #navbar:not(.glass) button[aria-label="Menú"] {
+      border-color: rgba(230, 234, 242, 0.34);
+      background-color: rgba(230, 234, 242, 0.1);
+    }
+    html.light-theme #navbar:not(.glass) .text-drac-fg,
+    html.light-theme #navbar:not(.glass) .text-drac-comment,
+    html.light-theme #navbar:not(.glass) button[aria-label="Cambiar tema"],
+    html.light-theme #navbar:not(.glass) button[aria-label="Menú"] {
       color: #172B4D;
+    }
+    html.light-theme #navbar:not(.glass) .text-drac-cyan {
+      color: #0B5A91;
+    }
+    html.light-theme #navbar:not(.glass) .navbar-shell,
+    html.light-theme #navbar:not(.glass) > div:first-child {
+      background-color: rgba(221, 212, 196, 0.94);
+      border-bottom-color: rgba(23, 43, 77, 0.22);
+    }
+    html.light-theme #navbar:not(.glass) button[aria-label="Cambiar tema"],
+    html.light-theme #navbar:not(.glass) button[aria-label="Menú"] {
+      border-color: rgba(23, 43, 77, 0.32);
+      background-color: rgba(251, 250, 247, 0.66);
     }
 
     #precios .text-xs,
@@ -581,45 +586,96 @@
        ============================================= */
     .hero-photo-bg {
       background-image:
-        linear-gradient(90deg, rgba(245, 241, 232, 0.96) 0%, rgba(245, 241, 232, 0.82) 48%, rgba(245, 241, 232, 0.44) 100%),
-        radial-gradient(circle at 10% 12%, rgba(180, 67, 43, 0.12), transparent 22rem),
-        radial-gradient(circle at 90% 88%, rgba(32, 61, 91, 0.10), transparent 26rem),
+        linear-gradient(90deg, rgba(8, 20, 38, 0.97) 0%, rgba(8, 20, 38, 0.92) 52%, rgba(8, 20, 38, 0.8) 100%),
+        radial-gradient(circle at 10% 12%, rgba(180, 67, 43, 0.18), transparent 22rem),
+        radial-gradient(circle at 90% 88%, rgba(104, 162, 255, 0.14), transparent 26rem),
         url('./assets/visuals/stax-hero-atmosphere.webp');
-      background-color: #F5F1E8;
+      background-color: #0C1A2E;
       background-size: 100% 100%, auto, auto, cover;
       background-position: center, center, center, center;
       background-repeat: no-repeat;
     }
     #inicio .premium-note {
-      color: #25415F;
-      background: rgba(255, 253, 248, 0.86);
-      border-color: rgba(32, 61, 91, 0.18);
+      color: #E6EAF2;
+      background: rgba(8, 20, 38, 0.84);
+      border-color: rgba(230, 234, 242, 0.24);
     }
     #inicio .editorial-bar {
       border-left-color: #B4432B;
     }
     #inicio .editorial-bar h1 {
-      color: #172B4D;
+      color: #F8FAFC;
       text-shadow: none;
+    }
+    #inicio .editorial-bar h1 > span {
+      color: #FDE68A;
     }
     #inicio .hero-subtitle,
     #inicio .hero-trust {
-      color: #43546A;
+      color: #D8E1EC;
     }
     #inicio .hero-local-reach {
-      color: #25415F;
-      background: rgba(255, 253, 248, 0.86);
-      border-color: rgba(32, 61, 91, 0.18);
+      color: #E6EAF2;
+      background: rgba(8, 20, 38, 0.84);
+      border-color: rgba(230, 234, 242, 0.24);
     }
     #inicio .premium-quiet-cta {
-      color: #25415F;
-      background: rgba(255, 253, 248, 0.86);
-      border-color: rgba(37, 65, 95, 0.3);
+      color: #F8FAFC;
+      background: rgba(8, 20, 38, 0.84);
+      border-color: rgba(230, 234, 242, 0.38);
     }
     #inicio .premium-quiet-cta:hover {
+      color: #FFFFFF;
+      background: #172B4D;
+      border-color: rgba(230, 234, 242, 0.65);
+    }
+    html.light-theme .hero-photo-bg {
+      background-image:
+        linear-gradient(90deg, rgba(226, 218, 203, 0.98) 0%, rgba(226, 218, 203, 0.92) 52%, rgba(226, 218, 203, 0.72) 100%),
+        radial-gradient(circle at 10% 12%, rgba(180, 67, 43, 0.15), transparent 22rem),
+        radial-gradient(circle at 90% 88%, rgba(32, 61, 91, 0.12), transparent 26rem),
+        url('./assets/visuals/stax-hero-atmosphere.webp');
+      background-color: #E2DACB;
+    }
+    html.light-theme #inicio .premium-note,
+    html.light-theme #inicio .hero-local-reach {
+      color: #263D57;
+      background: rgba(251, 250, 247, 0.78);
+      border-color: rgba(23, 43, 77, 0.28);
+    }
+    html.light-theme #inicio .editorial-bar h1 {
+      color: #12233F;
+    }
+    html.light-theme #inicio .editorial-bar h1 > span {
+      color: #71391F;
+    }
+    html.light-theme #inicio .hero-subtitle,
+    html.light-theme #inicio .hero-trust {
+      color: #33465E;
+    }
+    html.light-theme #inicio .premium-quiet-cta {
       color: #172B4D;
-      background: #FFFFFF;
-      border-color: rgba(37, 65, 95, 0.5);
+      background: rgba(251, 250, 247, 0.78);
+      border-color: rgba(23, 43, 77, 0.36);
+    }
+    html.light-theme #inicio .premium-quiet-cta:hover {
+      color: #12233F;
+      background: #FBFAF7;
+      border-color: rgba(23, 43, 77, 0.6);
+    }
+    .mobile-menu-surface {
+      background-color: #151A26;
+      border-color: rgba(230, 234, 242, 0.24);
+    }
+    .mobile-menu-surface .mobile-menu-link {
+      color: #E6EAF2;
+    }
+    html.light-theme .mobile-menu-surface {
+      background-color: #DDD4C4;
+      border-color: rgba(23, 43, 77, 0.28);
+    }
+    html.light-theme .mobile-menu-surface .mobile-menu-link {
+      color: #172B4D;
     }
     #necesidades,
     #demos {
@@ -858,10 +914,10 @@
       background-color: #0B1526;
     }
     html.light-theme .band-white {
-      background-color: #FFFFFF;
+      background-color: #F1EEE7;
     }
     html.light-theme .band-lino {
-      background-color: #EAEAE1;
+      background-color: #DDD9CF;
     }
     html.light-theme .band-navy {
       background-color: #0C1F4A;
@@ -996,7 +1052,7 @@
         <span>Horario de atención: Lunes a Sábado, de 09.00 hasta las 17.00</span>
       </div>
     </div>
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300"
+    <div class="navbar-shell mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300"
          :class="scrolled ? 'py-2' : 'py-4'">
       <!-- Logo -->
       <a href="#inicio" class="flex items-center gap-3 group" aria-label="Inicio">
@@ -1065,14 +1121,14 @@
 
     <!-- Mobile menu -->
     <button type="button" data-testid="mobile-menu-backdrop" x-show="mobileMenu" x-cloak @click="mobileMenu = false; $nextTick(() => $refs.mobileMenuButton.focus())" aria-label="Cerrar menú" class="fixed inset-0 top-[72px] z-0 bg-slate-950/45 lg:hidden"></button>
-    <div data-testid="mobile-menu-panel" x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" class="glass relative z-10 border-t border-drac-current/30 lg:hidden" x-cloak>
+    <div data-testid="mobile-menu-panel" x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" class="mobile-menu-surface relative z-10 border-t lg:hidden" x-cloak>
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
-        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#beneficios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
-        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#proceso" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Proceso</a>
-        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#necesidades" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Cómo atiendes</a>
-        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#demos" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Demos</a>
-        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#precios" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Inversión</a>
-        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#faq" class="rounded-xl px-4 py-3 text-sm font-semibold text-drac-comment hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Preguntas</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#beneficios" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#proceso" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Proceso</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#necesidades" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Cómo atiendes</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#demos" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Demos</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#precios" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Inversión</a>
+        <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#faq" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Preguntas</a>
         <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#contacto" class="mt-2 rounded-xl bg-gradient-to-r from-chile-red to-chile-redDark px-4 py-3 text-center text-sm font-bold text-white">
           Quiero orientación para mi negocio
         </a>

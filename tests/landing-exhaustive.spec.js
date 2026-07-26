@@ -42,7 +42,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('#inicio').getByRole('link', { name: 'Quiero orientación para mi negocio' })).toHaveAttribute('href', '#contacto');
     const examplesCta = page.getByRole('link', { name: 'Ver ejemplos', exact: true });
     await expect(examplesCta).toHaveAttribute('href', '#demos');
-    await expect(examplesCta).toHaveCSS('color', 'rgb(37, 65, 95)');
+    await expect(examplesCta).toHaveCSS('color', 'rgb(23, 43, 77)');
     await examplesCta.click();
     await expect.poll(async () => page.locator('#demos').evaluate((section) => section.getBoundingClientRect().top)).toBeGreaterThanOrEqual(72);
     await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.not.toBe('none');
@@ -166,7 +166,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
 
     const localReach = hero.getByText('Desde Biobío para negocios de todo Chile', { exact: true });
     await expect(localReach).toBeVisible();
-    await expect(localReach).toHaveCSS('color', 'rgb(37, 65, 95)');
+    await expect(localReach).toHaveCSS('color', 'rgb(38, 61, 87)');
     await expect(ia.getByRole('heading', { name: 'La herramienta acelera. STAX se hace cargo del criterio.' })).toBeVisible();
     await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; STAX aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
     await expect(ia.locator('.business-card')).toHaveCount(0);
@@ -275,7 +275,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.evaluate(() => document.documentElement.classList.remove('light-theme'));
     await expect(page.locator('#navbar')).not.toHaveClass(/\bglass\b/);
-    await expect(page.locator('#navbar a[aria-label="Inicio"] .text-drac-fg')).toHaveCSS('color', 'rgb(23, 43, 77)');
+    await expect(page.locator('#navbar a[aria-label="Inicio"] .text-drac-fg')).toHaveCSS('color', 'rgb(248, 250, 252)');
   });
 
   test('Process presents exactly three static steps without an automatic loop', async ({ page }) => {
@@ -361,6 +361,11 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
           await expect(menu).toHaveCSS('background-color', colors.menuBackground);
           await expect(firstLink).toHaveCSS('color', colors.menuText);
           expect(contrastRatio(parseRgb(colors.menuText), parseRgb(colors.menuBackground))).toBeGreaterThanOrEqual(4.5);
+        } else {
+          const navbarText = await page.locator('#navbar nav[aria-label="Navegación principal"] a[href="#beneficios"]').evaluate(
+            (link) => getComputedStyle(link).color
+          );
+          expect(contrastRatio(parseRgb(navbarText), parseRgb(colors.menuBackground))).toBeGreaterThanOrEqual(4.5);
         }
       }
     }
