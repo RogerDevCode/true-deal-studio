@@ -119,6 +119,19 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await guards.assertHealthyContext();
   });
 
+  test("Plan CTAs make one explicit, reversible selection", async ({ page }) => {
+    const prices = page.locator("#precios");
+    for (const id of ["esencial", "profesional", "premium"]) {
+      await expect(prices.getByTestId(`plan-cta-${id}`)).toHaveAttribute("href", "#contacto");
+      await expect(prices.getByTestId(`plan-cta-${id}`)).toHaveText("Revisar este plan");
+    }
+    await prices.getByTestId("plan-cta-premium").click();
+    await expect(page.getByTestId("selected-plan-summary")).toContainText("Pedidos en línea");
+    await page.getByTestId("clear-selected-plan").click();
+    await expect(page.getByTestId("selected-plan-summary")).not.toBeVisible();
+    await expect(page.locator("#contacto")).toContainText("Te orientamos hacia un primer paso acorde a tu negocio.");
+  });
+
   test('Contact section explains the three steps before opening WhatsApp', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const contact = page.locator('#contacto');

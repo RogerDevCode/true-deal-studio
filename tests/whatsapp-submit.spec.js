@@ -26,6 +26,20 @@ async function expectWhatsAppOpen(page, expectedParts) {
   }
 }
 
+async function fillLandingContact(page, overrides = {}) {
+  const data = {
+    name: "PYME QA",
+    business: "Taller QA",
+    phone: "+56 9 1111 2222",
+    details: "Valores y horarios",
+    ...overrides,
+  };
+  await page.locator("#form-nombre").fill(data.name);
+  await page.locator("#form-negocio").fill(data.business);
+  await page.locator("#form-telefono").fill(data.phone);
+  await page.locator("#form-mensaje").fill(data.details);
+}
+
 test("Core booking forms submit to WhatsApp", async ({ browser }) => {
   const cases = [
     {
@@ -115,21 +129,60 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
   }
 });
 
-test("Landing contact form names Plan Vitrina Express in WhatsApp", async ({ browser }) => {
-  const context = await browser.newContext();
-  const page = await context.newPage();
+test("Landing prepares a neutral consultative WhatsApp message", async ({ page }) => {
   await installWindowOpenProbe(page);
   const guards = await attachPageGuards(page);
-
-  await page.goto("/index.html");
+  await page.goto("/index.html#contacto");
   await waitForAlpine(page);
-  await page.locator("#form-nombre").fill("PYME QA");
-  await page.locator("#form-negocio").fill("Taller QA");
-  await page.locator("#form-telefono").fill("+56911112222");
-  await page.locator("#form-mensaje").fill("Valores y horarios");
-  await page.locator("#contacto form").getByRole("button", { name: "Quiero mi vitrina en 3 días" }).click();
-
-  await expectWhatsAppOpen(page, ["PYME QA", "Plan Vitrina Express", "Valores y horarios"]);
+  await fillLandingContact(page);
+  await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
+  await expectWhatsAppOpen(page, ["PYME QA", "Taller QA", "orientación", "Valores y horarios"]);
+  expect(decodeURIComponent(await page.evaluate(() => window.__lastOpenedUrl))).not.toContain("Plan Vitrina Express");
   await guards.assertHealthyContext();
-  await context.close();
+});
+
+for (const plan of [
+  ["esencial", "Plan Vitrina Express"],
+  ["profesional", "Atención ordenada"],
+  ["premium", "Pedidos en línea"],
+]) {
+  test(`Landing sends the explicitly selected ${plan[1]} plan`, async ({ page }) => {
+    await installWindowOpenProbe(page);
+    const guards = await attachPageGuards(page);
+    await page.goto("/index.html#precios");
+    await waitForAlpine(page);
+    await page.getByTestId(`plan-cta-${plan[0]}`).click();
+    await expect(page.getByTestId("selected-plan-summary")).toContainText(plan[1]);
+    await fillLandingContact(page);
+    await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
+    await expectWhatsAppOpen(page, ["PYME QA", plan[1], "quiero revisar"]);
+    await guards.assertHealthyContext();
+  });
+}
+
+test("Landing preserves data when editing and resets only on request", async ({ page }) => {
+  await installWindowOpenProbe(page);
+  await page.goto("/index.html#precios");
+  await waitForAlpine(page);
+  await page.getByTestId("plan-cta-profesional").click();
+  await fillLandingContact(page);
+  await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
+  await page.getByTestId("edit-contact-form").click();
+  await expect(page.locator("#form-nombre")).toHaveValue("PYME QA");
+  await expect(page.getByTestId("selected-plan-summary")).toContainText("Atención ordenada");
+  await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
+  await page.getByTestId("reset-contact-form").click();
+  await expect(page.locator("#form-nombre")).toHaveValue("");
+  await expect(page.getByTestId("selected-plan-summary")).not.toBeVisible();
+});
+
+test("Landing explains how to correct an invalid Chilean WhatsApp number", async ({ page }) => {
+  await installWindowOpenProbe(page);
+  await page.goto("/index.html#contacto");
+  await waitForAlpine(page);
+  await fillLandingContact(page, { phone: "123" });
+  await page.getByRole("button", { name: "Preparar mi consulta por WhatsApp" }).click();
+  await expect(page.locator("#form-telefono-error")).toHaveText("Escribe un número chileno válido, por ejemplo +56 9 1234 5678.");
+  await expect(page.locator("#form-telefono")).toHaveAttribute("aria-invalid", "true");
+  expect(await page.evaluate(() => window.__lastOpenedUrl)).toBeNull();
 });
