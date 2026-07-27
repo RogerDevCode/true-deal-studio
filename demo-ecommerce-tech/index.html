@@ -6,35 +6,27 @@
     <title>Apex Tech | Tienda Online & Panel de Administración Demo</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Demo de E-commerce para Chile. Incluye carro de compras, pagos digitales, atención automática y panel de administración interactivo para gestionar productos y pedidos.">
+    <meta name="description" content="Demostración interactiva de e-commerce para PYMEs chilenas: prueba un catálogo, crea un pedido demo y revisa cómo llega al panel del negocio.">
     <meta name="keywords" content="ecommerce, tienda online, panel de administracion, chile, pyme, desarrollo web, carro de compras">
     <meta property="og:title" content="Apex Tech | Tienda Online & Panel de Administración Demo" />
-    <meta property="og:description" content="Mira cómo puedes escalar tu negocio a una tienda con pagos digitales, atención automática y panel de administración." />
+    <meta property="og:description" content="Prueba un catálogo, crea un pedido demostrativo y revisa cómo llega al panel del negocio." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./hero.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Structured Data JSON-LD (Store) -->
+    <!-- Structured Data JSON-LD (demonstration page) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Store",
-      "name": "Apex Tech Demo",
+      "@type": "WebPage",
+      "name": "Apex Tech | Demostración de tienda y panel",
       "image": "./hero.png",
-      "description": "Tienda demostrativa de gadgets tecnológicos premium con pagos digitales y atención automática.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Providencia 1234",
-        "addressLocality": "Santiago",
-        "addressRegion": "Metropolitana",
-        "addressCountry": "CL"
-      },
-      "telephone": "+56999040515",
-      "priceRange": "$$"
+      "description": "Página demostrativa para probar un catálogo, crear un pedido simulado y revisar su gestión en un panel administrativo."
     }
     </script>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="preload" as="image" href="./hero.png">
 
     <!-- Fonts: Outfit (headings) & Inter (body) -->
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -61,7 +53,6 @@
             --font-headings: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
             --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow-glow: 0 0 20px rgba(249, 115, 22, 0.15);
             --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
@@ -71,6 +62,15 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--accent-secondary);
+            outline-offset: 3px;
         }
 
         body {
@@ -204,7 +204,7 @@
         .cart-trigger:hover {
             border-color: var(--accent);
             color: var(--accent);
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.42);
         }
 
         .cart-badge {
@@ -351,13 +351,13 @@
         .btn-primary {
             background-color: var(--accent);
             color: #181410;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.38);
         }
 
         .btn-primary:hover {
             background-color: var(--accent-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.46);
         }
 
         .btn-primary:active {
@@ -424,6 +424,7 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: var(--transition-smooth);
+            min-height: 44px;
         }
 
         .tab-btn:hover, .tab-btn.active {
@@ -723,7 +724,7 @@
 
         .form-control:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 10px rgba(249, 115, 22, 0.1);
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.34);
         }
 
         .form-control::placeholder {
@@ -793,7 +794,7 @@
         .admin-tab-btn.active {
             color: var(--accent-secondary);
             background-color: rgba(14, 165, 233, 0.08);
-            border-left: 3px solid var(--accent-secondary);
+            border-left: 1px solid var(--accent-secondary);
         }
         @media (max-width: 768px) {
             .admin-tab-btn.active {
@@ -1142,24 +1143,326 @@
                 max-height: 90vh;
             }
         }
+
+        .demo-disclosure {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid rgba(14, 165, 233, 0.35);
+            border-radius: 10px;
+            background: rgba(14, 165, 233, 0.08);
+            color: #bae6fd;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .journey-step {
+            padding: 0.85rem;
+            border-top: 1px solid rgba(14, 165, 233, 0.42);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .journey-step strong {
+            display: block;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .stock-copy {
+            color: #bae6fd;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .btn:disabled,
+        .qty-btn:disabled {
+            cursor: default;
+            opacity: 0.52;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .checkout-summary {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--bg-darkest);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkout-summary-item,
+        .checkout-summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+        }
+
+        .checkout-summary-item span:first-child,
+        .checkout-summary-row strong {
+            color: var(--text-light);
+        }
+
+        .checkout-summary-total {
+            border-top: 1px solid var(--border);
+            margin-top: 0.5rem;
+            padding-top: 0.9rem;
+            font-size: 1rem;
+        }
+
+        .form-error {
+            border: 1px solid rgba(249, 115, 22, 0.45);
+            border-radius: 10px;
+            background: rgba(249, 115, 22, 0.08);
+            color: #ffedd5;
+            padding: 0.85rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-note {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .admin-mobile-list {
+            display: none;
+        }
+
+        .admin-mobile-card {
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .admin-mobile-card:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .admin-mobile-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+        }
+
+        .admin-mobile-card img {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .admin-mobile-card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .admin-mobile-card-actions button {
+            min-height: 44px;
+        }
+
+        .status-announcement {
+            position: fixed;
+            left: 50%;
+            bottom: 1.25rem;
+            transform: translateX(-50%);
+            z-index: 400;
+            width: min(calc(100% - 2rem), 420px);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            background: var(--bg-light);
+            border: 1px solid var(--accent-secondary);
+            color: var(--text-light);
+            text-align: center;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.48);
+        }
+
+        .modal-title-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .modal-title-row h3 {
+            font-size: 1.2rem;
+        }
+
+        .close-btn,
+        .qty-btn,
+        .action-btn {
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .btn:focus-visible,
+        .form-control:focus-visible,
+        .nav-btn:focus-visible,
+        .cart-trigger:focus-visible,
+        .tab-btn:focus-visible,
+        .admin-tab-btn:focus-visible,
+        .close-btn:focus-visible,
+        .qty-btn:focus-visible,
+        .action-btn:focus-visible {
+            outline: 3px solid var(--accent-secondary);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .container.section-padding {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .nav-container {
+                height: auto;
+                min-height: 4.5rem;
+                gap: 0.75rem;
+                padding-top: 0.65rem;
+                padding-bottom: 0.65rem;
+            }
+
+            .logo {
+                font-size: 1.15rem;
+                white-space: nowrap;
+            }
+
+            .nav-actions {
+                gap: 0.5rem;
+            }
+
+            .nav-btn.admin {
+                padding: 0.6rem;
+                font-size: 0;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
+            }
+
+            .nav-btn.admin svg {
+                width: 1.35rem;
+                height: 1.35rem;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-title {
+                text-wrap: balance;
+            }
+
+            .hero-description {
+                max-width: 34ch;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .journey-steps {
+                grid-template-columns: 1fr;
+                text-align: left;
+                width: 100%;
+            }
+
+            .admin-table-wrapper {
+                display: none;
+            }
+
+            .admin-mobile-list {
+                display: block;
+                width: 100%;
+            }
+
+            .admin-content {
+                padding: 1rem;
+                overflow-x: hidden;
+            }
+
+            .admin-modal .modal-header {
+                padding: 1rem;
+            }
+
+            .modal-title-row h3 {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            .admin-sidebar {
+                scrollbar-width: thin;
+            }
+
+            .admin-tab-btn {
+                flex: 0 0 auto;
+                min-height: 44px;
+                width: auto;
+            }
+
+            .modal-backdrop {
+                padding: 0.75rem;
+            }
+
+            .modal {
+                max-height: calc(100dvh - 1.5rem);
+                border-radius: 18px;
+            }
+
+            .modal-body {
+                padding: 1.25rem;
+            }
+
+            .checkout-actions {
+                flex-direction: column-reverse;
+            }
+
+            .checkout-actions .btn {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body x-data="storeApp()" x-init="init()">
 
     <!-- Header Navigation -->
-    <header>
+    <header :inert="hasOpenOverlay ? true : null">
         <div class="container nav-container">
             <a href="#" class="logo">
                 ⚡ Apex<span>Tech</span>
             </a>
             
             <div class="nav-actions">
-                <button @click="openAdminModal()" class="nav-btn admin">
+                <button @click="openAdminModal($event.currentTarget)" class="nav-btn admin" aria-label="Abrir panel demo">
                     <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     Panel Admin
                 </button>
                 
-                <button @click="isCartOpen = true" class="cart-trigger" aria-label="Abrir Carrito">
+                <button @click="openCart($event.currentTarget)" class="cart-trigger" aria-label="Abrir carrito demo">
                     <svg class="icon-inline" style="width: 1.5rem; height: 1.5rem;" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                     <span class="cart-badge" x-show="cart.length > 0" x-text="cartCount()">0</span>
                 </button>
@@ -1167,6 +1470,7 @@
         </div>
     </header>
 
+    <main :inert="hasOpenOverlay ? true : null">
     <!-- Store Closed Banner -->
     <div class="closed-banner" x-show="isStoreClosed()">
         <svg class="icon-inline" style="color: var(--danger);" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
@@ -1177,16 +1481,16 @@
     <section class="container section-padding" style="padding-top: 3rem; padding-bottom: 3rem;">
         <div class="hero">
             <div class="hero-text">
-                <span class="hero-badge">
+                <span class="demo-disclosure">
                     <svg class="icon-inline" style="stroke-width: 3;" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                    Envío Express Hoy mismo en Santiago
+                    Demostración interactiva · datos ilustrativos
                 </span>
-                <h1 class="hero-title">Tu vitrina también puede cobrar</h1>
-                <p class="hero-description">Esta demo muestra cómo una pyme puede vender con pagos digitales, resolver preguntas frecuentes con apoyo automático y ordenar pedidos desde un panel simple.</p>
+                <h1 class="hero-title">Tu catálogo también puede ordenar pedidos</h1>
+                <p class="hero-description">Prueba el catálogo como cliente, crea un pedido demostrativo y revisa cómo llega al panel del negocio.</p>
                 
                 <div class="hero-actions">
                     <a href="#catalogo" class="btn btn-primary">
-                        Comprar Ahora
+                        Probar catálogo
                         <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
                 </div>
@@ -1194,17 +1498,23 @@
                 <div class="hero-features" style="margin-top: 2.5rem;">
                     <div class="hero-feature-item">
                         <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                        Pagos digitales listos
+                        Carro y pedido interactivos
                     </div>
                     <div class="hero-feature-item">
                         <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                        Chatbot para preguntas frecuentes
+                        Panel administrativo demostrativo
                     </div>
+                </div>
+
+                <div class="journey-steps" aria-label="Recorrido de la demostración">
+                    <div class="journey-step"><strong>1. Elige</strong>Revisa productos y stock.</div>
+                    <div class="journey-step"><strong>2. Simula</strong>Crea un pedido demostrativo.</div>
+                    <div class="journey-step"><strong>3. Gestiona</strong>Encuéntralo en el panel.</div>
                 </div>
             </div>
             
             <div class="hero-image-container">
-                <img src="hero.png" alt="Dispositivos Premium" class="hero-image">
+                <img src="hero.png" alt="Audífonos y reloj inteligente presentados en una tienda tecnológica demostrativa" class="hero-image" width="1024" height="1024" fetchpriority="high" decoding="async">
             </div>
         </div>
     </section>
@@ -1214,8 +1524,8 @@
         <div class="container">
             <div class="section-header">
                 <span class="text-responsive-detail" style="color: var(--accent); font-weight: 700; text-transform: uppercase;  letter-spacing: 2px; display: block; margin-bottom: 0.5rem;">CATÁLOGO DE PRODUCTOS</span>
-                <h2 class="section-title">Nuestras Ofertas Tecnológicas</h2>
-                <p class="section-subtitle">Aprovecha precios exclusivos por tiempo limitado en artículos premium</p>
+                <h2 class="section-title">Productos de demostración</h2>
+                <p class="section-subtitle">Explora el catálogo, revisa disponibilidad y prueba el recorrido completo de un pedido.</p>
             </div>
 
             <!-- Categories Tabs -->
@@ -1232,7 +1542,7 @@
                     <div class="product-card" x-show="product.active">
                         
                         <div class="product-img-wrapper">
-                            <img :src="product.image" :alt="product.name" class="product-img">
+                            <img :src="product.image" :alt="product.name" class="product-img" width="1024" height="1024" loading="lazy" decoding="async">
                         </div>
                         
                         <div class="product-body">
@@ -1242,10 +1552,12 @@
                             <div class="product-price-row">
                                 <span class="price-current" x-text="formatCLP(product.price)"></span>
                             </div>
+
+                            <p class="stock-copy" x-text="product.stock === 1 ? '1 unidad disponible' : product.stock + ' unidades disponibles'"></p>
                             
-                            <button @click="addToCart(product)" class="btn btn-primary" style="width: 100%; border-radius: 10px; padding: 0.75rem 1.5rem; font-size: 0.95rem;">
+                            <button @click="addToCart(product, $event.currentTarget)" :disabled="!canAddProduct(product)" :aria-label="`Agregar al carro ${product.name}; ${product.stock} disponibles`" class="btn btn-primary" style="width: 100%; border-radius: 10px; padding: 0.75rem 1.5rem; font-size: 0.95rem;">
                                 <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                                Agregar al Carro
+                                <span x-text="canAddProduct(product) ? 'Agregar al carro' : 'Stock máximo agregado'"></span>
                             </button>
                         </div>
                     </div>
@@ -1265,8 +1577,8 @@
             <div class="scale-card">
                 <div>
                     <span class="text-responsive-detail" style="color: var(--accent-secondary); font-weight: 700;  text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.5rem;">CÓMO ESCALAR TU NEGOCIO</span>
-                    <h2 style="font-size: 2.25rem; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.2;">De una Landing Page simple a un E-commerce real</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem;">Esta maqueta interactiva simula el funcionamiento de una tienda con base de datos en memoria (`localStorage`). Para llevar este proyecto a un nivel real y comercializable con clientes reales, se implementan tecnologías de backend robustas:</p>
+                    <h2 style="font-size: 2.25rem; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.2;">De esta demostración a una tienda publicada</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem;">Esta experiencia guarda cambios y pedidos dentro del navegador usado para la demostración. Una publicación real conecta catálogo, pedidos, accesos y respaldos con servicios preparados para la operación del negocio.</p>
                     
                     <div class="scale-bullets">
                         <div class="scale-bullet">
@@ -1274,8 +1586,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
                             </div>
                             <div class="scale-bullet-text">
-                                <h4>Base de Datos Persistente</h4>
-                                <p>Reemplazamos el almacenamiento local por bases de datos relacionales (como PostgreSQL o MySQL) conectadas a un panel administrativo con credenciales de seguridad seguras.</p>
+                                <h4>Datos y accesos del negocio</h4>
+                                <p>Productos, pedidos y usuarios se conectan a una base de datos con accesos protegidos, respaldo y propiedad acordada.</p>
                             </div>
                         </div>
 
@@ -1284,8 +1596,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 00-3 3z"/></svg>
                             </div>
                             <div class="scale-bullet-text">
-                                <h4>Pasarelas de Pago Integradas (Chile)</h4>
-                                <p>Conexión directa con Webpay Plus, Flow o Mercado Pago para que tus clientes paguen en línea con débito (Redcompra) o crédito de forma 100% automatizada.</p>
+                                <h4>Pagos digitales configurables</h4>
+                                <p>Las pasarelas de pago se conectan al publicar, según el proveedor elegido y sus requisitos comerciales y tributarios.</p>
                             </div>
                         </div>
 
@@ -1294,8 +1606,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v-4l-4 4 4 4v-4H3V8h9v4l4-4-4-4v4h5z"/></svg>
                             </div>
                             <div class="scale-bullet-text">
-                                <h4>Logística Automatizada</h4>
-                                <p>Cálculo de envíos en tiempo real e integración con courriers (Starken, Chilexpress, CorreosChile o Blue Express) para generar etiquetas de envío automáticamente al pagar.</p>
+                                <h4>Despacho acorde a tu cobertura</h4>
+                                <p>La tienda puede calcular tarifas o preparar solicitudes de despacho según comunas, transportistas y reglas revisadas con el negocio.</p>
                             </div>
                         </div>
                     </div>
@@ -1306,20 +1618,24 @@
                         <svg class="icon-inline" style="width: 1.75rem; height: 1.75rem;" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h3 style="font-size: 1.4rem;">¿Quieres dar el siguiente paso?</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">Podemos ayudarte a transformar esta plantilla en tu tienda oficial. Diseñamos, programamos y conectamos todo el sistema de pagos y administración para que solo te preocupes de vender.</p>
-                    <a href="../index.html#contacto" class="btn btn-primary" style="margin-top: 1rem; border-radius: 10px;">Volver a Cotizar</a>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0;">Adaptamos catálogo, pagos, despacho y panel a la forma en que tu negocio vende y atiende. Tú conservas visibilidad sobre productos, pedidos y próximos pasos.</p>
+                    <a href="../index.html#contacto" class="btn btn-primary" style="margin-top: 1rem; border-radius: 10px;">Consultar por una tienda</a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Shopping Cart Drawer -->
-    <div class="cart-drawer-backdrop" x-show="isCartOpen" x-transition.opacity @click.self="isCartOpen = false" style="display: none;">
-        <div class="cart-drawer" x-show="isCartOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="transform translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="transform translate-x-0" x-transition:leave-end="transform translate-x-full">
+    <div class="cart-drawer-backdrop" x-show="isCartOpen" x-transition.opacity @click.self="closeCart()" style="display: none;">
+        <div class="cart-drawer" x-show="isCartOpen" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1" x-ref="cartDialog" @keydown="handleOverlayKeydown($event, 'cart')" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="transform translate-x-full" x-transition:enter-end="transform translate-x-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="transform translate-x-0" x-transition:leave-end="transform translate-x-full">
             
             <div class="drawer-header">
-                <h3>Tu Carro de Compras</h3>
-                <button @click="isCartOpen = false" class="close-btn" aria-label="Cerrar carrito">
+                <div>
+                    <p class="text-responsive-disclaimer" style="color: var(--accent-secondary); font-weight: 700; text-transform: uppercase;">Demostración</p>
+                    <h3 id="cart-title">Carro demostrativo</h3>
+                </div>
+                <button @click="closeCart()" class="close-btn" aria-label="Cerrar carrito">
                     <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
@@ -1339,12 +1655,13 @@
                             <div class="cart-item-name" x-text="item.name"></div>
                             <div class="cart-item-price" x-text="formatCLP(item.price)"></div>
                             <div class="qty-controls">
-                                <button @click="decreaseQty(item)" class="qty-btn">-</button>
+                                <button @click="decreaseQty(item)" class="qty-btn" :aria-label="`Disminuir cantidad de ${item.name}`">−</button>
                                 <span style="font-weight: 600; font-size: 0.9rem; padding: 0 0.5rem;" x-text="item.qty"></span>
-                                <button @click="increaseQty(item)" class="qty-btn">+</button>
+                                <button @click="increaseQty(item)" class="qty-btn" :disabled="item.qty >= item.stock" :aria-label="`Aumentar cantidad de ${item.name}`">+</button>
                             </div>
+                            <div class="text-responsive-disclaimer" style="color: var(--text-muted);" x-text="`Máximo disponible: ${item.stock}`"></div>
                         </div>
-                        <button @click="removeFromCart(item)" class="action-btn delete" style="padding: 0.5rem;" aria-label="Eliminar artículo">
+                        <button @click="removeFromCart(item)" class="action-btn delete" style="padding: 0.5rem;" :aria-label="`Eliminar ${item.name} del carro`">
                             <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                         </button>
                     </div>
@@ -1353,12 +1670,13 @@
             
             <div class="drawer-footer" x-show="cart.length > 0">
                 <div class="summary-row total">
-                    <span>Total</span>
+                    <span>Total productos</span>
                     <span x-text="formatCLP(getCartTotal())"></span>
                 </div>
+                <p class="demo-note">Este recorrido crea un pedido demostrativo. Aquí se realiza una simulación y ningún cobro será procesado.</p>
                 
-                <button @click="openCheckout()" class="btn btn-primary" style="width: 100%; margin-top: 1rem; border-radius: 12px;">
-                    Continuar al Pago
+                <button @click="openCheckout($event.currentTarget)" class="btn btn-primary" style="width: 100%; margin-top: 1rem; border-radius: 12px;">
+                    Revisar pedido demo
                     <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
@@ -1366,43 +1684,65 @@
     </div>
 
     <!-- Checkout Modal -->
-    <div class="modal-backdrop" x-show="isCheckoutOpen" x-transition.opacity style="display: none;">
-        <div class="modal" @click.outside="closeCheckout()">
+    <div class="modal-backdrop" x-show="isCheckoutOpen" x-transition.opacity @click.self="closeCheckout(true)" style="display: none;">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title" tabindex="-1" x-ref="checkoutDialog" @keydown="handleOverlayKeydown($event, 'checkout')">
             <div class="modal-header">
-                <h3>Confirmar Pedido</h3>
-                <button @click="closeCheckout()" class="close-btn" aria-label="Cerrar">
+                <div>
+                    <p class="text-responsive-disclaimer" style="color: var(--accent-secondary); font-weight: 700; text-transform: uppercase;">Simulación de compra</p>
+                    <h3 id="checkout-title">Crear pedido demo</h3>
+                </div>
+                <button @click="closeCheckout(true)" class="close-btn" aria-label="Cerrar pedido demo">
                     <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
             <div class="modal-body">
-                <form @submit.prevent="submitOrder()">
+                <div class="checkout-summary" aria-label="Resumen del pedido demostrativo">
+                    <p class="form-label" style="margin-bottom: 0.5rem;">Tu pedido</p>
+                    <template x-for="item in cart" :key="item.id">
+                        <div class="checkout-summary-item">
+                            <span x-text="`${item.qty} × ${item.name}`"></span>
+                            <span x-text="formatCLP(item.price * item.qty)"></span>
+                        </div>
+                    </template>
+                    <div class="checkout-summary-row checkout-summary-total">
+                        <strong>Total productos</strong>
+                        <strong x-text="formatCLP(getCartTotal())"></strong>
+                    </div>
+                    <p style="color: #bae6fd; font-size: 0.85rem; margin-top: 0.75rem;" x-text="deliverySummary"></p>
+                </div>
+
+                <p class="demo-note">Usa datos ficticios para probar el flujo. Esta simulación queda guardada únicamente en este navegador.</p>
+
+                <form @submit.prevent="submitOrder()" novalidate>
                     <div class="form-group">
                         <label class="form-label" for="checkout-name">Nombre Completo</label>
-                        <input id="checkout-name" type="text" x-model="checkoutName" required class="form-control" placeholder="Ej. Juan Pérez">
+                        <input id="checkout-name" type="text" x-model="checkoutName" required class="form-control" placeholder="Ej. Juan Pérez" autocomplete="name">
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label" for="checkout-phone">Teléfono / WhatsApp</label>
-                        <input id="checkout-phone" type="tel" x-model="checkoutPhone" required class="form-control" placeholder="Ej. +56912345678">
+                        <label class="form-label" for="checkout-phone">WhatsApp</label>
+                        <input id="checkout-phone" type="tel" x-model="checkoutPhone" required class="form-control" placeholder="Ej. +56 9 1234 5678" autocomplete="tel" inputmode="tel">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label" for="checkout-method">Método de Entrega</label>
                         <select id="checkout-method" x-model="checkoutMethod" class="form-control">
                             <!-- Presencial listed first (Crucial Rule C) -->
-                            <option value="presencial">Presencial (Retiro en tienda - Providencia)</option>
-                            <option value="despacho">Despacho a domicilio</option>
+                            <option value="presencial">Presencial (retiro demostrativo)</option>
+                            <option value="despacho">Despacho (cobertura y costo por confirmar)</option>
                         </select>
                     </div>
                     
                     <div class="form-group" x-show="checkoutMethod === 'despacho'">
                         <label class="form-label" for="checkout-address">Dirección de Despacho</label>
-                        <input id="checkout-address" type="text" x-model="checkoutAddress" :required="checkoutMethod === 'despacho'" class="form-control" placeholder="Calle, Número, Comuna">
+                        <input id="checkout-address" type="text" x-model="checkoutAddress" :required="checkoutMethod === 'despacho'" class="form-control" placeholder="Calle, número, comuna" autocomplete="street-address">
                     </div>
                     
-                    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                        <button type="button" @click="closeCheckout()" class="btn" style="flex: 1; background-color: var(--bg-light); color: var(--text-light);">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" style="flex: 1.5;">Confirmar Pedido</button>
+                    <p x-show="checkoutError" x-text="checkoutError" class="form-error" role="alert" aria-live="assertive" x-cloak></p>
+
+                    <div class="checkout-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
+                        <button type="button" @click="closeCheckout(true)" class="btn" style="flex: 1; background-color: var(--bg-light); color: var(--text-light);">Volver al carro</button>
+                        <button type="submit" class="btn btn-primary" style="flex: 1.5;">Crear pedido demo</button>
                     </div>
                 </form>
             </div>
@@ -1411,29 +1751,30 @@
 
     <!-- Success Order Modal -->
     <div class="modal-backdrop" x-show="showSuccessModal" x-transition.opacity style="display: none;">
-        <div class="modal" style="max-width: 450px; text-align: center;">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="success-title" tabindex="-1" x-ref="successDialog" @keydown="handleOverlayKeydown($event, 'success')" style="max-width: 450px; text-align: center;">
             <div class="modal-body" style="padding: 3rem 2rem;">
                 <div style="background-color: rgba(16, 185, 129, 0.1); color: var(--success); width: 4.5rem; height: 4.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto;">
                     <svg class="icon-inline" style="width: 2.25rem; height: 2.25rem;" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 </div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">¡Pedido Recibido!</h2>
+                <h2 id="success-title" style="font-size: 1.8rem; margin-bottom: 1rem;">Pedido demo creado</h2>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
-                    El pedido ha sido ingresado exitosamente en la cola de pedidos de administración. Puedes abrir el <b>Panel Admin</b> arriba para atenderlo y gestionarlo.
+                    La simulación quedó guardada en este navegador y ya aparece en la cola administrativa. Revisa cómo recibiría la información el negocio.
                 </p>
-                <button @click="showSuccessModal = false" class="btn btn-primary" style="width: 100%; border-radius: 12px;">Aceptar</button>
+                <button @click="openAdminFromSuccess($event.currentTarget)" class="btn btn-primary" style="width: 100%; border-radius: 12px;">Ver pedido en el panel</button>
+                <button @click="closeSuccess()" class="btn" style="width: 100%; margin-top: 0.75rem; background: var(--bg-light); color: var(--text-light);">Seguir explorando</button>
             </div>
         </div>
     </div>
 
     <!-- Admin Dashboard Modal -->
-    <div class="modal-backdrop" x-show="isAdminOpen" x-transition.opacity style="display: none;">
-        <div class="modal admin-modal" @click.outside="isAdminOpen = false">
+    <div class="modal-backdrop" x-show="isAdminOpen" x-transition.opacity @click.self="closeAdmin()" :inert="isProductModalOpen ? true : null" style="display: none;">
+        <div class="modal admin-modal" role="dialog" aria-modal="true" aria-labelledby="admin-title" tabindex="-1" x-ref="adminDialog" @keydown="handleOverlayKeydown($event, 'admin')">
             <div class="modal-header">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <span style="font-size: 1.3rem;">🔧 Panel de Control Administrativo</span>
+                <div class="modal-title-row">
+                    <h3 id="admin-title">Panel de control demostrativo</h3>
                     <span class="text-responsive-disclaimer" style="background-color: rgba(14, 165, 233, 0.15); color: var(--accent-secondary);  font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; text-transform: uppercase;">Modo Demo</span>
                 </div>
-                <button @click="isAdminOpen = false" class="close-btn" aria-label="Cerrar panel">
+                <button @click="closeAdmin()" class="close-btn" aria-label="Cerrar panel">
                     <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
@@ -1461,7 +1802,7 @@
                     <div x-show="adminActiveTab === 'productos'">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                             <h3>Gestión de Productos</h3>
-                            <button @click="openAddProductModal()" class="btn btn-primary text-responsive-detail" style="padding: 0.5rem 1.25rem;  border-radius: 8px;">
+                            <button @click="openAddProductModal($event.currentTarget)" class="btn btn-primary text-responsive-detail" style="padding: 0.5rem 1.25rem;  border-radius: 8px;">
                                 <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
                                 Agregar Producto
                             </button>
@@ -1482,7 +1823,7 @@
                                 <tbody>
                                     <template x-for="product in products" :key="product.id">
                                         <tr>
-                                            <td><img :src="product.image" :alt="product.name"></td>
+                                            <td><img :src="product.image" :alt="product.name" width="1024" height="1024" loading="lazy" decoding="async"></td>
                                             <td>
                                                 <div style="font-weight: 700;" x-text="product.name"></div>
                                                 <div class="text-responsive-disclaimer" style=" color: var(--text-muted); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" x-text="product.description"></div>
@@ -1491,16 +1832,16 @@
                                             <td x-text="formatCLP(product.price)"></td>
                                             <td>
                                                 <label class="switch">
-                                                    <input type="checkbox" :checked="product.active" @change="toggleProductActive(product.id)">
+                                                    <input type="checkbox" :checked="product.active" @change="toggleProductActive(product.id)" :aria-label="`${product.active ? 'Pausar' : 'Publicar'} ${product.name}`">
                                                     <span class="slider"></span>
                                                 </label>
                                             </td>
                                             <td>
                                                 <div style="display: flex; gap: 0.25rem;">
-                                                    <button @click="openEditProductModal(product)" class="action-btn edit" title="Editar">
+                                                    <button @click="openEditProductModal(product, $event.currentTarget)" class="action-btn edit" :aria-label="`Editar ${product.name}`">
                                                         <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                                     </button>
-                                                    <button @click="deleteProduct(product.id)" class="action-btn delete" title="Eliminar">
+                                                    <button @click="deleteProduct(product.id)" class="action-btn delete" :aria-label="`Eliminar ${product.name}`">
                                                         <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                                                     </button>
                                                 </div>
@@ -1509,6 +1850,26 @@
                                     </template>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="admin-mobile-list" aria-label="Productos administrables">
+                            <template x-for="product in products" :key="`mobile-product-${product.id}`">
+                                <article class="admin-mobile-card">
+                                    <div class="admin-mobile-card-header">
+                                        <img :src="product.image" :alt="product.name" width="1024" height="1024" loading="lazy" decoding="async">
+                                        <div style="min-width: 0;">
+                                            <h4 x-text="product.name"></h4>
+                                            <p class="text-responsive-detail" style="color: var(--text-muted); text-transform: capitalize;" x-text="product.category"></p>
+                                            <p style="color: var(--accent); font-weight: 700;" x-text="formatCLP(product.price)"></p>
+                                            <p class="text-responsive-detail" style="color: #bae6fd;" x-text="`${product.stock} unidades disponibles`"></p>
+                                        </div>
+                                    </div>
+                                    <div class="admin-mobile-card-actions">
+                                        <button @click="toggleProductActive(product.id)" class="btn text-responsive-detail" style="background: var(--bg-light); color: var(--text-light);" :aria-label="`${product.active ? 'Pausar' : 'Publicar'} ${product.name}`" x-text="product.active ? 'Pausar' : 'Publicar'"></button>
+                                        <button @click="openEditProductModal(product, $event.currentTarget)" class="btn text-responsive-detail" style="background: rgba(14, 165, 233, 0.1); color: #bae6fd;" :aria-label="`Editar ${product.name}`">Editar</button>
+                                    </div>
+                                </article>
+                            </template>
                         </div>
                     </div>
                     
@@ -1568,7 +1929,7 @@
                                                 <span class="status-badge" :class="order.status === 'pendiente' ? 'pending' : 'completed'" x-text="order.status"></span>
                                             </td>
                                             <td>
-                                                <button @click="attendOrder(order.id)" class="btn text-responsive-detail" :disabled="order.status === 'atendido'" style="order.status === 'atendido' ? 'background: transparent; color: var(--text-muted); cursor: default; padding: 0.4rem;' : 'background-color: var(--success); color: white; padding: 0.4rem 0.8rem;  border-radius: 6px;'">
+                                                <button @click="attendOrder(order.id)" class="btn text-responsive-detail" :disabled="order.status === 'atendido'" :style="order.status === 'atendido' ? 'background: transparent; color: var(--text-muted); cursor: default; padding: 0.4rem;' : 'background-color: var(--success); color: #052e25; padding: 0.4rem 0.8rem; border-radius: 6px;'" :aria-label="`Marcar pedido de ${order.name} como atendido`">
                                                     <span x-text="order.status === 'pendiente' ? 'Atender' : 'Listo'"></span>
                                                 </button>
                                             </td>
@@ -1576,6 +1937,30 @@
                                     </template>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="admin-mobile-list" x-show="orders.length > 0" aria-label="Pedidos demostrativos">
+                            <template x-for="order in orders" :key="`mobile-order-${order.id}`">
+                                <article class="admin-mobile-card">
+                                    <div style="display: flex; justify-content: space-between; gap: 0.75rem;">
+                                        <div>
+                                            <h4 x-text="order.name"></h4>
+                                            <p class="text-responsive-detail" style="color: var(--text-muted);" x-text="order.phone"></p>
+                                        </div>
+                                        <span class="status-badge" :class="order.status === 'pendiente' ? 'pending' : 'completed'" x-text="order.status"></span>
+                                    </div>
+                                    <div style="margin-top: 0.85rem; color: var(--text-muted); font-size: 0.85rem;">
+                                        <template x-for="item in order.items" :key="item.id">
+                                            <p x-text="`${item.qty} × ${item.name}`"></p>
+                                        </template>
+                                    </div>
+                                    <p style="color: var(--accent); font-weight: 700; margin-top: 0.75rem;" x-text="formatCLP(order.total)"></p>
+                                    <p class="text-responsive-detail" style="color: var(--text-muted); text-transform: capitalize;" x-text="order.method === 'presencial' ? 'Retiro presencial' : `Despacho · ${order.address}`"></p>
+                                    <div class="admin-mobile-card-actions">
+                                        <button @click="attendOrder(order.id)" class="btn text-responsive-detail" :disabled="order.status === 'atendido'" style="background: var(--success); color: #052e25;" :aria-label="`Marcar pedido de ${order.name} como atendido`" x-text="order.status === 'pendiente' ? 'Marcar atendido' : 'Pedido atendido'"></button>
+                                    </div>
+                                </article>
+                            </template>
                         </div>
                     </div>
                     
@@ -1619,10 +2004,10 @@
     </div>
 
     <!-- Product CRUD Add/Edit Sub-Modal -->
-    <div class="modal-backdrop" x-show="isProductModalOpen" x-transition.opacity style="display: none; z-index: 220;">
-        <div class="modal" @click.outside="closeProductModal()">
+    <div class="modal-backdrop" x-show="isProductModalOpen" x-transition.opacity @click.self="closeProductModal()" style="display: none; z-index: 220;">
+        <div class="modal" role="dialog" aria-modal="true" :aria-labelledby="isEditingProduct ? 'edit-product-title' : 'add-product-title'" tabindex="-1" x-ref="productDialog" @keydown="handleOverlayKeydown($event, 'product')">
             <div class="modal-header">
-                <h3 x-text="isEditingProduct ? 'Editar Producto' : 'Agregar Nuevo Producto'"></h3>
+                <h3 :id="isEditingProduct ? 'edit-product-title' : 'add-product-title'" x-text="isEditingProduct ? 'Editar producto demo' : 'Agregar producto demo'"></h3>
                 <button @click="closeProductModal()" class="close-btn" aria-label="Cerrar">
                     <svg class="icon-inline" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
@@ -1675,7 +2060,7 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer :inert="hasOpenOverlay ? true : null">
         <div class="container">
             <div class="footer-grid">
                 <div>
@@ -1687,11 +2072,11 @@
                     <ul class="footer-links">
                         <li><a href="#catalogo">Catálogo</a></li>
                         <li><a href="#" @click.prevent="openAdminModal()">Panel Admin</a></li>
-                        <li><a href="../index.html#demos" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" class="showcase-back-btn no-print">Volver al Showcase</a></li>
+                        <li><a href="../index.html#demos" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" class="showcase-back-btn no-print">Volver a demos STAX</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">Contacto Demo</h4>
+                    <h4 class="footer-title">Datos ilustrativos</h4>
                     <ul class="footer-links">
                         <li style="color: var(--text-muted);">Providencia, Santiago, Chile</li>
                         <li style="color: var(--text-muted);">+56 9 9904 0515</li>
@@ -1704,192 +2089,192 @@
                 <p>Desarrollado con fines demostrativos para el mercado de PYMEs en Chile.</p>
             </div>
             <div class="text-responsive-disclaimer" style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; margin-top: 15px; text-align: center;  color: var(--text-muted); line-height: 1.5;">
-                * La integración de pasarelas de pago (Webpay, MercadoPago, Flow) es opcional y requiere cuenta comercial en el SII. La facturación electrónica directa (emisión automática de boletas/facturas autorizadas por el SII) corresponde a un desarrollo dedicado o módulo de integración de otro nivel.
+                Esta demostración utiliza productos, precios, pedidos, nombres y datos de contacto ilustrativos. Las pasarelas, la facturación y el despacho se configuran al publicar según el alcance acordado y los requisitos de cada proveedor.
             </div>
         </div>
     </footer>
 
+    <p x-show="stockNotice" x-text="stockNotice" class="status-announcement" role="status" aria-live="polite" x-cloak></p>
+
     <!-- Alpine.js Application Logic -->
     <script>
         function storeApp() {
+            const emptyProduct = () => ({
+                id: null,
+                name: '',
+                description: '',
+                price: 0,
+                image: 'product_charger.png',
+                active: true,
+                category: 'audio',
+                stock: 5
+            });
+
             return {
-                // Products list
                 products: [],
                 activeCategory: 'todos',
-                
-                // Shopping Cart
                 cart: [],
                 isCartOpen: false,
-                
-                // Checkout Modal
                 isCheckoutOpen: false,
                 checkoutName: '',
                 checkoutPhone: '',
-                checkoutMethod: 'presencial', // 'presencial' (Retiro) must be first / default (Crucial Rule C)
+                checkoutMethod: 'presencial',
                 checkoutAddress: '',
+                checkoutError: '',
                 showSuccessModal: false,
-                
-                // Admin Panel Modals & Form
                 isAdminOpen: false,
                 adminActiveTab: 'productos',
                 isProductModalOpen: false,
                 isEditingProduct: false,
                 productFormImageBase64: '',
-                
-                // Current editing/creating product container
-                currentProduct: {
-                    id: null,
-                    name: '',
-                    description: '',
-                    price: 0,
-                    image: 'product_charger.png', // Default fallback image
-                    active: true,
-                    category: 'audio',
-                    stock: 3
-                },
-                
-                // Store settings
-                storeHours: {
-                    open: '09:00',
-                    close: '21:00',
-                    forcedClosed: false
-                },
+                currentProduct: emptyProduct(),
+                storeHours: { open: '09:00', close: '21:00', forcedClosed: false },
                 orders: [],
+                stockNotice: '',
+                stockNoticeTimer: null,
+                overlayTrigger: null,
+                productTrigger: null,
+
+                get hasOpenOverlay() {
+                    return this.isCartOpen || this.isCheckoutOpen || this.showSuccessModal || this.isAdminOpen || this.isProductModalOpen;
+                },
+
+                get deliverySummary() {
+                    return this.checkoutMethod === 'presencial'
+                        ? 'Retiro demostrativo · sin costo de despacho'
+                        : 'Despacho · cobertura, valor y plazo por confirmar';
+                },
 
                 init() {
                     this.loadData();
                 },
 
-                // Load and initialize data with localStorage persistence
+                defaultProducts() {
+                    return [
+                        {
+                            id: 1,
+                            name: 'Auriculares Apex Pro Wireless',
+                            description: 'Audífonos de alta fidelidad con cancelación activa de ruido híbrida y 40 horas de batería.',
+                            price: 129990,
+                            image: 'product_headphones.png',
+                            active: true,
+                            category: 'audio',
+                            stock: 3
+                        },
+                        {
+                            id: 2,
+                            name: 'Smartwatch Apex Fit Active',
+                            description: 'Reloj inteligente con pantalla AMOLED, GPS integrado, monitoreo cardíaco y resistencia al agua 5 ATM.',
+                            price: 89990,
+                            image: 'product_watch.png',
+                            active: true,
+                            category: 'wearables',
+                            stock: 4
+                        },
+                        {
+                            id: 3,
+                            name: 'Cargador Magnético Aura 3-en-1',
+                            description: 'Estación de carga rápida inalámbrica para tu celular, audífonos y reloj inteligente al mismo tiempo.',
+                            price: 39990,
+                            image: 'product_charger.png',
+                            active: true,
+                            category: 'accesorios',
+                            stock: 2
+                        }
+                    ];
+                },
+
+                defaultOrders() {
+                    return [
+                        {
+                            id: 1718023456000,
+                            date: new Date(Date.now() - 1800000).toISOString(),
+                            name: 'Cliente demo 01',
+                            phone: '+56 9 0000 0001',
+                            method: 'presencial',
+                            address: '',
+                            items: [{ id: 1, name: 'Auriculares Apex Pro Wireless', price: 129990, image: 'product_headphones.png', qty: 1, stock: 3 }],
+                            total: 129990,
+                            status: 'pendiente'
+                        },
+                        {
+                            id: 1718023800000,
+                            date: new Date(Date.now() - 600000).toISOString(),
+                            name: 'Cliente demo 02',
+                            phone: '+56 9 0000 0002',
+                            method: 'despacho',
+                            address: 'Dirección ilustrativa, Providencia',
+                            items: [
+                                { id: 2, name: 'Smartwatch Apex Fit Active', price: 89990, image: 'product_watch.png', qty: 1, stock: 4 },
+                                { id: 3, name: 'Cargador Magnético Aura 3-en-1', price: 39990, image: 'product_charger.png', qty: 1, stock: 2 }
+                            ],
+                            total: 129980,
+                            status: 'pendiente'
+                        }
+                    ];
+                },
+
+                readStorage(key, fallback) {
+                    try {
+                        const saved = localStorage.getItem(key);
+                        return saved ? JSON.parse(saved) : fallback;
+                    } catch (error) {
+                        return fallback;
+                    }
+                },
+
                 loadData() {
-                    // 1. Load Store Hours
-                    const savedHours = localStorage.getItem('apex_store_hours');
-                    if (savedHours) {
-                        this.storeHours = JSON.parse(savedHours);
-                    }
-
-                    // 2. Load Products
-                    const savedProducts = localStorage.getItem('apex_products');
-                    if (savedProducts) {
-                        this.products = JSON.parse(savedProducts);
-                    } else {
-                        // Insert defaults
-                        this.products = [
-                            {
-                                id: 1,
-                                name: "Auriculares Apex Pro Wireless",
-                                description: "Audífonos de alta fidelidad con cancelación activa de ruido híbrida y 40 horas de batería.",
-                                price: 129990,
-                                image: "product_headphones.png",
-                                active: true,
-                                category: "audio",
-                                stock: 3
-                            },
-                            {
-                                id: 2,
-                                name: "Smartwatch Apex Fit Active",
-                                description: "Reloj inteligente con pantalla AMOLED, GPS integrado, monitoreo cardíaco y resistencia al agua 5 ATM.",
-                                price: 89990,
-                                image: "product_watch.png",
-                                active: true,
-                                category: "wearables",
-                                stock: 4
-                            },
-                            {
-                                id: 3,
-                                name: "Cargador Magnético Aura 3-en-1",
-                                description: "Estación de carga rápida inalámbrica para tu celular, audífonos y reloj inteligente al mismo tiempo.",
-                                price: 39990,
-                                image: "product_charger.png",
-                                active: true,
-                                category: "accesorios",
-                                stock: 2
-                            }
-                        ];
-                        this.saveProductsToStorage();
-                    }
-
-                    // 3. Load Orders
-                    const savedOrders = localStorage.getItem('apex_orders');
-                    if (savedOrders) {
-                        this.orders = JSON.parse(savedOrders);
-                    }
-                    if (!this.orders || this.orders.length === 0) {
-                        // Insert sample orders
-                        this.orders = [
-                            {
-                                id: 1718023456000,
-                                date: new Date(Date.now() - 1800000).toISOString(), // 30 mins ago
-                                name: "Constanza Silva",
-                                phone: "+56 9 8812 3456",
-                                method: "presencial",
-                                address: "",
-                                items: [
-                                    {
-                                        id: 1,
-                                        name: "Auriculares Apex Pro Wireless",
-                                        price: 129990,
-                                        image: "product_headphones.png",
-                                        qty: 1
-                                    }
-                                ],
-                                total: 129990,
-                                status: "pendiente"
-                            },
-                            {
-                                id: 1718023800000,
-                                date: new Date(Date.now() - 600000).toISOString(), // 10 mins ago
-                                name: "Mauricio Tapia",
-                                phone: "+56 9 7755 4422",
-                                method: "despacho",
-                                address: "Av. Vitacura 4560, Depto 502, Vitacura",
-                                items: [
-                                    {
-                                        id: 2,
-                                        name: "Smartwatch Apex Fit Active",
-                                        price: 89990,
-                                        image: "product_watch.png",
-                                        qty: 1
-                                    },
-                                    {
-                                        id: 3,
-                                        name: "Cargador Magnético Aura 3-en-1",
-                                        price: 39990,
-                                        image: "product_charger.png",
-                                        qty: 1
-                                    }
-                                ],
-                                total: 129980,
-                                status: "pendiente"
-                            }
-                        ];
-                        localStorage.setItem('apex_orders', JSON.stringify(this.orders));
-                    }
+                    this.storeHours = this.readStorage('apex_store_hours', this.storeHours);
+                    const storedProducts = this.readStorage('apex_products', this.defaultProducts());
+                    this.products = Array.isArray(storedProducts)
+                        ? storedProducts.map(product => ({ ...product, stock: Math.max(0, Number(product.stock) || 0) }))
+                        : this.defaultProducts();
+                    const storedOrders = this.readStorage('apex_orders', this.defaultOrders());
+                    this.orders = Array.isArray(storedOrders) && storedOrders.length ? storedOrders : this.defaultOrders();
+                    this.saveProductsToStorage();
+                    localStorage.setItem('apex_orders', JSON.stringify(this.orders));
                 },
 
-                // Filters product list depending on category tab
                 getFilteredProducts() {
-                    if (this.activeCategory === 'todos') {
-                        return this.products;
-                    }
-                    return this.products.filter(p => p.category === this.activeCategory);
+                    if (this.activeCategory === 'todos') return this.products;
+                    return this.products.filter(product => product.category === this.activeCategory);
                 },
 
-                // Cart methods
-                addToCart(product) {
+                getCartItemQty(productId) {
+                    return this.cart.find(item => item.id === productId)?.qty || 0;
+                },
+
+                canAddProduct(product) {
+                    return product.active && product.stock > this.getCartItemQty(product.id);
+                },
+
+                announceStock(message = 'Stock máximo agregado.') {
+                    this.stockNotice = message;
+                    window.clearTimeout(this.stockNoticeTimer);
+                    this.stockNoticeTimer = window.setTimeout(() => {
+                        this.stockNotice = '';
+                    }, 2400);
+                },
+
+                addToCart(product, trigger = null) {
+                    if (!this.canAddProduct(product)) {
+                        this.announceStock();
+                        return;
+                    }
                     const existingItem = this.cart.find(item => item.id === product.id);
                     if (existingItem) {
-                        existingItem.qty++;
+                        existingItem.qty += 1;
                     } else {
                         this.cart.push({
                             id: product.id,
                             name: product.name,
                             price: product.price,
                             image: product.image,
-                            qty: 1
+                            qty: 1,
+                            stock: product.stock
                         });
                     }
-                    this.isCartOpen = true;
+                    this.openCart(trigger);
                 },
 
                 removeFromCart(item) {
@@ -1897,15 +2282,17 @@
                 },
 
                 increaseQty(item) {
-                    item.qty++;
+                    if (item.qty < item.stock) {
+                        item.qty += 1;
+                        if (item.qty === item.stock) this.announceStock();
+                        return;
+                    }
+                    this.announceStock();
                 },
 
                 decreaseQty(item) {
-                    if (item.qty > 1) {
-                        item.qty--;
-                    } else {
-                        this.removeFromCart(item);
-                    }
+                    if (item.qty > 1) item.qty -= 1;
+                    else this.removeFromCart(item);
                 },
 
                 cartCount() {
@@ -1920,33 +2307,70 @@
                     return this.getCartTotal();
                 },
 
-                // Checkout management
-                openCheckout() {
-                    this.isCartOpen = false;
-                    this.isCheckoutOpen = true;
+                focusDialog(reference) {
+                    this.$nextTick(() => this.$refs[reference]?.focus());
                 },
 
-                closeCheckout() {
+                restoreTrigger(trigger = this.overlayTrigger) {
+                    this.$nextTick(() => trigger?.focus?.());
+                },
+
+                openCart(trigger = null) {
+                    this.overlayTrigger = trigger || document.activeElement;
+                    this.isCartOpen = true;
+                    this.focusDialog('cartDialog');
+                },
+
+                closeCart(restore = true) {
+                    this.isCartOpen = false;
+                    if (restore) this.restoreTrigger();
+                },
+
+                openCheckout() {
+                    this.isCartOpen = false;
+                    this.checkoutError = '';
+                    this.isCheckoutOpen = true;
+                    this.focusDialog('checkoutDialog');
+                },
+
+                closeCheckout(returnToCart = false) {
                     this.isCheckoutOpen = false;
+                    this.checkoutError = '';
                     this.resetCheckoutForm();
+                    if (returnToCart && this.cart.length) {
+                        this.isCartOpen = true;
+                        this.focusDialog('cartDialog');
+                    } else {
+                        this.restoreTrigger();
+                    }
                 },
 
                 resetCheckoutForm() {
                     this.checkoutName = '';
                     this.checkoutPhone = '';
-                    this.checkoutMethod = 'presencial'; // 'presencial' must be first/default
+                    this.checkoutMethod = 'presencial';
                     this.checkoutAddress = '';
                 },
 
+                validateCheckout() {
+                    const phone = this.checkoutPhone.replace(/[\s-]/g, '');
+                    if (!this.checkoutName.trim()) return 'Escribe tu nombre para crear el pedido demo.';
+                    if (!/^(?:\+?56)?9\d{8}$/.test(phone)) return 'Escribe un WhatsApp chileno válido, por ejemplo +56 9 1234 5678.';
+                    if (this.checkoutMethod === 'despacho' && !this.checkoutAddress.trim()) return 'Escribe la dirección para revisar el despacho.';
+                    return '';
+                },
+
                 submitOrder() {
-                    // Create new order
+                    this.checkoutError = this.validateCheckout();
+                    if (this.checkoutError) return;
+
                     const newOrder = {
                         id: Date.now(),
                         date: new Date().toISOString(),
-                        name: this.checkoutName,
-                        phone: this.checkoutPhone,
+                        name: this.checkoutName.trim(),
+                        phone: this.checkoutPhone.trim(),
                         method: this.checkoutMethod,
-                        address: this.checkoutMethod === 'despacho' ? this.checkoutAddress : '',
+                        address: this.checkoutMethod === 'despacho' ? this.checkoutAddress.trim() : '',
                         items: JSON.parse(JSON.stringify(this.cart)),
                         total: this.getCartFinalTotal(),
                         status: 'pendiente'
@@ -1954,40 +2378,54 @@
 
                     this.orders.unshift(newOrder);
                     localStorage.setItem('apex_orders', JSON.stringify(this.orders));
-
-                    // Empty cart, close modal, trigger success notification
                     this.cart = [];
-                    this.closeCheckout();
+                    this.isCheckoutOpen = false;
+                    this.resetCheckoutForm();
                     this.showSuccessModal = true;
+                    this.focusDialog('successDialog');
                 },
 
-                // Store open/close check logic
+                closeSuccess() {
+                    this.showSuccessModal = false;
+                    this.restoreTrigger();
+                },
+
+                openAdminFromSuccess() {
+                    this.showSuccessModal = false;
+                    this.adminActiveTab = 'pedidos';
+                    this.isAdminOpen = true;
+                    this.focusDialog('adminDialog');
+                },
+
                 isStoreClosed() {
                     if (this.storeHours.forcedClosed) return true;
-                    
                     const now = new Date();
-                    const hours = now.getHours().toString().padStart(2, '0');
-                    const minutes = now.getMinutes().toString().padStart(2, '0');
-                    const currentTimeStr = `${hours}:${minutes}`;
-                    
-                    return currentTimeStr < this.storeHours.open || currentTimeStr > this.storeHours.close;
+                    const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                    return currentTime < this.storeHours.open || currentTime > this.storeHours.close;
                 },
 
                 saveHours() {
                     localStorage.setItem('apex_store_hours', JSON.stringify(this.storeHours));
                 },
 
-                // Admin methods
-                openAdminModal() {
+                openAdminModal(trigger = null) {
+                    this.overlayTrigger = trigger || document.activeElement;
                     this.isAdminOpen = true;
+                    this.focusDialog('adminDialog');
+                },
+
+                closeAdmin() {
+                    if (this.isProductModalOpen) this.closeProductModal();
+                    this.isAdminOpen = false;
+                    this.restoreTrigger();
                 },
 
                 pendingOrdersCount() {
-                    return this.orders.filter(o => o.status === 'pendiente').length;
+                    return this.orders.filter(order => order.status === 'pendiente').length;
                 },
 
                 attendOrder(orderId) {
-                    const order = this.orders.find(o => o.id === orderId);
+                    const order = this.orders.find(candidate => candidate.id === orderId);
                     if (order) {
                         order.status = 'atendido';
                         localStorage.setItem('apex_orders', JSON.stringify(this.orders));
@@ -1995,96 +2433,109 @@
                 },
 
                 clearOrders() {
-                    if (confirm('¿Seguro que deseas vaciar la cola de pedidos de la demo?')) {
+                    if (confirm('¿Quieres dejar la cola demostrativa vacía?')) {
                         this.orders = [];
                         localStorage.setItem('apex_orders', JSON.stringify(this.orders));
                     }
                 },
 
-                // Product CRUD operations
                 saveProductsToStorage() {
                     localStorage.setItem('apex_products', JSON.stringify(this.products));
                 },
 
                 toggleProductActive(productId) {
-                    const product = this.products.find(p => p.id === productId);
+                    const product = this.products.find(candidate => candidate.id === productId);
                     if (product) {
                         product.active = !product.active;
                         this.saveProductsToStorage();
                     }
                 },
 
-                openAddProductModal() {
+                openAddProductModal(trigger = null) {
+                    this.productTrigger = trigger || document.activeElement;
                     this.isEditingProduct = false;
-                    this.currentProduct = {
-                        id: null,
-                        name: '',
-                        description: '',
-                        price: 0,
-                        image: 'product_charger.png', // Default fallback image
-                        active: true,
-                        category: 'audio',
-                        stock: 5
-                    };
+                    this.currentProduct = emptyProduct();
                     this.productFormImageBase64 = '';
                     this.isProductModalOpen = true;
+                    this.focusDialog('productDialog');
                 },
 
-                openEditProductModal(product) {
+                openEditProductModal(product, trigger = null) {
+                    this.productTrigger = trigger || document.activeElement;
                     this.isEditingProduct = true;
                     this.currentProduct = JSON.parse(JSON.stringify(product));
                     this.productFormImageBase64 = '';
                     this.isProductModalOpen = true;
+                    this.focusDialog('productDialog');
                 },
 
                 closeProductModal() {
                     this.isProductModalOpen = false;
                     this.productFormImageBase64 = '';
-                    // Reset fields
-                    this.currentProduct = { id: null, name: '', description: '', price: 0, image: '', active: true, category: 'audio', stock: 5 };
+                    this.currentProduct = emptyProduct();
+                    this.restoreTrigger(this.productTrigger);
                 },
 
                 onProductImageFileChange(event) {
                     const file = event.target.files[0];
                     if (!file) return;
-                    
                     const reader = new FileReader();
-                    reader.onload = (e) => {
-                        this.productFormImageBase64 = e.target.result;
+                    reader.onload = eventResult => {
+                        this.productFormImageBase64 = eventResult.target.result;
                     };
                     reader.readAsDataURL(file);
                 },
 
                 saveProduct() {
-                    // Set image from base64 if uploaded
-                    if (this.productFormImageBase64) {
-                        this.currentProduct.image = this.productFormImageBase64;
-                    }
-
+                    if (this.productFormImageBase64) this.currentProduct.image = this.productFormImageBase64;
                     if (this.isEditingProduct) {
-                        // Update existing
-                        const index = this.products.findIndex(p => p.id === this.currentProduct.id);
-                        if (index !== -1) {
-                            this.products[index] = JSON.parse(JSON.stringify(this.currentProduct));
-                        }
+                        const index = this.products.findIndex(product => product.id === this.currentProduct.id);
+                        if (index !== -1) this.products[index] = JSON.parse(JSON.stringify(this.currentProduct));
                     } else {
-                        // Create new
                         this.currentProduct.id = Date.now();
                         this.products.push(JSON.parse(JSON.stringify(this.currentProduct)));
                     }
-
                     this.saveProductsToStorage();
                     this.closeProductModal();
                 },
 
                 deleteProduct(productId) {
-                    if (confirm('¿Seguro que deseas eliminar este producto de la demo?')) {
-                        this.products = this.products.filter(p => p.id !== productId);
+                    if (confirm('¿Quieres retirar este producto de la demostración?')) {
+                        this.products = this.products.filter(product => product.id !== productId);
                         this.saveProductsToStorage();
                     }
                 },
 
+                handleOverlayKeydown(event, overlay) {
+                    if (event.key === 'Escape') {
+                        event.preventDefault();
+                        if (overlay === 'cart') this.closeCart();
+                        if (overlay === 'checkout') this.closeCheckout(true);
+                        if (overlay === 'success') this.closeSuccess();
+                        if (overlay === 'admin') this.closeAdmin();
+                        if (overlay === 'product') this.closeProductModal();
+                        return;
+                    }
+                    if (event.key !== 'Tab') return;
 
+                    const focusable = Array.from(event.currentTarget.querySelectorAll(
+                        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                    )).filter(element => element.offsetParent !== null);
+                    if (!focusable.length) {
+                        event.preventDefault();
+                        event.currentTarget.focus();
+                        return;
+                    }
+                    const first = focusable[0];
+                    const last = focusable[focusable.length - 1];
+                    if (event.shiftKey && document.activeElement === first) {
+                        event.preventDefault();
+                        last.focus();
+                    } else if (!event.shiftKey && document.activeElement === last) {
+                        event.preventDefault();
+                        first.focus();
+                    }
+                },
 
                 formatCLP(value) {
                     return new Intl.NumberFormat('es-CL', {
@@ -2096,14 +2547,6 @@
             };
         }
     </script>
-    <!-- Botón Flotante para Volver al Showcase -->
-    <a href="../index.html#demos" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" 
-       class="text-responsive-detail no-print" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: #bd93f9; color: #1e1f29; padding: 12px 20px; border-radius: 50px; font-family: 'Inter', sans-serif;  font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(189, 147, 249, 0.4); border: 2px solid #1e1f29; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);"
-       onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(189, 147, 249, 0.6)';"
-       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(189, 147, 249, 0.4)';">
-         <span>⬅️ Volver al Showcase</span>
-    </a>
-
     <script defer src="../demo-nav.js"></script>
 </body>
 </html>
