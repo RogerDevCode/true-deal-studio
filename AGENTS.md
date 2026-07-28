@@ -151,3 +151,9 @@ Antes de editar, preservar cambios ajenos presentes en el worktree. Usar commits
 - [README.md](README.md)
 - [Propuesta WhatsApp-first](docs/superpowers/specs/2026-07-18-propuesta-whatsapp-clara-design.md)
 - [Plan de implementación](docs/plans/2026-07-18-implementacion-oferta-clara-whatsapp.md)
+
+## 10. TODOs Futuros (Roadmap Multi-Vendedor)
+
+- [ ] **Bandeja aislada (Vendedor solo ve SUS clientes):**
+  - **Schema / BD:** Agregar columna `assigned_user_id` en las entidades `conversation`, `contact` y `lead`.
+  - **Filtro por Rol:** Ajustar consultas ORM (`scoped(organization_id)`) para que los usuarios con rol `seller`/`member` vean únicamente sus asignaciones, manteniendo vista global solo para `owner`/`admin`.
