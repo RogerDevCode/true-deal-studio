@@ -1,5 +1,6 @@
 window.fonoaudiologiaApp = function fonoaudiologiaApp() {
   const bookingStorageKey = 'tuwebpro_bookings';
+  const defaultLiveFaqWidgetUrl = 'http://localhost:5173/widget/fonoaudiologia';
   const serviceNames = {
     evaluacion: 'Primera visita de orientación',
     inicio_tardio: 'Inicio Tardío del Habla',
@@ -39,6 +40,23 @@ window.fonoaudiologiaApp = function fonoaudiologiaApp() {
   return {
     bookingModal: false,
     selectedService: 'evaluacion',
+    liveFaqOpen: false,
+    liveFaqWidgetError: false,
+    liveFaqWidgetUrl: window.FONO_LIVE_FAQ_WIDGET_URL || defaultLiveFaqWidgetUrl,
+
+    openLiveFaq() {
+      this.liveFaqWidgetError = false;
+      this.liveFaqOpen = true;
+    },
+
+    closeLiveFaq() {
+      this.liveFaqOpen = false;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.querySelector('[data-testid="fono-live-faq-orb"]')?.focus();
+        });
+      });
+    },
 
     submitBooking(name, phone, date, slot, details) {
       if (!name || !phone || !date) {
