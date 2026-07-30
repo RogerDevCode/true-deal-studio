@@ -49,7 +49,7 @@ window.corredoraApp = function corredoraApp() {
         dormitorios: 2,
         banos: 2,
         superficieM2: 85,
-        imagen: 'depto1.png',
+        imagen: 'depto1.webp',
         descripcion: 'Hermoso dúplex con terraza privada, cocina americana equipada y excelente conectividad.',
       },
       {
@@ -63,7 +63,7 @@ window.corredoraApp = function corredoraApp() {
         dormitorios: 4,
         banos: 3,
         superficieM2: 220,
-        imagen: 'casa1.png',
+        imagen: 'casa1.webp',
         descripcion: 'Amplia casa colonial remodelada, con gran patio, piscina, terraza techada y quincho.',
       },
       {
@@ -77,7 +77,7 @@ window.corredoraApp = function corredoraApp() {
         dormitorios: 3,
         banos: 4,
         superficieM2: 180,
-        imagen: 'depto2.png',
+        imagen: 'depto2.webp',
         descripcion: 'Exclusivo penthouse con azotea privada de 120m², quincho, jacuzzi y vistas libres al cerro Manquehue.',
       },
       {
@@ -91,7 +91,7 @@ window.corredoraApp = function corredoraApp() {
         dormitorios: 1,
         banos: 2,
         superficieM2: 70,
-        imagen: 'depto3.png',
+        imagen: 'depto3.webp',
         descripcion: 'Estilo industrial neoyorquino con muros de ladrillo a la vista, piso de hormigón pulido y ventanas termo-panel.',
       },
       {
@@ -105,7 +105,7 @@ window.corredoraApp = function corredoraApp() {
         dormitorios: 2,
         banos: 2,
         superficieM2: 95,
-        imagen: 'depto4.png',
+        imagen: 'depto4.webp',
         descripcion: 'Espectacular vista en primera línea frente a playa Amarilla. Condominio cuenta con piscina exterior y gimnasio.',
       },
     ],

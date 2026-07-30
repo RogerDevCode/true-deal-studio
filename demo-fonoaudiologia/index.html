@@ -133,7 +133,8 @@
     .fono-live-bars span { display: block; width: .25rem; height: .65rem; border-radius: 9999px; background: #e9f6eb; box-shadow: 0 0 .5rem rgba(233,246,235,.7); animation: fono-live-bars 700ms ease-in-out infinite alternate; }
     .fono-live-bars span:nth-child(2) { height: 1.35rem; animation-delay: -420ms; }.fono-live-bars span:nth-child(3) { height: .9rem; animation-delay: -160ms; }.fono-live-bars span:nth-child(4) { height: 1.55rem; animation-delay: -530ms; }.fono-live-bars span:nth-child(5) { height: .75rem; animation-delay: -260ms; }
     .fono-live-orb.is-active .fono-live-orb-icon { display: none; }.fono-live-orb.is-active .fono-live-bars { display: flex; }
-    .fono-live-faq-copy { font-size: .78rem; line-height: 1.3; }.fono-live-dialog-panel { width: min(100% - 2rem,38rem); height: min(100% - 2rem,46rem); }
+    .fono-live-faq-copy { font-size: .78rem; line-height: 1.3; }.fono-live-dialog-panel { width: min(100%,48rem); height: min(100%,56rem); max-height: 100%; }
+    @media (max-width: 639px) { .fono-live-dialog-panel { width: 100%; height: 100%; border-radius: 1.25rem; } }
     @keyframes fono-live-ripple { 0% { opacity: .58; transform: scale(.88); } 72%,100% { opacity: 0; transform: scale(1.26); } }
     @keyframes fono-live-bars { from { opacity: .55; transform: scaleY(.5); } to { opacity: 1; transform: scaleY(1.15); } }
     @media (prefers-reduced-motion: reduce) { .fono-live-orb,.fono-live-orb::before,.fono-live-orb::after,.fono-live-bars span { animation: none; transition: none; } }
@@ -224,11 +225,11 @@
           </div>
 
           <div class="fono-live-faq-launcher pt-1">
-            <button data-testid="fono-live-faq-orb" type="button" class="fono-live-orb" :class="{ 'is-active': liveFaqOpen }" :aria-expanded="liveFaqOpen.toString()" aria-controls="fono-live-faq-dialog" aria-label="Abrir FAQ en vivo" @click="liveFaqOpen ? closeLiveFaq() : openLiveFaq()">
+            <a data-testid="fono-live-faq-orb" href="https://voice.stax.ink/widget/fonoaudiologia" class="fono-live-orb" aria-label="Abrir FAQ en vivo en pantalla completa">
               <svg class="fono-live-orb-icon" viewBox="0 0 24 28" fill="none" aria-hidden="true"><rect x="7" y="1" width="10" height="16" rx="5" fill="currentColor"/><path d="M3 13.5C3 18.47 7.03 22.5 12 22.5s9-4.03 9-9M12 22.5V27M8 27h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
               <span class="fono-live-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
-            </button>
-            <span class="text-left"><strong class="block text-sm text-forest-800">FAQ en vivo</strong><span class="fono-live-faq-copy block text-forest-600">Resuelve dudas por voz.<br>Se pedirá permiso para habilitar el micrófono.</span></span>
+            </a>
+            <span class="text-left"><strong class="block text-sm text-forest-800">FAQ en vivo</strong><span class="fono-live-faq-copy block text-forest-600">Resuelve dudas por voz en pantalla completa.<br>Se pedirá permiso para habilitar el micrófono.</span></span>
           </div>
 
           <p class="hero-subtitle text-sm font-medium">
@@ -240,7 +241,7 @@
         <div class="relative flex justify-center lg:col-span-5">
           <div class="relative w-full max-w-[19rem] sm:max-w-md">
             <div class="absolute inset-0 bg-coral-100 rounded-3xl -rotate-3 scale-102"></div>
-            <img src="./hero.jpg" width="1024" height="1024" fetchpriority="high" alt="Fonoaudióloga compartiendo una actividad de juego con un niño en su hogar" class="relative aspect-square w-full rounded-3xl object-cover shadow-lg" />
+            <img src="./hero.webp" width="960" height="960" sizes="(min-width: 1024px) 448px, (min-width: 640px) 448px, 100vw" fetchpriority="high" decoding="async" alt="Fonoaudióloga compartiendo una actividad de juego con un niño en su hogar" class="relative aspect-square w-full rounded-3xl object-cover shadow-lg" />
             
             <!-- Floating absolute card -->
             <div class="mt-4 flex max-w-[240px] items-center space-x-3 rounded-2xl border border-cream-100 bg-white p-4 shadow-md sm:absolute sm:-bottom-6 sm:-left-6 sm:mt-0">
@@ -573,22 +574,6 @@
       </div>
     </div>
   </footer>
-
-  <div id="fono-live-faq-dialog" data-testid="fono-live-faq-dialog" x-show="liveFaqOpen" x-cloak @keydown.escape.window="closeLiveFaq()" class="fixed inset-0 z-[60] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="fono-live-faq-title">
-    <div class="absolute inset-0 bg-forest-900/65 backdrop-blur-sm" @click="closeLiveFaq()"></div>
-    <section class="fono-live-dialog-panel relative flex flex-col overflow-hidden rounded-3xl border border-cream-100 bg-cream-50 shadow-2xl">
-      <header class="flex items-start justify-between gap-4 border-b border-cream-200 px-5 py-4">
-        <div><h2 id="fono-live-faq-title" class="font-serif text-xl font-bold text-forest-900">FAQ en vivo</h2><p class="mt-1 text-sm leading-relaxed text-forest-600">Activa la voz dentro del panel para consultar sobre la atención.</p></div>
-        <button type="button" aria-label="Cerrar FAQ en vivo" @click="closeLiveFaq()" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl font-semibold text-forest-600 transition-colors hover:bg-white hover:text-forest-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-700">&times;</button>
-      </header>
-      <div class="relative min-h-0 flex-1 bg-white">
-        <template x-if="liveFaqOpen"><iframe class="h-full w-full border-0" :src="liveFaqWidgetUrl" title="Asistente de FAQ por voz" allow="microphone; autoplay" @error="liveFaqWidgetError = true"></iframe></template>
-        <div x-show="liveFaqWidgetError" x-cloak class="absolute inset-x-5 bottom-5 rounded-2xl border border-coral-100 bg-cream-50 p-4 text-sm text-forest-700">No pudimos abrir el asistente aquí. <a :href="liveFaqWidgetUrl" target="_blank" rel="noopener" class="font-bold underline">Abrir FAQ en vivo en otra pestaña</a>.</div>
-      </div>
-    </section>
-  </div>
-
-  <noscript><p class="fixed bottom-4 right-4 max-w-xs rounded-xl bg-white p-4 text-sm text-forest-700 shadow-lg">Para usar FAQ en vivo, activa JavaScript y abre <a href="http://localhost:5173/widget/fonoaudiologia" class="font-bold underline">el asistente de voz</a>.</p></noscript>
 
   <!-- BOOKING VISIT MODAL -->
   <div x-show="bookingModal" class="booking-modal-shell fixed inset-0 z-50 flex justify-center p-4" x-cloak>

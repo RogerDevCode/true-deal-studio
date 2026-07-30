@@ -40,6 +40,9 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
     await expect(page.locator('#inicio').getByRole('link', { name: 'Quiero orientación para mi negocio' })).toHaveAttribute('href', '#contacto');
+    const voiceAssistant = page.getByRole('link', { name: 'Probar el asistente por voz de STAX' });
+    await expect(voiceAssistant).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
+    await expect(voiceAssistant).toContainText('Prueba el asistente por voz');
     const examplesCta = page.getByRole('link', { name: 'Ver ejemplos', exact: true });
     await expect(examplesCta).toHaveAttribute('href', '#demos');
     await expect(examplesCta).toHaveCSS('color', 'rgb(23, 43, 77)');

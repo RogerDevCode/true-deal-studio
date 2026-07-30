@@ -2,9 +2,9 @@ const NIDO_STORAGE_KEY = "stax-demo-nido-animal";
 
 document.addEventListener("DOMContentLoaded", () => {
   const methodPhotos = [
-    ["./recepcion.png", "Cuidadora recibiendo a una mascota al llegar al estudio"],
-    ["./cuidado-individual.png", "Cuidadora cepillando tranquilamente a un perro durante su rutina"],
-    ["./entrega.png", "Cuidadora entregando una mascota a su familia con contexto"],
+    ["./recepcion.webp", "Cuidadora recibiendo a una mascota al llegar al estudio"],
+    ["./cuidado-individual.webp", "Cuidadora cepillando tranquilamente a un perro durante su rutina"],
+    ["./entrega.webp", "Cuidadora entregando una mascota a su familia con contexto"],
   ];
   document.querySelectorAll(".mosaic img").forEach((image, index) => {
     const [src, alt] = methodPhotos[index];
@@ -18,7 +18,7 @@ const NIDO_SERVICES = [
     name: "Baño consciente",
     duration: "75 min",
     price: "$32.000 desde",
-    image: "./bano-consciente.png",
+    image: "./bano-consciente.webp",
     alt: "Gato recibiendo un baño tranquilo con una cuidadora",
     className: "service-bath",
     description: "Lavado, secado con pausa y una rutina adaptada a su pelaje.",
@@ -27,7 +27,7 @@ const NIDO_SERVICES = [
     name: "Peluquería de raza",
     duration: "90 min",
     price: "$39.000 desde",
-    image: "./peluqueria-raza.png",
+    image: "./peluqueria-raza.webp",
     alt: "Peluquera recortando cuidadosamente el pelaje de un perro pequeño",
     className: "service-groom",
     description: "Corte, cepillado y terminaciones según su pelo y rutina.",
@@ -36,7 +36,7 @@ const NIDO_SERVICES = [
     name: "Paseo individual",
     duration: "50 min",
     price: "$18.000 desde",
-    image: "./paseo-individual.png",
+    image: "./paseo-individual.webp",
     alt: "Cuidadora paseando individualmente a un perro por un sendero verde",
     className: "service-walk",
     description: "Un recorrido individual para caminar con atención y sin apuro.",
@@ -45,7 +45,7 @@ const NIDO_SERVICES = [
     name: "Hotel de día",
     duration: "Jornada completa",
     price: "$28.000 desde",
-    image: "./hotel-dia.png",
+    image: "./hotel-dia.webp",
     alt: "Perros descansando en una sala luminosa de hotel de día",
     className: "service-daycare",
     description: "Descanso, acompañamiento y actualizaciones durante su día.",
