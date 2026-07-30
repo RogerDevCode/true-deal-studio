@@ -1365,10 +1365,10 @@
                 </div>
 
                 <!-- Preview Image & Modality -->
-                <div class="relative overflow-hidden rounded-lg aspect-video bg-drac-darker mb-3">
-                  <img src="./assets/optimized/fonoaudiologia-card.webp" :src="demos[activeRubro].img" :alt="demos[activeRubro].name" class="h-full w-full object-cover transition-all duration-300 hover:scale-105" />
-                  <div class="absolute bottom-2 left-2 right-2 rounded-md bg-drac-darker/85 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-drac-fg" x-text="demos[activeRubro].modality"></div>
-                </div>
+                <a :href="demos[activeRubro].url" target="_blank" rel="noopener" class="block relative overflow-hidden rounded-lg aspect-video bg-drac-darker mb-3 group">
+                  <img src="./assets/optimized/fonoaudiologia-card.webp" :src="demos[activeRubro].img" :alt="demos[activeRubro].name" class="h-full w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                  <div class="absolute bottom-2 left-2 right-2 rounded-md bg-drac-darker/85 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-drac-fg pointer-events-none" x-text="demos[activeRubro].modality"></div>
+                </a>
 
                 <!-- Pre-filled WhatsApp Simulation -->
                 <div class="rounded-lg bg-emerald-950/40 border border-emerald-500/25 p-3">
