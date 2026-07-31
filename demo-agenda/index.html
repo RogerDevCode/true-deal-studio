@@ -60,7 +60,16 @@
       border-radius: 1rem;
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.72));
     }
-    .integration-preview-layer { z-index: 110; }
+    .integration-preview-layer {
+      z-index: 110;
+      background: rgba(2, 6, 23, 0.88);
+    }
+    .integration-preview-panel {
+      background: #0f172a;
+    }
+    .integration-preview-step {
+      background: rgba(2, 6, 23, 0.58);
+    }
     .integration-visual__label {
       position: absolute;
       top: 1rem;
@@ -534,7 +543,7 @@
             <p class="mt-2 text-sm leading-relaxed text-slate-400">Explora extensiones que pueden adaptarse a una web nueva o a una que ya tienes.</p>
           </div>
 
-          <div class="grid gap-4 sm:grid-cols-2">
+          <div class="grid gap-4">
             <article class="glass-card rounded-2xl p-4 transition-colors hover:border-sky-500/30" data-testid="voicelive-card">
               <div class="integration-visual" role="img" aria-label="Vista previa visual de una consulta atendida por voz">
                 <span class="integration-visual__label">Atención por voz</span>
@@ -575,8 +584,8 @@
 
   </main>
 
-  <div x-show="integrationPreviewOpen" x-cloak x-transition.opacity @keydown.escape.window="closeIntegrationPreview()" @click.self="closeIntegrationPreview()" class="integration-preview-layer fixed inset-0 grid place-items-center bg-slate-950/80 p-4" role="dialog" aria-modal="true" aria-labelledby="telegram-preview-title" data-testid="telegram-preview-dialog">
-    <div class="w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-700 bg-slate-900 p-5 shadow-2xl sm:p-6" @click.stop>
+  <div x-show="integrationPreviewOpen" x-cloak x-transition.opacity @keydown.escape.window="closeIntegrationPreview()" @click.self="closeIntegrationPreview()" class="integration-preview-layer fixed inset-0 grid place-items-center p-4" role="dialog" aria-modal="true" aria-labelledby="telegram-preview-title" data-testid="telegram-preview-dialog">
+    <div class="integration-preview-panel w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-700 p-5 shadow-2xl sm:p-6" @click.stop>
       <div class="flex items-start justify-between gap-4">
         <div>
           <span class="inline-flex rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-300">Demostración conceptual</span>
@@ -586,9 +595,9 @@
       </div>
       <p class="mt-3 text-sm leading-relaxed text-slate-300">El cliente consulta desde una web o por voz. El dueño recibe la información ordenada en Telegram y decide cómo continuar.</p>
       <ol class="mt-5 grid gap-3 text-sm text-slate-300">
-        <li class="rounded-xl border border-slate-700 bg-slate-950/60 p-3"><strong class="text-sky-300">01 · Consulta web o voz</strong><span class="mt-1 block text-slate-400">La persona explica lo que necesita desde el canal que ya está usando.</span></li>
-        <li class="rounded-xl border border-slate-700 bg-slate-950/60 p-3"><strong class="text-sky-300">02 · Datos relevantes ordenados</strong><span class="mt-1 block text-slate-400">Servicio, comuna y horario quedan listos para revisar.</span></li>
-        <li class="rounded-xl border border-slate-700 bg-slate-950/60 p-3"><strong class="text-sky-300">03 · Resumen para el dueño en Telegram</strong><span class="mt-1 block text-slate-400">La consulta llega en una ficha breve, sin obligarte a reconstruir el contexto.</span></li>
+        <li class="integration-preview-step rounded-xl border border-slate-700 p-3"><strong class="text-sky-300">01 · Consulta web o voz</strong><span class="mt-1 block text-slate-400">La persona explica lo que necesita desde el canal que ya está usando.</span></li>
+        <li class="integration-preview-step rounded-xl border border-slate-700 p-3"><strong class="text-sky-300">02 · Datos relevantes ordenados</strong><span class="mt-1 block text-slate-400">Servicio, comuna y horario quedan listos para revisar.</span></li>
+        <li class="integration-preview-step rounded-xl border border-slate-700 p-3"><strong class="text-sky-300">03 · Resumen para el dueño en Telegram</strong><span class="mt-1 block text-slate-400">La consulta llega en una ficha breve, sin obligarte a reconstruir el contexto.</span></li>
       </ol>
       <div class="mt-5 flex flex-wrap gap-2" aria-label="Acciones representadas en la demostración"><span class="rounded-full border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-300">Responder</span><span class="rounded-full border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-300">Agendar</span><span class="rounded-full border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-300">Pedir más datos</span></div>
       <p class="mt-5 border-t border-slate-800 pt-4 text-xs leading-relaxed text-slate-500">La conexión real se configura según el negocio, sus canales y la información que apruebe. Esta vista no envía mensajes ni usa datos reales.</p>
