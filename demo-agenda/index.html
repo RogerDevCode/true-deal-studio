@@ -51,6 +51,109 @@
       border-color: rgba(56, 189, 248, 0.3);
       box-shadow: 0 0 20px rgba(56, 189, 248, 0.05);
     }
+    [x-cloak] { display: none !important; }
+    .integration-visual {
+      position: relative;
+      min-height: 170px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.72));
+    }
+    .integration-preview-layer { z-index: 110; }
+    .integration-visual__label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #cbd5e1;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .integration-visual__orb {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5rem;
+      height: 5rem;
+      border: 1px solid rgba(56, 189, 248, 0.8);
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.3), rgba(56, 189, 248, 0.04) 62%, transparent 63%);
+      box-shadow: 0 0 0 1rem rgba(56, 189, 248, 0.04), 0 0 3rem rgba(56, 189, 248, 0.24);
+      transform: translate(-50%, -50%);
+      animation: integration-voice-pulse 5s ease-in-out infinite;
+    }
+    .integration-visual__orb::after {
+      position: absolute;
+      inset: 1.45rem;
+      border-radius: inherit;
+      background: #38bdf8;
+      box-shadow: 0 0 1.5rem rgba(56, 189, 248, 0.75);
+      content: "";
+    }
+    .integration-visual__caption {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .integration-visual__telegram-card {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+      padding: 0.8rem;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.88);
+      box-shadow: 0 1rem 2rem rgba(2, 6, 23, 0.22);
+      animation: integration-telegram-arrive 5s ease-in-out infinite;
+    }
+    .integration-visual__telegram-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      color: #f8fafc;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .integration-visual__telegram-copy {
+      margin-top: 0.45rem;
+      color: #94a3b8;
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+    .integration-visual__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.65rem;
+    }
+    .integration-visual__action {
+      padding: 0.25rem 0.45rem;
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      border-radius: 999px;
+      color: #7dd3fc;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+    @keyframes integration-voice-pulse {
+      0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.94); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+    }
+    @keyframes integration-telegram-arrive {
+      0%, 12% { opacity: 0.48; transform: translateY(0.45rem); }
+      28%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .integration-visual__orb,
+      .integration-visual__telegram-card { animation: none; }
+    }
     /* Enforce Chilean accessibility rules - no font below 14px on mobile viewport */
     @media (max-width: 768px) {
       html body select,
@@ -424,6 +527,41 @@
           </ul>
         </div>
 
+        <section class="space-y-4" data-testid="integrations-section" aria-labelledby="integrations-title">
+          <div>
+            <p class="info-badge inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 px-2.5 py-0.5 text-xs font-semibold text-sky-300 border border-sky-500/20">Extensiones conectables</p>
+            <h2 id="integrations-title" class="mt-3 font-display text-xl font-bold leading-tight text-white">Tu web puede orientar. Tú puedes decidir.</h2>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Explora extensiones que pueden adaptarse a una web nueva o a una que ya tienes.</p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="glass-card rounded-2xl p-4 transition-colors hover:border-sky-500/30" data-testid="voicelive-card">
+              <div class="integration-visual" role="img" aria-label="Vista previa visual de una consulta atendida por voz">
+                <span class="integration-visual__label">Atención por voz</span>
+                <span class="integration-visual__orb" aria-hidden="true"></span>
+                <span class="integration-visual__caption">¿En qué te orientamos?</span>
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-white">VoiceLive</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">Responde preguntas frecuentes por voz y orienta al visitante antes de que escriba.</p>
+              <a href="https://voice.stax.ink/widget/stax" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center rounded-xl border border-sky-400/40 px-4 py-2 text-sm font-bold text-sky-300 transition-colors hover:border-sky-300 hover:bg-sky-400/10 focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Probar VoiceLive en una nueva pestaña">Probar VoiceLive <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <article class="glass-card rounded-2xl p-4 transition-colors hover:border-sky-500/30" data-testid="telegram-card">
+              <div class="integration-visual" role="img" aria-label="Vista previa de una consulta que llega resumida a Telegram">
+                <span class="integration-visual__label">Control para el dueño</span>
+                <div class="integration-visual__telegram-card" aria-hidden="true">
+                  <div class="integration-visual__telegram-title"><span>Telegram · Nueva consulta</span><span>•</span></div>
+                  <p class="integration-visual__telegram-copy">Servicio solicitado · comuna · horario preferido</p>
+                  <div class="integration-visual__actions"><span class="integration-visual__action">Responder</span><span class="integration-visual__action">Agendar</span><span class="integration-visual__action">Pedir datos</span></div>
+                </div>
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-white">Tu bandeja de atención en Telegram</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">Recibe cada consulta resumida y decide el siguiente paso desde tu celular.</p>
+              <button type="button" @click="openIntegrationPreview()" class="mt-4 inline-flex min-h-11 items-center rounded-xl border border-sky-400/40 px-4 py-2 text-sm font-bold text-sky-300 transition-colors hover:border-sky-300 hover:bg-sky-400/10 focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Ver el flujo del dueño en Telegram">Ver el flujo del dueño <span aria-hidden="true">→</span></button>
+            </article>
+          </div>
+        </section>
+
         <!-- Clear Cache button -->
         <div class="text-center">
           <button @click="resetToDefaultData()" class="reset-btn text-xs text-slate-300 hover:text-white transition-colors uppercase tracking-wider font-semibold">
@@ -437,6 +575,26 @@
 
   </main>
 
+  <div x-show="integrationPreviewOpen" x-cloak x-transition.opacity @keydown.escape.window="closeIntegrationPreview()" @click.self="closeIntegrationPreview()" class="integration-preview-layer fixed inset-0 grid place-items-center bg-slate-950/80 p-4" role="dialog" aria-modal="true" aria-labelledby="telegram-preview-title" data-testid="telegram-preview-dialog">
+    <div class="w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-700 bg-slate-900 p-5 shadow-2xl sm:p-6" @click.stop>
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="inline-flex rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-300">Demostración conceptual</span>
+          <h2 id="telegram-preview-title" class="mt-3 text-xl font-bold text-white">De la consulta al siguiente paso</h2>
+        </div>
+        <button type="button" @click="closeIntegrationPreview()" class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl text-2xl text-slate-400 transition-colors hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Cerrar vista previa de Telegram" data-testid="telegram-preview-close">×</button>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed text-slate-300">El cliente consulta desde una web o por voz. El dueño recibe la información ordenada en Telegram y decide cómo continuar.</p>
+      <ol class="mt-5 grid gap-3 text-sm text-slate-300">
+        <li class="rounded-xl border border-slate-700 bg-slate-950/60 p-3"><strong class="text-sky-300">01 · Consulta web o voz</strong><span class="mt-1 block text-slate-400">La persona explica lo que necesita desde el canal que ya está usando.</span></li>
+        <li class="rounded-xl border border-slate-700 bg-slate-950/60 p-3"><strong class="text-sky-300">02 · Datos relevantes ordenados</strong><span class="mt-1 block text-slate-400">Servicio, comuna y horario quedan listos para revisar.</span></li>
+        <li class="rounded-xl border border-slate-700 bg-slate-950/60 p-3"><strong class="text-sky-300">03 · Resumen para el dueño en Telegram</strong><span class="mt-1 block text-slate-400">La consulta llega en una ficha breve, sin obligarte a reconstruir el contexto.</span></li>
+      </ol>
+      <div class="mt-5 flex flex-wrap gap-2" aria-label="Acciones representadas en la demostración"><span class="rounded-full border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-300">Responder</span><span class="rounded-full border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-300">Agendar</span><span class="rounded-full border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-300">Pedir más datos</span></div>
+      <p class="mt-5 border-t border-slate-800 pt-4 text-xs leading-relaxed text-slate-500">La conexión real se configura según el negocio, sus canales y la información que apruebe. Esta vista no envía mensajes ni usa datos reales.</p>
+    </div>
+  </div>
+
   <!-- Script block -->
   <script>
     function dashboardApp() {
@@ -445,6 +603,7 @@
         filterSource: 'all',
         filterStatus: 'all',
         searchQuery: '',
+        integrationPreviewOpen: false,
 
         // Form Fields
         formSource: 'Propiedades',
@@ -537,6 +696,14 @@
             dateAdded: new Date().toISOString()
           }
         ],
+
+        openIntegrationPreview() {
+          this.integrationPreviewOpen = true;
+        },
+
+        closeIntegrationPreview() {
+          this.integrationPreviewOpen = false;
+        },
 
         initDashboard() {
           const stored = localStorage.getItem('tuwebpro_bookings');
