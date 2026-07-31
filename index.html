@@ -1761,6 +1761,39 @@
     </section>
 
     <!-- ============================================ -->
+    <!-- STAX CONNECTED ATTENTION OFFER -->
+    <!-- ============================================ -->
+    <section id="atencion-asistida" data-testid="assisted-attention" class="relative overflow-hidden border-y border-drac-current/30 bg-drac-darker/50">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="inline-flex items-center rounded-full border border-drac-cyan/40 bg-drac-cyan/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-drac-cyan">Atención asistida</span>
+          <h2 class="mt-6 font-display text-3xl font-black leading-tight text-drac-fg sm:text-4xl lg:text-5xl">Tu web puede orientar.<span class="block text-drac-cyan">Tú decides el siguiente paso.</span></h2>
+          <p class="mt-6 text-lg leading-relaxed text-drac-comment">La página explica lo esencial. La voz orienta dudas aprobadas. Tú recibes una consulta con contexto para responder, agendar o pedir más información.</p>
+        </div>
+
+        <div class="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-2">
+          <article data-testid="stax-voice-offer" class="rounded-[1.75rem] border border-drac-cyan/40 bg-drac-bg/80 p-6 shadow-card sm:p-8">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-cyan">STAX Voz</p>
+            <h3 class="mt-4 text-2xl font-bold text-drac-fg">Orienta antes de que la persona escriba.</h3>
+            <p class="mt-4 leading-relaxed text-drac-comment">VoiceLive responde preguntas frecuentes con la información aprobada por tu negocio y deriva los casos que necesitan una persona.</p>
+            <a href="https://voice.stax.ink/widget/stax" target="_blank" rel="noopener" class="premium-quiet-cta mt-6 inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-bold text-drac-fg transition-all hover:-translate-y-0.5">Probar atención por voz<span class="ml-2" aria-hidden="true">↗</span><span class="sr-only"> (abre en una pestaña nueva)</span></a>
+          </article>
+
+          <article data-testid="stax-owner-workflow" class="rounded-[1.75rem] border border-drac-green/35 bg-drac-bg/80 p-6 shadow-card sm:p-8">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-green">STAX Atención Ordenada</p>
+            <h3 class="mt-4 text-2xl font-bold text-drac-fg">Recibe una consulta lista para revisar.</h3>
+            <p class="mt-4 leading-relaxed text-drac-comment">Servicio, comuna, horario y siguiente paso quedan ordenados para que el dueño continúe desde su canal de atención.</p>
+            <a href="./demo-agenda/index.html" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-full border border-drac-green/35 bg-drac-green/10 px-5 py-3 text-sm font-bold text-drac-green transition-all hover:-translate-y-0.5 hover:bg-drac-green/20">Ver cómo llega una consulta ordenada<span class="ml-2" aria-hidden="true">↗</span><span class="sr-only"> (abre en una pestaña nueva)</span></a>
+          </article>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="#contacto" class="inline-flex items-center justify-center rounded-full bg-drac-green px-6 py-3 text-sm font-bold text-drac-darker shadow-lg shadow-drac-green/20 transition-all hover:-translate-y-0.5 hover:shadow-xl">Revisar mi atención actual por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
     <!-- PAIN POINTS / PROBLEM -->
     <!-- ============================================ -->
     <section id="beneficios" class="relative band-white overflow-hidden">
@@ -2609,6 +2642,7 @@
                     formNegocio: '',
                     formTelefono: '',
                     formMensaje: '',
+                    formInteres: 'STAX Vitrina',
                     telefonoError: '',
                     sent: false,
                     preparedUrl: '',
@@ -2626,7 +2660,8 @@
                           name: this.formNombre,
                           business: this.formNegocio,
                           phone: this.formTelefono,
-                          details: this.formMensaje
+                          details: this.formMensaje,
+                          interest: this.formInteres
                         });
                         this.preparedUrl = `https://wa.me/56999040515?text=${encodeURIComponent(text)}`;
                         const opened = window.openWhatsAppWithFallback
@@ -2643,6 +2678,7 @@
                         this.formNegocio = '';
                         this.formTelefono = '';
                         this.formMensaje = '';
+                        this.formInteres = 'STAX Vitrina';
                         this.telefonoError = '';
                         this.preparedUrl = '';
                         this.sent = false;
@@ -2671,6 +2707,14 @@
                       <input id="form-telefono" type="tel" x-model="formTelefono" x-ref="telefono" autocomplete="tel" :aria-invalid="telefonoError ? 'true' : 'false'" aria-describedby="form-telefono-hint form-telefono-error" placeholder="Ej: +56 9 1234 5678" class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg placeholder-drac-comment/50 outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20" />
                       <p id="form-telefono-hint" class="mt-2 text-sm text-drac-comment">Opcional. Puedes escribirlo con o sin +56.</p>
                       <p id="form-telefono-error" x-show="telefonoError" x-text="telefonoError" role="alert" class="mt-2 text-sm font-semibold text-red-300"></p>
+                    </div>
+                    <div class="mt-4">
+                      <label for="form-interes" class="mb-2 block text-sm font-bold text-drac-fg">¿Qué quieres revisar primero?</label>
+                      <select id="form-interes" x-model="formInteres" class="w-full rounded-xl border border-drac-current/50 bg-drac-darker/60 px-4 py-3 text-sm text-drac-fg outline-none transition focus:border-chile-blue focus:ring-2 focus:ring-chile-blue/20">
+                        <option value="STAX Vitrina">STAX Vitrina: mi web y la información principal</option>
+                        <option value="STAX Atención Ordenada">STAX Atención Ordenada: consultas con más contexto</option>
+                        <option value="STAX Voz">STAX Voz: orientación por voz</option>
+                      </select>
                     </div>
                     <div class="mt-4">
                       <label for="form-mensaje" class="mb-2 block text-sm font-bold text-drac-fg">¿Qué información explicas hoy con frecuencia?</label>
@@ -2935,7 +2979,7 @@
           return this.selectedPlan ? this.planOptions[this.selectedPlan] : null;
         },
 
-        buildWhatsAppMessage({ name, business, phone, details }) {
+        buildWhatsAppMessage({ name, business, phone, details, interest }) {
           const plan = this.getSelectedPlan();
           const parts = [
             `Hola, mi nombre es ${name.trim()} y tengo un negocio de ${business.trim()}.`,
@@ -2943,6 +2987,7 @@
               ? `Quiero revisar ${plan.label} y confirmar si se ajusta a mi negocio.`
               : 'Quiero orientación para ordenar la información de mi negocio antes de conversar por WhatsApp.',
           ];
+          if (interest) parts.push(`Quiero revisar primero: ${interest}.`);
           if (phone.trim()) parts.push(`Mi WhatsApp es ${phone.trim()}.`);
           if (details.trim()) parts.push(`Hoy explico con frecuencia: ${details.trim()}.`);
           return parts.join(' ');
