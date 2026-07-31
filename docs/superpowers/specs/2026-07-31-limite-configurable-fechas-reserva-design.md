@@ -18,7 +18,7 @@ La regla se aplica a las demos de psicología, café, salón, contabilidad y pro
 
 ## Pruebas
 
-- Los fixtures de reserva se mueven a fechas de 2027, manteniéndolos válidos aproximadamente un año.
+- Los fixtures de reserva calculan una fecha siete días desde la fecha local, manteniéndolos válidos y dentro de cualquier límite de 90 días.
 - La cobertura de salón comprueba que el máximo está presente y que una fecha mayor a 90 días no prepara WhatsApp.
 - La prueba transversal de WhatsApp conserva el envío correcto para cada demo.
 
