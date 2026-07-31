@@ -90,7 +90,7 @@ test.describe('CRM Express integration cards', () => {
 Run:
 
 ```bash
-node scripts/run_clean_env.js playwright test tests/agenda-integrations.spec.js --reporter=line
+node scripts/run_clean_env.js npx playwright test tests/agenda-integrations.spec.js --reporter=line
 ```
 
 Expected: FAIL because the new integration section and its `data-testid` contracts do not exist yet.
@@ -267,7 +267,7 @@ Insert this block immediately after the existing sales pitch `</div>` and before
 Run:
 
 ```bash
-node scripts/run_clean_env.js playwright test tests/agenda-integrations.spec.js --reporter=line
+node scripts/run_clean_env.js npx playwright test tests/agenda-integrations.spec.js --reporter=line
 ```
 
 Expected: the card assertions pass; the test fails at the Telegram preview because the Alpine state and dialog have not been added.
@@ -341,7 +341,7 @@ Add these methods before `initDashboard()`:
 Run:
 
 ```bash
-node scripts/run_clean_env.js playwright test tests/agenda-integrations.spec.js --reporter=line
+node scripts/run_clean_env.js npx playwright test tests/agenda-integrations.spec.js --reporter=line
 ```
 
 Expected: PASS for the integration card and preview test, with no console or network guard failures.
@@ -366,7 +366,7 @@ git commit -m "feat: add Telegram workflow preview to agenda panel"
 - [ ] **Step 1: Run the focused test and core console test**
 
 ```bash
-node scripts/run_clean_env.js playwright test tests/agenda-integrations.spec.js tests/console.spec.js --reporter=line
+node scripts/run_clean_env.js npx playwright test tests/agenda-integrations.spec.js tests/console.spec.js --reporter=line
 ```
 
 Expected: PASS; console/network guards remain clean for the panel and core pages.
