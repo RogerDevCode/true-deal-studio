@@ -41,6 +41,10 @@ test.describe('CRM Express integration cards', () => {
     await page.getByTestId('telegram-preview-close').click();
     await expect(preview).toBeHidden();
 
+    await telegramCard.getByRole('button', { name: 'Ver el flujo del dueño' }).click();
+    await preview.click({ position: { x: 5, y: 5 } });
+    await expect(preview).toBeHidden();
+
     await guards.assertHealthyContext();
   });
 });
