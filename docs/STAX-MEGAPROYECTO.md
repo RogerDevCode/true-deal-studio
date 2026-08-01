@@ -12,7 +12,7 @@ La integración se organiza así:
 | --- | --- | --- |
 | STAX Vitrina | `true-deal-studio` | Entrada comercial en `stax.ink`, evidencia y diagnóstico por WhatsApp. |
 | STAX Voz | `voicelive-v2` | Orientación pública por texto y voz y derivación humana. |
-| STAX Atención Ordenada | `chatbot` | Recepción del contexto conversacional y continuidad humana por Telegram. |
+| STAX Atención Ordenada | `venta-max-ia` | Recepción del contexto conversacional y continuidad humana por Telegram. |
 
 ## Regla de arquitectura
 

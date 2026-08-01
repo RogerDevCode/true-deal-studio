@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const { attachPageGuards, waitForAlpine } = require("./helpers");
+const { attachPageGuards, waitForAlpine, futureBookingDate } = require("./helpers");
 
 async function installWindowOpenProbe(page) {
   await page.addInitScript(() => {
@@ -61,7 +61,7 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
         await page.locator('input[x-model="formName"]').fill("Reserva QA");
         await page.locator('input[x-model="formPhone"]').fill("+56944445555");
         await page.locator('input[x-model="formEmail"]').fill("cafe@example.com");
-        await page.locator('input[x-model="formDate"]').fill("2026-07-30");
+        await page.locator('input[x-model="formDate"]').fill(await futureBookingDate(page));
         await page.locator('input[x-model="formTime"]').fill("13:30");
         await page.locator('textarea[x-model="formComment"]').fill("Mesa para dos");
       },
@@ -74,7 +74,7 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
       fill: async (page) => {
         await page.locator('input[x-model="formName"]').fill("Clienta QA");
         await page.locator('input[x-model="formPhone"]').fill("+56955556666");
-        await page.locator('input[x-model="formDate"]').fill("2026-07-30");
+        await page.locator('input[x-model="formDate"]').fill(await futureBookingDate(page));
         await page.locator('input[x-model="formTime"]').fill("16:00");
         await page.locator('textarea[x-model="formComment"]').fill("Coloracion");
       },
@@ -88,7 +88,7 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
         await page.locator('input[x-model="formName"]').fill("Empresa QA");
         await page.locator('input[x-model="formPhone"]').fill("+56977778888");
         await page.locator('input[x-model="formEmail"]').fill("empresa@example.com");
-        await page.locator('input[x-model="formDate"]').fill("2026-07-30");
+        await page.locator('input[x-model="formDate"]').fill(await futureBookingDate(page));
         await page.locator('input[x-model="formTime"]').fill("09:30");
         await page.locator('textarea[x-model="formComment"]').fill("Diagnostico tributario");
       },
@@ -104,7 +104,7 @@ test("Core booking forms submit to WhatsApp", async ({ browser }) => {
       fill: async (page) => {
         await page.locator("#booking-name").fill("Comprador QA");
         await page.locator("#booking-phone").fill("+56988889999");
-        await page.locator("#booking-date").fill("2026-08-01");
+        await page.locator("#booking-date").fill(await futureBookingDate(page));
       },
       submitName: /Confirmar Visita/i,
       expectedParts: ["Comprador QA", "Departamento Dúplex en Providencia"],

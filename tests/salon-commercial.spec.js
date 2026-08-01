@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { attachPageGuards, waitForAlpine } = require('./helpers');
+const { attachPageGuards, waitForAlpine, futureBookingDate } = require('./helpers');
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/demo-salon-belleza/index.html');
@@ -86,7 +86,7 @@ test('Booking dialog contains focus and prepares a truthful WhatsApp request', a
   await page.locator('#salon-name').fill('Clienta QA');
   await page.locator('#salon-phone').fill('+56955556666');
   await page.locator('#salon-stylist').selectOption('stylist2');
-  await page.locator('#salon-date').fill('2026-07-30');
+  await page.locator('#salon-date').fill(await futureBookingDate(page));
   await page.locator('#salon-time').fill('16:00');
   await page.locator('#salon-comment').fill('Busco un cambio suave');
   await page.evaluate(() => {

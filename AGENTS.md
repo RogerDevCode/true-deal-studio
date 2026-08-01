@@ -164,8 +164,8 @@ Por instrucción explícita del usuario, este repositorio forma parte del megapr
 
 - `true-deal-studio`: landing comercial y punto de entrada público de `stax.ink`.
 - `/home/manager/Sync/python_proyects/voicelive-v2`: orientación pública por texto y voz (VoiceLive).
-- `/home/manager/Sync/python_proyects/chatbot`: operación conversacional y continuidad humana por Telegram.
+- `/home/manager/Sync/python_proyects/venta-max-ia`: operación conversacional y continuidad humana por Telegram.
 
-Los tres repositorios entregan una sola oferta: **la web explica, la voz orienta y el dueño decide el siguiente paso**. Cada repositorio conserva su historial, runtime, pruebas, secretos y despliegue independientes; no se fusionan imágenes, bases de datos ni credenciales sin una tarea explícita.
+Los tres repositorios entregan una sola oferta: **la web explica, la voz orienta y el dueño decide el siguiente paso**. Cada repositorio conserva su historial, runtime, pruebas, secretos y despliegue independientes; **el desarrollo de cada proyecto es individual, por lo que mantienen carpetas separadas y dockers separados**. No se fusionan imágenes, bases de datos ni credenciales sin una tarea explícita.
 
 Al trabajar en una capacidad transversal autorizada por el usuario, revisar los tres contratos y la guía compartida `docs/STAX-MEGAPROYECTO.md`. Declarar los contratos entre componentes (URL pública, payload, autenticación, responsable y prueba) antes de modificar una integración. Los cambios internos siguen limitados a este repositorio salvo autorización explícita para editar los demás.

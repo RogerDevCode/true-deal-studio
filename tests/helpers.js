@@ -45,7 +45,17 @@ async function waitForAlpine(page) {
   await page.waitForFunction(() => window.Alpine && document.body && document.body._x_dataStack);
 }
 
+async function futureBookingDate(page, days = 7) {
+  return page.evaluate((offset) => {
+    const date = new Date();
+    date.setHours(12, 0, 0, 0);
+    date.setDate(date.getDate() + offset);
+    return date.toISOString().slice(0, 10);
+  }, days);
+}
+
 module.exports = {
   attachPageGuards,
   waitForAlpine,
+  futureBookingDate,
 };

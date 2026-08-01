@@ -37,6 +37,16 @@ window.corredoraApp = function corredoraApp() {
     filterPrecioMax: 30000,
     isBookingOpen: false,
     selectedProperty: null,
+    bookingName: '',
+    bookingPhone: '',
+    bookingDate: '',
+    bookingTimeSlot: 'mañana',
+    bookingType: 'presencial',
+    bookingError: '',
+    bookingLeadDays: 90,
+    dateRange: window.STAXBookingDateRange.create(90),
+    get minDate() { return this.dateRange.minDate; },
+    get maxDate() { return this.dateRange.maxDate; },
     properties: [
       {
         id: 1,
@@ -147,8 +157,13 @@ window.corredoraApp = function corredoraApp() {
     },
 
     sendBookingToWhatsApp(name, phone, type, date, timeSlot) {
+      this.bookingError = '';
       if (!name.trim() || !phone.trim() || !date) {
         alert('Por favor complete todos los campos obligatorios (*).');
+        return;
+      }
+      if (!this.dateRange.includes(date)) {
+        this.bookingError = `Elige una fecha entre hoy y los próximos ${this.bookingLeadDays} días.`;
         return;
       }
 

@@ -34,7 +34,10 @@ window.salonApp = function salonApp() {
     formStylist: 'any',
     formComment: '',
     formError: '',
-    minDate: getTodayLocal(),
+    bookingLeadDays: 90,
+    dateRange: window.STAXBookingDateRange.create(90),
+    get minDate() { return this.dateRange.minDate; },
+    get maxDate() { return this.dateRange.maxDate; },
     lastTrigger: null,
 
     get checkoutLabel() {
@@ -148,6 +151,11 @@ window.salonApp = function salonApp() {
       }
       if (this.formDate < this.minDate) {
         this.formError = 'Elige una fecha desde hoy en adelante.';
+        document.getElementById('salon-date')?.focus();
+        return;
+      }
+      if (this.formDate > this.maxDate) {
+        this.formError = `Elige una fecha dentro de los próximos ${this.bookingLeadDays} días.`;
         document.getElementById('salon-date')?.focus();
         return;
       }

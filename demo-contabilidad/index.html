@@ -42,6 +42,7 @@
   <link rel="preload" href="../assets/css/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/tailwind.css"></noscript>
     
+    <script defer src="../assets/js/booking-date-range.js"></script>
     <script defer src="./app.js"></script>
     <!-- Alpine.js -->
     <script defer src="../assets/vendor/alpinejs.min.js"></script>
@@ -1568,7 +1569,7 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label">Fecha Propuesta *</label>
-                            <input type="date" x-model="formDate" required class="form-input">
+                            <input type="date" x-model="formDate" :min="minDate" :max="maxDate" required class="form-input">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Hora *</label>
@@ -1592,6 +1593,7 @@
                     </div>
 
                     <!-- Actions -->
+                    <p x-show="formError" x-text="formError" role="alert" aria-live="assertive" class="text-responsive-caption" style="color: #b42318; margin-top: 10px;" x-cloak></p>
                     <div class="form-actions">
                         <button type="button" @click="closeBooking()" class="btn-b2b btn-outline-navy" style="padding: 0.75rem 1.5rem;">Cancelar</button>
                         <button type="submit" class="btn-b2b btn-navy" style="padding: 0.75rem 1.5rem;">Agendar Reunión</button>
@@ -1602,7 +1604,7 @@
     </div>
 
     <!-- Botón Flotante para Volver al Showcase -->
-    <a href="../index.html#demos" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }" 
+    <a href="../index.html#demos" 
        class="showcase-back-btn no-print text-responsive-detail">
          <span>⬅️ Volver al Showcase</span>
     </a>

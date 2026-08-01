@@ -1365,7 +1365,7 @@
                 </div>
 
                 <!-- Preview Image & Modality -->
-                <a :href="demos[activeRubro].url" target="_blank" rel="noopener" class="block relative overflow-hidden rounded-lg aspect-video bg-drac-darker mb-3 group">
+                <a :href="demos[activeRubro].url" class="block relative overflow-hidden rounded-lg aspect-video bg-drac-darker mb-3 group">
                   <img src="./assets/optimized/fonoaudiologia-card.webp" :src="demos[activeRubro].img" :alt="demos[activeRubro].name" class="h-full w-full object-cover transition-all duration-300 group-hover:scale-105" />
                   <div class="absolute bottom-2 left-2 right-2 rounded-md bg-drac-darker/85 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-drac-fg pointer-events-none" x-text="demos[activeRubro].modality"></div>
                 </a>
@@ -1488,7 +1488,7 @@
         <!-- Showcase grid -->
         <div id="demo-showcase-grid" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <!-- Demo 1: Fonoaudiología -->
-          <a href="./demo-fonoaudiologia/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2">
+          <a href="./demo-fonoaudiologia/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/fonoaudiologia-card.webp" alt="Demo Nahovy Gallegos Fonoaudiología" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1506,7 +1506,7 @@
           </a>
 
           <!-- Demo 2: Psicóloga -->
-          <a x-show="showAllDemos" x-cloak href="./demo-psicologa/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .06s">
+          <a x-show="showAllDemos" x-cloak href="./demo-psicologa/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .06s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/psicologa-card.webp" alt="Demo Clara Altieri Psicóloga" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1524,7 +1524,7 @@
           </a>
 
           <!-- Demo 3: Café La Ruta -->
-          <a x-show="showAllDemos" x-cloak href="./demo-cafe-valparaiso/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .12s">
+          <a x-show="showAllDemos" x-cloak href="./demo-cafe-valparaiso/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .12s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/cafe-card.webp" alt="Demo Café La Ruta Valparaíso" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1542,7 +1542,7 @@
           </a>
 
           <!-- Demo 4: Studio Chic -->
-          <a href="./demo-salon-belleza/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .18s">
+          <a href="./demo-salon-belleza/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .18s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/salon-card.webp" alt="Demo Studio Chic Peluquería" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1560,7 +1560,7 @@
           </a>
 
           <!-- Demo 5: Artesanías del Sur -->
-          <a x-show="showAllDemos" x-cloak href="./demo-artesanias/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .24s">
+          <a x-show="showAllDemos" x-cloak href="./demo-artesanias/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .24s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/artesanias-card.webp" alt="Demo Artesanías del Sur E-commerce" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1578,7 +1578,7 @@
           </a>
 
           <!-- Demo 6: ContaDigital -->
-          <a x-show="showAllDemos" x-cloak href="./demo-contabilidad/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .30s">
+          <a x-show="showAllDemos" x-cloak href="./demo-contabilidad/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .30s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/contabilidad-card.webp" alt="Demo ContaDigital Contabilidad" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1596,7 +1596,7 @@
           </a>
 
           <!-- Demo 7: Corredora de Propiedades (Cobre & Co.) -->
-          <a x-show="showAllDemos" x-cloak href="./demo-propiedades/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .36s">
+          <a x-show="showAllDemos" x-cloak href="./demo-propiedades/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-current/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-green/30 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .36s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/propiedades-card.webp" alt="Demo Cobre & Co. Propiedades" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1614,7 +1614,7 @@
           </a>
 
           <!-- Demo 8: E-commerce & Admin (El Siguiente Paso) -->
-          <a href="./demo-ecommerce-tech/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-purple/60 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-purple/60 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .42s">
+          <a href="./demo-ecommerce-tech/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-purple/60 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-purple/60 hover:shadow-mega hover:-translate-y-2" style="transition-delay: .42s">
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/ecommerce-card.webp" alt="Demo E-commerce con Panel de Control" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
@@ -1637,7 +1637,7 @@
 
 
           <!-- Demo 9: CRM Express (Gestor de Citas y Clientes) -->
-          <a x-show="showAllDemos" x-cloak href="./demo-agenda/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-cyan/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-cyan hover:shadow-mega hover:-translate-y-2" style="transition-delay: .48s">
+          <a x-show="showAllDemos" x-cloak href="./demo-agenda/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-cyan/40 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-cyan hover:shadow-mega hover:-translate-y-2" style="transition-delay: .48s">
             <div class="relative h-48 w-full overflow-hidden">
               <!-- Custom designed visual preview -->
               <div class="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900 to-sky-950 flex flex-col items-center justify-center p-4">
@@ -1660,7 +1660,7 @@
           </a>
 
           <!-- Demo 10: Casa Ronda -->
-          <a x-show="showAllDemos" x-cloak href="./demo-casa-colores/index.html" target="_blank" rel="noopener" class="reveal group relative flex flex-col rounded-3xl border border-drac-yellow/50 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-yellow hover:shadow-mega hover:-translate-y-2" style="transition-delay: .54s">
+          <a x-show="showAllDemos" x-cloak href="./demo-casa-colores/index.html" class="reveal group relative flex flex-col rounded-3xl border border-drac-yellow/50 bg-drac-bg/80 overflow-hidden shadow-card transition-all duration-500 hover:border-drac-yellow hover:shadow-mega hover:-translate-y-2" style="transition-delay: .54s">
             <div class="relative h-48 w-full overflow-hidden bg-[#2d2032]">
               <img src="./demo-casa-colores/assets/casa-ronda-hero.webp" alt="Mesa de celebración creativa del demo Casa Ronda" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#2d2032] via-[#2d2032]/25 to-transparent"></div>
@@ -1783,7 +1783,7 @@
             <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-green">STAX Atención Ordenada</p>
             <h3 class="mt-4 text-2xl font-bold text-drac-fg">Recibe una consulta lista para revisar.</h3>
             <p class="mt-4 leading-relaxed text-drac-comment">Servicio, comuna, horario y siguiente paso quedan ordenados para que el dueño continúe desde su canal de atención.</p>
-            <a href="./demo-agenda/index.html" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-full border border-drac-green/35 bg-drac-green/10 px-5 py-3 text-sm font-bold text-drac-green transition-all hover:-translate-y-0.5 hover:bg-drac-green/20">Ver cómo llega una consulta ordenada<span class="ml-2" aria-hidden="true">↗</span><span class="sr-only"> (abre en una pestaña nueva)</span></a>
+            <a href="./demo-agenda/index.html" class="mt-6 inline-flex items-center justify-center rounded-full border border-drac-green/35 bg-drac-green/10 px-5 py-3 text-sm font-bold text-drac-green transition-all hover:-translate-y-0.5 hover:bg-drac-green/20">Ver cómo llega una consulta ordenada</a>
           </article>
         </div>
 
@@ -2268,7 +2268,7 @@
               <p class="mt-5 text-sm font-semibold leading-relaxed text-drac-fg">Sección adicional desde $30.000 CLP. Página adicional, redacción desde cero, catálogo amplio, reservas o pagos en línea se cotizan antes de avanzar.</p>
             </div>
             <div class="p-6 pt-0">
-              <a href="./demo-casa-colores/index.html" target="_blank" rel="noopener" class="mb-3 flex w-full items-center justify-center rounded-2xl border border-drac-current/30 bg-drac-current/10 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-yellow hover:text-drac-yellow">Ver demo: Casa Ronda<span class="sr-only"> (abre en una pestaña nueva)</span></a>
+              <a href="./demo-casa-colores/index.html" class="mb-3 flex w-full items-center justify-center rounded-2xl border border-drac-current/30 bg-drac-current/10 px-5 py-3 text-sm font-bold text-drac-fg transition-all duration-300 hover:border-drac-yellow hover:text-drac-yellow">Ver demo: Casa Ronda</a>
               <a href="#contacto" data-testid="plan-cta-esencial" @click="selectPlan('esencial')" class="flex w-full items-center justify-center rounded-2xl border border-chile-blue/30 bg-chile-blue/10 px-5 py-3.5 text-sm font-bold text-chile-blueLight transition-all duration-300 hover:bg-chile-blue/20">Revisar este plan</a>
             </div>
           </div>
@@ -2725,7 +2725,7 @@
                       Preparar mi consulta por WhatsApp
                     </button>
                     <p class="contact-form-note mt-3 text-center text-xs">El botón abre WhatsApp con el contexto de tu consulta listo para enviar. Respondemos dentro del horario de atención.</p>
-                    <p class="contact-form-note mt-2 text-center text-xs">Tus datos se usan solo para responder esta consulta. Revisa el <a href="./privacidad.html" class="font-semibold hover:underline">aviso de privacidad</a>.</p>
+                    <p class="contact-form-note mt-2 text-center text-xs">Tus datos se usan solo para responder esta consulta. Revisa la <a href="./privacidad.html" class="font-semibold hover:underline">política de privacidad</a> y los <a href="./terminos.html" class="font-semibold hover:underline">términos de uso</a>.</p>
                     <p class="contact-form-note mt-2 flex items-center justify-center gap-1.5 text-center text-xs font-semibold">
                       <svg class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -2798,7 +2798,8 @@
               +56 9 9904 0515
             </a>
             <p class="text-xs text-drac-comment">Atención en todo Chile</p>
-            <a href="./privacidad.html" class="block text-xs text-drac-comment transition-colors hover:text-drac-cyan">Aviso de privacidad</a>
+            <a href="./privacidad.html" class="block text-xs text-drac-comment transition-colors hover:text-drac-cyan">Política de privacidad</a>
+            <a href="./terminos.html" class="block text-xs text-drac-comment transition-colors hover:text-drac-cyan">Términos de uso</a>
           </div>
         </div>
       </div>

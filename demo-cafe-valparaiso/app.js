@@ -49,6 +49,11 @@ window.cafeApp = function cafeApp() {
     formGuests: '2',
     formSector: 'presencial',
     formComment: '',
+    formError: '',
+    bookingLeadDays: 90,
+    dateRange: window.STAXBookingDateRange.create(90),
+    get minDate() { return this.dateRange.minDate; },
+    get maxDate() { return this.dateRange.maxDate; },
 
     init() {
       window.addEventListener('scroll', () => {
@@ -112,8 +117,13 @@ window.cafeApp = function cafeApp() {
     },
 
     submitBooking() {
+      this.formError = '';
       if (!this.formName || !this.formPhone || !this.formDate || !this.formTime) {
         alert('Por favor, completa los campos requeridos.');
+        return;
+      }
+      if (!this.dateRange.includes(this.formDate)) {
+        this.formError = `Elige una fecha entre hoy y los próximos ${this.bookingLeadDays} días.`;
         return;
       }
 

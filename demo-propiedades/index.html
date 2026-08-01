@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
   <link rel="stylesheet" href="../assets/css/tailwind.css">
     
+    <script defer src="../assets/js/booking-date-range.js"></script>
     <script defer src="./app.js"></script>
     <!-- Alpine.js -->
     <script defer src="../assets/vendor/alpinejs.min.js"></script>
@@ -734,7 +735,7 @@
     <!-- Demo Banner Info -->
     <div class="demo-bar">
         <span>Esta es la DEMO de **Cobre & Co. Propiedades** (Filtros en UF/CLP y Agenda de Visitas).</span>
-        <a href="../index.html#precios" onclick="if(window.history.length > 1) { event.preventDefault(); history.back(); }">Regresar al Portafolio</a>
+        <a href="../index.html#precios">Regresar al Portafolio</a>
     </div>
 
     <!-- HEADER -->
@@ -911,7 +912,7 @@
 
     <!-- BOOKING VISIT MODAL -->
     <div x-show="isBookingOpen" class="modal-overlay" style="display: none;" x-cloak @click.self="closeBooking()">
-        <div class="modal-card" x-data="{ bookingName: '', bookingPhone: '', bookingDate: '', bookingTimeSlot: 'mañana', bookingType: 'presencial' }">
+        <div class="modal-card">
             
             <div class="modal-header">
                 <h3>Agendar Visita</h3>
@@ -953,7 +954,7 @@
                     <!-- Fecha -->
                     <div class="form-group">
                         <label class="form-label" for="booking-date">Fecha *</label>
-                        <input id="booking-date" type="date" class="form-select" x-model="bookingDate">
+                        <input id="booking-date" type="date" class="form-select" x-model="bookingDate" :min="minDate" :max="maxDate">
                     </div>
                     <!-- Bloque Horario -->
                     <div class="form-group">
@@ -967,6 +968,8 @@
 
                 <!-- Trigger effect reset when modal state changes -->
                 <div x-effect="if (!isBookingOpen) { bookingName = ''; bookingPhone = ''; bookingDate = ''; bookingTimeSlot = 'mañana'; bookingType = 'presencial'; }"></div>
+
+                <p x-show="bookingError" x-text="bookingError" role="alert" aria-live="assertive" style="color: #b42318; margin-top: 10px;" x-cloak></p>
 
                 <div style="display: none;" x-ref="formSubmitter" @click="sendBookingToWhatsApp(bookingName, bookingPhone, bookingType, bookingDate, bookingTimeSlot)"></div>
             </div>

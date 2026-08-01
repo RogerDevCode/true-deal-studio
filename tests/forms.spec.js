@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const { attachPageGuards, waitForAlpine } = require("./helpers");
+const { attachPageGuards, waitForAlpine, futureBookingDate } = require("./helpers");
 
 async function openViaAlpine(page, method) {
   await page.evaluate((methodName) => {
@@ -48,7 +48,7 @@ test("Cafe modal resets and defaults to Presencial", async ({ page }) => {
   await page.locator('input[x-model="formName"]').fill("Cliente Cafe");
   await page.locator('input[x-model="formPhone"]').fill("+56 9 3333 4444");
   await page.locator('input[x-model="formEmail"]').fill("cafe@demo.cl");
-  await page.locator('input[x-model="formDate"]').fill("2026-07-20");
+  await page.locator('input[x-model="formDate"]').fill(await futureBookingDate(page));
   await page.locator('input[x-model="formTime"]').fill("13:30");
   await page.locator('select[x-model="formSector"]').selectOption("online");
   await page.locator('textarea[x-model="formComment"]').fill("Mesa de prueba");
@@ -73,7 +73,7 @@ test("Salon modal resets and defaults to Presencial", async ({ page }) => {
   await openViaAlpine(page, "openBooking");
   await page.locator('input[x-model="formName"]').fill("Cliente Salon");
   await page.locator('input[x-model="formPhone"]').fill("+56 9 5555 6666");
-  await page.locator('input[x-model="formDate"]').fill("2026-07-20");
+  await page.locator('input[x-model="formDate"]').fill(await futureBookingDate(page));
   await page.locator('input[x-model="formTime"]').fill("16:00");
   await page.locator('select[x-model="formStylist"]').selectOption("stylist2");
   await page.locator('textarea[x-model="formComment"]').fill("Coloracion de prueba");
@@ -129,7 +129,7 @@ test("Contabilidad modal resets and defaults to Presencial", async ({ page }) =>
   await page.locator('input[x-model="formName"]').fill("Cliente Conta");
   await page.locator('input[x-model="formPhone"]').fill("+56 9 9999 0000");
   await page.locator('input[x-model="formEmail"]').fill("conta@demo.cl");
-  await page.locator('input[x-model="formDate"]').fill("2026-07-20");
+  await page.locator('input[x-model="formDate"]').fill(await futureBookingDate(page));
   await page.locator('input[x-model="formTime"]').fill("09:30");
   await page.locator('select[x-model="formSector"]').selectOption("online");
   await page.locator('textarea[x-model="formComment"]').fill("Revision tributaria");

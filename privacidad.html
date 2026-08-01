@@ -3,117 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STAX | Aviso de Privacidad</title>
-  <meta name="description" content="Aviso de privacidad de STAX para consultas comerciales realizadas desde la web." />
-  <meta property="og:title" content="STAX | Aviso de Privacidad" />
-  <meta property="og:description" content="Aviso de privacidad de STAX para consultas comerciales realizadas desde la web." />
+  <title>STAX | Política de privacidad</title>
+  <meta name="description" content="Cómo STAX trata los datos de consultas, VoiceLive y la conexión opcional con Google Calendar." />
+  <meta property="og:title" content="STAX | Política de privacidad" />
+  <meta property="og:description" content="Cómo STAX trata los datos de consultas, VoiceLive y la conexión opcional con Google Calendar." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./demo-psicologa/preview.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "STAX | Aviso de Privacidad",
-    "description": "Aviso de privacidad de STAX para consultas comerciales realizadas desde la web."
+    "name": "STAX | Política de privacidad",
+    "description": "Cómo STAX trata los datos de consultas, VoiceLive y la conexión opcional con Google Calendar."
   }
   </script>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f6f0e8;
-      --panel: #fffaf4;
-      --ink: #1d2433;
-      --muted: #5f6574;
-      --line: rgba(29, 36, 51, 0.12);
-      --accent: #0f766e;
-    }
-
+    :root { color-scheme: light; --bg:#f6f0e8; --panel:#fffaf4; --ink:#1d2433; --muted:#515a69; --line:rgba(29,36,51,.13); --accent:#0f766e; --soft:#e7f5f2; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: radial-gradient(circle at top, #fffdf8 0%, var(--bg) 58%, #efe4d4 100%);
-      color: var(--ink);
-    }
-    main {
-      width: min(820px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 56px 0 72px;
-    }
-    .panel {
-      background: rgba(255, 250, 244, 0.9);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 18px 60px rgba(29, 36, 51, 0.08);
-      backdrop-filter: blur(10px);
-    }
-    h1, h2 {
-      font-weight: 600;
-      line-height: 1.05;
-      margin: 0;
-    }
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      max-width: 10ch;
-    }
-    h2 {
-      font-size: 1.2rem;
-      margin-top: 28px;
-    }
-    p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 14px 0 0;
-      font-size: 1rem;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
-      font: 700 0.78rem/1.2 Arial, sans-serif;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .back {
-      display: inline-flex;
-      margin-top: 24px;
-      font: 700 0.9rem/1.2 Arial, sans-serif;
-      letter-spacing: 0.02em;
-    }
+    body { margin:0; font-family:Georgia, "Times New Roman", serif; background:radial-gradient(circle at top,#fffdf8 0%,var(--bg) 58%,#efe4d4 100%); color:var(--ink); }
+    main { width:min(860px,calc(100% - 32px)); margin:0 auto; padding:44px 0 72px; }
+    .panel { background:rgba(255,250,244,.94); border:1px solid var(--line); border-radius:28px; padding:clamp(24px,5vw,46px); box-shadow:0 18px 60px rgba(29,36,51,.08); }
+    .nav { display:flex; flex-wrap:wrap; gap:10px 20px; margin-bottom:28px; font:700 .86rem/1.3 Arial,sans-serif; }
+    h1,h2 { font-weight:600; line-height:1.1; }
+    h1 { margin:0; font-size:clamp(2.15rem,6vw,4rem); max-width:16ch; }
+    h2 { margin:34px 0 0; font-size:1.32rem; }
+    h3 { margin:21px 0 0; font-size:1.04rem; }
+    p,li { color:var(--muted); line-height:1.7; font-size:1rem; }
+    p { margin:14px 0 0; }
+    ul { margin:12px 0 0; padding-left:1.25rem; }
+    li + li { margin-top:7px; }
+    a { color:var(--accent); text-decoration-thickness:1px; text-underline-offset:3px; }
+    a:hover { color:#085d56; }
+    .eyebrow { display:inline-block; margin-bottom:14px; font:700 .78rem/1.2 Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+    .updated { margin-top:22px; padding:14px 16px; border-left:4px solid var(--accent); background:var(--soft); border-radius:0 12px 12px 0; font-size:.94rem; }
+    .small { font-size:.92rem; }
+    @media (max-width:560px) { main { width:min(100% - 20px,860px); padding:20px 0 42px; } .panel { border-radius:20px; } }
   </style>
 </head>
 <body>
   <main>
-    <div class="panel">
+    <article class="panel">
+      <nav class="nav" aria-label="Navegación legal">
+        <a href="./index.html">Volver a STAX</a>
+        <a href="./terminos.html">Términos de uso</a>
+      </nav>
       <span class="eyebrow">STAX</span>
-      <h1>Aviso de privacidad</h1>
-      <p>Cuando una persona escribe desde esta web, STAX usa sus datos de contacto solo para responder la consulta, entender el negocio y preparar una propuesta comercial.</p>
+      <h1>Política de privacidad</h1>
+      <p>Esta política explica, en lenguaje directo, qué información tratamos cuando una persona consulta a STAX, usa VoiceLive o cuando un negocio conecta su Google Calendar. Si algo no queda claro, puede escribir a <a href="mailto:dev.n8n.stax@gmail.com">dev.n8n.stax@gmail.com</a>.</p>
+      <p class="updated"><strong>Vigencia:</strong> 1 de agosto de 2026. Responsable del tratamiento: <strong>STAX</strong>.</p>
 
-      <h2>Qué datos se reciben</h2>
-      <p>Nombre, teléfono, tipo de negocio y el mensaje que la persona decide compartir en el formulario o por WhatsApp.</p>
+      <h2>1. A quién aplica</h2>
+      <p>Aplica a la web <strong>stax.ink</strong>, a VoiceLive en <strong>voz.stax.ink</strong> y a sus funciones asociadas. STAX entrega la tecnología; cada negocio que la contrata decide cómo atiende a sus propios clientes y debe informarles sus reglas, horarios y datos de contacto.</p>
 
-      <h2>Para qué se usan</h2>
-      <p>Se usan exclusivamente para continuar la conversación comercial, responder dudas y preparar una propuesta ajustada al contexto del negocio.</p>
+      <h2>2. Datos que podemos tratar</h2>
+      <h3>Consultas en stax.ink</h3>
+      <p>Podemos recibir el nombre, teléfono o WhatsApp, tipo de negocio y el mensaje que una persona decida compartir. Si el botón abre WhatsApp, el mensaje se prepara en el navegador y la conversación posterior queda también sujeta a las reglas de WhatsApp.</p>
+      <h3>Orientación por texto y voz</h3>
+      <p>VoiceLive puede tratar lo que la persona escriba o diga, junto con los datos de contacto que entregue voluntariamente, como nombre, WhatsApp o correo. Para una experiencia más continua, puede guardarse una memoria opcional con un identificador técnico del navegador, el primer nombre y un resumen útil de la conversación. La memoria no es obligatoria y puede pedirse su eliminación.</p>
+      <h3>Reservas y solicitudes</h3>
+      <p>Cuando la persona pide una hora, cancelar o reagendar, el sistema puede registrar los datos necesarios para que el negocio gestione la solicitud: nombre, canal de contacto, servicio, fecha u horario solicitado y estado. Una solicitud no equivale por sí sola a una reserva confirmada.</p>
+      <h3>Google Calendar del negocio</h3>
+      <p>Solo un administrador del negocio puede autorizar esta conexión. Al hacerlo, STAX guarda de forma protegida los identificadores técnicos necesarios para vincular el calendario y el permiso renovable de Google. En la etapa actual, la integración se usa para crear, actualizar o cancelar en Google Calendar los eventos de reserva que se originan en VoiceLive; no se usa para importar ni vender la agenda del negocio.</p>
 
-      <h2>Qué no se hace</h2>
-      <p>STAX no vende estos datos, no los comparte con terceros para publicidad y no los usa para campañas ajenas a la conversación iniciada por la propia persona.</p>
+      <h2>3. Para qué usamos los datos</h2>
+      <ul>
+        <li>Responder una consulta y preparar una propuesta solicitada.</li>
+        <li>Orientar una conversación, reconocer al usuario cuando habilita la memoria y evitar pedir lo mismo innecesariamente.</li>
+        <li>Registrar, confirmar o derivar solicitudes de hora según la configuración del negocio.</li>
+        <li>Sincronizar una reserva con el Google Calendar que el administrador haya autorizado.</li>
+        <li>Proteger los servicios, investigar errores y prevenir abuso o uso fraudulento.</li>
+      </ul>
 
-      <h2>Canales de contacto</h2>
-      <p>Las consultas pueden continuar por WhatsApp o correo electrónico, según prefiera la persona que escribió.</p>
+      <h2>4. Con quién se comparten</h2>
+      <p>No vendemos datos personales ni los entregamos para publicidad de terceros. Los compartimos solo cuando es necesario para prestar la función elegida:</p>
+      <ul>
+        <li>Con el negocio correspondiente, para que atienda su propia solicitud o reserva.</li>
+        <li>Con WhatsApp o Meta, únicamente cuando la persona elige continuar por WhatsApp.</li>
+        <li>Con Google, únicamente cuando el administrador del negocio autoriza Google Calendar.</li>
+        <li>Con proveedores de infraestructura, seguridad o procesamiento estrictamente necesarios para operar el servicio, bajo controles contractuales y de acceso.</li>
+      </ul>
+      <p>Algunos proveedores pueden procesar datos fuera de Chile. STAX procura limitar ese acceso a lo necesario para operar el servicio y aplicar medidas de seguridad razonables.</p>
 
-      <h2>Actualización</h2>
-      <p>Este aviso fue actualizado el 10 de julio de 2026 para el proyecto web de STAX.</p>
+      <h2>5. Uso limitado de datos de Google</h2>
+      <p>Los datos recibidos desde Google APIs se usan solo para la función visible que el administrador autorizó: sincronizar reservas de VoiceLive con su Google Calendar. No se venden, no se usan para publicidad, no se entregan a corredores de datos y no se usan para entrenar modelos generalizados de inteligencia artificial.</p>
+      <p class="small">The use of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements.</p>
+      <p>El administrador puede desconectar Google Calendar desde el panel de VoiceLive. También puede retirar el acceso desde la página de permisos de su Cuenta de Google.</p>
 
-      <a class="back" href="./index.html">Volver a STAX</a>
-    </div>
+      <h2>6. Seguridad y conservación</h2>
+      <p>Aplicamos HTTPS, controles de acceso y medidas técnicas proporcionales al servicio. Los permisos renovables de Google Calendar se guardan cifrados. La memoria opcional de VoiceLive se conserva por un período limitado de hasta 90 días, salvo que se elimine antes por solicitud o por necesidad de seguridad. Los demás registros se mantienen solo durante el tiempo necesario para atender la solicitud, operar el servicio, resolver incidencias o cumplir obligaciones aplicables.</p>
+      <p>No envíe por estos canales datos de salud, contraseñas, datos bancarios u otra información sensible que no sea indispensable. Si la entrega por error, avísenos para evaluar su eliminación o limitación de uso.</p>
+
+      <h2>7. Sus derechos y cómo ejercerlos</h2>
+      <p>Puede solicitar acceso, corrección, eliminación o bloqueo de sus datos cuando corresponda; también puede pedir que VoiceLive olvide su memoria. Escriba a <a href="mailto:dev.n8n.stax@gmail.com?subject=Solicitud%20de%20privacidad%20STAX">dev.n8n.stax@gmail.com</a> con el asunto “Solicitud de privacidad STAX”, indicando el canal usado y una forma segura de verificar su identidad. Responderemos dentro del plazo legal aplicable.</p>
+      <p>Esta política se aplica conforme a la Ley chilena N.º 19.628 mientras se encuentre vigente. STAX revisará sus procedimientos para la entrada en vigor de la Ley N.º 21.719, prevista para el 1 de diciembre de 2026.</p>
+
+      <h2>8. Menores y cambios</h2>
+      <p>Los servicios no están diseñados para que menores entreguen datos sin la intervención de su padre, madre, tutor o representante. Si actualizamos esta política de forma relevante, publicaremos una nueva fecha de vigencia en esta página y, cuando corresponda, pediremos nuevamente la autorización necesaria.</p>
+
+      <h2>9. Contacto</h2>
+      <p>Responsable: <strong>STAX</strong><br />Correo público: <a href="mailto:dev.n8n.stax@gmail.com">dev.n8n.stax@gmail.com</a></p>
+    </article>
   </main>
 </body>
 </html>

@@ -47,6 +47,7 @@ window.psicologaApp = function psicologaApp() {
     showAllFields: false,
     urlBadge: '',
     timeSlots: [],
+    bookingLeadDays: 90,
 
     init() {
       const savedName = localStorage.getItem(profileStorageKeys.name);
@@ -98,7 +99,7 @@ window.psicologaApp = function psicologaApp() {
       day3.setDate(day3.getDate() + 3);
 
       const firstSlot = hour < 14 ? `${formatDate(day0)} · 16:00` : `${formatDate(day1)} · 10:00`;
-      this.timeSlots = [firstSlot, `${formatDate(day2)} · 11:00`, `${formatDate(day3)} · 15:00`];
+      this.timeSlots = [firstSlot, `${formatDate(day2)} · 11:00`, `${formatDate(day3)} · 15:00`].slice(0, Math.min(3, this.bookingLeadDays + 1));
     },
 
     getDefaultFormState() {

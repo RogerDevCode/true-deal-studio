@@ -47,6 +47,11 @@ window.contabilidadApp = function contabilidadApp() {
     formTime: '',
     formSector: 'presencial',
     formComment: '',
+    formError: '',
+    bookingLeadDays: 90,
+    dateRange: window.STAXBookingDateRange.create(90),
+    get minDate() { return this.dateRange.minDate; },
+    get maxDate() { return this.dateRange.maxDate; },
 
     init() {
       this.$watch('facturasMes', () => this.recalculate());
@@ -130,8 +135,13 @@ window.contabilidadApp = function contabilidadApp() {
     },
 
     submitBooking() {
+      this.formError = '';
       if (!this.formName || !this.formPhone || !this.formDate || !this.formTime) {
         alert('Por favor, completa los campos requeridos para agendar.');
+        return;
+      }
+      if (!this.dateRange.includes(this.formDate)) {
+        this.formError = `Elige una fecha entre hoy y los próximos ${this.bookingLeadDays} días.`;
         return;
       }
 
