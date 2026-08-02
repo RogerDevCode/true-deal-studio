@@ -1,7 +1,7 @@
-FAQ PROPUESTAS PARA REVISIÓN PROFESIONAL
+FAQ DEFINITIVA · FONOAUDIOLOGÍA INFANTIL
 Demo: Nahovy Gallegos · Fonoaudiología Infantil a Domicilio en Santiago
 
-Este documento es un BORRADOR elaborado a partir del contenido actual de la demo web. Cada respuesta propuesta sirve como guía para que la profesional la corrija, complete o elimine antes de publicarla. No reemplaza una evaluación fonoaudiológica individual ni entrega diagnóstico. Los puntos marcados "Validar antes de publicar" no están confirmados por la página actual.
+Este documento reúne respuestas generales para orientar a las familias. No reemplaza una evaluación fonoaudiológica individual, un diagnóstico ni una atención de urgencia.
 
 PRIMERA VISITA Y ORIENTACIÓN INICIAL
 
@@ -13,14 +13,12 @@ PRIMERA VISITA Y ORIENTACIÓN INICIAL
 
 3. Pregunta: ¿La primera visita es una evaluación o una sesión de terapia?
    Respuesta propuesta: La primera visita permite realizar una orientación inicial y decidir, junto con la familia, cuál podría ser el siguiente paso. La profesional debe explicar en cada caso si corresponde una evaluación más amplia, orientación familiar u otro tipo de acompañamiento.
-   Validar antes de publicar: Confirmar cómo se diferencian formalmente la visita inicial, la evaluación y las sesiones posteriores.
 
 4. Pregunta: ¿Cómo sé si mi hijo o hija necesita consultar a un fonoaudiólogo?
    Respuesta propuesta: Las señales de comunicación cambian según la edad, la historia y el contexto de cada niño o niña. Si tienes inquietudes sobre su forma de comprender, expresarse, hablar o relacionarse, una primera conversación puede ayudar a ordenar antecedentes y definir una orientación adecuada.
 
 5. Pregunta: ¿La consulta entrega un diagnóstico en la primera visita?
    Respuesta propuesta: No entregar diagnóstico en una respuesta general. La primera visita busca comprender la situación y orientar a la familia; cualquier conclusión profesional requiere una evaluación individual y los antecedentes necesarios.
-   Validar antes de publicar: Definir el proceso, plazos y condiciones para entregar conclusiones o informes clínicos.
 
 6. Pregunta: ¿Qué debo contar antes o durante la primera visita?
    Respuesta propuesta: Puedes compartir qué te preocupa, cómo se comunica tu hijo o hija en distintas rutinas, qué situaciones les resultan fáciles o difíciles y cualquier antecedente que consideres relevante. No es necesario preparar respuestas perfectas: la conversación se construye en conjunto.
@@ -30,7 +28,6 @@ PRIMERA VISITA Y ORIENTACIÓN INICIAL
 
 8. Pregunta: ¿Debe estar presente un adulto responsable?
    Respuesta propuesta: La participación de la familia es parte importante del enfoque, porque permite conversar sobre rutinas e inquietudes y compartir orientaciones aplicables en el día a día.
-   Validar antes de publicar: Confirmar quién debe estar presente y si existe alguna condición de autorización o acompañamiento.
 
 ÁREAS DE ACOMPAÑAMIENTO
 
@@ -39,7 +36,6 @@ PRIMERA VISITA Y ORIENTACIÓN INICIAL
 
 10. Pregunta: ¿Pueden ayudar cuando cuesta pronunciar algunos sonidos?
    Respuesta propuesta: La demo incluye un área de apoyo en sonidos del habla. La profesional puede observar la forma en que el niño o niña produce determinados sonidos y orientar los pasos adecuados de acuerdo con una evaluación individual.
-   Validar antes de publicar: Confirmar edades, criterios de ingreso y modalidad de intervención para sonidos del habla.
 
 11. Pregunta: ¿Qué significa apoyo en comunicación social?
    Respuesta propuesta: Es un espacio para observar y acompañar habilidades como el juego compartido, iniciar interacciones, responder a otras personas o participar en conversaciones. Las necesidades se revisan siempre de manera individual y con participación de la familia.
@@ -49,7 +45,6 @@ PRIMERA VISITA Y ORIENTACIÓN INICIAL
 
 13. Pregunta: ¿La familia recibe actividades para hacer en casa?
    Respuesta propuesta: La propuesta de atención a domicilio busca entregar orientaciones aplicables a las rutinas familiares. Las sugerencias concretas deben adaptarse a cada niño o niña y ser explicadas por la profesional durante el proceso.
-   Validar antes de publicar: Confirmar si se entregan pautas escritas, materiales o seguimiento entre visitas.
 
 14. Pregunta: ¿El acompañamiento se basa sólo en ejercicios?
    Respuesta propuesta: El enfoque descrito en la demo integra juego, observación y conversación con la familia. Las actividades se plantean desde el contexto y las formas de comunicación actuales de cada niño o niña, no como una fórmula igual para todos.
@@ -70,15 +65,12 @@ ATENCIÓN A DOMICILIO
 
 19. Pregunta: ¿Atienden de forma online?
    Respuesta propuesta: La página actual comunica atención a domicilio. Si la profesional ofrece orientación o sesiones online, debe explicarse cuándo corresponde esta modalidad y cuáles son sus condiciones.
-   Validar antes de publicar: Confirmar si existe atención online y para qué casos.
 
 20. Pregunta: ¿Qué edades atienden?
    Respuesta propuesta: La demo está orientada a fonoaudiología infantil. Para una respuesta precisa, la profesional debe definir el rango etario que atiende y si existen condiciones particulares para cada etapa.
-   Validar antes de publicar: Indicar edades mínimas y máximas, si corresponde.
 
 21. Pregunta: ¿Pueden observar la comunicación en el jardín o colegio?
    Respuesta propuesta: La página actual se centra en la atención a domicilio y la orientación familiar. Cualquier coordinación con establecimientos educacionales debe conversarse previamente, contar con las autorizaciones necesarias y ser confirmada por la profesional.
-   Validar antes de publicar: Confirmar si se realizan visitas, entrevistas o coordinación con jardines y colegios.
 
 COORDINACIÓN, VALORES Y PRIVACIDAD
 
@@ -90,34 +82,24 @@ COORDINACIÓN, VALORES Y PRIVACIDAD
 
 24. Pregunta: ¿Qué horarios están disponibles?
    Respuesta propuesta: La disponibilidad se coordina directamente con la familia por teléfono o WhatsApp. La página permite indicar una preferencia de mañana o tarde, pero la confirmación depende de la agenda real.
-   Validar antes de publicar: Definir días, franjas horarias, anticipación requerida y canal de confirmación.
 
 25. Pregunta: ¿Cuánto dura la primera visita o una sesión?
    Respuesta propuesta: La duración debe informarse antes de confirmar la atención, ya que no está especificada en la demo. La profesional puede explicar cómo organiza el tiempo de observación, conversación familiar y orientaciones.
-   Validar antes de publicar: Indicar duración de visita inicial, evaluación y sesiones posteriores.
 
 26. Pregunta: ¿Cuál es el valor de la atención?
    Respuesta propuesta: El valor no está publicado en la demo. La profesional puede entregar una cotización clara antes de confirmar la visita, indicando qué incluye y si existen costos asociados al traslado.
-   Validar antes de publicar: Indicar valores, moneda, vigencia, formas de pago y posibles recargos.
 
 27. Pregunta: ¿Emiten boleta, informe o documento para reembolso?
    Respuesta propuesta: Esta información debe ser confirmada directamente por la profesional antes de publicarse. Si se emiten documentos, conviene explicar qué tipo de atención los genera, sus plazos y si tienen costo adicional.
-   Validar antes de publicar: Confirmar boleta, informes, certificados, reembolsos y condiciones de entrega.
 
 28. Pregunta: ¿Qué ocurre si necesito cancelar o cambiar una visita?
    Respuesta propuesta: La familia debe avisar por el canal de coordinación tan pronto como sea posible. Las condiciones específicas para reprogramación o cancelación deben ser informadas por la profesional antes de agendar.
-   Validar antes de publicar: Definir plazo de aviso, política de inasistencia, devolución y reprogramación.
 
 29. Pregunta: ¿Cómo se protege la información de mi familia?
    Respuesta propuesta: La demo indica que los datos entregados se usarán para preparar y coordinar la solicitud por WhatsApp y enlaza a un aviso de privacidad. La profesional debe revisar que dicho aviso refleje el tratamiento real de datos, canales y tiempos de conservación.
-   Validar antes de publicar: Confirmar responsable de datos, consentimiento, acceso, eliminación y medidas de seguridad aplicables.
 
 30. Pregunta: ¿Qué hago si mi hijo o hija presenta una situación urgente?
    Respuesta propuesta: Este servicio no reemplaza una atención de urgencia ni una evaluación médica inmediata. Ante una situación que parezca urgente o que comprometa la salud o seguridad del niño o niña, la familia debe buscar atención de urgencia por los canales de salud correspondientes.
-   Validar antes de publicar: Revisar y aprobar la redacción de orientación de urgencia según el criterio profesional y los recursos locales que se deseen informar.
-
-FIN DEL BORRADOR. Antes de publicar, la profesional debe revisar cada respuesta propuesta, completar los puntos de validación y confirmar que la información clínica, comercial y de privacidad corresponde al servicio realmente prestado.
-
 COBERTURA, AGENDA Y ORIENTACIÓN AMPLIADA
 
 31. Pregunta: ¿Atienden en todas las comunas de Santiago RM?
@@ -227,3 +209,71 @@ COBERTURA, AGENDA Y ORIENTACIÓN AMPLIADA
 
 66. Pregunta: ¿Qué hago si tengo una preocupación urgente por la salud o seguridad de mi hijo o hija?
    Respuesta propuesta: Esta atención no reemplaza un servicio de urgencia ni una evaluación médica inmediata. Si existe un riesgo para la salud o seguridad, busca atención de urgencia por los canales de salud correspondientes.
+
+PERFIL, CONTACTO Y CONTINUIDAD
+
+67. Pregunta: ¿Quién es Nahovy Gallegos?
+   Respuesta propuesta: Nahovy Gallegos es la profesional que realiza la atención de fonoaudiología infantil a domicilio descrita en este servicio. Es profesional universitaria, certificada y con experiencia. En la primera conversación puedes explicar tu inquietud y conocer cómo se coordina la visita.
+
+68. Pregunta: ¿Cómo contacto a Nahovy Gallegos?
+   Respuesta propuesta: Para coordinar una primera visita puedes escribir por WhatsApp al +56 9 6491 0042. Comparte brevemente tu inquietud y un horario en que te resulte cómodo conversar; la disponibilidad se confirma según la agenda real.
+
+69. Pregunta: ¿Puedo hablar directamente por WhatsApp antes de reservar?
+   Respuesta propuesta: Sí. WhatsApp sirve para hacer una consulta inicial y coordinar una alternativa de horario. La confirmación de una visita depende de la agenda real; un mensaje por sí solo no reserva un cupo.
+
+70. Pregunta: ¿Qué información es útil enviar por WhatsApp?
+   Respuesta propuesta: Puedes indicar el nombre de la persona adulta responsable, la edad del niño o niña, tu inquietud principal y una forma de contacto. No es necesario enviar información íntima o extensa para solicitar una primera orientación.
+
+71. Pregunta: ¿Qué debo preparar antes de la primera visita?
+   Respuesta propuesta: No necesitas preparar una prueba ni comprar materiales. Puede ayudar tener a mano tus preguntas, antecedentes que consideres relevantes y un espacio tranquilo donde el niño o niña pueda jugar o participar con naturalidad.
+
+72. Pregunta: ¿Debo obligar a mi hijo o hija a hablar o participar?
+   Respuesta propuesta: No. La visita busca conocer la comunicación del niño o niña respetando su ritmo. El juego, los gestos, las miradas y los intereses también aportan información; no se trata de exigir respuestas perfectas.
+
+73. Pregunta: ¿Puedo contar lo que observa el jardín o colegio?
+   Respuesta propuesta: Sí. Las observaciones del jardín o colegio pueden complementar lo que la familia ve en casa. Puedes comentarlas en la primera visita o compartir un informe si lo consideras útil; la información se revisa junto con el contexto familiar.
+
+74. Pregunta: ¿La profesional puede comunicarse con el jardín o colegio?
+   Respuesta propuesta: Cualquier coordinación con un establecimiento se conversa primero con la familia y requiere la autorización que corresponda. El objetivo es comprender mejor los distintos contextos del niño o niña, no reemplazar las decisiones de la familia o del establecimiento.
+
+75. Pregunta: ¿Qué ocurre después de la primera visita?
+   Respuesta propuesta: Después de conocer la situación, la profesional conversa con la familia sobre los pasos que podrían corresponder. Según el caso, puede orientar, proponer una evaluación más amplia, sugerir seguimiento o indicar que conviene consultar a otro profesional.
+
+76. Pregunta: ¿Recibiré un plan de trabajo de inmediato?
+   Respuesta propuesta: Los objetivos y la forma de acompañamiento se definen con información suficiente sobre cada caso. La primera visita permite ordenar antecedentes y acordar un siguiente paso; no se promete un plan idéntico para todas las familias.
+
+77. Pregunta: ¿Se entregan informes o certificados?
+   Respuesta propuesta: Si necesitas un documento, coméntalo al momento de coordinar o durante la visita. La profesional podrá explicar si corresponde a tu situación, qué antecedentes requiere y cómo se acuerda su entrega.
+
+78. Pregunta: ¿Qué pasa con la información que comparto?
+   Respuesta propuesta: Comparte sólo los antecedentes necesarios para coordinar y orientar la primera conversación. La información debe tratarse con reserva y utilizarse para la atención solicitada; si tienes dudas sobre privacidad o acceso a tus datos, puedes consultarlas directamente antes de enviar antecedentes.
+
+79. Pregunta: ¿Puedo cancelar o reprogramar una visita?
+   Respuesta propuesta: Sí. Si necesitas cambiar una hora, avisa por el canal de coordinación tan pronto como sea posible. La nueva alternativa depende de la agenda disponible y la confirmación se realiza cuando ambas partes acuerdan el horario.
+
+80. Pregunta: ¿Qué pasa si llego tarde o no puedo recibir la visita?
+   Respuesta propuesta: Lo más útil es avisar apenas sepas que no podrás recibir la visita. Así se puede revisar una reprogramación o una nueva alternativa, de acuerdo con la disponibilidad real y las condiciones informadas al coordinar.
+
+81. Pregunta: ¿La atención a domicilio tiene ventajas para mi hijo o hija?
+   Respuesta propuesta: El domicilio puede facilitar la observación de rutinas, juegos y formas habituales de comunicación en un entorno conocido. Si esa modalidad es adecuada se valora de manera individual, considerando siempre el bienestar y las necesidades de cada familia.
+
+82. Pregunta: ¿Atienden si mi hijo o hija tiene dificultades para comer, masticar o tragar?
+   Respuesta propuesta: Las dificultades de alimentación, masticación o deglución requieren una conversación cuidadosa y una evaluación individual. Explica lo que observas al coordinar; la profesional podrá indicar si corresponde abordar el motivo de consulta o derivar oportunamente.
+
+83. Pregunta: ¿Qué hago si sospecho que mi hijo o hija tiene un problema de audición?
+   Respuesta propuesta: Comenta tus observaciones durante la consulta y mantén los controles de salud que correspondan. Una inquietud auditiva puede requerir evaluación médica o audiológica; por este medio no se puede confirmar una causa ni reemplazar esa evaluación.
+
+84. Pregunta: ¿La atención puede reemplazar controles con pediatra u otros profesionales?
+   Respuesta propuesta: No. La fonoaudiología puede complementar otros apoyos cuando corresponde, pero cada profesional participa desde su ámbito. La familia decide, junto con los profesionales tratantes, cómo coordinar los pasos necesarios.
+
+85. Pregunta: ¿Puedo pedir consejos para estimular el lenguaje en casa?
+   Respuesta propuesta: Durante el proceso se pueden conversar estrategias acordes a las rutinas y necesidades observadas. Las recomendaciones útiles se adaptan a cada niño o niña; evita compararlo, presionarlo o aplicar consejos generales como si fueran un diagnóstico.
+
+86. Pregunta: ¿Por qué no dan un diagnóstico por WhatsApp o por voz?
+   Respuesta propuesta: Un diagnóstico responsable necesita antecedentes y una evaluación individual. Por WhatsApp o voz se puede orientar la coordinación de una consulta, pero no es adecuado confirmar trastornos ni indicar un tratamiento personalizado sin conocer el caso.
+
+87. Pregunta: ¿Qué hago si la situación empeora antes de la visita?
+   Respuesta propuesta: Si aparece una situación que compromete la salud o seguridad del niño o niña, busca atención de urgencia por los canales de salud correspondientes. Para dudas no urgentes, contacta a la profesional y explica el cambio para revisar la mejor orientación.
+
+88. Pregunta: ¿Cómo sé si esta atención es adecuada para mi familia?
+   Respuesta propuesta: Una primera conversación permite explicar tu preocupación, conocer la modalidad a domicilio y resolver dudas de coordinación. La decisión se toma con información clara y respetando las necesidades de tu familia; si el servicio no corresponde, se puede orientar un siguiente paso.
