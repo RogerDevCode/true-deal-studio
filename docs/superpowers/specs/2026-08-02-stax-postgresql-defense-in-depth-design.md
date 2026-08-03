@@ -30,6 +30,8 @@ Cada base crea roles equivalentes con prefijo propio:
 - `owner`: `NOLOGIN`, propietario de objetos.
 - `migrator`: ejecuta migraciones versionadas mediante `SET ROLE owner`.
 - `app`: tráfico autenticado y trabajos tenant, sin DDL ni `BYPASSRLS`.
+- `auth`: identidad y sesiones antes de resolver tenant; sin acceso a tablas de
+  negocio.
 - `ingress`: entrada pública o webhook mediante funciones mínimas.
 - `backup`: lectura global de solo lectura para `pg_dump`; no se entrega a la
   aplicación.
