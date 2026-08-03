@@ -92,6 +92,22 @@
             outline-offset: 3px;
         }
 
+        .stax-demo-boundary {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: .55rem 1rem;
+            background: #12233F;
+            color: #F8FAFC;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+        .stax-demo-boundary a { color: #FDE68A; text-decoration: underline; }
+
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 6px;
@@ -1237,6 +1253,11 @@
     </style>
 </head>
 <body x-data="salonApp()">
+
+    <div data-testid="salon-demo-bar" class="stax-demo-boundary" role="note">
+        <span>DEMO STAX · Atención y reservas</span>
+        <a href="../index.html">Volver a STAX</a>
+    </div>
 
     <!-- Success Toast -->
     <div x-show="successToast" 

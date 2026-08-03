@@ -39,11 +39,8 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
-    await expect(page.locator('#inicio').getByRole('link', { name: 'Quiero orientación para mi negocio' })).toHaveAttribute('href', '#contacto');
-    const voiceAssistant = page.getByRole('link', { name: 'Probar el asistente por voz de STAX' });
-    await expect(voiceAssistant).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
-    await expect(voiceAssistant).toContainText('Prueba el asistente por voz');
-    const examplesCta = page.getByRole('link', { name: 'Ver ejemplos', exact: true });
+    await expect(page.locator('#inicio').getByTestId('stax-voice-demo-cta')).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
+    const examplesCta = page.locator('#inicio').getByTestId('stax-rubro-cta');
     await expect(examplesCta).toHaveAttribute('href', '#demos');
     await expect(examplesCta).toHaveCSS('color', 'rgb(23, 43, 77)');
     await examplesCta.click();
@@ -128,7 +125,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       expect(box).not.toBeNull();
       expect(box.height).toBeGreaterThanOrEqual(44);
     }
-    for (const locator of [page.locator('#inicio .hero-subtitle'), page.locator('#inicio').getByRole('link', { name: 'Quiero orientación para mi negocio' }), page.getByRole('link', { name: 'Ver ejemplos', exact: true }), simulator]) {
+    for (const locator of [page.locator('#inicio .hero-subtitle'), page.locator('#inicio').getByTestId('stax-voice-demo-cta'), page.locator('#inicio').getByTestId('stax-rubro-cta'), simulator]) {
       const box = await locator.boundingBox();
       expect(box).not.toBeNull();
       expect(box.x).toBeGreaterThanOrEqual(0);

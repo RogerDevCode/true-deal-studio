@@ -714,6 +714,25 @@
     html.light-theme .stax-voice-orb::after { border-color: rgba(23, 78, 145, .38); }
     html.light-theme .stax-voice-copy strong { color: #12233F; }
     html.light-theme .stax-voice-copy span { color: #33465E; }
+    .stax-voice-proof {
+      max-width: 35rem;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 1px solid rgba(191, 219, 254, .38);
+      border-radius: 1.25rem;
+      background: rgba(3, 20, 46, .48);
+      box-shadow: 0 1rem 2.5rem rgba(2, 12, 31, .22);
+      backdrop-filter: blur(8px);
+    }
+    .stax-proof-eyebrow { margin: 0 0 .35rem; color: #FDE68A; font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+    .stax-voice-proof h2 { margin: 0; color: #fff; font-size: 1.04rem; line-height: 1.3; }
+    .stax-voice-proof video { display: block; width: 100%; margin-top: .8rem; border-radius: .8rem; background: #0B1F3A; aspect-ratio: 16 / 9; }
+    .stax-video-fallback { margin: .75rem 0 0; color: #D6E9FF; font-size: .8rem; line-height: 1.4; }
+    .stax-voice-recovery { margin: .75rem 0 0; color: #C7DCF7; font-size: .76rem; line-height: 1.4; }
+    .stax-voice-recovery a { color: #FDE68A; font-weight: 700; text-decoration: underline; }
+    html.light-theme .stax-voice-proof { border-color: rgba(23, 78, 145, .3); background: rgba(251, 250, 247, .84); box-shadow: 0 1rem 2.5rem rgba(29, 52, 85, .12); }
+    html.light-theme .stax-voice-proof h2 { color: #12233F; }
+    html.light-theme .stax-video-fallback, html.light-theme .stax-voice-recovery { color: #33465E; }
     @keyframes stax-voice-ripple {
       0% { opacity: .56; transform: scale(.88); }
       72%, 100% { opacity: 0; transform: scale(1.27); }
@@ -1226,36 +1245,35 @@
             </div>
 
             <p class="hero-subtitle mt-5 max-w-xl text-[15px] leading-relaxed sm:text-lg">
-              Creamos páginas web que ordenan tus servicios, valores y horarios para que tus clientes lleguen a WhatsApp con más contexto.
+              Tu web puede orientar antes de que te escriban: explica lo importante y prepara consultas con más contexto para que tú decidas el siguiente paso.
             </p>
 
             <p class="hero-local-reach mt-4 inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">
               Desde Biobío para negocios de todo Chile
             </p>
 
+            <section data-testid="stax-voice-proof" class="stax-voice-proof" aria-labelledby="stax-voice-proof-title">
+              <p class="stax-proof-eyebrow">PRUEBA EN 20 SEGUNDOS</p>
+              <h2 id="stax-voice-proof-title">Mira cómo una consulta llega mejor explicada.</h2>
+              <video controls muted playsinline preload="none" poster="./assets/visuals/stax-voice-proof-poster.webp" aria-describedby="stax-video-fallback">
+                <source src="./assets/visuals/stax-voice-proof.webm" type="video/webm">
+                <source src="./assets/visuals/stax-voice-proof.mp4" type="video/mp4">
+                <track kind="captions" srclang="es" label="Español" src="./assets/visuals/stax-voice-proof.vtt" default>
+              </video>
+              <p id="stax-video-fallback" data-testid="stax-video-fallback" class="stax-video-fallback">Pregunta natural → orientación clara → contexto listo para revisar.</p>
+              <p class="stax-voice-recovery">¿No abre la demo? <a href="#contacto">Pide orientación y cuéntanos cómo atiendes hoy.</a></p>
+            </section>
+
             <!-- CTA buttons -->
             <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a href="#contacto" class="inline-flex min-h-[56px] items-center justify-center rounded-full bg-gradient-to-r from-chile-blue to-chile-blueLight px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <a data-testid="stax-voice-demo-cta" href="https://voice.stax.ink/widget/stax" target="_blank" rel="noopener" class="inline-flex min-h-[56px] items-center justify-center rounded-full bg-gradient-to-r from-chile-blue to-chile-blueLight px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.197 0-.517.074-.788.374-.27.3-.1.574-.1.574s-.123.238-.123.57c0 .87.616 1.713.712 1.838.096.126 1.293 2.127 3.25 2.87.568.216 1.01.345 1.353.453.57.18 1.088.156 1.498.094.46-.07 1.77-.723 2.022-1.422.253-.7.253-1.3.177-1.423-.075-.12-.275-.196-.575-.346z"/></svg>
-                Quiero orientación para mi negocio
+                Hablar ahora con la demo
               </a>
-              <a href="#demos" class="premium-quiet-cta inline-flex min-h-[56px] items-center justify-center rounded-full border px-7 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
-                Ver ejemplos
+              <a data-testid="stax-rubro-cta" href="#demos" class="premium-quiet-cta inline-flex min-h-[56px] items-center justify-center rounded-full border px-7 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
+                Ver un ejemplo de mi rubro
               </a>
             </div>
-
-            <a data-testid="stax-voice-launcher" href="https://voice.stax.ink/widget/stax" class="stax-voice-launcher mt-6" aria-label="Probar el asistente por voz de STAX">
-              <span class="stax-voice-orb" aria-hidden="true">
-                <svg class="stax-voice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="3" width="6" height="11" rx="3"></rect>
-                  <path d="M6.5 11a5.5 5.5 0 0 0 11 0M12 16.5V21M8.5 21h7"></path>
-                </svg>
-              </span>
-              <span class="stax-voice-copy">
-                <strong>Prueba el asistente por voz</strong>
-                <span>Descubre cómo tu pyme puede responder, orientar y convertir consultas, incluso antes de llegar a WhatsApp.</span>
-              </span>
-            </a>
 
             <!-- Trust signals -->
             <div class="mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
