@@ -5,7 +5,19 @@
 NO APROBADO PARA PRODUCCIÓN — implementación de conversión terminada, pero faltan gates de backend/integración
 reproducibles para VoiceLive y VentaMax IA. No existe evidencia suficiente para elevar el resultado a producción.
 
-## Riesgos que bloquean el cierre de esta mejora
+## Evidencia de reconstrucción local
+
+El 3 de agosto de 2026 se ejecutó `down --remove-orphans` y una reconstrucción con `build --pull` de los tres
+Compose del megaproyecto, sin `--volumes`; los datos PostgreSQL persistentes no se eliminaron.
+
+| Componente | Evidencia | Resultado |
+| --- | --- | --- |
+| STAX Web | `compose.local.yaml`, `http://127.0.0.1:8081/health` | Contenedor healthy; responde healthcheck. |
+| VoiceLive | `compose.yaml`, migrador exit 0, API/web/pgvector healthy, `http://127.0.0.1:8000/api/v1/ready` | Disponible; API declara base de datos disponible. |
+| VoiceLive preview | `GET /api/v1/public/fonoaudiologia/preview` | 200, `Cache-Control: no-store`, sin WhatsApp ni token de sesión. |
+| VentaMax IA | `docker-compose.yml`, migrador exit 0, app/Caddy/pgvector healthy, `http://127.0.0.1/api/health` | Disponible; health operativo y cola Telegram sin conflictos. |
+
+## Riesgos que bloquean el cierre de producción
 
 | ID | Severidad | Hallazgo verificable | Corrección exigida |
 | --- | --- | --- | --- |
@@ -16,8 +28,8 @@ reproducibles para VoiceLive y VentaMax IA. No existe evidencia suficiente para 
 ## No verificado
 
 - Caída controlada del túnel de VoiceLive desde el hero.
-- `GET /public/<slug>/preview` en un entorno real con PostgreSQL y RLS activos: el test fue escrito y el código pasó
-  compilación/ruff, pero Pytest local quedó bloqueado por la dependencia `argon2` ausente.
+- Prueba automatizada del endpoint `GET /public/<slug>/preview` con RLS: la verificación manual local fue 200 y no
+  expuso WhatsApp/token, pero Pytest local sigue bloqueado por `argon2` ausente.
 - Integración completa de la vista diaria de VentaMax contra PostgreSQL y Telegram; sus contadores usan rutas
   autenticadas existentes, pero no se probó con la BD de integración.
 
