@@ -1,5 +1,17 @@
 # True Deal Studio — Manual Operativo
 
+## 0. Ficha rápida para agentes
+
+- **Producto:** STAX Web, vitrina comercial y punto de entrada público del megaproyecto.
+- **Runtime:** sitio estático, compatible con `file://`; Docker local publica `http://127.0.0.1:8081`.
+- **No es fuente de verdad de datos operativos:** no guarda reservas, conversaciones ni pedidos.
+- **Integraciones:** abre el widget público de VoiceLive y el canal público de VentaMax IA mediante URLs declaradas.
+- **Repositorio hermano de voz:** `/home/manager/Sync/python_proyects/voicelive-v2`.
+- **Repositorio hermano conversacional:** `/home/manager/Sync/python_proyects/venta-max-ia`.
+- **Manuales centrales:** `docs/manuales/MANUAL-ADMINISTRADOR-STAX.md` y
+  `docs/manuales/MANUAL-TENANT-STAX.md`.
+- **Gate obligatorio:** `npm run qa:gate`; no aprobar despliegue si no termina en `PASS`.
+
 ## 1. Contexto
 
 Este repositorio contiene una landing de servicios web para PYMEs, MIPYMEs y emprendimientos chilenos, junto con 14 demostraciones interactivas.
@@ -149,6 +161,9 @@ Antes de editar, preservar cambios ajenos presentes en el worktree. Usar commits
 ## 9. Referencias actuales
 
 - [README.md](README.md)
+- [Arquitectura del megaproyecto](docs/STAX-MEGAPROYECTO.md)
+- [Manual del administrador](docs/manuales/MANUAL-ADMINISTRADOR-STAX.md)
+- [Manual del tenant](docs/manuales/MANUAL-TENANT-STAX.md)
 - [Propuesta WhatsApp-first](docs/superpowers/specs/2026-07-18-propuesta-whatsapp-clara-design.md)
 - [Plan de implementación](docs/plans/2026-07-18-implementacion-oferta-clara-whatsapp.md)
 
@@ -169,3 +184,12 @@ Por instrucción explícita del usuario, este repositorio forma parte del megapr
 Los tres repositorios entregan una sola oferta: **la web explica, la voz orienta y el dueño decide el siguiente paso**. Cada repositorio conserva su historial, runtime, pruebas, secretos y despliegue independientes; **el desarrollo de cada proyecto es individual, por lo que mantienen carpetas separadas y dockers separados**. No se fusionan imágenes, bases de datos ni credenciales sin una tarea explícita.
 
 Al trabajar en una capacidad transversal autorizada por el usuario, revisar los tres contratos y la guía compartida `docs/STAX-MEGAPROYECTO.md`. Declarar los contratos entre componentes (URL pública, payload, autenticación, responsable y prueba) antes de modificar una integración. Los cambios internos siguen limitados a este repositorio salvo autorización explícita para editar los demás.
+
+### Contratos y fuentes de verdad
+
+- La landing controla copy, demos, enlaces, SEO y experiencia de entrada.
+- VoiceLive controla horarios, solicitudes, reservas, memoria consentida y FAQ de voz.
+- VentaMax IA controla conversaciones Telegram, contactos, catálogo, pipeline y pedidos.
+- Google Calendar es una proyección de salida de VoiceLive; no se consulta como fuente de disponibilidad.
+- Un enlace externo debe tener fallback comprensible. No ocultar una caída de túnel ni prometer atención inmediata.
+- Cualquier cambio transversal debe probar al menos origen, navegación, destino, error del destino y recuperación.
