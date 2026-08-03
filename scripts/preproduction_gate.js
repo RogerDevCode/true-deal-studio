@@ -705,7 +705,9 @@ async function main() {
   process.exitCode = finalStatus === "FAIL" ? 1 : 0;
 }
 
-main().catch((error) => {
-  console.error(red("FAIL"), error.stack || error.message);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(process.exitCode ?? 0))
+  .catch((error) => {
+    console.error(red("FAIL"), error.stack || error.message);
+    process.exit(1);
+  });
