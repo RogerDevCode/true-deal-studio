@@ -1,0 +1,9 @@
+[Unit]
+Description=Watchdog del Cloudflare Tunnel del megaproyecto STAX
+After=docker.service network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/tunnel-watchdog.sh
+User=manager
