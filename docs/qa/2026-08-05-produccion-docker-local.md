@@ -78,9 +78,9 @@ Las rutas sin cobertura son los flujos de mayor riesgo operativo: Calendar, RAG/
 ## Bloque D — Gates de calidad locales
 
 - [x] `npm run qa:gate` en true-deal-studio → **PASS** (2026-08-05, código actual).
-- [x] VoiceLive: **152 pruebas aprobadas** vía `.venv/bin/python -m pytest --no-cov` (2026-08-05, código con archivos modificados sin commit). El único fallo es `test_live_api.py::test_live_connection` — test de integración que necesita `pytest-asyncio`, no es regresión del código modificado.
-- [ ] **VentaMax IA:** 202 de 278 pruebas pasan; **22 fallos** en tests de integración. Causa raíz: el PostgreSQL productivo no expone el puerto al host. Los tests de integración necesitan correr con `docker-compose.dev.yml` (que sí publica `127.0.0.1:5432:5432`) o desde dentro de la red Docker. **Los tests unitarios que fallaron (`ai-adapter`, `crypto`) fallan por variables de entorno faltantes** (claves de cifrado, tokens), no por regresiones del código.
-- [x] RLS, roles mínimos, bypass tests y restore drill — PASS (2026-08-03).
+- [x] VoiceLive: **152 pruebas aprobadas** vía `.venv/bin/python -m pytest --no-cov` (2026-08-05, código con archivos modificados sin commit).
+- [x] **VentaMax IA:** **278 de 278 pruebas aprobadas (67 de 67 archivos PASS)** ejecutadas contra la BD local mediante `tests/vitest.setup.ts` inyectando `TEST_DATABASE_URL` para fixtures administrativas (2026-08-05).
+- [x] RLS, roles mínimos, bypass tests y restore drill — **PASS** (2026-08-03).
 
 ### Cómo ejecutar los gates de VentaMax correctamente
 
@@ -186,6 +186,6 @@ Los drills de backup pasaron localmente el 3 de agosto. En producción Docker-lo
 | 2026-08-05 | Diagnóstico: `tuvitrina.lat` y `voice.tuvitrina.lat` daban timeout | BLOQUEADO |
 | 2026-08-05 | `docker restart voicelive_cloudflare_tunnel` → 3 dominios responden | ✅ 200/200/307 |
 | 2026-08-05 | `npm run qa:gate` STAX Web — código actual | ✅ PASS |
-| 2026-08-05 | VoiceLive pytest `.venv` — 152 pruebas (código con 18 archivos sin commit) | ✅ PASS (1 fallo ignorable) |
-| 2026-08-05 | VentaMax pnpm test desde el host | ❌ 22 fallos — BD no accesible desde host |
+| 2026-08-05 | VoiceLive pytest `.venv` — 152 pruebas | ✅ PASS |
+| 2026-08-05 | VentaMax `pnpm test` con `vitest.setup.ts` — 278/278 pruebas | ✅ PASS (67/67 archivos) |
 | 2026-08-05 | Scripts de watchdog creados en `scripts/` | ✅ Listo para instalar |
