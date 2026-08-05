@@ -41,6 +41,7 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
   <link rel="stylesheet" href="../assets/css/tailwind.css">
+    <link rel="stylesheet" href="../assets/css/tu-vitrina-context.css">
     
     <script defer src="../assets/js/booking-date-range.js"></script>
     <script defer src="./app.js"></script>
@@ -458,7 +459,7 @@
         }
         .map-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: 3rem;
             align-items: center;
         }
@@ -763,6 +764,10 @@
             </div>
             <h1>Encuentra tu próximo <span>hogar</span></h1>
             <p>Seleccionamos propiedades únicas en las comunas más cotizadas de la Región Metropolitana y Valparaíso.</p>
+            <figure class="tu-vitrina-context-visual">
+                <figcaption><strong>Primero se entiende, luego se visita.</strong> La información ordenada ayuda a elegir una propiedad con más contexto.</figcaption>
+                <img src="../assets/optimized/propiedades-card.webp" alt="Vista arquitectónica de una propiedad residencial" loading="lazy" decoding="async">
+            </figure>
         </div>
     </section>
 

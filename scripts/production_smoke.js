@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const PROD_URL = "https://true-deal-studio.vercel.app/";
+const PROD_URL = "https://tuvitrina.lat/";
 const PAGES = [
-  { path: "", expectedTitle: "STAX | Que te vean. Que te crean." },
-  { path: "privacidad.html", expectedTitle: "STAX | Política de privacidad" },
-  { path: "terminos.html", expectedTitle: "STAX | Términos de uso" },
+  { path: "", expectedTitle: "Tu Vitrina | Que te vean. Que te crean." },
+  { path: "privacidad.html", expectedTitle: "Tu Vitrina | Política de privacidad" },
+  { path: "terminos.html", expectedTitle: "Tu Vitrina | Términos de uso" },
   { path: "demo-agenda/index.html", expectedTitle: "CRM Express | Panel de Control de Agenda y Clientes Demo" },
   { path: "demo-artesanias/index.html", expectedTitle: "Artesanías del Sur | Catálogo & Tienda Online - Chile" },
   { path: "demo-cafe-valparaiso/index.html", expectedTitle: "Café La Ruta | Cafetería de Especialidad & Almuerzos - Valparaíso" },
@@ -15,9 +15,9 @@ const PAGES = [
   { path: "demo-plan-premium/index.html", expectedTitle: "Muebles Roble | Demo Plan Premium" },
   { path: "demo-plan-profesional/index.html", expectedTitle: "Remodelaciones Altiplano | Demo Plan Profesional" },
   { path: "demo-propiedades/index.html", expectedTitle: "Cobre & Co. Propiedades — Corretaje Inmobiliario Premium" },
-  { path: "demo-propuesta-atencion-ordenada/index.html", expectedTitle: "Sistema Vivo | Propuesta STAX" },
-  { path: "demo-propuesta-empezar-simple/index.html", expectedTitle: "Editorial Boutique Viva | Propuesta STAX" },
-  { path: "demo-propuesta-impacto-comercial/index.html", expectedTitle: "Impacto Comercial Vivo | Propuesta STAX" },
+  { path: "demo-propuesta-atencion-ordenada/index.html", expectedTitle: "Sistema Vivo | Propuesta Tu Vitrina" },
+  { path: "demo-propuesta-empezar-simple/index.html", expectedTitle: "Editorial Boutique Viva | Propuesta Tu Vitrina" },
+  { path: "demo-propuesta-impacto-comercial/index.html", expectedTitle: "Impacto Comercial Vivo | Propuesta Tu Vitrina" },
   { path: "demo-salon-belleza/index.html", expectedTitle: "Studio Chic | Salón de Alta Peluquería & Estilo - Santiago" },
 ];
 

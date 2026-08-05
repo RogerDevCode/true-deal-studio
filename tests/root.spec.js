@@ -20,7 +20,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
   const guards = await attachPageGuards(page);
   await page.goto("/");
 
-  await expect(page).toHaveTitle("STAX | Que te vean. Que te crean.");
+  await expect(page).toHaveTitle("Tu Vitrina | Que te vean. Que te crean.");
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.getByText("Desde Biobío para negocios de todo Chile", { exact: true })).toHaveCount(1);
   await expect(page.locator("body")).not.toContainText(/Santiago|Concepción/i);
@@ -40,7 +40,7 @@ test("Landing and demos stay production-ready", async ({ page }) => {
     await expect(backLink, `No se encontro link de retorno en ${href}`).toBeVisible();
     await expect(backLink).toHaveAttribute("href", /..\/*index\.html/);
     await page.goto("/");
-    await expect(page).toHaveTitle("STAX | Que te vean. Que te crean.");
+    await expect(page).toHaveTitle("Tu Vitrina | Que te vean. Que te crean.");
   }
 
   await guards.assertHealthyContext();

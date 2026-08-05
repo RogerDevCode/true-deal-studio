@@ -19,7 +19,7 @@ test.describe('CRM Express integration cards', () => {
     await expect(telegramCard).toContainText('Recibe cada consulta resumida');
 
     const voiceLink = voiceCard.getByRole('link', { name: 'Probar VoiceLive' });
-    await expect(voiceLink).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
+    await expect(voiceLink).toHaveAttribute('href', 'https://voice.tuvitrina.lat/widget/tuvitrina');
     await expect(voiceLink).toHaveAttribute('target', '_blank');
     await expect(voiceLink).toHaveAttribute('rel', /noopener/);
 

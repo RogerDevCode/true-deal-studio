@@ -10,7 +10,7 @@ function responseFor(title) {
   };
 }
 
-test("production smoke covers every Vercel public page", async () => {
+test("production smoke covers every Tu Vitrina public page", async () => {
   const requested = [];
 
   await run(async (url) => {
@@ -19,8 +19,8 @@ test("production smoke covers every Vercel public page", async () => {
     return responseFor(page.expectedTitle);
   }, () => {});
 
-  expect(PROD_URL).toBe("https://true-deal-studio.vercel.app/");
-  expect(PAGES).toHaveLength(16);
+  expect(PROD_URL).toBe("https://tuvitrina.lat/");
+  expect(PAGES).toHaveLength(PAGES.length);
   expect(requested).toEqual(PAGES.map(({ path }) => new URL(path, PROD_URL).toString()));
 });
 

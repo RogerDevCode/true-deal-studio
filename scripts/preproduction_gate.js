@@ -266,26 +266,28 @@ function evaluateVoiceProofMedia() {
   const indexPath = path.join(ROOT, "index.html");
   const content = exists(indexPath) ? read(indexPath) : "";
   const requiredAssets = [
-    "assets/visuals/stax-voice-proof.webm",
-    "assets/visuals/stax-voice-proof.mp4",
-    "assets/visuals/stax-voice-proof-poster.webp",
-    "assets/visuals/stax-voice-proof.vtt",
+    "assets/visuals/tu-vitrina-voice-answer.ogg",
+    "assets/visuals/tu-vitrina-voice-answer.mp3",
+    "assets/visuals/tu-vitrina-voice-answer.vtt",
   ];
-  const proof = /data-testid=["']stax-voice-proof["'][\s\S]*?<\/section>/i.exec(content)?.[0] || "";
-  const hasLocalSources = !/https?:\/\//i.test(proof) && /stax-voice-proof\.webm/.test(proof) && /stax-voice-proof\.mp4/.test(proof);
-  const hasAccessibleVideo = /<video\b[^>]*\bcontrols\b[^>]*\bmuted\b[^>]*\bpreload=["']none["'][^>]*\bposter=["'][^"']+stax-voice-proof-poster\.webp["']/i.test(proof)
-    && !/<video\b[^>]*\bautoplay\b/i.test(proof)
-    && /<track\b[^>]*\bkind=["']captions["'][^>]*stax-voice-proof\.vtt/i.test(proof);
-  const hasFallback = /data-testid=["']stax-video-fallback["']/i.test(proof);
+  const proof = /data-testid=["']tu-vitrina-voice-proof["'][\s\S]*?<\/section>/i.exec(content)?.[0] || "";
+  const audioSources = /<audio\b[\s\S]*?<\/audio>/i.exec(proof)?.[0] || "";
+  const hasLocalSources = !/https?:\/\//i.test(audioSources)
+    && /tu-vitrina-voice-answer\.ogg/.test(audioSources)
+    && /tu-vitrina-voice-answer\.mp3/.test(audioSources);
+  const hasAccessibleAudio = /<audio\b[^>]*\bcontrols\b[^>]*\bpreload=["']metadata["']/i.test(proof)
+    && !/<audio\b[^>]*\bautoplay\b/i.test(proof)
+    && /data-testid=["']tu-vitrina-voice-transcript["']/i.test(proof);
+  const hasFallback = /Descarga la respuesta de voz/i.test(proof);
 
   addResult(items, proof ? "PASS" : "FAIL", proof ? "index.html: módulo de prueba de voz presente" : "index.html: falta módulo de prueba de voz");
-  addResult(items, hasLocalSources ? "PASS" : "FAIL", hasLocalSources ? "index.html: video local sin fuentes remotas" : "index.html: fuentes de video inválidas o remotas");
-  addResult(items, hasAccessibleVideo ? "PASS" : "FAIL", hasAccessibleVideo ? "index.html: video con controles, silencio, poster y subtítulos" : "index.html: video sin contrato de accesibilidad/carga");
-  addResult(items, hasFallback ? "PASS" : "FAIL", hasFallback ? "index.html: equivalente estático presente" : "index.html: falta equivalente estático del video");
+  addResult(items, hasLocalSources ? "PASS" : "FAIL", hasLocalSources ? "index.html: audio local sin fuentes remotas" : "index.html: fuentes de audio inválidas o remotas");
+  addResult(items, hasAccessibleAudio ? "PASS" : "FAIL", hasAccessibleAudio ? "index.html: audio con controles, carga bajo demanda y transcripción" : "index.html: audio sin contrato de accesibilidad/carga");
+  addResult(items, hasFallback ? "PASS" : "FAIL", hasFallback ? "index.html: descarga alternativa presente" : "index.html: falta descarga alternativa del audio");
   for (const asset of requiredAssets) {
     const assetPath = path.join(ROOT, asset);
-    const withinBudget = exists(assetPath) && fs.statSync(assetPath).size <= 1_500_000;
-    addResult(items, withinBudget ? "PASS" : "FAIL", `${asset}: ${withinBudget ? "presente y dentro de 1.5 MB" : "faltante o excede 1.5 MB"}`);
+    const withinBudget = exists(assetPath) && fs.statSync(assetPath).size <= 350_000;
+    addResult(items, withinBudget ? "PASS" : "FAIL", `${asset}: ${withinBudget ? "presente y dentro de 350 KB" : "faltante o excede 350 KB"}`);
   }
   return { status: summarizeResults(items), items };
 }

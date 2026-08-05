@@ -36,6 +36,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
@@ -103,7 +106,8 @@
         padding: 0.6rem 0.75rem;
       }
       .stax-demo-nav__edge span,
-      .stax-demo-nav__home .stax-demo-nav__muted {
+      .stax-demo-nav__home .stax-demo-nav__muted,
+      .stax-demo-nav__home > span:last-child {
         display: none;
       }
       .stax-demo-nav__edge {
@@ -127,8 +131,8 @@
     <a class="stax-demo-nav__edge stax-demo-nav__edge--prev" href="../${prev.slug}/index.html" aria-label="Ir al demo anterior: ${prev.label}">
       <strong>&larr;</strong><span>${prev.label}</span>
     </a>
-    <a class="stax-demo-nav__home" href="../index.html#demos" aria-label="Volver al portafolio STAX">
-      <span class="stax-demo-nav__pill">STAX</span>
+    <a class="stax-demo-nav__home" href="../index.html#demos" aria-label="Volver al portafolio Tu Vitrina">
+      <span class="stax-demo-nav__pill">Tu Vitrina</span>
       <span class="stax-demo-nav__muted">/</span>
       <span>${current.label}</span>
     </a>

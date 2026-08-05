@@ -1,11 +1,13 @@
 FROM nginx:1.28.0-alpine
 
-ARG VOICE_WIDGET_ORIGIN=https://voice.stax.ink
+ARG VOICE_WIDGET_ORIGIN=https://voice.tuvitrina.lat
 
 COPY infra/docker/nginx.conf /etc/nginx/nginx.conf
 COPY --chown=nginx:nginx . /usr/share/nginx/html
-RUN find /usr/share/nginx/html -name '*.html' -exec \
-    sed -i "s|https://voice.stax.ink|${VOICE_WIDGET_ORIGIN}|g" {} +
+
+# Inyectar el origen del widget si cambió respecto al valor compilado por defecto
+RUN find /usr/share/nginx/html -type f \( -name "*.html" -o -name "*.js" \) -exec \
+    sed -i "s|https://voice.tuvitrina.lat|${VOICE_WIDGET_ORIGIN}|g" {} +
 
 USER nginx
 EXPOSE 8080

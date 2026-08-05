@@ -2,7 +2,7 @@
   "name": "web-promotion",
   "version": "1.0.0",
   "private": true,
-  "description": "Production-grade QA and release tooling for the STAX web promotion showcase.",
+  "description": "Production-grade QA and release tooling for the Tu Vitrina web promotion showcase.",
   "engines": {
     "node": ">=22 <23"
   },

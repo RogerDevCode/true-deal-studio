@@ -39,7 +39,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
-    await expect(page.locator('#inicio').getByTestId('stax-voice-demo-cta')).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
+    await expect(page.locator('#inicio').getByTestId('stax-voice-demo-cta')).toHaveAttribute('href', 'https://voice.tuvitrina.lat/widget/tuvitrina');
     const examplesCta = page.locator('#inicio').getByTestId('stax-rubro-cta');
     await expect(examplesCta).toHaveAttribute('href', '#demos');
     await expect(examplesCta).toHaveCSS('color', 'rgb(23, 43, 77)');
@@ -191,14 +191,14 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const localReach = hero.getByText('Desde Biobío para negocios de todo Chile', { exact: true });
     await expect(localReach).toBeVisible();
     await expect(localReach).toHaveCSS('color', 'rgb(38, 61, 87)');
-    await expect(ia.getByRole('heading', { name: 'La herramienta acelera. STAX se hace cargo del criterio.' })).toBeVisible();
-    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; STAX aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
+    await expect(ia.getByRole('heading', { name: 'La herramienta acelera. Tu Vitrina se hace cargo del criterio.' })).toBeVisible();
+    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; Tu Vitrina aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
     await expect(ia.locator('.business-card')).toHaveCount(0);
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
     await page.evaluate(() => document.documentElement.classList.add('light-theme'));
-    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; STAX aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
+    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; Tu Vitrina aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
 
     await guards.assertHealthyContext();
   });
@@ -490,7 +490,7 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(plan).toContainText('3 días hábiles');
     await expect(plan).toContainText('El plazo comienza cuando recibimos tu información completa.');
     await expect(plan).toContainText('Dos hitos: $49.999 CLP para iniciar + $50.000 CLP al aprobar tu versión lista');
-    await expect(plan).toContainText('Dominio y publicación: los compras directamente al proveedor y quedan a tu nombre; STAX te guía y realiza la conexión.');
+    await expect(plan).toContainText('Dominio y publicación: los compras directamente al proveedor y quedan a tu nombre; Tu Vitrina te guía y realiza la conexión.');
     await expect(plan).toContainText('Cambios: incluye una ronda consolidada y 15 días para ajustes menores después de publicar.');
     await expect(plan).toContainText('Queda fuera del alcance: páginas extra, cambios de estructura, carro y pagos en línea.');
     await expect(plan.getByRole('link', { name: 'Revisar este plan' })).toHaveAttribute('href', '#contacto');
