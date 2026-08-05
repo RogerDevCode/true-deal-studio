@@ -10,7 +10,7 @@ services:
     image: true-deal-studio:web-local
     restart: "no"
     mem_limit: 96m
-    cpus: 0.25
+    cpus: 0.50
     pids_limit: 80
     read_only: true
     tmpfs:
