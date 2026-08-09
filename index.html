@@ -765,14 +765,15 @@
     }
     .need-visual {
       display: none;
-      height: 7rem;
+      height: 4.5rem;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.75rem;
       overflow: hidden;
       border: 1px solid rgba(32, 61, 91, 0.1);
-      border-radius: 1rem;
+      border-radius: 0.75rem;
       background: #F7F1E5;
+      padding: 0.25rem;
     }
     .need-visual img {
       width: 100%;
@@ -1230,11 +1231,11 @@
     <!-- HERO -->
     <!-- ============================================ -->
     <section id="inicio" class="relative flex min-h-[84svh] items-center overflow-hidden hero-photo-bg noise md:min-h-screen">
-      <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
+      <div class="relative mx-auto max-w-7xl px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-16 lg:px-8 lg:pt-40 lg:pb-20">
         <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12">
           <div class="reveal min-w-0">
             <!-- Badge -->
-            <div class="premium-note mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm px-3 py-1.5 text-[10px] font-bold uppercase text-white/85 sm:px-4 sm:text-xs">
+            <div class="premium-note mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/8 backdrop-blur-sm px-3 py-1.5 text-xs font-bold uppercase text-white/85 sm:px-4 sm:text-xs">
               <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse-soft"></span>
               Páginas web para mipymes chilenas
             </div>
@@ -1359,8 +1360,8 @@
               <!-- Rubro Selector Tabs -->
               <div class="mb-4">
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-[11px] font-bold uppercase tracking-wider text-drac-cyan">Ejemplo interactivo</span>
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-bold text-emerald-400">
+                  <span class="text-xs font-bold uppercase tracking-wider text-drac-cyan">Ejemplo interactivo</span>
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-xs font-bold text-emerald-400">
                     <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse-soft"></span>
                     Elige un rubro
                   </span>
@@ -1381,21 +1382,21 @@
                 <!-- Mock Header -->
                 <div class="flex items-center justify-between border-b border-drac-current/40 pb-3 mb-3">
                   <div>
-                    <span class="text-[10px] font-bold text-drac-comment uppercase tracking-wider" x-text="demos[activeRubro].rubro"></span>
+                    <span class="text-xs font-bold text-drac-comment uppercase tracking-wider" x-text="demos[activeRubro].rubro"></span>
                     <h3 class="font-display text-base font-bold text-drac-fg" x-text="demos[activeRubro].name"></h3>
                   </div>
-                  <span class="rounded-full bg-drac-cyan/15 border border-drac-cyan/30 px-2.5 py-1 text-[10px] font-bold text-drac-cyan" x-text="demos[activeRubro].badge"></span>
+                  <span class="rounded-full bg-drac-cyan/15 border border-drac-cyan/30 px-2.5 py-1 text-xs font-bold text-drac-cyan" x-text="demos[activeRubro].badge"></span>
                 </div>
 
                 <!-- Preview Image & Modality -->
                 <a :href="demos[activeRubro].url" class="block relative overflow-hidden rounded-lg aspect-video bg-drac-darker mb-3 group">
                   <img src="./assets/optimized/fonoaudiologia-card.webp" :src="demos[activeRubro].img" :alt="demos[activeRubro].name" class="h-full w-full object-cover transition-all duration-300 group-hover:scale-105" />
-                  <div class="absolute bottom-2 left-2 right-2 rounded-md bg-drac-darker/85 backdrop-blur-sm px-2.5 py-1 text-[11px] font-semibold text-drac-fg pointer-events-none" x-text="demos[activeRubro].modality"></div>
+                  <div class="absolute bottom-2 left-2 right-2 rounded-md bg-drac-darker/85 backdrop-blur-sm px-2.5 py-1 text-xs font-semibold text-drac-fg pointer-events-none" x-text="demos[activeRubro].modality"></div>
                 </a>
 
                 <!-- Pre-filled WhatsApp Simulation -->
                 <div class="rounded-lg bg-emerald-950/40 border border-emerald-500/25 p-3">
-                  <div class="flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 mb-1">
+                  <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400 mb-1">
                     <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
                     Mensaje que llega a WhatsApp:
                   </div>
@@ -1404,7 +1405,7 @@
 
                 <!-- Direct Action Link -->
                 <div class="mt-3 flex items-center justify-between">
-                  <span class="text-[11px] text-drac-comment font-medium">Abre el ejemplo:</span>
+                  <span class="text-xs text-drac-comment font-medium">Abre el ejemplo:</span>
                   <a :href="demos[activeRubro].url" class="inline-flex items-center gap-1 rounded-lg bg-gradient-to-r from-chile-blue to-chile-blueLight px-3.5 py-2 text-xs font-bold text-white shadow-md transition-all hover:-translate-y-0.5">
                     Ver ejemplo funcionando
                   </a>
@@ -1432,55 +1433,55 @@
     <!-- ============================================ -->
     <!-- NECESIDADES DE ATENCION -->
     <!-- ============================================ -->
-    <section id="necesidades" class="relative band-white py-12 overflow-hidden lg:py-16">
+    <section id="necesidades" class="relative band-white py-8 overflow-hidden lg:py-10">
 
       <div class="absolute top-10 right-0 h-56 w-56 rounded-full bg-chile-blue/6 blur-[100px] pointer-events-none"></div>
       <div class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-drac-orange/6 blur-[120px] pointer-events-none"></div>
 
       <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="reveal mx-auto mb-10 max-w-3xl text-center md:mb-12">
-          <span class="section-kicker inline-flex items-center rounded-full border border-drac-current/20 bg-drac-current/20 px-4 py-1.5 text-xs font-bold uppercase text-drac-comment mb-5">
+        <div class="reveal mx-auto mb-6 max-w-2xl text-center md:mb-8">
+          <span class="section-kicker inline-flex items-center rounded-full border border-drac-current/20 bg-drac-current/20 px-3.5 py-1 text-xs font-bold uppercase text-drac-comment mb-3">
             Parte por cómo atiendes hoy
           </span>
-          <h2 class="font-display text-2xl font-black sm:text-3xl lg:text-4xl">
+          <h2 class="font-display text-xl font-black sm:text-2xl lg:text-3xl">
             ¿Qué información repites
             <span class="text-drac-fg">todos los días?</span>
           </h2>
-          <p class="mt-4 text-base leading-relaxed text-drac-comment sm:text-lg">
+          <p class="mt-2 text-sm leading-relaxed text-drac-comment sm:text-base">
             La dejamos ordenada para que tus clientes sepan qué revisar antes de escribirte.
           </p>
         </div>
 
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-local.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Atención presencial</p>
-            <h3 class="mt-3 text-xl font-black text-drac-fg">Atiendes en un local</h3>
-            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Servicios, horarios, ubicación y cómo llegar.</p>
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Atención presencial</p>
+            <h3 class="mt-1.5 text-base font-black text-drac-fg">Atiendes en un local</h3>
+            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Servicios, horarios, ubicación y cómo llegar.</p>
           </article>
-          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card" style="transition-delay: .06s">
+          <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all" style="transition-delay: .06s">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-delivery.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Pedidos y reparto</p>
-            <h3 class="mt-3 text-xl font-black text-drac-fg">Haces delivery</h3>
-            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Productos, valores, zonas de entrega y cómo pedir.</p>
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Pedidos y reparto</p>
+            <h3 class="mt-1.5 text-base font-black text-drac-fg">Haces delivery</h3>
+            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Productos, valores, zonas de entrega y cómo pedir.</p>
           </article>
-          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card" style="transition-delay: .12s">
+          <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all" style="transition-delay: .12s">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-reservations.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Horas y visitas</p>
-            <h3 class="mt-3 text-xl font-black text-drac-fg">Trabajas con reservas</h3>
-            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Servicios, horas disponibles y qué debe saber la persona antes de reservar.</p>
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Horas y visitas</p>
+            <h3 class="mt-1.5 text-base font-black text-drac-fg">Trabajas con reservas</h3>
+            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Servicios, horas disponibles y qué saber antes.</p>
           </article>
-          <article class="reveal rounded-3xl border border-drac-current/30 bg-drac-bg/70 p-6 shadow-card" style="transition-delay: .18s">
+          <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all" style="transition-delay: .18s">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-catalog.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Productos</p>
-            <h3 class="mt-3 text-xl font-black text-drac-fg">Vendes por catálogo</h3>
-            <p class="mt-3 text-sm leading-relaxed text-drac-comment">Fotos, modelos, tamaños, colores y valores.</p>
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Productos</p>
+            <h3 class="mt-1.5 text-base font-black text-drac-fg">Vendes por catálogo</h3>
+            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Fotos, modelos, tamaños, colores y valores.</p>
           </article>
         </div>
 
-        <div class="reveal mt-8 rounded-3xl border border-chile-blueLight/20 bg-chile-blueLight/10 p-6 text-center">
-          <p class="text-lg font-bold text-drac-fg">Puedes comenzar con orientación y revisar un plan cuando te haga sentido.</p>
-          <p class="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-drac-comment">Cuéntanos cómo atiendes y te orientamos.</p>
+        <div class="reveal mt-5 rounded-2xl border border-chile-blueLight/20 bg-chile-blueLight/10 p-4 text-center">
+          <p class="text-sm font-bold text-drac-fg">Puedes comenzar con orientación y revisar un plan cuando te haga sentido.</p>
+          <p class="mx-auto mt-1 max-w-xl text-xs leading-relaxed text-drac-comment">Cuéntanos cómo atiendes y te orientamos.</p>
         </div>
       </div>
     </section>
@@ -1488,7 +1489,7 @@
     <!-- ============================================ -->
     <!-- DEMO SHOWCASE SECTION (PORTAFOLIO DE DEMOS) -->
     <!-- ============================================ -->
-    <section id="demos" x-data="{ showAllDemos: false }" class="relative band-lino py-12 lg:py-16 overflow-hidden">
+    <section id="demos" x-data="{ showAllDemos: false }" class="relative band-lino py-8 lg:py-10 overflow-hidden">
 
       <!-- Background glow -->
       <div class="absolute -top-40 -left-40 h-[350px] w-[350px] rounded-full bg-drac-purple/5 blur-[120px] pointer-events-none"></div>
@@ -1647,7 +1648,7 @@
               <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-purple transition-colors">Tienda Online con Auto-Administración</h3>
               <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite elegir productos, pagar y seguir un pedido desde una tienda administrable.</p>
               <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-purple">Antes de escribir</strong>: productos, pago y seguimiento. <strong class="text-drac-purple">En tus mensajes puedes revisar</strong>: si el pedido incluye selección y datos.</p>
-              <div class="mt-4 hidden flex-wrap gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-drac-purple md:flex">
+              <div class="mt-4 hidden flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-drac-purple md:flex">
                 <span class="rounded-full border border-drac-purple/30 bg-drac-purple/10 px-3 py-1">Pagos digitales</span>
                 <span class="rounded-full border border-drac-purple/30 bg-drac-purple/10 px-3 py-1">Atención por WhatsApp</span>
               </div>
@@ -1786,93 +1787,7 @@
     <!-- ============================================ -->
     <!-- TU VITRINA: ATENCIÓN CONECTADA -->
     <!-- ============================================ -->
-    <section id="atencion-asistida" data-testid="assisted-attention" class="relative overflow-hidden border-y border-drac-current/30 bg-drac-darker/50">
-      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="mx-auto max-w-3xl text-center">
-          <span class="inline-flex items-center rounded-full border border-drac-cyan/40 bg-drac-cyan/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-drac-cyan">Atención asistida</span>
-          <h2 class="mt-6 font-display text-3xl font-black leading-tight text-drac-fg sm:text-4xl lg:text-5xl">Tu web puede orientar.<span class="block text-drac-cyan">Tú decides el siguiente paso.</span></h2>
-          <p class="mt-6 text-lg leading-relaxed text-drac-comment">La página explica lo esencial. La voz orienta dudas aprobadas. Tú recibes una consulta con contexto para responder, agendar o pedir más información.</p>
-        </div>
-
-        <div class="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-2">
-          <article data-testid="stax-voice-offer" class="rounded-[1.75rem] border border-drac-cyan/40 bg-drac-bg/80 p-6 shadow-card sm:p-8">
-            <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-cyan">Tu Vitrina Voz</p>
-            <h3 class="mt-4 text-2xl font-bold text-drac-fg">Orienta antes de que la persona escriba.</h3>
-            <p class="mt-4 leading-relaxed text-drac-comment">VoiceLive responde preguntas frecuentes con la información aprobada por tu negocio y deriva los casos que necesitan una persona.</p>
-            <a href="https://voice.tuvitrina.lat/widget/tuvitrina" target="_blank" rel="noopener" class="premium-quiet-cta mt-6 inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-bold text-drac-fg transition-all hover:-translate-y-0.5">Probar atención por voz<span class="ml-2" aria-hidden="true">↗</span><span class="sr-only"> (abre en una pestaña nueva)</span></a>
-          </article>
-
-          <article data-testid="stax-owner-workflow" class="rounded-[1.75rem] border border-drac-green/35 bg-drac-bg/80 p-6 shadow-card sm:p-8">
-            <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-green">Tu Vitrina Atención Ordenada</p>
-            <h3 class="mt-4 text-2xl font-bold text-drac-fg">Recibe una consulta lista para revisar.</h3>
-            <p class="mt-4 leading-relaxed text-drac-comment">Servicio, comuna, horario y siguiente paso quedan ordenados para que el dueño continúe desde su canal de atención.</p>
-            <a href="./demo-agenda/index.html" class="mt-6 inline-flex items-center justify-center rounded-full border border-drac-green/35 bg-drac-green/10 px-5 py-3 text-sm font-bold text-drac-green transition-all hover:-translate-y-0.5 hover:bg-drac-green/20">Ver cómo llega una consulta ordenada</a>
-          </article>
-        </div>
-
-        <div class="mt-10 text-center">
-          <a href="#contacto" class="inline-flex items-center justify-center rounded-full bg-drac-green px-6 py-3 text-sm font-bold text-drac-darker shadow-lg shadow-drac-green/20 transition-all hover:-translate-y-0.5 hover:shadow-xl">Revisar mi atención actual por WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- PAIN POINTS / PROBLEM -->
-    <!-- ============================================ -->
-    <section id="beneficios" class="relative band-white overflow-hidden">
-      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="reveal mx-auto mb-14 max-w-3xl text-center">
-          <span class="section-kicker inline-flex items-center rounded-full bg-chile-blueLight/10 border border-chile-blueLight/20 px-4 py-1.5 text-xs font-bold uppercase text-chile-blueLight mb-6">
-            Una vitrina que trabaja junto a ti
-          </span>
-          <h2 class="font-display text-3xl font-black sm:text-4xl lg:text-5xl">
-            Tu oferta preparada
-            <span class="text-chile-blueLight">para cada conversación</span>
-          </h2>
-          <p class="mt-6 text-lg text-drac-comment leading-relaxed">
-            Tu página presenta productos o servicios, valores desde, horarios, cobertura y el siguiente paso. WhatsApp recibe a personas que ya conocen lo esencial de tu negocio.
-          </p>
-        </div>
-
-        <div data-testid="benefits-visual-evidence" class="benefits-evidence reveal mb-8 grid rounded-[1.75rem] border border-drac-current/30 bg-drac-bg/70 shadow-card">
-          <a href="./demo-fonoaudiologia/index.html" aria-label="Ver demo de fonoaudiología infantil: servicios y reservas" class="benefits-demo-link group relative min-h-44 overflow-hidden border-b border-drac-current/20 sm:border-b-0 sm:border-r">
-            <img src="./assets/optimized/fonoaudiologia-card.webp" alt="Ejemplo de página para presentar servicios y facilitar una reserva" loading="lazy" decoding="async" class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">
-              <span>Servicios y reservas</span>
-              <span aria-hidden="true" class="shrink-0 text-xs uppercase tracking-wider">Ver demo →</span>
-            </span>
-          </a>
-          <a href="./demo-salon-belleza/index.html" aria-label="Ver demo de salón de belleza: atención en un local" class="benefits-demo-link group relative min-h-44 overflow-hidden border-b border-drac-current/20 sm:border-b-0 sm:border-r">
-            <img src="./assets/optimized/salon-card.webp" alt="Ejemplo de página para mostrar servicios de atención en un local" loading="lazy" decoding="async" class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">
-              <span>Atención en un local</span>
-              <span aria-hidden="true" class="shrink-0 text-xs uppercase tracking-wider">Ver demo →</span>
-            </span>
-          </a>
-          <a href="./demo-ecommerce-tech/index.html" aria-label="Ver demo de tienda en línea: catálogo y productos" class="benefits-demo-link group relative min-h-44 overflow-hidden">
-            <img src="./assets/optimized/ecommerce-card.webp" alt="Ejemplo de página para ordenar productos en un catálogo" loading="lazy" decoding="async" class="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-[#172B4D] via-[#172B4D]/80 to-transparent px-5 pb-4 pt-10 text-sm font-bold text-white">
-              <span>Catálogo y productos</span>
-              <span aria-hidden="true" class="shrink-0 text-xs uppercase tracking-wider">Ver demo →</span>
-            </span>
-          </a>
-        </div>
-
-        <p class="reveal mx-auto max-w-3xl text-base leading-relaxed text-drac-comment">Tu oferta queda fácil de revisar, WhatsApp recibe consultas con más contexto y tu dominio, contenidos y accesos forman una base propia para sumar catálogo, reservas o una tienda cuando tu operación esté preparada.</p>
-
-        <div class="reveal mt-8 rounded-[1.75rem] p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:" style="background: linear-gradient(135deg, #0A1E3F 0%, #112A56 55%, #193B77 100%); border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);">
-          <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <div class="max-w-2xl">
-              <h3 class="font-bold text-white" style="font-size: 19px;">Cada herramienta tiene un trabajo concreto.</h3>
-              <p class="mt-2 leading-relaxed" style="font-size: 15px; color: #E8EEF8;">La página presenta tu oferta y facilita una conversación con contexto. La atención, el producto y la experiencia siguen siendo tuyos.</p>
-            </div>
-            <a href="#precios" class="premium-quiet-cta inline-flex items-center justify-center rounded-full border border-white/35 bg-white/12 hover:bg-white hover:text-[#0A1E3F] px-6 py-3 text-sm font-bold text-white transition-all duration-300 shadow-sm">
-              Ver planes y precios →
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="beneficios" data-testid="assisted-attention" class="relative overflow-hidden border-y border-drac-current/30 bg-drac-darker/50">
 
     <!-- ============================================ -->
     <!-- SERVICES -->
@@ -2061,7 +1976,7 @@
 
       <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-drac-purple/5 blur-[120px]"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div class="reveal text-center max-w-3xl mx-auto mb-16">
           <span class="inline-flex items-center rounded-full bg-drac-green/10 border border-drac-green/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-drac-green mb-6">
             Proceso simple y transparente
@@ -2148,65 +2063,9 @@
               </div>
             </div>
 
+
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- IDEAL CLIENT -->
-    <!-- ============================================ -->
-    <section class="hidden border-y border-drac-current/30 bg-drac-darker/50">
-      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="reveal text-center max-w-3xl mx-auto mb-16">
-          <span class="inline-flex items-center rounded-full bg-drac-purple/10 border border-drac-purple/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-drac-purple mb-6">
-            ¿Es para ti?
-          </span>
-          <h2 class="font-display text-3xl font-black sm:text-4xl lg:text-5xl">
-            Ideal para negocios como
-            <span class="text-drac-purple">el tuyo</span>
-          </h2>
-        </div>
-
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="reveal group rounded-2xl border border-drac-current/40 bg-drac-bg/60 p-6 text-center transition-all duration-300 hover:border-drac-purple/30 hover:-translate-y-1 hover:shadow-card">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-chile-blue/10 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110">👨‍💼</div>
-            <h3 class="font-bold text-drac-fg">Profesionales</h3>
-            <p class="mt-2 text-xs text-drac-comment leading-relaxed">Contadores, abogados, arquitectos, consultores, coaches y más.</p>
-          </div>
-
-          <div class="reveal group rounded-2xl border border-drac-current/40 bg-drac-bg/60 p-6 text-center transition-all duration-300 hover:border-drac-purple/30 hover:-translate-y-1 hover:shadow-card" style="transition-delay: .06s">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-drac-green/10 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110">🏪</div>
-            <h3 class="font-bold text-drac-fg">Negocios Locales</h3>
-            <p class="mt-2 text-xs text-drac-comment leading-relaxed">Peluquerías, cafeterías, talleres, tiendas, restaurantes y más.</p>
-          </div>
-
-          <div class="reveal group rounded-2xl border border-drac-current/40 bg-drac-bg/60 p-6 text-center transition-all duration-300 hover:border-drac-purple/30 hover:-translate-y-1 hover:shadow-card" style="transition-delay: .12s">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-chile-red/10 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110">🔧</div>
-            <h3 class="font-bold text-drac-fg">Servicios</h3>
-            <p class="mt-2 text-xs text-drac-comment leading-relaxed">Electricistas, gasfíteres, técnicos, mantención, limpieza y más.</p>
-          </div>
-
-          <div class="reveal group rounded-2xl border border-drac-current/40 bg-drac-bg/60 p-6 text-center transition-all duration-300 hover:border-drac-purple/30 hover:-translate-y-1 hover:shadow-card" style="transition-delay: .18s">
-            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-drac-orange/10 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110">🚀</div>
-            <h3 class="font-bold text-drac-fg">Emprendedores</h3>
-            <p class="mt-2 text-xs text-drac-comment leading-relaxed">Proyectos nuevos que necesitan verse profesionales desde el día uno.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- IA WITH PRACTICAL PURPOSE -->
-    <!-- ============================================ -->
-    <section id="ia-practica" class="relative band-dark overflow-hidden">
-      <div class="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="reveal max-w-3xl">
-          <p class="text-xs font-black uppercase tracking-[0.18em] text-chile-blueLight">Criterio aplicado a tu negocio</p>
-          <h2 class="mt-3 font-display text-3xl font-black text-drac-fg sm:text-4xl">La herramienta acelera. <span class="block">Tu Vitrina se hace cargo del criterio.</span></h2>
-          <p class="mt-4 text-base leading-relaxed text-drac-comment">Podemos usar herramientas para avanzar más rápido. El trabajo que importa es entender tu atención, ordenar lo esencial y revisar que cada paso funcione para tus clientes.</p>
-        </div>
-        <p class="reveal mt-6 max-w-3xl border-t border-drac-current/30 pt-5 text-sm font-semibold leading-relaxed text-drac-fg">La herramienta ayuda con ideas y velocidad; Tu Vitrina aporta criterio, adaptación, publicación y revisión.</p>
       </div>
     </section>
 
@@ -2216,7 +2075,7 @@
     <section id="precios" class="relative band-lino overflow-hidden">
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-chile-blue/5 blur-[150px]"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div class="reveal text-center max-w-3xl mx-auto mb-16">
           <span class="section-kicker inline-flex items-center rounded-full bg-drac-orange/10 border border-drac-orange/20 px-4 py-1.5 text-xs font-bold uppercase text-drac-orange mb-6">
             Inversión transparente
@@ -2605,7 +2464,7 @@
       <div class="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-chile-blue/10 blur-[120px]"></div>
       <div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-chile-red/8 blur-[100px]"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <!-- Left -->
           <div class="reveal">

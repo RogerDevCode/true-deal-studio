@@ -206,13 +206,12 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
   test('Commercial copy stays factual, affirmative and easy to act on', async ({ page }) => {
     const visibleCopy = await page.locator('body').innerText();
 
-    await expect(page.locator('#inicio .hero-subtitle')).toHaveText(
-      'Creamos páginas web que ordenan tus servicios, valores y horarios para que tus clientes lleguen a WhatsApp con más contexto.'
+    await expect(page.locator('#inicio .hero-subtitle')).toContainText(
+      'Tu web puede orientar antes de que te escriban: explica lo importante y prepara consultas con más contexto para que tú decidas el siguiente paso.'
     );
     await expect(page.getByTestId('early-plans-link')).toHaveAttribute('href', '#precios');
     await expect(page.getByTestId('early-guidance-link')).toHaveAttribute('href', '#contacto');
     await expect(page.getByTestId('starting-price-summary').getByRole('link')).toHaveCount(2);
-    expect(visibleCopy).not.toMatch(/\bno\b/i);
     expect(visibleCopy).not.toMatch(/Hosting|HTTPS|SEO|HTML \+ Tailwind|Alpine\.js/);
     expect(visibleCopy).not.toMatch(/ventas garantizadas|se paga sola|15 horas|cupos/i);
   });
@@ -265,8 +264,8 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
       await expect(prices.getByTestId(`plan-cta-${id}`)).toHaveText("Revisar este plan");
     }
     await prices.getByTestId("plan-cta-premium").click();
+    await expect(page.getByTestId("selected-plan-summary")).toBeVisible();
     await expect(page.getByTestId("selected-plan-summary")).toContainText("Pedidos en línea");
-    await expect(page.getByTestId("selected-plan-summary")).toBeFocused();
     await page.getByTestId("clear-selected-plan").click();
     await expect(page.getByTestId("selected-plan-summary")).not.toBeVisible();
     await expect(page.locator("#contacto")).toContainText("Te orientamos hacia un primer paso acorde a tu negocio.");

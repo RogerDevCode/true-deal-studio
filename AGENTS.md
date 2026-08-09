@@ -2,7 +2,7 @@
 
 ## 0. Ficha rápida para agentes
 
-- **Producto:** STAX Web, vitrina comercial y punto de entrada público del megaproyecto.
+- **Producto:** Tu Vitrina Web, vitrina comercial y punto de entrada público del megaproyecto.
 - **Runtime:** sitio estático, compatible con `file://`; Docker local publica `http://127.0.0.1:8081`.
 - **No es fuente de verdad de datos operativos:** no guarda reservas, conversaciones ni pedidos.
 - **Integraciones:** abre el widget público de VoiceLive y el canal público de VentaMax IA mediante URLs declaradas.
@@ -20,7 +20,7 @@ La propuesta comercial vigente es: **“Que te vean. Que te crean.”** La pági
 
 El público principal vende de forma presencial, por delivery o mediante WhatsApp; suele tener presencia digital limitada y busca claridad, control y alcance visible.
 
-La marca visible actual de la landing es **STAX**. **True Deal Studio** identifica el repositorio y su evolución estratégica. Un rebranding público requiere una tarea coordinada que incluya identidad, textos, SEO, metadatos y material relacionado.
+La marca visible del proyecto es **Tu Vitrina**. **True Deal Studio** identifica el repositorio y su evolución estratégica.
 
 ## 2. Stack
 
@@ -78,6 +78,7 @@ playwright.config.js               Configuración de Playwright
 - Usar clases CSS específicas; reservar `!important` para `[x-cloak]` y `prefers-reduced-motion`.
 - Conservar Alpine.js local y plugins requeridos, como `alpine-collapse.min.js` cuando exista `x-collapse`.
 - Respetar `prefers-reduced-motion`, contraste, foco visible y comportamiento responsive.
+- **Ergonomía visual y tamaño mínimo de fuente:** Pensando en usuarios mayores de 30 y 50+ años (prevención de presbicia y fatiga visual), el tamaño de fuente mínimo permitido en cualquier vista, componente o dispositivo es **13px / 14px** (`text-sm` o `0.8125rem`/`0.875rem`). Queda estrictamente prohibido usar fuentes micro de `10px` o `11px`. Asimismo, se exige alto contraste de color (mínimo 7:1 en modo oscuro y 4.5:1 en modo claro); se prohíben textos en gris opaco sobre fondos azulados u oscuros.
 
 ### Google Maps
 
@@ -117,8 +118,9 @@ Cada página pública mantiene:
 1. Revisar `git status --short`, `AGENTS.md`, archivos relacionados y pruebas existentes.
 2. Para cambios de producto o copy, revisar primero la especificación y el plan aplicables en `docs/`.
 3. Reutilizar patrones, estilos y componentes existentes antes de añadir código o dependencias.
-4. Mantener cambios focalizados; agregar o ajustar pruebas cuando cambie el comportamiento.
-5. Ejecutar la validación proporcional al cambio.
+4. **LEY ESTRICTA DE MIGRACIONES**: En los repositorios hermanos con base de datos, al modificar esquemas o modelos siempre se debe correr el comando para crear el archivo de migración que actualiza la DB de producción.
+5. Mantener cambios focalizados; agregar o ajustar pruebas cuando cambie el comportamiento.
+6. Ejecutar la validación proporcional al cambio.
 
 Preferir ejecución directa a usar agentes, salvo cuando una tarea especializada se beneficie claramente de esa colaboración.
 
@@ -169,15 +171,15 @@ Antes de editar, preservar cambios ajenos presentes en el worktree. Usar commits
 
 ## 10. TODOs Futuros (Roadmap Multi-Vendedor)
 
-- [ ] **Bandeja aislada (Vendedor solo ve SUS clientes):**
+- [x] **Bandeja aislada (Vendedor solo ve SUS clientes):**
   - **Schema / BD:** Agregar columna `assigned_user_id` en las entidades `conversation`, `contact` y `lead`.
   - **Filtro por Rol:** Ajustar consultas ORM (`scoped(organization_id)`) para que los usuarios con rol `seller`/`member` vean únicamente sus asignaciones, manteniendo vista global solo para `owner`/`admin`.
 
-## 11. Megaproyecto STAX
+## 11. Megaproyecto Tu Vitrina
 
-Por instrucción explícita del usuario, este repositorio forma parte del megaproyecto STAX junto con:
+Por instrucción explícita del usuario, este repositorio forma parte del megaproyecto junto con:
 
-- `true-deal-studio`: landing comercial y punto de entrada público de `stax.ink`.
+- `true-deal-studio`: landing comercial y punto de entrada público de `tuvitrina.lat`.
 - `/home/manager/Sync/python_proyects/voicelive-v2`: orientación pública por texto y voz (VoiceLive).
 - `/home/manager/Sync/python_proyects/venta-max-ia`: operación conversacional y continuidad humana por Telegram.
 
@@ -193,3 +195,7 @@ Al trabajar en una capacidad transversal autorizada por el usuario, revisar los 
 - Google Calendar es una proyección de salida de VoiceLive; no se consulta como fuente de disponibilidad.
 - Un enlace externo debe tener fallback comprensible. No ocultar una caída de túnel ni prometer atención inmediata.
 - Cualquier cambio transversal debe probar al menos origen, navegación, destino, error del destino y recuperación.
+
+### Tolerancia cero a errores silenciosos
+- **Los errores no deben pasar silenciosamente.** Todo error en integraciones externas (como caídas de red, ETIMEDOUT con Telegram, respuestas 404 en webhooks, o fallos de autenticación) debe ser capturado, registrado explícitamente en la base de datos (ej. `last_error` en la tabla de outbox/receipt) y alertado al sistema de logs de la aplicación.
+- Nunca se debe abortar una promesa de fondo o cola de mensajes sin dejar un registro claro del motivo del fallo.

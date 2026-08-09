@@ -1,0 +1,24 @@
+# True Deal Studio — sitio estático (landing + demos)
+# Uso:  docker compose up -d --build
+# Acceso local: http://127.0.0.1:8081
+# Puerto interno del contenedor: 8080 (definido en nginx.conf)
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        VOICE_WIDGET_ORIGIN: ${VOICE_WIDGET_ORIGIN:-https://voice.tuvitrina.lat}
+    image: true-deal-studio-local-web
+    container_name: true-deal-studio-local-web-1
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s

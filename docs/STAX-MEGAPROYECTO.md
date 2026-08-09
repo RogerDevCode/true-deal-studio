@@ -1,8 +1,8 @@
-# Megaproyecto STAX
+# Megaproyecto Tu Vitrina
 
 ## Tratamiento de la oferta
 
-Desde el 31 de julio de 2026, True Deal Studio, VoiceLive y chatbot se coordinan como una sola oferta comercial bajo la marca **STAX**:
+True Deal Studio, VoiceLive y chatbot se coordinan como una sola oferta comercial bajo la marca **Tu Vitrina**:
 
 > La web explica. La voz orienta. Tú decides el siguiente paso.
 
@@ -10,9 +10,9 @@ La integración se organiza así:
 
 | Componente | Repositorio | Responsabilidad |
 | --- | --- | --- |
-| STAX Vitrina | `true-deal-studio` | Entrada comercial en `stax.ink`, evidencia y diagnóstico por WhatsApp. |
-| STAX Voz | `voicelive-v2` | Orientación pública por texto y voz y derivación humana. |
-| STAX Atención Ordenada | `venta-max-ia` | Recepción del contexto conversacional y continuidad humana por Telegram. |
+| Tu Vitrina Web | `true-deal-studio` | Entrada comercial en `tuvitrina.lat`, evidencia y diagnóstico por WhatsApp. |
+| Tu Vitrina Voz | `voicelive-v2` | Orientación pública por texto y voz y derivación humana. |
+| Tu Vitrina Atención Ordenada | `venta-max-ia` | Recepción del contexto conversacional y continuidad humana por Telegram. |
 
 ## Regla de arquitectura
 
