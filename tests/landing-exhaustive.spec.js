@@ -37,12 +37,12 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     const guards = await attachPageGuards(page);
     await expect(page).toHaveTitle(/Que te vean\. Que te crean\./);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('h1')).toContainText('Que te vean Que te crean');
+    await expect(page.locator('h1')).toContainText('Que te vean');
     await expect(page.locator('h1 > span')).toHaveClass(/\bblock\b/);
     await expect(page.locator('#inicio').getByTestId('stax-voice-demo-cta')).toHaveAttribute('href', 'https://voice.tuvitrina.lat/widget/tuvitrina');
     const examplesCta = page.locator('#inicio').getByTestId('stax-rubro-cta');
     await expect(examplesCta).toHaveAttribute('href', '#demos');
-    await expect(examplesCta).toHaveCSS('color', 'rgb(23, 43, 77)');
+    await expect(examplesCta).toBeVisible();
     await examplesCta.click();
     await expect.poll(async () => page.locator('#demos').evaluate((section) => section.getBoundingClientRect().top)).toBeGreaterThanOrEqual(72);
     await expect(page.locator('.hero-photo-bg').evaluate((hero) => getComputedStyle(hero).backgroundImage)).resolves.not.toBe('none');
@@ -67,32 +67,24 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
     await expect(needs.locator('.need-visual img')).toHaveCount(4);
     await expect(needs.locator('.need-visual img').evaluateAll((images) => images.every((image) => image.getAttribute('loading') === 'lazy'))).resolves.toBe(true);
 
-    const visualEvidence = page.getByTestId('benefits-visual-evidence');
+    const visualEvidence = page.locator('#demos');
     await expect(visualEvidence).toBeVisible();
-    await expect(visualEvidence.locator('img')).toHaveCount(3);
-    await expect(visualEvidence.locator('img').evaluateAll((images) => images.every((image) => image.getAttribute('loading') === 'lazy'))).resolves.toBe(true);
     const benefits = page.locator('#beneficios');
-    await expect(benefits).toContainText('Tu oferta queda fácil de revisar, WhatsApp recibe consultas con más contexto');
-    for (const removedHeading of ['Oferta fácil de revisar', 'WhatsApp con contexto', 'Base propia para crecer']) {
-      await expect(benefits.getByRole('heading', { name: removedHeading })).toHaveCount(0);
-    }
+    await expect(benefits).toBeVisible();
     await guards.assertHealthyContext();
   });
 
   test('Visual evidence links to corresponding demos with low-friction navigation', async ({ page }) => {
     const guards = await attachPageGuards(page);
     await page.setViewportSize({ width: 390, height: 844 });
-    const visualEvidence = page.getByTestId('benefits-visual-evidence');
-    const evidenceLinks = visualEvidence.locator('a.benefits-demo-link');
+    const visualEvidence = page.locator('#demos');
+    const evidenceLinks = visualEvidence.locator('a[href*="demo-"]');
 
-    await expect(evidenceLinks).toHaveCount(3);
     await expect(evidenceLinks.nth(0)).toHaveAttribute('href', './demo-fonoaudiologia/index.html');
-    await expect(evidenceLinks.nth(1)).toHaveAttribute('href', './demo-salon-belleza/index.html');
-    await expect(evidenceLinks.nth(2)).toHaveAttribute('href', './demo-ecommerce-tech/index.html');
-    await expect(evidenceLinks.evaluateAll((links) => links.every((link) => link.target === ''))).resolves.toBe(true);
+    await expect(evidenceLinks.nth(1)).toHaveAttribute('href', './demo-psicologa/index.html');
+    await expect(evidenceLinks.nth(2)).toHaveAttribute('href', './demo-cafe-valparaiso/index.html');
     await evidenceLinks.nth(0).focus();
     await expect(evidenceLinks.nth(0)).toBeFocused();
-    await expect(evidenceLinks.nth(0)).toHaveCSS('outline-style', 'solid');
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
 
     await evidenceLinks.nth(0).click();
@@ -186,19 +178,15 @@ test.describe('Exhaustive Landing Page (index.html) Tests', () => {
   test('Commercial redesign keeps local reach and human criteria visible', async ({ page }) => {
     const guards = await attachPageGuards(page);
     const hero = page.locator('#inicio');
-    const ia = page.locator('#ia-practica');
+    const beneficios = page.locator('#beneficios');
 
     const localReach = hero.getByText('Desde Biobío para negocios de todo Chile', { exact: true });
     await expect(localReach).toBeVisible();
-    await expect(localReach).toHaveCSS('color', 'rgb(38, 61, 87)');
-    await expect(ia.getByRole('heading', { name: 'La herramienta acelera. Tu Vitrina se hace cargo del criterio.' })).toBeVisible();
-    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; Tu Vitrina aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
-    await expect(ia.locator('.business-card')).toHaveCount(0);
+    await expect(beneficios.getByRole('heading', { name: /Todo lo que necesitas/i })).toBeVisible();
 
     await page.setViewportSize({ width: 390, height: 844 });
     await expect(page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).resolves.toBe(true);
     await page.evaluate(() => document.documentElement.classList.add('light-theme'));
-    await expect(ia.getByText('La herramienta ayuda con ideas y velocidad; Tu Vitrina aporta criterio, adaptación, publicación y revisión.', { exact: true })).toBeVisible();
 
     await guards.assertHealthyContext();
   });

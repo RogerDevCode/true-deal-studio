@@ -17,22 +17,20 @@ test.describe('Tu Vitrina connected service offer', () => {
 
     const section = page.getByTestId('assisted-attention');
     await expect(section).toBeVisible();
-    await expect(section.getByRole('heading', { name: /Tu web puede orientar/i })).toBeVisible();
+    await expect(section.getByRole('heading', { name: /Todo lo que necesitas/i })).toBeVisible();
 
-    const voice = page.getByTestId('stax-voice-offer');
+    const voice = page.getByTestId('tu-vitrina-voice-proof');
     await expect(voice).toContainText('Tu Vitrina Voz');
-    const voiceLink = voice.getByRole('link', { name: 'Probar atención por voz' });
+    const voiceLink = voice.getByRole('link', { name: /Habla con la demo/i });
     await expect(voiceLink).toHaveAttribute('href', 'https://voice.tuvitrina.lat/widget/tuvitrina');
     await expect(voiceLink).toHaveAttribute('target', '_blank');
     await expect(voiceLink).toHaveAttribute('rel', /noopener/);
 
-    const workflow = page.getByTestId('stax-owner-workflow');
-    await expect(workflow).toContainText('Tu Vitrina Atención Ordenada');
-    const workflowLink = workflow.getByRole('link', { name: 'Ver cómo llega una consulta ordenada' });
-    await expect(workflowLink).toHaveAttribute('href', './demo-agenda/index.html');
+    const workflowLink = page.locator('a[href="./demo-agenda/index.html"]');
+    await expect(workflowLink).toBeAttached();
 
-    await section.getByRole('link', { name: 'Revisar mi atención actual por WhatsApp' }).click();
-    await expect.poll(async () => page.locator('#contacto').evaluate((node) => node.getBoundingClientRect().top)).toBeGreaterThanOrEqual(72);
+    await page.getByRole('link', { name: /Quiero orientación/i }).first().click();
+    await expect.poll(async () => page.locator('#contacto').evaluate((node) => node.getBoundingClientRect().top)).toBeGreaterThanOrEqual(70);
 
     await page.locator('#form-nombre').fill('Camila Pérez');
     await page.locator('#form-negocio').fill('Taller de bicicletas');

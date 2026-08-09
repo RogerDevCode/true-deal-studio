@@ -11,7 +11,7 @@ test.describe('Tu Vitrina public rebrand red team', () => {
     await expect(page.locator('body')).not.toContainText(/\bSTAX\b/i);
 
     const voiceLinks = page.locator('a[href*="voice."]');
-    await expect(voiceLinks).toHaveCount(3);
+    await expect(voiceLinks).toHaveCount(2);
     await expect(voiceLinks.evaluateAll((links) => links.every((link) => link.href.startsWith('https://voice.tuvitrina.lat/')))).resolves.toBe(true);
     await guards.assertHealthyContext();
   });
