@@ -140,7 +140,7 @@ test("hero makes voice proof the first conversion action", async ({ page }) => {
   await expect(hero.getByTestId("stax-voice-demo-cta")).toHaveText(/Hablar ahora con la demo/i);
   await expect(hero.getByTestId("stax-rubro-cta")).toHaveText(/Ver un ejemplo de mi rubro/i);
   await expect(hero.getByTestId("stax-voice-demo-cta"))
-    .toHaveAttribute("href", "https://voice.stax.ink/widget/stax");
+    .toHaveAttribute("href", "https://voice.tuvitrina.lat/widget/tuvitrina");
 });
 ~~~
 
@@ -200,7 +200,7 @@ Use IntersectionObserver to attach source URLs only near viewport. Add scoped st
 - [ ] **Step 3: Change CTA order**
 
 ~~~html
-<a data-testid="stax-voice-demo-cta" href="https://voice.stax.ink/widget/stax">Hablar ahora con la demo</a>
+<a data-testid="stax-voice-demo-cta" href="https://voice.tuvitrina.lat/widget/tuvitrina">Hablar ahora con la demo</a>
 <a data-testid="stax-rubro-cta" href="#demos">Ver un ejemplo de mi rubro</a>
 ~~~
 
@@ -514,7 +514,7 @@ At 320×568, 390×844 and 1440×900, without scrolling, answer with selector/scr
 
 - [ ] **Step 2: Run adversarial recovery**
 
-Block MP4/WebM, block voice.stax.ink, disable JS, enable reduced motion and validate file:// where applicable. Blank media, spinner, inaccessible control or false promise of live human attention blocks release.
+Block MP4/WebM, block voice.tuvitrina.lat, disable JS, enable reduced motion and validate file:// where applicable. Blank media, spinner, inaccessible control or false promise of live human attention blocks release.
 
 - [ ] **Step 3: Run sensitivity audit**
 

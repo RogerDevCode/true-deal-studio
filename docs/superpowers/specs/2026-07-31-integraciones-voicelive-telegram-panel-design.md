@@ -38,7 +38,7 @@ El bloque debe conservar la jerarquía y el lenguaje visual oscuro del panel, re
 - Copy: `Responde preguntas frecuentes por voz y orienta al visitante antes de que escriba.`
 - Media: video corto de aproximadamente cinco segundos cuando el archivo esté disponible; mientras tanto, un póster o visual estático válido.
 - CTA: `Probar VoiceLive`.
-- Destino inicial: reutilizar el acceso VoiceLive ya presente en la landing, `https://voice.stax.ink/widget/stax`, abriendo una pestaña nueva con `rel="noopener"`.
+- Destino inicial: reutilizar el acceso VoiceLive ya presente en la landing, `https://voice.tuvitrina.lat/widget/tuvitrina`, abriendo una pestaña nueva con `rel="noopener"`.
 - Disclaimers: no afirmar reservas automáticas, ventas garantizadas ni sustitución de una persona.
 
 ### Tarjeta Telegram

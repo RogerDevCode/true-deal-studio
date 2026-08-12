@@ -160,7 +160,7 @@ No publiques una imagen que no fue reconstruida después de los cambios fuente.
 
 Antes de producción pública, crea staging aislado y verifica:
 
-- DNS y TLS para `stax.ink`, `voice.stax.ink` y los subdominios activos;
+- DNS y TLS para `tuvitrina.lat`, `voice.tuvitrina.lat` y los subdominios activos;
 - Cloudflare Tunnel conectado y recuperación después de reinicio;
 - CORS, trusted hosts, cookies seguras y headers;
 - secretos del VPS instalados fuera del repositorio;

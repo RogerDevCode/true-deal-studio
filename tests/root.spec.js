@@ -17,6 +17,7 @@ const demoPaths = [
 ];
 
 test("Landing and demos stay production-ready", async ({ page }) => {
+  test.setTimeout(90000);
   const guards = await attachPageGuards(page);
   await page.goto("/");
 

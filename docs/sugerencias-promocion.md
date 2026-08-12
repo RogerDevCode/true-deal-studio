@@ -35,7 +35,7 @@ Este documento consolida la estrategia de marketing, desarrollo de comunidad y p
 
 ---
 
-## 3. Optimización del Frontend Principal (`stax.ink` / `true-deal-studio`)
+## 3. Optimización del Frontend Principal (`tuvitrina.lat` / `true-deal-studio`)
 
 El frontend principal debe actuar como la evidencia viva de la solución.
 
@@ -82,7 +82,7 @@ El frontend principal debe actuar como la evidencia viva de la solución.
 
 | Etapa | Acción Clave | Canal / Herramienta | KPI de Éxito |
 | :--- | :--- | :--- | :--- |
-| **Atracción** | Publicación de videos "Prueba de Fuego" (VoiceLive). | Instagram Reels, TikTok, LinkedIn | Visitas al frontend (`stax.ink`). |
+| **Atracción** | Publicación de videos "Prueba de Fuego" (VoiceLive). | Instagram Reels, TikTok, LinkedIn | Visitas al frontend (`tuvitrina.lat`). |
 | **Interacción / WOW** | Pruebas de voz WebRTC y demos interactiva por rubro. | Landing principal (`true-deal-studio`) | Interacciones con el sandbox y pruebas de voz. |
 | **Captura** | Diagnóstico de atención por bot. | Bot de Telegram / WhatsApp (`venta-max-ia`) | Leads calificados capturados. |
 | **Fidelización** | Difusión de contenido práctico y casos de estudio. | Canal de Telegram Tu Vitrina | Tasa de recomendación y crecimiento del canal. |

@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Make `stax.ink` the commercial entry point for STAX Vitrina, STAX Atención Ordenada and STAX Voz, with direct proof links and an explicit WhatsApp diagnostic interest.
+**Goal:** Make `tuvitrina.lat` the commercial entry point for STAX Vitrina, STAX Atención Ordenada and STAX Voz, with direct proof links and an explicit WhatsApp diagnostic interest.
 
 **Architecture:** Modify only the static landing and its Playwright coverage. A new `#atencion-asistida` section follows the existing demos and links to the already deployed VoiceLive widget plus the local CRM Express workflow preview. The existing contact form gains an interest selector that is included in the prepared WhatsApp message; no bot, webhook, VPS, DNS or secrets are configured here.
 
@@ -13,7 +13,7 @@
 - Keep STAX as the public brand; do not start a True Deal public rebrand.
 - Preserve `file://` compatibility, local resources and existing demo paths.
 - Keep the landing in Vercel; VoiceLive and chatbot deployments remain outside this repository.
-- Reuse `https://voice.stax.ink/widget/stax` as the current public VoiceLive destination.
+- Reuse `https://voice.tuvitrina.lat/widget/tuvitrina` as the current public VoiceLive destination.
 - Use `./demo-agenda/index.html` as the local proof route for the owner workflow.
 - Present results and human control; do not promise automatic sales, reservations, messages or a replacement for human attention.
 - Preserve focus visibility, responsive behavior, `prefers-reduced-motion`, `lang="es-CL"`, one `h1`, SEO metadata and current form fallback behavior.
@@ -66,7 +66,7 @@ test.describe('STAX connected service offer', () => {
     const voice = page.getByTestId('stax-voice-offer');
     await expect(voice).toContainText('STAX Voz');
     const voiceLink = voice.getByRole('link', { name: 'Probar atención por voz' });
-    await expect(voiceLink).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
+    await expect(voiceLink).toHaveAttribute('href', 'https://voice.tuvitrina.lat/widget/tuvitrina');
     await expect(voiceLink).toHaveAttribute('target', '_blank');
     await expect(voiceLink).toHaveAttribute('rel', /noopener/);
 
@@ -138,7 +138,7 @@ Add this section between `#demos` and `#beneficios`:
             <p class="text-xs font-black uppercase tracking-[0.16em] text-drac-cyan">STAX Voz</p>
             <h3 class="mt-4 text-2xl font-bold text-drac-fg">Orienta antes de que la persona escriba.</h3>
             <p class="mt-4 leading-relaxed text-drac-comment">VoiceLive responde preguntas frecuentes con la información aprobada por tu negocio y deriva los casos que necesitan una persona.</p>
-            <a href="https://voice.stax.ink/widget/stax" target="_blank" rel="noopener" class="premium-quiet-cta mt-6 inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-3 text-sm font-bold text-drac-fg transition-all hover:-translate-y-0.5">Probar atención por voz<span class="ml-2" aria-hidden="true">↗</span><span class="sr-only"> (abre en una pestaña nueva)</span></a>
+            <a href="https://voice.tuvitrina.lat/widget/tuvitrina" target="_blank" rel="noopener" class="premium-quiet-cta mt-6 inline-flex min-h-11 items-center justify-center rounded-full border px-5 py-3 text-sm font-bold text-drac-fg transition-all hover:-translate-y-0.5">Probar atención por voz<span class="ml-2" aria-hidden="true">↗</span><span class="sr-only"> (abre en una pestaña nueva)</span></a>
           </article>
 
           <article data-testid="stax-owner-workflow" class="rounded-[1.75rem] border border-drac-green/30 bg-drac-bg/80 p-6 shadow-card sm:p-8">

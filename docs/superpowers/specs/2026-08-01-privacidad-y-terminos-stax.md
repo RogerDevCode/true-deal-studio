@@ -2,8 +2,8 @@
 
 ## Objetivo
 
-Publicar documentos comprensibles para las personas que usan `stax.ink` y
-`voz.stax.ink`, y dar a Google OAuth las URL públicas que exige antes de una
+Publicar documentos comprensibles para las personas que usan `tuvitrina.lat` y
+`voice.tuvitrina.lat`, y dar a Google OAuth las URL públicas que exige antes de una
 verificación de producción.
 
 ## Decisiones

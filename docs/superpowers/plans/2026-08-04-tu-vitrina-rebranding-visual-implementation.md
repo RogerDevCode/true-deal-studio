@@ -259,7 +259,7 @@ the preproduction gate passes.
 - Modify only if public references remain: `README.md`, `docs/`, `privacidad.html`, `terminos.html`
 
 **Interfaces:**
-- Tests distinguish public `STAX` copy and obsolete `voice.stax.ink` URLs from harmless internal test IDs and localStorage keys.
+- Tests distinguish public `STAX` copy and obsolete `voice.stax.ink` (ahora `voice.tuvitrina.lat`) URLs from harmless internal test IDs and localStorage keys.
 - Public pages resolve to local assets and explicit `index.html` demo paths under both HTTP and `file://` navigation.
 
 - [ ] **Step 1: Add a public rebranding guard**

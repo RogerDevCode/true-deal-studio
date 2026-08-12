@@ -58,7 +58,7 @@ test.describe('CRM Express integration cards', () => {
     await expect(telegramCard).toContainText('Recibe cada consulta resumida');
 
     const voiceLink = voiceCard.getByRole('link', { name: 'Probar VoiceLive' });
-    await expect(voiceLink).toHaveAttribute('href', 'https://voice.stax.ink/widget/stax');
+    await expect(voiceLink).toHaveAttribute('href', 'https://voice.tuvitrina.lat/widget/tuvitrina');
     await expect(voiceLink).toHaveAttribute('target', '_blank');
     await expect(voiceLink).toHaveAttribute('rel', /noopener/);
 
@@ -242,7 +242,7 @@ Insert this block immediately after the existing sales pitch `</div>` and before
               </div>
               <h3 class="mt-4 text-lg font-bold text-white">VoiceLive</h3>
               <p class="mt-2 text-sm leading-relaxed text-slate-400">Responde preguntas frecuentes por voz y orienta al visitante antes de que escriba.</p>
-              <a href="https://voice.stax.ink/widget/stax" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center rounded-xl border border-sky-400/40 px-4 py-2 text-sm font-bold text-sky-300 transition-colors hover:border-sky-300 hover:bg-sky-400/10 focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Probar VoiceLive en una nueva pestaña">Probar VoiceLive <span aria-hidden="true">↗</span></a>
+              <a href="https://voice.tuvitrina.lat/widget/tuvitrina" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center rounded-xl border border-sky-400/40 px-4 py-2 text-sm font-bold text-sky-300 transition-colors hover:border-sky-300 hover:bg-sky-400/10 focus:outline-none focus:ring-2 focus:ring-sky-400" aria-label="Probar VoiceLive en una nueva pestaña">Probar VoiceLive <span aria-hidden="true">↗</span></a>
             </article>
 
             <article class="glass-card rounded-2xl p-4 transition-colors hover:border-sky-500/30" data-testid="telegram-card">

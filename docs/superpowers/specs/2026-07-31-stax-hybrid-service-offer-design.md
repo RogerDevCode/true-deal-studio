@@ -2,14 +2,14 @@
 
 ## Objetivo
 
-Presentar STAX como la marca pública que conecta una web comercial, orientación por voz y atención asistida para el dueño del negocio. `stax.ink` será la entrada comercial; VoiceLive y el chatbot continuarán como aplicaciones independientes, con despliegues y secretos separados.
+Presentar STAX como la marca pública que conecta una web comercial, orientación por voz y atención asistida para el dueño del negocio. `tuvitrina.lat` será la entrada comercial; VoiceLive y el chatbot continuarán como aplicaciones independientes, con despliegues y secretos separados.
 
 La solución inicial mantiene la landing estática en Vercel y ejecuta VoiceLive y chatbot en un único VPS mediante Docker Compose. No se fusionan los proyectos en una imagen Docker ni en un repositorio monolítico.
 
 ## Decisiones aprobadas
 
 - La marca pública durante esta etapa es **STAX**. True Deal Studio permanece como identidad del repositorio y evolución estratégica; no se inicia un rebranding público.
-- La arquitectura es **híbrida**: Vercel para `stax.ink`; VPS para los servicios operativos.
+- La arquitectura es **híbrida**: Vercel para `tuvitrina.lat`; VPS para los servicios operativos.
 - VoiceLive y el chatbot son aplicaciones separadas, listas para producción y con sus propios repositorios o Dockerfiles.
 - La landing vende resultados observables y control humano, no tecnología aislada ni promesas de automatización total.
 - Telegram se presenta como el lugar donde el dueño puede recibir y revisar una consulta ordenada. El cliente no necesita conocer la API, el webhook ni la infraestructura.
@@ -19,8 +19,8 @@ La solución inicial mantiene la landing estática en Vercel y ejecuta VoiceLive
 ```text
 Visitante
     ↓
-stax.ink / www.stax.ink (Vercel)
-    ├─ Probar atención por voz → voice.stax.ink (VPS)
+tuvitrina.lat / www.tuvitrina.lat (Vercel)
+    ├─ Probar atención por voz → voice.tuvitrina.lat (VPS)
     ├─ Ver flujo del dueño → demostración STAX en la landing
     └─ Revisar mi atención actual → WhatsApp con contexto
 
@@ -34,17 +34,17 @@ VPS
 
 | Dominio | Destino | Visibilidad |
 | --- | --- | --- |
-| `stax.ink` y `www.stax.ink` | Vercel / landing STAX | Público y comercial. |
-| `voice.stax.ink` | Servicio VoiceLive en VPS | Público como demostración guiada. |
-| `api.stax.ink` | API/chatbot en VPS | Público solo para integraciones como Telegram; no se enlaza en copy comercial. |
-| `panel.stax.ink` | Panel del dueño, si se publica | Diferido hasta que exista una interfaz productiva para el dueño. |
+| `tuvitrina.lat` y `www.tuvitrina.lat` | Vercel / landing STAX | Público y comercial. |
+| `voice.tuvitrina.lat` | Servicio VoiceLive en VPS | Público como demostración guiada. |
+| `api.tuvitrina.lat` | API/chatbot en VPS | Público solo para integraciones como Telegram; no se enlaza en copy comercial. |
+| `panel.tuvitrina.lat` | Panel del dueño, si se publica | Diferido hasta que exista una interfaz productiva para el dueño. |
 
 ## Arquitectura del VPS
 
 Un único VPS puede alojar varios contenedores coordinados con Docker Compose. Cada aplicación se conserva como servicio independiente:
 
 - `gateway`: proxy HTTPS y terminación TLS; es el único servicio que expone los puertos 80 y 443.
-- `voicelive`: servicio de voz, disponible únicamente a través de `voice.stax.ink`.
+- `voicelive`: servicio de voz, disponible únicamente a través de `voice.tuvitrina.lat`.
 - `chatbot`: API que recibe actualizaciones de Telegram, procesa la información aprobada por cada negocio y envía resúmenes o acciones al dueño.
 
 `gateway` comparte una red de entrada con `voicelive` y `chatbot`. Los datos persistentes, bases de datos y colas que requiera cada aplicación se mantendrán en su repositorio o servicio propio, detrás de una red interna; no se agregan por defecto a la infraestructura de STAX.
@@ -70,7 +70,7 @@ La sección contiene dos experiencias:
 - Nombre visible: **STAX Voz**.
 - Qué muestra: una persona formula una duda frecuente y VoiceLive la orienta usando información aprobada.
 - CTA: **Probar atención por voz**.
-- Destino: `voice.stax.ink`.
+- Destino: `voice.tuvitrina.lat`.
 - Límite visible: la orientación usa contenidos definidos con el negocio y deriva situaciones que requieren una persona.
 
 ### Atención ordenada para el dueño
@@ -108,9 +108,9 @@ Este recorrido evita vender una promesa técnica abstracta. Las demos sirven com
 
 ## Despliegue por fases
 
-1. **Base operativa:** elegir el VPS, instalar Docker Compose, configurar el proxy HTTPS, DNS de `voice.stax.ink` y el entorno seguro de cada aplicación.
+1. **Base operativa:** elegir el VPS, instalar Docker Compose, configurar el proxy HTTPS, DNS de `voice.tuvitrina.lat` y el entorno seguro de cada aplicación.
 2. **Servicios:** desplegar VoiceLive y chatbot desde sus repositorios, con health checks, logs, backups según sus datos y pruebas de webhook de Telegram.
-3. **Comercial:** añadir a `stax.ink` la sección de atención asistida, los CTAs y la consulta de diagnóstico con contexto.
+3. **Comercial:** añadir a `tuvitrina.lat` la sección de atención asistida, los CTAs y la consulta de diagnóstico con contexto.
 4. **Pilotos:** habilitar uno a tres negocios, medir consultas iniciadas, resúmenes útiles, traspasos, costos y soporte antes de publicar precios finales o casos.
 
 ## Fuera de alcance de este diseño
