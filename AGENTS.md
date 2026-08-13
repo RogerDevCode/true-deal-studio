@@ -84,6 +84,10 @@ playwright.config.js               Configuración de Playwright
 
 - En URLs iframe de Google Maps, separar parámetros de `pb` con `!`.
 
+### Python, Ruff y Mypy (Backend)
+
+- **Excepciones múltiples:** Al usar un bloque `except` con múltiples excepciones, SIEMPRE debes asignar la tupla a una variable (ej. `except (ErrorA, ErrorB) as _e:`). Si no lo haces, `ruff format` considerará los paréntesis redundantes y los eliminará, lo cual genera un error de sintaxis duro en `mypy` (`Multiple exception types must be parenthesized`).
+
 ### SEO y accesibilidad
 
 Cada página pública mantiene:
