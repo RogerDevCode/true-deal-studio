@@ -34,7 +34,7 @@ function findTag(content, regex, label) {
 async function fetchText(url, fetchImpl = fetch) {
   const response = await fetchImpl(url, {
     headers: {
-      "user-agent": "true-deal-studio-production-smoke/1.0",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
     },
   });
   assert(response.ok, `HTTP ${response.status} en ${url}`);
