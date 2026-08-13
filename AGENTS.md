@@ -123,8 +123,9 @@ Cada página pública mantiene:
 2. Para cambios de producto o copy, revisar primero la especificación y el plan aplicables en `docs/`.
 3. Reutilizar patrones, estilos y componentes existentes antes de añadir código o dependencias.
 4. **LEY ESTRICTA DE MIGRACIONES**: En los repositorios hermanos con base de datos, al modificar esquemas o modelos siempre se debe correr el comando para crear el archivo de migración que actualiza la DB de producción.
-5. Mantener cambios focalizados; agregar o ajustar pruebas cuando cambie el comportamiento.
-6. Ejecutar la validación proporcional al cambio.
+5. **LEY ESTRICTA DE VALIDACIÓN CI Y LINTERS**: Antes de declarar cualquier tarea como completada o dar una respuesta de 'listo', es **OBLIGATORIO** ejecutar localmente la suite completa de comprobaciones replicando exactamente los comandos del pipeline de CI (`.github/workflows/ci.yml`), incluyendo linters (`ruff format`, `ruff check`, `eslint`, `mypy`), chequeos de tipos (`tsc`) y tests (`pytest`, `vitest`). Queda estrictamente prohibido confiar en parches parciales o responder que un cambio está listo sin correr la verificación integral.
+6. Mantener cambios focalizados; agregar o ajustar pruebas cuando cambie el comportamiento.
+7. Ejecutar la validación proporcional al cambio.
 
 Preferir ejecución directa a usar agentes, salvo cuando una tarea especializada se beneficie claramente de esa colaboración.
 
