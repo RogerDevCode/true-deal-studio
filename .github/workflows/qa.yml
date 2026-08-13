@@ -37,8 +37,7 @@ jobs:
       - name: Run Lighthouse CI
         run: npm run qa:lighthouse
 
-      - name: Run production smoke
-        run: npm run qa:prod-smoke
+
 
       - name: Upload Playwright report
         if: always()

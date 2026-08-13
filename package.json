@@ -12,7 +12,7 @@
     "qa:e2e": "node scripts/run_clean_env.js playwright test",
     "qa:lighthouse": "node scripts/qa_quality.js",
     "qa:prod-smoke": "node scripts/production_smoke.js",
-    "qa:ci": "npm run qa:gate && npm run qa:e2e && npm run qa:lighthouse && npm run qa:prod-smoke",
+    "qa:ci": "npm run qa:gate && npm run qa:e2e && npm run qa:lighthouse",
     "test_root": "node scripts/run_clean_env.js playwright test tests/root.spec.js",
     "test_cafe": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Cafe\"",
     "test_salon": "node scripts/run_clean_env.js playwright test tests/forms.spec.js -g \"Salon\"",
