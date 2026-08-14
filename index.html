@@ -274,9 +274,36 @@
       background-color: rgba(251, 250, 247, 0.66);
     }
 
+    /* Ergonomía visual: texto secundario y detalles legibles en desktop y móvil */
+    #necesidades .text-xs,
+    #demos .text-xs,
+    #servicios .text-xs,
+    #proceso .text-xs,
     #precios .text-xs,
-    #contacto .text-xs {
+    #faq .text-xs,
+    #contacto .text-xs,
+    body .text-xs {
       font-size: 14px;
+      line-height: 1.45;
+    }
+    #faq button span {
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+    #faq [id^="faq-content-"] p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .text-responsive-detail {
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .text-responsive-caption {
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+    .text-responsive-disclaimer {
+      font-size: 13.5px;
       line-height: 1.45;
     }
     .mini-wa {
@@ -318,16 +345,10 @@
       opacity: 0.9;
     }
 
-    /* Responsive typography legibility overrides for mobile devices */
-    /* Responsive custom typography system without !important */
-    .text-responsive-detail {
-      font-size: 12px;
-    }
-    .text-responsive-caption {
-      font-size: 10px;
-    }
-    .text-responsive-disclaimer {
-      font-size: 10px;
+    /* Responsive typography legibility system for all screen sizes */
+    #demos .demo-card-copy {
+      font-size: 15px;
+      line-height: 1.55;
     }
     @media (max-width: 768px) {
       html body .text-responsive-detail,
@@ -1508,27 +1529,27 @@
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-local.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Atención presencial</p>
-            <h3 class="mt-1.5 text-base font-black text-drac-fg">Atiendes en un local</h3>
-            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Servicios, horarios, ubicación y cómo llegar.</p>
+            <p class="text-xs sm:text-sm font-black uppercase tracking-[0.14em] text-chile-blueLight">Atención presencial</p>
+            <h3 class="mt-1.5 text-base sm:text-lg font-black text-drac-fg">Atiendes en un local</h3>
+            <p class="mt-1.5 text-sm sm:text-base leading-relaxed text-drac-comment">Servicios, horarios, ubicación y cómo llegar.</p>
           </article>
           <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all" style="transition-delay: .06s">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-delivery.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Pedidos y reparto</p>
-            <h3 class="mt-1.5 text-base font-black text-drac-fg">Haces delivery</h3>
-            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Productos, valores, zonas de entrega y cómo pedir.</p>
+            <p class="text-xs sm:text-sm font-black uppercase tracking-[0.14em] text-chile-blueLight">Pedidos y reparto</p>
+            <h3 class="mt-1.5 text-base sm:text-lg font-black text-drac-fg">Haces delivery</h3>
+            <p class="mt-1.5 text-sm sm:text-base leading-relaxed text-drac-comment">Productos, valores, zonas de entrega y cómo pedir.</p>
           </article>
           <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all" style="transition-delay: .12s">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-reservations.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Horas y visitas</p>
-            <h3 class="mt-1.5 text-base font-black text-drac-fg">Trabajas con reservas</h3>
-            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Servicios, horas disponibles y qué saber antes.</p>
+            <p class="text-xs sm:text-sm font-black uppercase tracking-[0.14em] text-chile-blueLight">Horas y visitas</p>
+            <h3 class="mt-1.5 text-base sm:text-lg font-black text-drac-fg">Trabajas con reservas</h3>
+            <p class="mt-1.5 text-sm sm:text-base leading-relaxed text-drac-comment">Servicios, horas disponibles y qué saber antes.</p>
           </article>
           <article class="reveal rounded-2xl border border-drac-current/30 bg-drac-bg/70 p-4 shadow-card hover:border-chile-blue/30 transition-all" style="transition-delay: .18s">
             <div class="need-visual" aria-hidden="true"><img src="./assets/visuals/stax-need-catalog.webp" alt="" loading="lazy" decoding="async" /></div>
-            <p class="text-xs font-black uppercase tracking-[0.14em] text-chile-blueLight">Productos</p>
-            <h3 class="mt-1.5 text-base font-black text-drac-fg">Vendes por catálogo</h3>
-            <p class="mt-1.5 text-xs leading-relaxed text-drac-comment">Fotos, modelos, tamaños, colores y valores.</p>
+            <p class="text-xs sm:text-sm font-black uppercase tracking-[0.14em] text-chile-blueLight">Productos</p>
+            <h3 class="mt-1.5 text-base sm:text-lg font-black text-drac-fg">Vendes por catálogo</h3>
+            <p class="mt-1.5 text-sm sm:text-base leading-relaxed text-drac-comment">Fotos, modelos, tamaños, colores y valores.</p>
           </article>
         </div>
 
@@ -1569,13 +1590,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/fonoaudiologia-card.webp" alt="Demo Nahovy Gallegos Fonoaudiología" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-green/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Salud Infantil 🧸</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-green/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Salud Infantil 🧸</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Fonoaudiología Infantil</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite conocer servicios, forma de atención y opciones para solicitar una evaluación.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-green">Antes de escribir</strong>: servicios, atención y agenda. <strong class="text-drac-green">En tus mensajes puedes revisar</strong>: si indican servicio y horario.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Fonoaudiología Infantil</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite conocer servicios, forma de atención y opciones para solicitar una evaluación.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-green font-bold">Antes de escribir</strong>: servicios, atención y agenda. <strong class="text-drac-green font-bold">En tus mensajes puedes revisar</strong>: si indican servicio y horario.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-cyan mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1587,13 +1608,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/psicologa-card.webp" alt="Demo Clara Altieri Psicóloga" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-purple/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">Salud & Bienestar</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-purple/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Salud & Bienestar</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Psicóloga Clínica</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite conocer especialidad, atención presencial u online y opciones de reserva.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-purple">Antes de escribir</strong>: especialidad, atención y reserva. <strong class="text-drac-purple">En tus mensajes puedes revisar</strong>: si indican atención y horario.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-purple mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Psicóloga Clínica</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite conocer especialidad, atención presencial u online y opciones de reserva.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-purple font-bold">Antes de escribir</strong>: especialidad, atención y reserva. <strong class="text-drac-purple font-bold">En tus mensajes puedes revisar</strong>: si indican atención y horario.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-purple mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1605,13 +1626,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/cafe-card.webp" alt="Demo Café La Ruta Valparaíso" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-orange/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">Gastronomía</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-orange/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Gastronomía</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Café de Especialidad</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite revisar carta, valores, horarios y alternativas de pedido o retiro.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-orange">Antes de escribir</strong>: carta, valores y pedidos. <strong class="text-drac-orange">En tus mensajes puedes revisar</strong>: si indican producto, cantidad o fecha.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-orange mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Café de Especialidad</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite revisar carta, valores, horarios y alternativas de pedido o retiro.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-orange font-bold">Antes de escribir</strong>: carta, valores y pedidos. <strong class="text-drac-orange font-bold">En tus mensajes puedes revisar</strong>: si indican producto, cantidad o fecha.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-orange mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1623,13 +1644,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/salon-card.webp" alt="Demo Studio Chic Peluquería" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-yellow/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Estética & Belleza</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-yellow/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Estética & Belleza</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Salón de Belleza</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite revisar servicios, referencias y cómo solicitar una hora.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-yellow">Antes de escribir</strong>: servicios, referencias y reserva. <strong class="text-drac-yellow">En tus mensajes puedes revisar</strong>: si indican servicio y fecha.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-yellow mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Salón de Belleza</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite revisar servicios, referencias y cómo solicitar una hora.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-yellow font-bold">Antes de escribir</strong>: servicios, referencias y reserva. <strong class="text-drac-yellow font-bold">En tus mensajes puedes revisar</strong>: si indican servicio y fecha.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-yellow mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1641,13 +1662,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/artesanias-card.webp" alt="Demo Artesanías del Sur E-commerce" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-pink/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">Tienda & Retail</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-pink/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Tienda & Retail</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Catálogo de Productos</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite recorrer productos, elegir opciones y preparar un pedido por WhatsApp.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-pink">Antes de escribir</strong>: productos, opciones y pedido. <strong class="text-drac-pink">En tus mensajes puedes revisar</strong>: si indican producto y cantidad.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-pink mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Catálogo de Productos</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite recorrer productos, elegir opciones y preparar un pedido por WhatsApp.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-pink font-bold">Antes de escribir</strong>: productos, opciones y pedido. <strong class="text-drac-pink font-bold">En tus mensajes puedes revisar</strong>: si indican producto y cantidad.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-pink mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1659,13 +1680,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/contabilidad-card.webp" alt="Demo ContaDigital Contabilidad" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Servicios B2B</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Servicios B2B</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">ContaDigital Asesoría</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite comparar planes, valores y alcance antes de pedir una cotización.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-cyan">Antes de escribir</strong>: planes, valores y alcance. <strong class="text-drac-cyan">En tus mensajes puedes revisar</strong>: si indican plan o necesidad.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">ContaDigital Asesoría</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite comparar planes, valores y alcance antes de pedir una cotización.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-cyan font-bold">Antes de escribir</strong>: planes, valores y alcance. <strong class="text-drac-cyan font-bold">En tus mensajes puedes revisar</strong>: si indican plan o necesidad.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-cyan mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1677,13 +1698,13 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/propiedades-card.webp" alt="Demo Cobre & Co. Propiedades" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Corretaje Premium</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Corretaje Premium</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Cobre & Co. Propiedades</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite revisar propiedades, precios y solicitar una visita.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-cyan">Antes de escribir</strong>: propiedad, precio y visita. <strong class="text-drac-cyan">En tus mensajes puedes revisar</strong>: si indican propiedad y horario.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-green transition-colors">Cobre & Co. Propiedades</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite revisar propiedades, precios y solicitar una visita.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-cyan font-bold">Antes de escribir</strong>: propiedad, precio y visita. <strong class="text-drac-cyan font-bold">En tus mensajes puedes revisar</strong>: si indican propiedad y horario.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-cyan mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1695,17 +1716,17 @@
             <div class="relative h-48 w-full overflow-hidden">
               <img src="./assets/optimized/ecommerce-card.webp" alt="Demo E-commerce con Panel de Control" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-60"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-purple/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white shadow">El Siguiente Paso 🚀</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-purple/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">El Siguiente Paso 🚀</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-purple transition-colors">Tienda Online con Auto-Administración</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Permite elegir productos, pagar y seguir un pedido desde una tienda administrable.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-purple">Antes de escribir</strong>: productos, pago y seguimiento. <strong class="text-drac-purple">En tus mensajes puedes revisar</strong>: si el pedido incluye selección y datos.</p>
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-purple transition-colors">Tienda Online con Auto-Administración</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Permite elegir productos, pagar y seguir un pedido desde una tienda administrable.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-purple font-bold">Antes de escribir</strong>: productos, pago y seguimiento. <strong class="text-drac-purple font-bold">En tus mensajes puedes revisar</strong>: si el pedido incluye selección y datos.</p>
               <div class="mt-4 hidden flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-drac-purple md:flex">
                 <span class="rounded-full border border-drac-purple/30 bg-drac-purple/10 px-3 py-1">Pagos digitales</span>
                 <span class="rounded-full border border-drac-purple/30 bg-drac-purple/10 px-3 py-1">Atención por WhatsApp</span>
               </div>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-purple mt-auto">
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-purple mt-auto">
                 <span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1723,13 +1744,13 @@
                 <div class="text-xl font-black text-drac-cyan font-display mt-1">Gestor de Clientes</div>
               </div>
               <div class="absolute inset-0 bg-gradient-to-t from-drac-bg to-transparent opacity-40"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-drac-darker shadow">Gestor de Negocio 💼</div>
+              <div class="absolute top-4 left-4 rounded-full bg-drac-cyan/95 px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow">Gestor de Negocio 💼</div>
             </div>
             <div class="flex flex-col flex-grow p-6">
-              <h3 class="text-xl font-bold text-drac-fg group-hover:text-drac-cyan transition-colors">Gestor y Agenda de Clientes</h3>
-              <p class="demo-card-copy mt-2 text-sm text-drac-comment leading-relaxed text-left">Muestra cómo el negocio recibe, confirma y gestiona citas y contactos.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-cyan">Antes de escribir</strong>: servicio, hora y datos de contacto. <strong class="text-drac-cyan">En el panel puedes revisar</strong>: citas, estado y contacto.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-cyan mt-auto">
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg group-hover:text-drac-cyan transition-colors">Gestor y Agenda de Clientes</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base text-drac-comment leading-relaxed text-left">Muestra cómo el negocio recibe, confirma y gestiona citas y contactos.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-cyan font-bold">Antes de escribir</strong>: servicio, hora y datos de contacto. <strong class="text-drac-cyan font-bold">En el panel puedes revisar</strong>: citas, estado y contacto.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-cyan mt-auto">
                 <span>Ver panel funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span>
                 <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
@@ -1741,14 +1762,14 @@
             <div class="relative h-48 w-full overflow-hidden bg-[#2d2032]">
               <img src="./demo-casa-colores/assets/casa-ronda-hero.webp" alt="Mesa de celebración creativa del demo Casa Ronda" loading="lazy" decoding="async" fetchpriority="low" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#2d2032] via-[#2d2032]/25 to-transparent"></div>
-              <div class="absolute top-4 left-4 rounded-full bg-[#f3c84b] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#2d2032] shadow">Celebraciones</div>
+              <div class="absolute top-4 left-4 rounded-full bg-[#f3c84b] px-3.5 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#2d2032] shadow">Celebraciones</div>
               <div class="absolute bottom-4 left-4 right-4 flex items-center gap-3 text-white"><span class="h-8 w-8 rounded-full border-[7px] border-[#f06459]"></span><span class="text-lg font-black tracking-tight">Casa Ronda</span></div>
             </div>
             <div class="flex flex-grow flex-col p-6">
-              <h3 class="text-xl font-bold text-drac-fg transition-colors group-hover:text-drac-yellow">Casa Ronda</h3>
-              <p class="demo-card-copy mt-2 text-sm leading-relaxed text-drac-comment text-left">Permite comparar experiencias, valores y condiciones antes de consultar una fecha.</p>
-              <p class="mt-3 text-xs leading-relaxed text-drac-fg"><strong class="text-drac-yellow">Antes de escribir</strong>: experiencias, valores y condiciones. <strong class="text-drac-yellow">En tus mensajes puedes revisar</strong>: si indican experiencia y fecha.</p>
-              <div class="mt-6 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-drac-yellow mt-auto"><span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span><span class="transition-transform duration-300 group-hover:translate-x-1">→</span></div>
+              <h3 class="text-xl sm:text-2xl font-bold text-drac-fg transition-colors group-hover:text-drac-yellow">Casa Ronda</h3>
+              <p class="demo-card-copy mt-2 text-sm sm:text-base leading-relaxed text-drac-comment text-left">Permite comparar experiencias, valores y condiciones antes de consultar una fecha.</p>
+              <p class="mt-3 text-sm sm:text-base leading-relaxed text-drac-fg font-medium"><strong class="text-drac-yellow font-bold">Antes de escribir</strong>: experiencias, valores y condiciones. <strong class="text-drac-yellow font-bold">En tus mensajes puedes revisar</strong>: si indican experiencia y fecha.</p>
+              <div class="mt-6 flex items-center justify-between text-xs sm:text-sm font-bold uppercase tracking-wider text-drac-yellow mt-auto"><span>Ver ejemplo funcionando<span class="sr-only"> (abre en una pestaña nueva)</span></span><span class="transition-transform duration-300 group-hover:translate-x-1">→</span></div>
             </div>
           </a>
         </div> <!-- /Showcase grid -->
@@ -2055,13 +2076,13 @@
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-3">
-                      <h3 class="text-xl font-bold text-drac-fg">Entendemos tu atención</h3>
-                      <span class="process-step-chip rounded-full border border-chile-blueLight/25 bg-chile-blue/18 px-3 py-1 text-responsive-caption font-bold text-chile-blueLight uppercase tracking-wider">15 min</span>
+                      <h3 class="text-xl sm:text-2xl font-bold text-drac-fg">Entendemos tu atención</h3>
+                      <span class="process-step-chip rounded-full border border-chile-blueLight/25 bg-chile-blue/18 px-3 py-1 text-xs sm:text-sm font-bold text-chile-blueLight uppercase tracking-wider">15 min</span>
                     </div>
-                    <p class="text-sm leading-relaxed text-drac-fg/88">Me cuentas qué haces, a quién le vendes y qué información repites. Acordamos qué necesita saber una persona antes de escribirte.</p>
+                    <p class="text-base sm:text-lg leading-relaxed text-drac-fg/90">Me cuentas qué haces, a quién le vendes y qué información repites. Acordamos qué necesita saber una persona antes de escribirte.</p>
                   </div>
                   <div class="mt-4 lg:mt-0 lg:flex-shrink-0">
-                    <div class="process-step-meta rounded-xl border border-white/14 bg-drac-darker/58 px-4 py-3 text-xs shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
+                    <div class="process-step-meta rounded-xl border border-white/14 bg-drac-darker/58 px-4 py-3 text-sm sm:text-base shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
                       <p class="font-bold text-drac-fg mb-1">Lo que recibes:</p>
                       <p class="font-medium text-drac-fg/86">✓ Enfoque claro para tu página</p>
                     </div>
@@ -2078,13 +2099,13 @@
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-3">
-                      <h3 class="text-xl font-bold text-drac-fg">Ordenamos y construimos</h3>
-                      <span class="process-step-chip rounded-full border border-chile-blueLight/25 bg-chile-blue/18 px-3 py-1 text-responsive-caption font-bold text-chile-blueLight uppercase tracking-wider">2–3 días</span>
+                      <h3 class="text-xl sm:text-2xl font-bold text-drac-fg">Ordenamos y construimos</h3>
+                      <span class="process-step-chip rounded-full border border-chile-blueLight/25 bg-chile-blue/18 px-3 py-1 text-xs sm:text-sm font-bold text-chile-blueLight uppercase tracking-wider">2–3 días</span>
                     </div>
-                    <p class="text-sm leading-relaxed text-drac-fg/88">Organizo la información, preparo los textos y construyo una página clara para mostrar tu oferta y orientar el siguiente paso.</p>
+                    <p class="text-base sm:text-lg leading-relaxed text-drac-fg/90">Organizo la información, preparo los textos y construyo una página clara para mostrar tu oferta y orientar el siguiente paso.</p>
                   </div>
                   <div class="mt-4 lg:mt-0 lg:flex-shrink-0">
-                    <div class="process-step-meta rounded-xl border border-white/14 bg-drac-darker/58 px-4 py-3 text-xs shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
+                    <div class="process-step-meta rounded-xl border border-white/14 bg-drac-darker/58 px-4 py-3 text-sm sm:text-base shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
                       <p class="font-bold text-drac-fg mb-1">Lo que recibes:</p>
                       <p class="font-medium text-drac-fg/86">✓ Esquema y textos listos</p>
                     </div>
@@ -2101,13 +2122,13 @@
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                   <div class="flex-1">
                     <div class="flex items-center gap-3 mb-3">
-                      <h3 class="text-xl font-bold text-drac-fg">Revisas y publicamos</h3>
-                      <span class="process-step-chip rounded-full border border-chile-blueLight/25 bg-chile-blue/18 px-3 py-1 text-responsive-caption font-bold text-chile-blueLight uppercase tracking-wider">3–5 días</span>
+                      <h3 class="text-xl sm:text-2xl font-bold text-drac-fg">Revisas y publicamos</h3>
+                      <span class="process-step-chip rounded-full border border-chile-blueLight/25 bg-chile-blue/18 px-3 py-1 text-xs sm:text-sm font-bold text-chile-blueLight uppercase tracking-wider">3–5 días</span>
                     </div>
-                    <p class="text-sm leading-relaxed text-drac-fg/88">Te muestro un borrador, reunimos tus observaciones y aplicamos las rondas incluidas. Después publico la página y dejo sus accesos bajo tu control.</p>
+                    <p class="text-base sm:text-lg leading-relaxed text-drac-fg/90">Te muestro un borrador, reunimos tus observaciones y aplicamos las rondas incluidas. Después publico la página y dejo sus accesos bajo tu control.</p>
                   </div>
                   <div class="mt-4 lg:mt-0 lg:flex-shrink-0">
-                    <div class="process-step-meta rounded-xl border border-white/14 bg-drac-darker/58 px-4 py-3 text-xs shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
+                    <div class="process-step-meta rounded-xl border border-white/14 bg-drac-darker/58 px-4 py-3 text-sm sm:text-base shadow-[0_10px_24px_rgba(0,0,0,0.12)]">
                       <p class="font-bold text-drac-fg mb-1">Lo que recibes:</p>
                       <p class="font-medium text-drac-fg/86">✓ Página revisada y publicada</p>
                     </div>
@@ -2137,26 +2158,26 @@
             Elige por el momento
             <span class="text-drac-orange">de tu negocio</span>
           </h2>
-          <p class="mt-6 text-lg text-drac-comment leading-relaxed">
+          <p class="mt-6 text-lg sm:text-xl text-drac-comment leading-relaxed">
             Cada plan responde a una etapa concreta: presentar tu oferta, ordenar mayor volumen de atención o preparar una operación de venta en línea.
           </p>
-          <p class="mt-3 text-sm leading-relaxed text-drac-comment">Si quieres cobrar en línea, primero revisamos precios, disponibilidad, medios de pago y entrega; esa operación corresponde a la tercera etapa.</p>
-          <p class="mt-4 text-sm font-medium leading-relaxed text-drac-fg">Antes de iniciar definimos valor, alcance, accesos y propiedad. El Plan Vitrina Express se publica en hasta 3 días hábiles desde que recibimos el material completo; los planes de mayor alcance se cotizan con su propio plazo.</p>
+          <p class="mt-4 text-base sm:text-lg leading-relaxed text-drac-comment">Si quieres cobrar en línea, primero revisamos precios, disponibilidad, medios de pago y entrega; esa operación corresponde a la tercera etapa.</p>
+          <p class="mt-4 text-base sm:text-lg font-semibold leading-relaxed text-drac-fg">Antes de iniciar definimos valor, alcance, accesos y propiedad. El Plan Vitrina Express se publica en hasta 3 días hábiles desde que recibimos el material completo; los planes de mayor alcance se cotizan con su propio plazo.</p>
         </div>
 
         <div class="reveal mx-auto mb-10 hidden max-w-5xl rounded-[1.75rem] border border-drac-current/30 bg-drac-bg/50 p-5 sm:p-6 md:block">
           <div class="grid gap-4 md:grid-cols-3">
             <div class="rounded-2xl border border-drac-current/20 bg-drac-darker/40 p-4">
-              <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Presencia propia</p>
-              <p class="mt-2 text-sm leading-relaxed text-drac-comment">Muchas pymes ya están en redes. Menos tienen un espacio propio que ordene su oferta y las haga verse a la altura.</p>
+              <p class="text-xs sm:text-sm font-black uppercase tracking-[0.16em] text-chile-blueLight">Presencia propia</p>
+              <p class="mt-2 text-sm sm:text-base leading-relaxed text-drac-comment">Muchas pymes ya están en redes. Menos tienen un espacio propio que ordene su oferta y las haga verse a la altura.</p>
             </div>
             <div class="rounded-2xl border border-drac-current/20 bg-drac-darker/40 p-4">
-              <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Claridad para decidir</p>
-              <p class="mt-2 text-sm leading-relaxed text-drac-comment">La decisión se vuelve más simple cuando la persona entiende qué ofreces, cómo atiendes y qué paso sigue.</p>
+              <p class="text-xs sm:text-sm font-black uppercase tracking-[0.16em] text-chile-blueLight">Claridad para decidir</p>
+              <p class="mt-2 text-sm sm:text-base leading-relaxed text-drac-comment">La decisión se vuelve más simple cuando la persona entiende qué ofreces, cómo atiendes y qué paso sigue.</p>
             </div>
             <div class="rounded-2xl border border-drac-current/20 bg-drac-darker/40 p-4">
-              <p class="text-xs font-black uppercase tracking-[0.16em] text-chile-blueLight">Acompañamiento visible</p>
-              <p class="mt-2 text-sm leading-relaxed text-drac-comment">La confianza crece con un proceso claro, propiedad a tu nombre y una entrega bien acompañada.</p>
+              <p class="text-xs sm:text-sm font-black uppercase tracking-[0.16em] text-chile-blueLight">Acompañamiento visible</p>
+              <p class="mt-2 text-sm sm:text-base leading-relaxed text-drac-comment">La confianza crece con un proceso claro, propiedad a tu nombre y una entrega bien acompañada.</p>
             </div>
           </div>
         </div>
