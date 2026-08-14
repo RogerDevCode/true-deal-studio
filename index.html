@@ -112,22 +112,23 @@
     html.light-theme {
       color-scheme: light;
       --drac-bg: 251, 250, 247;
-      --drac-darker: 221, 217, 207;
-      --drac-current: 174, 170, 158;
-      --drac-fg: 24, 35, 49;
-      --drac-comment: 68, 72, 80;
-      --drac-cyan: 31, 58, 96;       /* Deep navy blue */
-      --drac-green: 45, 90, 39;      /* Sage/forest green */
-      --drac-orange: 163, 93, 34;    /* Luxury bronze/copper */
-      --drac-pink: 138, 28, 52;      /* Deep burgundy */
-      --drac-purple: 76, 58, 117;    /* Elegant dark indigo */
-      --drac-red: 201, 42, 42;       /* Solemn crimson */
-      --drac-yellow: 112, 78, 0;     /* Deep antique gold with AA contrast on white */
+      --drac-darker: 228, 224, 215;
+      --drac-current: 160, 155, 142;
+      --drac-fg: 18, 35, 63;          /* #12233F - Deep navy */
+      --drac-comment: 30, 41, 59;     /* #1E293B - Slate 800 (12.8:1 contrast on light backgrounds) */
+      --drac-cyan: 11, 90, 145;       /* #0B5A91 - Deep accessible cyan/blue */
+      --drac-green: 22, 101, 52;      /* #166534 - Forest emerald (8.2:1 contrast) */
+      --drac-orange: 154, 52, 18;     /* #9A3412 - Dark bronze (7.5:1 contrast) */
+      --drac-pink: 136, 19, 55;       /* #881337 - Deep wine (8.5:1 contrast) */
+      --drac-purple: 76, 29, 149;     /* #4C1D95 - Deep indigo (8.8:1 contrast) */
+      --drac-red: 185, 28, 28;        /* #B91C1C - Red 700 */
+      --drac-yellow: 120, 53, 15;     /* #78350F - Dark antique amber/bronze (7.8:1 contrast) */
     }
 
     /* In Light Theme: only specific light sections should promote cards to solid white */
     html.light-theme body #necesidades [class*="bg-drac-bg/"],
     html.light-theme body #demos [class*="bg-drac-bg/"],
+    html.light-theme body #servicios [class*="bg-drac-bg/"],
     html.light-theme body #beneficios [class*="bg-drac-bg/"],
     html.light-theme body #precios [class*="bg-drac-bg/"],
     html.light-theme body #faq [class*="bg-drac-bg/"] {
@@ -515,6 +516,7 @@
     /* Solid & Utility Text Colors */
     html body .text-chile-blue { color: rgb(var(--chile-blue-rgb)); }
     html body .text-chile-blueLight { color: #2A68C8; }
+    html.light-theme body .text-chile-blueLight { color: #0039A6; }
     html:root:not(.light-theme) body .text-chile-blueLight { color: #68A2FF; }
     html body .text-chile-red { color: rgb(var(--chile-red-rgb)); }
 
@@ -739,9 +741,54 @@
     .tu-vitrina-voice-transcript p { margin: .45rem 0 0; }
     .tu-vitrina-voice-recovery { margin: .75rem 0 0; color: #C7DCF7; font-size: .76rem; line-height: 1.4; }
     .tu-vitrina-voice-recovery a { color: #FDE68A; font-weight: 700; text-decoration: underline; }
-    html.light-theme .tu-vitrina-voice-proof { border-color: rgba(23, 78, 145, .3); background: rgba(251, 250, 247, .84); box-shadow: 0 1rem 2.5rem rgba(29, 52, 85, .12); }
-    html.light-theme .tu-vitrina-voice-proof h2 { color: #12233F; }
-    html.light-theme .tu-vitrina-voice-question, html.light-theme .tu-vitrina-voice-transcript, html.light-theme .tu-vitrina-voice-recovery { color: #33465E; }
+    html.light-theme .tu-vitrina-voice-proof {
+      border-color: rgba(23, 78, 145, .35);
+      background: #FBFAF7;
+      box-shadow: 0 1rem 2.5rem rgba(29, 52, 85, .14);
+    }
+    html.light-theme .tu-vitrina-proof-eyebrow {
+      color: #0039A6;
+      font-weight: 900;
+    }
+    html.light-theme .tu-vitrina-voice-proof h2 {
+      color: #12233F;
+      font-weight: 900;
+    }
+    html.light-theme .tu-vitrina-voice-question {
+      color: #12233F;
+      font-weight: 700;
+    }
+    html.light-theme .tu-vitrina-voice-transcript {
+      color: #1E293B;
+    }
+    html.light-theme .tu-vitrina-voice-transcript summary {
+      color: #0039A6;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    html.light-theme .tu-vitrina-voice-transcript p {
+      color: #12233F;
+      font-weight: 500;
+    }
+    html.light-theme .tu-vitrina-voice-recovery {
+      color: #1E293B;
+    }
+    html.light-theme .tu-vitrina-voice-recovery a {
+      color: #0039A6;
+      font-weight: 800;
+      text-decoration: underline;
+    }
+
+    html.light-theme #inicio [data-testid="hero-rubro-simulator"] .bg-emerald-950\/40 {
+      background-color: #064E3B;
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    html.light-theme #inicio [data-testid="hero-rubro-simulator"] .text-emerald-100\/90 {
+      color: #ECFDF5;
+    }
+    html.light-theme #inicio [data-testid="hero-rubro-simulator"] .text-emerald-400 {
+      color: #34D399;
+    }
     @keyframes stax-voice-ripple {
       0% { opacity: .56; transform: scale(.88); }
       72%, 100% { opacity: 0; transform: scale(1.27); }
