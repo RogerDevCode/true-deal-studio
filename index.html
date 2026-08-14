@@ -624,6 +624,27 @@
       background-position: center, center, center, center;
       background-repeat: no-repeat;
     }
+    #inicio {
+      padding-top: 6.75rem;
+      padding-bottom: 3.5rem;
+    }
+    @media (min-width: 640px) {
+      #inicio {
+        padding-top: 7.75rem;
+        padding-bottom: 4rem;
+      }
+    }
+    @media (min-width: 768px) {
+      #inicio {
+        padding-top: 9.5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      #inicio {
+        padding-top: 10.5rem;
+        padding-bottom: 5.5rem;
+      }
+    }
     #inicio .premium-note {
       color: #E6EAF2;
       background: rgba(8, 20, 38, 0.84);
@@ -1158,6 +1179,7 @@
     }
 
     .floating-whatsapp-action {
+      z-index: 40;
       bottom: calc(1rem + env(safe-area-inset-bottom));
       transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
     }
@@ -1240,18 +1262,18 @@
         </span>
         <div>
           <p class="text-sm font-extrabold tracking-tight text-drac-fg font-display">Tu Vitrina</p>
-          <p class="hidden text-responsive-caption font-medium text-drac-comment tracking-wider uppercase lg:block">Claridad para mostrar. Contexto para conversar.</p>
+          <p class="hidden text-responsive-caption font-medium text-drac-comment tracking-wider uppercase xl:block">Claridad para mostrar. Contexto para conversar.</p>
         </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
-        <a href="#beneficios" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Beneficios</a>
-        <a href="#proceso" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Proceso</a>
-        <a href="#necesidades" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Cómo atiendes</a>
-        <a href="#demos" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Demos</a>
-        <a href="#precios" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Inversión</a>
-        <a href="#faq" class="link-underline rounded-xl px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Preguntas</a>
+      <nav class="hidden items-center gap-0.5 xl:gap-1 lg:flex" aria-label="Navegación principal">
+        <a href="#beneficios" class="link-underline rounded-xl px-2.5 xl:px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Beneficios</a>
+        <a href="#proceso" class="link-underline rounded-xl px-2.5 xl:px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Proceso</a>
+        <a href="#necesidades" class="link-underline rounded-xl px-2.5 xl:px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Cómo atiendes</a>
+        <a href="#demos" class="link-underline rounded-xl px-2.5 xl:px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Demos</a>
+        <a href="#precios" class="link-underline rounded-xl px-2.5 xl:px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Inversión</a>
+        <a href="#faq" class="link-underline rounded-xl px-2.5 xl:px-4 py-2 text-sm font-semibold text-drac-comment transition-colors hover:text-drac-fg">Preguntas</a>
         
         <!-- Theme Toggle (Desktop) -->
         <button @click="toggleTheme()" :aria-pressed="darkMode.toString()" :class="darkMode ? 'bg-drac-current/20 border-drac-comment/70 shadow-[0_0_0_1px_rgba(248,248,242,0.05)]' : 'bg-drac-current/10 border-drac-current/50'" class="ml-2 relative inline-flex h-11 w-11 items-center justify-center rounded-xl border text-drac-fg transition-all duration-300 hover:bg-drac-current/30 hover:border-drac-comment focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chile-blue" aria-label="Cambiar tema">
@@ -1318,7 +1340,7 @@
     <!-- HERO -->
     <!-- ============================================ -->
     <section id="inicio" class="relative block min-h-[84svh] overflow-hidden hero-photo-bg noise md:min-h-screen">
-      <div class="relative mx-auto max-w-7xl px-4 pt-32 pb-12 sm:px-6 sm:pt-36 sm:pb-16 lg:px-8 lg:pt-40 lg:pb-20">
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12">
           <div class="reveal min-w-0">
             <!-- Badge -->
@@ -2954,14 +2976,14 @@
   <!-- ============================================ -->
   <a href="#contacto"
      data-testid="floating-whatsapp"
-     class="floating-whatsapp-action whatsapp-safe-action fixed right-4 z-50 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-white shadow-lg hover:shadow-xl sm:hidden"
+     class="floating-whatsapp-action whatsapp-safe-action fixed right-4 z-40 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-white shadow-lg hover:shadow-xl sm:hidden"
      aria-label="Ir al formulario de orientación por WhatsApp">
-    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.278 0-4.381-.762-6.065-2.046l-.424-.328-2.643.886.886-2.643-.328-.424A9.72 9.72 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z"/></svg>
     <span>WhatsApp</span>
   </a>
 
   <a href="#contacto"
-     class="floating-whatsapp-action whatsapp-safe-action fixed right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full text-white shadow-lg hover:scale-110 hover:shadow-xl animate-float sm:flex"
+     class="floating-whatsapp-action whatsapp-safe-action fixed right-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full text-white shadow-lg hover:scale-110 hover:shadow-xl animate-float sm:flex"
      aria-label="Ir al formulario de orientación por WhatsApp"
      style="animation-delay: 3s">
     <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.278 0-4.381-.762-6.065-2.046l-.424-.328-2.643.886.886-2.643-.328-.424A9.72 9.72 0 012.25 12 9.75 9.75 0 0112 2.25 9.75 9.75 0 0121.75 12 9.75 9.75 0 0112 21.75z"/></svg>
