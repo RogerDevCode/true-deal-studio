@@ -98,8 +98,8 @@
       --drac-bg: 40, 42, 54;
       --drac-darker: 30, 31, 41;
       --drac-current: 68, 71, 90;
-      --drac-fg: 248, 248, 242;
-      --drac-comment: 192, 200, 218;
+      --drac-fg: 255, 255, 255;
+      --drac-comment: 226, 232, 240;
       --drac-cyan: 139, 233, 253;
       --drac-green: 80, 250, 123;
       --drac-orange: 255, 184, 108;
@@ -229,6 +229,12 @@
     /* High contrast bright sky blue for chile-blueLight in Dark Mode on dark cards */
     html:root:not(.light-theme) body .text-chile-blueLight {
       color: #68A2FF;
+    }
+    html:root:not(.light-theme) body .text-drac-comment {
+      color: #E2E8F0;
+    }
+    html:root:not(.light-theme) body .text-drac-fg {
+      color: #FFFFFF;
     }
 
     /* The transparent header keeps its own readable surface over the hero. */
@@ -753,14 +759,14 @@
         padding: 1rem;
       }
     }
-    .tu-vitrina-proof-eyebrow { margin: 0 0 .35rem; color: #FDE68A; font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
-    .tu-vitrina-voice-proof h2 { margin: 0; color: #fff; font-size: 1.04rem; line-height: 1.3; }
-    .tu-vitrina-voice-question { margin: .7rem 0 0; color: #D6E9FF; font-size: .82rem; line-height: 1.4; }
+    .tu-vitrina-proof-eyebrow { margin: 0 0 .35rem; color: #FDE68A; font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+    .tu-vitrina-voice-proof h2 { margin: 0; color: #FFFFFF; font-size: 1.05rem; line-height: 1.35; }
+    .tu-vitrina-voice-question { margin: .7rem 0 0; color: #F8FAFC; font-size: .875rem; line-height: 1.45; font-weight: 600; }
     .tu-vitrina-voice-proof audio { display: block; width: 100%; margin-top: .8rem; border-radius: .8rem; }
-    .tu-vitrina-voice-transcript { margin-top: .7rem; color: #C7DCF7; font-size: .76rem; line-height: 1.4; }
+    .tu-vitrina-voice-transcript { margin-top: .7rem; color: #E2E8F0; font-size: .8125rem; line-height: 1.45; }
     .tu-vitrina-voice-transcript summary { color: #FDE68A; cursor: pointer; font-weight: 700; }
-    .tu-vitrina-voice-transcript p { margin: .45rem 0 0; }
-    .tu-vitrina-voice-recovery { margin: .75rem 0 0; color: #C7DCF7; font-size: .76rem; line-height: 1.4; }
+    .tu-vitrina-voice-transcript p { margin: .45rem 0 0; color: #F8FAFC; }
+    .tu-vitrina-voice-recovery { margin: .75rem 0 0; color: #E2E8F0; font-size: .8125rem; line-height: 1.45; }
     .tu-vitrina-voice-recovery a { color: #FDE68A; font-weight: 700; text-decoration: underline; }
     html.light-theme .tu-vitrina-voice-proof {
       border-color: rgba(23, 78, 145, .35);
@@ -833,9 +839,16 @@
     html.light-theme .mobile-menu-surface .mobile-menu-link {
       color: #172B4D;
     }
+    #inicio,
     #necesidades,
-    #demos {
-      scroll-margin-top: 5rem;
+    #demos,
+    #beneficios,
+    #servicios,
+    #proceso,
+    #precios,
+    #faq,
+    #contacto {
+      scroll-margin-top: 5.5rem;
     }
     .need-visual {
       display: none;
@@ -1304,8 +1317,8 @@
     <!-- ============================================ -->
     <!-- HERO -->
     <!-- ============================================ -->
-    <section id="inicio" class="relative flex min-h-[84svh] items-center overflow-hidden hero-photo-bg noise md:min-h-screen">
-      <div class="relative mx-auto max-w-7xl px-4 pt-36 pb-12 sm:px-6 sm:pt-44 sm:pb-16 lg:px-8 lg:pt-48 lg:pb-20">
+    <section id="inicio" class="relative block min-h-[84svh] overflow-hidden hero-photo-bg noise md:min-h-screen">
+      <div class="relative mx-auto max-w-7xl px-4 pt-32 pb-12 sm:px-6 sm:pt-36 sm:pb-16 lg:px-8 lg:pt-40 lg:pb-20">
         <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12">
           <div class="reveal min-w-0">
             <!-- Badge -->
@@ -1326,9 +1339,16 @@
               Tu web puede orientar antes de que te escriban: explica lo importante y prepara consultas con más contexto para que tú decidas el siguiente paso.
             </p>
 
-            <p class="hero-local-reach mt-4 inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">
-              Desde Biobío para negocios de todo Chile
-            </p>
+            <!-- CTA buttons -->
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a data-testid="stax-voice-demo-cta" href="https://voice.tuvitrina.lat/widget/tuvitrina" target="_blank" rel="noopener" class="inline-flex min-h-[56px] items-center justify-center rounded-full bg-gradient-to-r from-chile-blue to-chile-blueLight px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.197 0-.517.074-.788.374-.27.3-.1.574-.1.574s-.123.238-.123.57c0 .87.616 1.713.712 1.838.096.126 1.293 2.127 3.25 2.87.568.216 1.01.345 1.353.453.57.18 1.088.156 1.498.094.46-.07 1.77-.723 2.022-1.422.253-.7.253-1.3.177-1.423-.075-.12-.275-.196-.575-.346z"/></svg>
+                Hablar ahora con la demo
+              </a>
+              <a data-testid="stax-rubro-cta" href="#demos" class="premium-quiet-cta inline-flex min-h-[56px] items-center justify-center rounded-full border px-7 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
+                Ver un ejemplo de mi rubro
+              </a>
+            </div>
 
             <section data-testid="tu-vitrina-voice-proof" class="tu-vitrina-voice-proof" aria-labelledby="tu-vitrina-voice-proof-title">
               <p class="tu-vitrina-proof-eyebrow">PRUEBA DE VOZ</p>
@@ -1342,19 +1362,12 @@
               <p id="tu-vitrina-voice-help" class="sr-only">Respuesta de voz generada por el asistente. El audio no se reproduce automáticamente.</p>
               <details data-testid="tu-vitrina-voice-transcript" class="tu-vitrina-voice-transcript"><summary>Leer transcripción</summary><p>Claro. Puedes preguntar con tus propias palabras. Tu Vitrina Voz responde con la información aprobada del negocio y deja el contexto listo para que el dueño decida cómo continuar.</p></details>
               <p class="tu-vitrina-voice-recovery">¿Quieres probarlo en vivo? <a href="https://voice.tuvitrina.lat/widget/tuvitrina" target="_blank" rel="noopener">Habla con la demo de Tu Vitrina Voz.</a></p>
-              <p class="mt-2 text-xs sm:text-sm text-drac-fg/80 italic font-medium">Nota de transparencia: La orientación por voz (VoiceLive / Tu Vitrina Voz) y el chatbot conversacional (VentaMax IA) son módulos opcionales con costos y planes adicionales según requerimiento.</p>
+              <p class="mt-2 text-xs sm:text-sm text-drac-fg/90 italic font-medium">Nota de transparencia: La orientación por voz (VoiceLive / Tu Vitrina Voz) y el chatbot conversacional (VentaMax IA) son módulos opcionales con costos y planes adicionales según requerimiento.</p>
             </section>
 
-            <!-- CTA buttons -->
-            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a data-testid="stax-voice-demo-cta" href="https://voice.tuvitrina.lat/widget/tuvitrina" target="_blank" rel="noopener" class="inline-flex min-h-[56px] items-center justify-center rounded-full bg-gradient-to-r from-chile-blue to-chile-blueLight px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <svg class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.197 0-.517.074-.788.374-.27.3-.1.574-.1.574s-.123.238-.123.57c0 .87.616 1.713.712 1.838.096.126 1.293 2.127 3.25 2.87.568.216 1.01.345 1.353.453.57.18 1.088.156 1.498.094.46-.07 1.77-.723 2.022-1.422.253-.7.253-1.3.177-1.423-.075-.12-.275-.196-.575-.346z"/></svg>
-                Hablar ahora con la demo
-              </a>
-              <a data-testid="stax-rubro-cta" href="#demos" class="premium-quiet-cta inline-flex min-h-[56px] items-center justify-center rounded-full border px-7 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
-                Ver un ejemplo de mi rubro
-              </a>
-            </div>
+            <p class="hero-local-reach mt-5 inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold">
+              Desde Biobío para negocios de todo Chile
+            </p>
 
             <!-- Trust signals -->
             <div class="mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
