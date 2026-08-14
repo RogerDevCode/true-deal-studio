@@ -716,13 +716,19 @@
     html.light-theme .stax-voice-copy span { color: #33465E; }
     .tu-vitrina-voice-proof {
       max-width: 35rem;
-      margin-top: 1.5rem;
-      padding: 1rem;
+      margin-top: 1.15rem;
+      padding: 0.85rem;
       border: 1px solid rgba(191, 219, 254, .38);
       border-radius: 1.25rem;
       background: rgba(3, 20, 46, .48);
       box-shadow: 0 1rem 2.5rem rgba(2, 12, 31, .22);
       backdrop-filter: blur(8px);
+    }
+    @media (min-width: 640px) {
+      .tu-vitrina-voice-proof {
+        margin-top: 1.5rem;
+        padding: 1rem;
+      }
     }
     .tu-vitrina-proof-eyebrow { margin: 0 0 .35rem; color: #FDE68A; font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
     .tu-vitrina-voice-proof h2 { margin: 0; color: #fff; font-size: 1.04rem; line-height: 1.3; }
@@ -1209,7 +1215,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <button type="button" data-testid="mobile-menu-backdrop" x-show="mobileMenu" x-cloak @click="mobileMenu = false; $nextTick(() => $refs.mobileMenuButton.focus())" aria-label="Cerrar menú" class="fixed inset-0 top-[72px] z-0 bg-slate-950/45 lg:hidden"></button>
+    <button type="button" data-testid="mobile-menu-backdrop" x-show="mobileMenu" x-cloak @click="mobileMenu = false; $nextTick(() => $refs.mobileMenuButton.focus())" aria-label="Cerrar" class="fixed inset-0 top-[72px] z-0 bg-slate-950/45 lg:hidden"></button>
     <div data-testid="mobile-menu-panel" x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-2" class="mobile-menu-surface relative z-10 border-t lg:hidden" x-cloak>
       <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
         <a @click="mobileMenu=false; $nextTick(() => $refs.mobileMenuButton.focus())" href="#beneficios" class="mobile-menu-link rounded-xl px-4 py-3 text-sm font-semibold hover:bg-drac-current/30 hover:text-drac-fg transition-colors">Beneficios</a>
@@ -1231,7 +1237,7 @@
     <!-- HERO -->
     <!-- ============================================ -->
     <section id="inicio" class="relative flex min-h-[84svh] items-center overflow-hidden hero-photo-bg noise md:min-h-screen">
-      <div class="relative mx-auto max-w-7xl px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-16 lg:px-8 lg:pt-40 lg:pb-20">
+      <div class="relative mx-auto max-w-7xl px-4 pt-28 pb-10 sm:px-6 sm:pt-36 sm:pb-16 lg:px-8 lg:pt-40 lg:pb-20">
         <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12">
           <div class="reveal min-w-0">
             <!-- Badge -->
@@ -1355,7 +1361,7 @@
             }
           }">
             <!-- Interactive Simulator Card -->
-            <div class="relative glass rounded-[2rem] p-5 shadow-mega border border-white/20">
+            <div class="relative glass rounded-[2rem] p-3.5 sm:p-5 shadow-mega border border-white/20">
               
               <!-- Rubro Selector Tabs -->
               <div class="mb-4">
@@ -1377,7 +1383,7 @@
               </div>
 
               <!-- Live Preview Screen -->
-              <div class="overflow-hidden rounded-xl border border-drac-current/40 bg-drac-darker/90 p-4 transition-all">
+              <div class="overflow-hidden rounded-xl border border-drac-current/40 bg-drac-darker/90 p-3 sm:p-4 transition-all">
                 
                 <!-- Mock Header -->
                 <div class="flex items-center justify-between border-b border-drac-current/40 pb-3 mb-3">
@@ -1433,7 +1439,7 @@
     <!-- ============================================ -->
     <!-- NECESIDADES DE ATENCION -->
     <!-- ============================================ -->
-    <section id="necesidades" class="relative band-white py-8 overflow-hidden lg:py-10">
+    <section id="necesidades" class="relative band-white py-6 sm:py-8 overflow-hidden lg:py-10">
 
       <div class="absolute top-10 right-0 h-56 w-56 rounded-full bg-chile-blue/6 blur-[100px] pointer-events-none"></div>
       <div class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-drac-orange/6 blur-[120px] pointer-events-none"></div>
@@ -1489,7 +1495,7 @@
     <!-- ============================================ -->
     <!-- DEMO SHOWCASE SECTION (PORTAFOLIO DE DEMOS) -->
     <!-- ============================================ -->
-    <section id="demos" x-data="{ showAllDemos: false }" class="relative band-lino py-8 lg:py-10 overflow-hidden">
+    <section id="demos" x-data="{ showAllDemos: false }" class="relative band-lino py-6 sm:py-8 lg:py-10 overflow-hidden">
 
       <!-- Background glow -->
       <div class="absolute -top-40 -left-40 h-[350px] w-[350px] rounded-full bg-drac-purple/5 blur-[120px] pointer-events-none"></div>
@@ -1795,8 +1801,8 @@
     <section id="servicios" class="relative border-y border-drac-current/30 bg-drac-darker/50 overflow-hidden">
       <div class="absolute top-0 right-0 h-96 w-96 rounded-full bg-chile-blue/5 blur-[120px]"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="reveal text-center max-w-3xl mx-auto mb-16">
+      <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="reveal text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <span class="inline-flex items-center rounded-full bg-chile-blue/10 border border-chile-blue/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-chile-blueLight mb-6">
             Qué incluye tu página web
           </span>
@@ -1976,8 +1982,8 @@
 
       <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-drac-purple/5 blur-[120px]"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-        <div class="reveal text-center max-w-3xl mx-auto mb-16">
+      <div class="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
+        <div class="reveal text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <span class="inline-flex items-center rounded-full bg-drac-green/10 border border-drac-green/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-drac-green mb-6">
             Proceso simple y transparente
           </span>
@@ -2296,8 +2302,8 @@
     <!-- FAQ -->
     <!-- ============================================ -->
     <section id="faq" class="relative band-white overflow-hidden">
-      <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="reveal text-center mb-16">
+      <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <div class="reveal text-center mb-10 sm:mb-16">
           <span class="inline-flex items-center rounded-full bg-chile-blueLight/10 border border-chile-blueLight/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-chile-blueLight mb-6">
             Preguntas frecuentes
           </span>
@@ -2464,7 +2470,7 @@
       <div class="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-chile-blue/10 blur-[120px]"></div>
       <div class="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-chile-red/8 blur-[100px]"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+      <div class="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <!-- Left -->
           <div class="reveal">
