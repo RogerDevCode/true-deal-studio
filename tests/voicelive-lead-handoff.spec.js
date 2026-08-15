@@ -1,20 +1,22 @@
 import { test, expect } from "@playwright/test";
 
+const WIDGET_URL = process.env.VOICE_WIDGET_URL || "https://voice.tuvitrina.lat/widget/tuvitrina";
+
 test("VoiceLive Frontend Lead and Handoff Real E2E Test", async ({ page }) => {
-  console.log("1. Navegando al widget de VoiceLive...");
+  console.log(`1. Navegando al widget de VoiceLive en ${WIDGET_URL}...`);
   try {
-    const response = await page.goto("http://127.0.0.1:5173/widget/tuvitrina", { timeout: 4000 });
+    const response = await page.goto(WIDGET_URL, { timeout: 10000 });
     if (!response || response.status() >= 400) {
-      test.skip(true, "Widget VoiceLive no responde en el puerto 5173.");
+      test.skip(true, `Widget VoiceLive no responde en ${WIDGET_URL}.`);
       return;
     }
   } catch (error) {
-    test.skip(true, "Widget VoiceLive no está activo en 127.0.0.1:5173 en este entorno (CI estático).");
+    test.skip(true, `Widget VoiceLive no está activo en ${WIDGET_URL}.`);
     return;
   }
 
   console.log("2. Iniciando sesión desde el Hero CTA...");
-  const heroBtn = page.locator(".hero-voice-start-btn");
+  const heroBtn = page.locator(".hero-voice-start-btn, [data-testid='visitor-identity-submit']").first();
   await expect(heroBtn).toBeVisible({ timeout: 10000 });
   await heroBtn.click();
 
