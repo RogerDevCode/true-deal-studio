@@ -3,7 +3,8 @@ import { test, expect } from '@playwright/test';
 test.describe("Adversarial UX/Technical Audit - Devil's Advocate", () => {
   
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://tuvitrina.lat');
+    await page.goto('https://tuvitrina.lat', { waitUntil: 'networkidle' });
+    await page.waitForSelector('a[href="#contacto"]', { state: 'visible' });
   });
 
   test('Usability under stress: fast navigation and scroll-margin-top breaking', async ({ page }) => {
