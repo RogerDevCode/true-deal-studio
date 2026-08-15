@@ -1232,7 +1232,7 @@
                         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
-                        <input type="text" x-model="searchQuery" placeholder="Buscar artesanías por nombre..." class="search-input">
+                        <input type="text" maxlength=\"250\" x-model="searchQuery" placeholder="Buscar artesanías por nombre..." class="search-input">
                     </div>
 
                     <!-- Products Grid -->
@@ -1438,7 +1438,7 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label">Nombre Completo *</label>
-                            <input type="text" x-model="formName" required class="form-input" placeholder="Ej: Pedro Valdivia" autocomplete="off">
+                            <input type="text" maxlength=\"250\" x-model="formName" required class="form-input" placeholder="Ej: Pedro Valdivia" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Teléfono / WhatsApp *</label>
@@ -1458,7 +1458,7 @@
                     <!-- Address (Only mandatory if delivery is shipping) -->
                     <div class="form-group" x-show="formSector === 'envio'">
                         <label class="form-label">Dirección de Despacho *</label>
-                        <input type="text" x-model="formAddress" :required="formSector === 'envio'" class="form-input" placeholder="Calle, Número, Comuna, Ciudad" autocomplete="off" x-ref="communeInput">
+                        <input type="text" maxlength=\"250\" x-model="formAddress" :required="formSector === 'envio'" class="form-input" placeholder="Calle, Número, Comuna, Ciudad" autocomplete="off" x-ref="communeInput">
                     </div>
                     <div class="form-group" x-show="formSector === 'envio'" style="margin-top: 8px;">
                         <button type="button" @click="detectLocation()" class="text-responsive-detail" 
@@ -1477,7 +1477,7 @@
                     <!-- Additional details / instructions -->
                     <div class="form-group">
                         <label class="form-label">Notas Adicionales del Pedido</label>
-                        <textarea x-model="formComment" class="form-input" placeholder="Instrucciones para embalaje, envoltorio de regalo o indicaciones de despacho..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
+                        <textarea maxlength=\"1000\" x-model="formComment" class="form-input" placeholder="Instrucciones para embalaje, envoltorio de regalo o indicaciones de despacho..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
                     </div>
 
                     <!-- Cart summary reference inside the modal -->

@@ -13,7 +13,7 @@ module.exports = {
   fullyParallel: false,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: process.env.BASE_URL || "http://127.0.0.1:4173",
     trace: "retain-on-failure",
     video: "retain-on-failure",
     screenshot: "only-on-failure",
@@ -28,7 +28,7 @@ module.exports = {
       },
     },
   ],
-  webServer: {
+  webServer: process.env.BASE_URL ? undefined : {
     command: "node scripts/static_server.js --port 4173",
     env: {
       FORCE_COLOR: "1",

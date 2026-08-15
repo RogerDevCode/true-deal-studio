@@ -7,7 +7,7 @@ async function attachPageGuards(page) {
 
   page.on("console", (message) => {
     const text = message.text();
-    const ignorable404 = text === "Failed to load resource: the server responded with a status of 404 (Not Found)";
+    const ignorable404 = text.startsWith("Failed to load resource: the server responded with a status of 404");
     const ignorableGoogleMaps = text.includes("google is not defined") || text.includes("maps.gstatic.com");
     if (["error", "warning", "assert"].includes(message.type()) && !ignorable404 && !ignorableGoogleMaps) {
       consoleIssues.push(`${message.type()}: ${text}`);

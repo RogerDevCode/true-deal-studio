@@ -1716,7 +1716,7 @@
                 <form @submit.prevent="submitOrder()" novalidate>
                     <div class="form-group">
                         <label class="form-label" for="checkout-name">Nombre Completo</label>
-                        <input id="checkout-name" type="text" x-model="checkoutName" required class="form-control" placeholder="Ej. Juan Pérez" autocomplete="name">
+                        <input id="checkout-name" type="text" maxlength=\"250\" x-model="checkoutName" required class="form-control" placeholder="Ej. Juan Pérez" autocomplete="name">
                     </div>
                     
                     <div class="form-group">
@@ -1735,7 +1735,7 @@
                     
                     <div class="form-group" x-show="checkoutMethod === 'despacho'">
                         <label class="form-label" for="checkout-address">Dirección de Despacho</label>
-                        <input id="checkout-address" type="text" x-model="checkoutAddress" :required="checkoutMethod === 'despacho'" class="form-control" placeholder="Calle, número, comuna" autocomplete="street-address">
+                        <input id="checkout-address" type="text" maxlength=\"250\" x-model="checkoutAddress" :required="checkoutMethod === 'despacho'" class="form-control" placeholder="Calle, número, comuna" autocomplete="street-address">
                     </div>
                     
                     <p x-show="checkoutError" x-text="checkoutError" class="form-error" role="alert" aria-live="assertive" x-cloak></p>
@@ -2017,7 +2017,7 @@
                 <form @submit.prevent="saveProduct()">
                     <div class="form-group">
                         <label class="form-label" for="product-name">Nombre del Producto</label>
-                        <input id="product-name" type="text" x-model="currentProduct.name" required class="form-control" placeholder="Ej. Smartband Active">
+                        <input id="product-name" type="text" maxlength=\"250\" x-model="currentProduct.name" required class="form-control" placeholder="Ej. Smartband Active">
                     </div>
                     
                     <div class="form-group">
@@ -2036,7 +2036,7 @@
                     
                     <div class="form-group">
                         <label class="form-label" for="product-description">Descripción</label>
-                        <textarea id="product-description" x-model="currentProduct.description" required class="form-control" rows="3" placeholder="Detalles clave del producto..."></textarea>
+                        <textarea maxlength=\"1000\" id="product-description" x-model="currentProduct.description" required class="form-control" rows="3" placeholder="Detalles clave del producto..."></textarea>
                     </div>
                     
                     <div class="form-group">

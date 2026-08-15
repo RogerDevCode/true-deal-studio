@@ -1992,7 +1992,7 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label">Nombre Completo *</label>
-                            <input type="text" x-model="formName" required class="form-input" placeholder="Ej: Juan Pérez" autocomplete="off">
+                            <input type="text" maxlength=\"250\" x-model="formName" required class="form-input" placeholder="Ej: Juan Pérez" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Teléfono / WhatsApp *</label>
@@ -2004,7 +2004,7 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label">Email (Opcional)</label>
-                            <input type="email" x-model="formEmail" class="form-input" placeholder="correo@ejemplo.cl" autocomplete="off">
+                            <input type="email" maxlength=\"250\" x-model="formEmail" class="form-input" placeholder="correo@ejemplo.cl" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Número de Personas *</label>
@@ -2046,7 +2046,7 @@
                     <!-- Special Requests -->
                     <div class="form-group">
                         <label class="form-label">Comentarios o Peticiones Especiales</label>
-                        <textarea x-model="formComment" class="form-input" placeholder="Indícanos alergias, celebraciones o si vienes con tu mascota..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
+                        <textarea maxlength=\"1000\" x-model="formComment" class="form-input" placeholder="Indícanos alergias, celebraciones o si vienes con tu mascota..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
                     </div>
 
                     <!-- Actions -->

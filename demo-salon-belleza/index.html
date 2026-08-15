@@ -1663,7 +1663,7 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label" for="salon-name">Nombre *</label>
-                            <input id="salon-name" type="text" x-model="formName" required class="form-input" placeholder="Ej: Marcela Paz" autocomplete="name">
+                            <input id="salon-name" type="text" maxlength=\"250\" x-model="formName" required class="form-input" placeholder="Ej: Marcela Paz" autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="salon-phone">WhatsApp *</label>
@@ -1694,7 +1694,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="salon-comment">Cuéntanos sobre tu cabello y el resultado que buscas</label>
-                        <textarea id="salon-comment" x-model="formComment" class="form-input" placeholder="Ej: Busco iluminarlo con un cambio suave y tengo coloración previa." style="resize: vertical; min-height: 88px;"></textarea>
+                        <textarea maxlength=\"1000\" id="salon-comment" x-model="formComment" class="form-input" placeholder="Ej: Busco iluminarlo con un cambio suave y tengo coloración previa." style="resize: vertical; min-height: 88px;"></textarea>
                         <p class="text-responsive-caption" style="color: var(--text-muted);">También puedes adjuntar una foto de tu cabello o una referencia cuando se abra WhatsApp.</p>
                     </div>
 

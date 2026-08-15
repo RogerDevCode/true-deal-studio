@@ -607,7 +607,7 @@
         <!-- Nombre Apoderado -->
         <div>
           <label class="modal-label block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-name">Nombre Completo del Apoderado/a *</label>
-          <input id="modal-name" type="text" x-model="clientName" required placeholder="Ej. Alejandra Valenzuela" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
+          <input id="modal-name" type="text" maxlength=\"250\" x-model="clientName" required placeholder="Ej. Alejandra Valenzuela" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600">
         </div>
 
         <!-- Teléfono de contacto -->
@@ -646,7 +646,7 @@
         <!-- Comentarios sobre el niño -->
         <div>
           <label class="modal-label block text-xs uppercase tracking-wider text-forest-700 font-bold mb-1" for="modal-details">¿Qué te gustaría comentarnos sobre tu hijo/a? (Opcional)</label>
-          <textarea id="modal-details" x-model="apptDetails" placeholder="Ej. Tiene 3 años, le cuesta pronunciar la R y queremos que la sesión sea muy entretenida." rows="2" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600"></textarea>
+          <textarea maxlength=\"1000\" id="modal-details" x-model="apptDetails" placeholder="Ej. Tiene 3 años, le cuesta pronunciar la R y queremos que la sesión sea muy entretenida." rows="2" class="w-full bg-cream-50 border border-cream-200 rounded-xl px-3 py-2 text-sm text-forest-900 focus:outline-none focus:border-forest-600"></textarea>
         </div>
 
         <p data-testid="fono-booking-privacy" id="fono-booking-privacy" class="text-sm leading-relaxed text-forest-600">

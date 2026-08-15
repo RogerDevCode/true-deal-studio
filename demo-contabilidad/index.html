@@ -1529,7 +1529,7 @@
                     <!-- RUT Empresa with auto-fill (CHANGE 2) -->
                     <div class="form-group" style="margin-bottom: 16px;">
                         <label class="form-label">RUT Empresa (Opcional — autocompletamos tu razón social)</label>
-                        <input type="text" x-model="formRut" @blur="validateRut(formRut)" @input.debounce.600ms="validateRut(formRut)"
+                        <input type="text" maxlength=\"250\" x-model="formRut" @blur="validateRut(formRut)" @input.debounce.600ms="validateRut(formRut)"
                                placeholder="Ej: 76.123.456-7" class="form-input" autocomplete="off" id="rut-input">
                         <div x-show="rutValidating" class="text-responsive-caption" style=" color: var(--accent-cyan); margin-top: 6px; display: none;">
                             ⏳ Consultando SII...
@@ -1545,7 +1545,7 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label">Nombre del Representante *</label>
-                            <input type="text" x-model="formName" required class="form-input" placeholder="Ej: Francisco Bilbao" autocomplete="off">
+                            <input type="text" maxlength=\"250\" x-model="formName" required class="form-input" placeholder="Ej: Francisco Bilbao" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="form-label">WhatsApp de Contacto *</label>
@@ -1557,11 +1557,11 @@
                     <div class="form-group-grid">
                         <div class="form-group">
                             <label class="form-label">Email Corporativo (Opcional)</label>
-                            <input type="email" x-model="formEmail" class="form-input" placeholder="correo@empresa.cl" autocomplete="off">
+                            <input type="email" maxlength=\"250\" x-model="formEmail" class="form-input" placeholder="correo@empresa.cl" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Plan a Cotizar</label>
-                            <input type="text" :value="calcPlanName + ' (Desde $' + calcPlanPrice.toLocaleString('es-CL') + ' CLP neto + IVA / mes)'" readonly class="form-input" style="background-color: var(--bg-light); color: var(--text-muted); cursor: not-allowed;">
+                            <input type="text" maxlength=\"250\" :value="calcPlanName + ' (Desde $' + calcPlanPrice.toLocaleString('es-CL') + ' CLP neto + IVA / mes)'" readonly class="form-input" style="background-color: var(--bg-light); color: var(--text-muted); cursor: not-allowed;">
                         </div>
                     </div>
 
@@ -1589,7 +1589,7 @@
                     <!-- Comments -->
                     <div class="form-group">
                         <label class="form-label">Comentarios o Dudas sobre tu Tributación</label>
-                        <textarea x-model="formComment" class="form-input" placeholder="Cuéntanos brevemente el giro de tu empresa o si vienes con multas o deudas previas en el SII..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
+                        <textarea maxlength=\"1000\" x-model="formComment" class="form-input" placeholder="Cuéntanos brevemente el giro de tu empresa o si vienes con multas o deudas previas en el SII..." style="resize: vertical; min-height: 80px;" autocomplete="off"></textarea>
                     </div>
 
                     <!-- Actions -->

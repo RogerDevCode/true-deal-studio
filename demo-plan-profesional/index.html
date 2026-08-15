@@ -1198,7 +1198,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="quote-name">Nombre Completo</label>
-                        <input id="quote-name" type="text" x-model="checkoutName" required class="form-control" placeholder="Ej: Marcela Soto">
+                        <input id="quote-name" type="text" maxlength=\"250\" x-model="checkoutName" required class="form-control" placeholder="Ej: Marcela Soto">
                     </div>
                     
                     <div class="form-group">
@@ -1228,7 +1228,7 @@
 
                     <div class="form-group" x-show="checkoutMethod === 'presencial'">
                         <label for="quote-address">Dirección del Proyecto</label>
-                        <input id="quote-address" type="text" x-model="checkoutAddress" class="form-control" placeholder="Ej: Av. Alemania 450, Valparaíso">
+                        <input id="quote-address" type="text" maxlength=\"250\" x-model="checkoutAddress" class="form-control" placeholder="Ej: Av. Alemania 450, Valparaíso">
                     </div>
 
                     <div class="form-group">

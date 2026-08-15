@@ -1262,7 +1262,7 @@
             <form @submit.prevent="openGateway()">
                 <div class="form-group">
                     <label for="bill-name">Nombre Completo</label>
-                    <input id="bill-name" type="text" x-model="checkoutName" required class="form-control" placeholder="Ej: Diego Valenzuela">
+                    <input id="bill-name" type="text" maxlength=\"250\" x-model="checkoutName" required class="form-control" placeholder="Ej: Diego Valenzuela">
                 </div>
                 
                 <div class="form-group">
@@ -1303,7 +1303,7 @@
 
                 <div class="form-group" x-show="checkoutMethod === 'despacho'">
                     <label for="bill-address">Dirección de Despacho</label>
-                    <input id="bill-address" type="text" x-model="checkoutAddress" class="form-control" placeholder="Ej: Los Leones 250, Providencia">
+                    <input id="bill-address" type="text" maxlength=\"250\" x-model="checkoutAddress" class="form-control" placeholder="Ej: Los Leones 250, Providencia">
                 </div>
 
                 <div class="form-group">
@@ -1320,20 +1320,20 @@
                 <div x-show="checkoutDocument === 'factura'" style="background-color: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px;" x-cloak>
                     <div class="form-group">
                         <label for="bill-rut">RUT de la Empresa</label>
-                        <input id="bill-rut" type="text" x-model="checkoutRut" class="form-control" placeholder="Ej: 76.123.456-7" @input="formatRutInput()">
+                        <input id="bill-rut" type="text" maxlength=\"250\" x-model="checkoutRut" class="form-control" placeholder="Ej: 76.123.456-7" @input="formatRutInput()">
                         <span x-show="checkoutRutError" class="text-responsive-detail" style="color: #ef4444;  margin-top: 4px; display: block;" x-text="checkoutRutError"></span>
                     </div>
                     <div class="form-group">
                         <label for="bill-razon">Razón Social</label>
-                        <input id="bill-razon" type="text" x-model="checkoutRazon" class="form-control" placeholder="Ej: Comercial Roble Limitada">
+                        <input id="bill-razon" type="text" maxlength=\"250\" x-model="checkoutRazon" class="form-control" placeholder="Ej: Comercial Roble Limitada">
                     </div>
                     <div class="form-group">
                         <label for="bill-giro">Giro Comercial</label>
-                        <input id="bill-giro" type="text" x-model="checkoutGiro" class="form-control" placeholder="Ej: Venta de Muebles y Madera">
+                        <input id="bill-giro" type="text" maxlength=\"250\" x-model="checkoutGiro" class="form-control" placeholder="Ej: Venta de Muebles y Madera">
                     </div>
                     <div class="form-group">
                         <label for="bill-direccion-trib">Dirección Tributaria</label>
-                        <input id="bill-direccion-trib" type="text" x-model="checkoutDireccionTrib" class="form-control" placeholder="Ej: Av. Vitacura 200, Santiago">
+                        <input id="bill-direccion-trib" type="text" maxlength=\"250\" x-model="checkoutDireccionTrib" class="form-control" placeholder="Ej: Av. Vitacura 200, Santiago">
                     </div>
                 </div>
 
@@ -1378,17 +1378,17 @@
                 <div x-show="!gatewayProcessing">
                     <div class="form-group">
                         <label style="color: #475569;">Número de Tarjeta</label>
-                        <input type="text" class="gateway-control" placeholder="4532 •••• •••• 1234" value="4532123456781234" disabled>
+                        <input type="text" maxlength=\"250\" class="gateway-control" placeholder="4532 •••• •••• 1234" value="4532123456781234" disabled>
                     </div>
                     
                     <div class="card-input-row">
                         <div class="form-group">
                             <label style="color: #475569;">Fecha Vencimiento</label>
-                            <input type="text" class="gateway-control" placeholder="MM/AA" value="12/29" disabled>
+                            <input type="text" maxlength=\"250\" class="gateway-control" placeholder="MM/AA" value="12/29" disabled>
                         </div>
                         <div class="form-group">
                             <label style="color: #475569;">CVV</label>
-                            <input type="text" class="gateway-control" placeholder="123" value="123" disabled>
+                            <input type="text" maxlength=\"250\" class="gateway-control" placeholder="123" value="123" disabled>
                         </div>
                     </div>
                     
@@ -1509,7 +1509,7 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; background-color: var(--bg-darkest); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
                     <div>
                         <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Nombre</label>
-                        <input type="text" x-model="newProdName" class="form-control" placeholder="Ej: Mesa Comedor Haya">
+                        <input type="text" maxlength=\"250\" x-model="newProdName" class="form-control" placeholder="Ej: Mesa Comedor Haya">
                     </div>
                     <div>
                         <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Precio (CLP)</label>
@@ -1521,7 +1521,7 @@
                     </div>
                     <div style="grid-column: 1 / -1;">
                         <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Descripción</label>
-                        <input type="text" x-model="newProdDesc" class="form-control" placeholder="Mesa para 6 personas de madera pulida...">
+                        <input type="text" maxlength=\"250\" x-model="newProdDesc" class="form-control" placeholder="Mesa para 6 personas de madera pulida...">
                     </div>
                     <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
                         <button class="cta-btn" @click="addProduct()">Agregar Producto</button>
@@ -1535,7 +1535,7 @@
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                             <div>
                                 <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Nombre</label>
-                                <input type="text" x-model="editingProduct.name" class="form-control">
+                                <input type="text" maxlength=\"250\" x-model="editingProduct.name" class="form-control">
                             </div>
                             <div>
                                 <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Precio (CLP)</label>
@@ -1547,7 +1547,7 @@
                             </div>
                             <div style="grid-column: 1 / -1;">
                                 <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 5px;">Descripción</label>
-                                <input type="text" x-model="editingProduct.description" class="form-control">
+                                <input type="text" maxlength=\"250\" x-model="editingProduct.description" class="form-control">
                             </div>
                             <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px;">
                                 <button class="cta-btn" style="background: #334155; color: white;" @click="editingProduct = null">Cancelar</button>
@@ -1807,7 +1807,7 @@
             
             <!-- Chat Footer -->
             <form @submit.prevent="sendChatMessage()" class="chatbot-footer-input">
-                <input type="text" x-model="chatInput" class="chatbot-input-field" placeholder="Escribe tu consulta..." :disabled="isTyping" aria-label="Mensaje del chat">
+                <input type="text" maxlength=\"250\" x-model="chatInput" class="chatbot-input-field" placeholder="Escribe tu consulta..." :disabled="isTyping" aria-label="Mensaje del chat">
                 <button type="submit" class="chatbot-send-btn" :disabled="isTyping" aria-label="Enviar mensaje">
                     <svg viewBox="0 0 24 24">
                         <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />

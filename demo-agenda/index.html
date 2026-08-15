@@ -331,7 +331,7 @@
 
             <!-- Search Field -->
             <div class="relative w-full sm:w-64">
-              <input type="text" x-model="searchQuery" placeholder="Buscar cliente..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors">
+              <input type="text" maxlength=\"250\" x-model="searchQuery" placeholder="Buscar cliente..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-accent transition-colors">
             </div>
 
           </div>
@@ -470,7 +470,7 @@
             <!-- Cliente Name -->
             <div>
               <label class="form-label block text-xs uppercase tracking-wider text-slate-400 font-bold mb-1" for="form-name">Nombre Cliente *</label>
-              <input id="form-name" type="text" x-model="formName" placeholder="Ej. Camila Henríquez" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent">
+              <input id="form-name" type="text" maxlength=\"250\" x-model="formName" placeholder="Ej. Camila Henríquez" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent">
             </div>
 
             <!-- Teléfono -->
@@ -482,7 +482,7 @@
             <!-- Email -->
             <div>
               <label class="form-label block text-xs uppercase tracking-wider text-slate-400 font-bold mb-1" for="form-email">Correo Electrónico</label>
-              <input id="form-email" type="email" x-model="formEmail" placeholder="Ej. camila@correo.cl" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent">
+              <input id="form-email" type="email" maxlength=\"250\" x-model="formEmail" placeholder="Ej. camila@correo.cl" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent">
             </div>
 
             <!-- Fecha y Hora -->
@@ -493,7 +493,7 @@
               </div>
               <div>
                 <label class="form-label block text-xs uppercase tracking-wider text-slate-400 font-bold mb-1" for="form-time">Hora *</label>
-                <input id="form-time" type="text" x-model="formTime" placeholder="Ej. 16:30 o Tarde" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent">
+                <input id="form-time" type="text" maxlength=\"250\" x-model="formTime" placeholder="Ej. 16:30 o Tarde" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent">
               </div>
             </div>
 
@@ -509,7 +509,7 @@
             <!-- Detalles -->
             <div>
               <label class="form-label block text-xs uppercase tracking-wider text-slate-400 font-bold mb-1" for="form-details">Detalles / Comentario</label>
-              <textarea id="form-details" x-model="formDetails" placeholder="Ingresa los servicios solicitados o propiedad" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent"></textarea>
+              <textarea maxlength=\"1000\" id="form-details" x-model="formDetails" placeholder="Ingresa los servicios solicitados o propiedad" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-brand-accent"></textarea>
             </div>
 
             <button type="submit" class="w-full bg-brand-accent hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-xl text-sm transition-all shadow-md shadow-brand-accent/10">
