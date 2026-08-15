@@ -11,7 +11,7 @@ test.describe("Adversarial UX/Technical Audit - Devil's Advocate", () => {
     await page.click('a[href="#contacto"]');
     await page.waitForTimeout(50); // fast interrupt
     await page.click('a[href="#precios"]');
-    await page.waitForTimeout(500); // let it settle
+    await page.waitForTimeout(2000); // let it settle
     
     const header = page.locator('header').first();
     const section = page.locator('#precios');

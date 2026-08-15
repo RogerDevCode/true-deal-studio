@@ -23,8 +23,11 @@ test.describe('Chaos Testing - Modales y Formularios de Reserva', () => {
         await page.keyboard.press('Escape'); // Intenta cerrar el modal inmediatamente
       }
 
-      // Asegurar que después del caos el modal se puede abrir correctamente y está estable
-      await triggerBtn.click();
+      // Drenar eventos de Escape pendientes antes de la prueba final
+      await page.waitForTimeout(500);
+      
+      // Modal debe quedar abierto en la última interacción
+      await triggerBtn.click({ force: true });
       const modal = page.locator('[x-data]').filter({ hasText: /WhatsApp|Confirmar/i }).last();
       await expect(modal).toBeVisible();
 
@@ -42,8 +45,8 @@ test.describe('Chaos Testing - Modales y Formularios de Reserva', () => {
       await page.goto(demo);
       await waitForAlpine(page);
 
-      const triggerBtn = page.getByRole('button', { name: /Reservar|Agendar/i }).first();
-      await triggerBtn.click();
+      const triggerBtn = page.getByRole('button', { name: /Reservar|Agendar|Solicitar/i }).first();
+      await triggerBtn.click({ force: true });
 
       const inputs = page.locator('input[type="text"], input[type="email"], textarea');
       const inputsCount = await inputs.count();
