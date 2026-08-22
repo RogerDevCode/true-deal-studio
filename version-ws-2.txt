@@ -11,3 +11,5 @@ Puedes ver cómo funciona y probar las demostraciones aquí:
 👉 https://tuvitrina.lat
 
 Dale una mirada sin compromiso. Si te hace sentido para tu negocio, me avisas y lo conversamos. ¡Un saludo!
+
+docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiNDM1MWE1ZTk2MGUwYTk2MGQ0ZTg5MjgzODFkYjUxM2YiLCJ0IjoiNzMxYmFkNzItYmI4Yi00ZmIxLWFmYmEtMTI5ZjdhNmNjOTk2IiwicyI6Ik0yUmxaVFl4TUdRdFpUQmpNeTAwT0RFeUxUaGxZall0TkdNMk0yVmtabVJrTnpZNCJ9
